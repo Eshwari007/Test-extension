@@ -14,7 +14,7 @@ import {
   InfoCardBtn,
   InfoCardFooter,
 } from '@app/components/info-card/info-card';
-import { ModalHeader } from '@app/components/modal-header';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 import { CheckmarkIcon } from '@app/ui/components/icons/checkmark-icon';
 import { CopyIcon } from '@app/ui/components/icons/copy-icon';
 import { ExternalLinkIcon } from '@app/ui/components/icons/external-link-icon';
@@ -38,7 +38,7 @@ export function LockBitcoinSummary() {
     toast.success('ID copied!');
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose title="Locked Bitcoin" />);
+  useRouteHeader(<PageHeader defaultClose title="Locked Bitcoin" />);
 
   return (
     <InfoCard>

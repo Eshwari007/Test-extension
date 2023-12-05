@@ -25,11 +25,11 @@ import {
   InfoCardRow,
   InfoCardSeparator,
 } from '@app/components/info-card/info-card';
-import { ModalHeader } from '@app/components/modal-header';
 import { useCurrentNativeSegwitUtxos } from '@app/query/bitcoin/address/utxos-by-address.hooks';
 import { useBitcoinBroadcastTransaction } from '@app/query/bitcoin/transaction/use-bitcoin-broadcast-transaction';
 import { useCryptoCurrencyMarketData } from '@app/query/common/market-data/market-data.hooks';
 import { Button } from '@app/ui/components/button/button';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 
 import { useSendFormNavigate } from '../../hooks/use-send-form-navigate';
 
@@ -124,7 +124,7 @@ export function BtcSendFormConfirmation() {
     };
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose defaultGoBack title="Review" />);
+  useRouteHeader(<PageHeader defaultClose defaultGoBack title="Review" />);
 
   return (
     <InfoCard data-testid={SendCryptoAssetSelectors.ConfirmationDetails}>

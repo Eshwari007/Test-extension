@@ -7,7 +7,7 @@ import { Box, Flex, HStack } from 'leather-styles/jsx';
 import { RouteUrls } from '@shared/route-urls';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
-import { useDrawers } from '@app/common/hooks/use-drawers';
+import { useDialogs } from '@app/common/hooks/use-dialogs';
 import { useKeyActions } from '@app/common/hooks/use-key-actions';
 import { useModifierKey } from '@app/common/hooks/use-modifier-key';
 import { useOnClickOutside } from '@app/common/hooks/use-onclickoutside';
@@ -33,7 +33,7 @@ export function SettingsDropdown() {
   const hasGeneratedWallet = !!useCurrentStacksAccount();
   const { lockWallet } = useKeyActions();
 
-  const { isShowingSettings, setIsShowingSettings } = useDrawers();
+  const { isShowingSettings, setIsShowingSettings } = useDialogs();
   const currentNetworkId = useCurrentNetworkId();
   const navigate = useNavigate();
   const analytics = useAnalytics();

@@ -8,7 +8,7 @@ import { Money } from '@shared/models/money.model';
 import { isEmpty } from '@shared/utils';
 
 import { FormErrorMessages } from '@app/common/error-messages';
-import { useDrawers } from '@app/common/hooks/use-drawers';
+import { useDialogs } from '@app/common/hooks/use-dialogs';
 import { stxMemoValidator } from '@app/common/validation/forms/memo-validators';
 import { stxRecipientValidator } from '@app/common/validation/forms/recipient-validators';
 import { nonceValidator } from '@app/common/validation/nonce-validators';
@@ -30,7 +30,7 @@ export function useStacksCommonSendForm({
 }: UseStacksCommonSendFormArgs) {
   const routeState = useSendFormRouteState();
   const { data: nextNonce } = useNextNonce();
-  const { isShowingHighFeeConfirmation, setIsShowingHighFeeConfirmation } = useDrawers();
+  const { isShowingHighFeeConfirmation, setIsShowingHighFeeConfirmation } = useDialogs();
   const currentAccountStxAddress = useCurrentAccountStxAddressState();
   const currentNetwork = useCurrentNetworkState();
 

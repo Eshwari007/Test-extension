@@ -1,7 +1,7 @@
 import { Stack } from 'leather-styles/jsx';
 import { styled } from 'leather-styles/jsx';
 
-import { HashDrawer } from './hash-drawer';
+import { HashDialog } from './hash-dialog';
 
 interface MessageBoxProps {
   message: string;
@@ -29,7 +29,7 @@ export function MessagePreviewBox({ message, hash }: MessageBoxProps) {
           </styled.span>
         ))}
       </Stack>
-      {hash ? <HashDrawer hash={hash} /> : null}
+      {hash ? <HashDialog hash={hash} /> : null}
     </Stack>
   );
 }

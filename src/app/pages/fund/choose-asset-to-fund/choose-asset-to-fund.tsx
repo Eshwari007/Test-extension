@@ -12,8 +12,8 @@ import { useWalletType } from '@app/common/use-wallet-type';
 import { ChooseAssetContainer } from '@app/components/crypto-assets/choose-crypto-asset/choose-asset-container';
 import { ChooseCryptoAssetLayout } from '@app/components/crypto-assets/choose-crypto-asset/choose-crypto-asset.layout';
 import { CryptoAssetList } from '@app/components/crypto-assets/choose-crypto-asset/crypto-asset-list';
-import { ModalHeader } from '@app/components/modal-header';
 import { useCheckLedgerBlockchainAvailable } from '@app/store/accounts/blockchain/utils';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 
 export function ChooseCryptoAssetToFund() {
   const btcCryptoCurrencyAssetBalance = useBtcCryptoCurrencyAssetBalance();
@@ -40,7 +40,7 @@ export function ChooseCryptoAssetToFund() {
     [cryptoCurrencyAssetBalances, checkBlockchainAvailable, whenWallet]
   );
 
-  useRouteHeader(<ModalHeader hideActions onGoBack={() => navigate(RouteUrls.Home)} title=" " />);
+  useRouteHeader(<PageHeader onGoBack={() => navigate(RouteUrls.Home)} />);
 
   const navigateToSendForm = useCallback(
     (cryptoAssetBalance: AllTransferableCryptoAssetBalances) => {

@@ -16,7 +16,7 @@ import {
   InfoCardRow,
   InfoCardSeparator,
 } from '@app/components/info-card/info-card';
-import { ModalHeader } from '@app/components/modal-header';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 import { CopyIcon } from '@app/ui/components/icons/copy-icon';
 import { ExternalLinkIcon } from '@app/ui/components/icons/external-link-icon';
 
@@ -53,7 +53,7 @@ export function BtcSentSummary() {
     toast.success('ID copied!');
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose title="Sent" />);
+  useRouteHeader(<PageHeader defaultClose title="Sent" />);
 
   return (
     <InfoCard>

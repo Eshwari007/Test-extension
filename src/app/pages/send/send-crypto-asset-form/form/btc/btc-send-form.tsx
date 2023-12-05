@@ -7,14 +7,17 @@ import { Box } from 'leather-styles/jsx';
 import { HIGH_FEE_WARNING_LEARN_MORE_URL_BTC } from '@shared/constants';
 import { CryptoCurrencies } from '@shared/models/currencies.model';
 
-import { HighFeeDrawer } from '@app/features/high-fee-drawer/high-fee-drawer';
+import { formatMoney } from '@app/common/money/format-money';
+import { HighFeeDialog } from '@app/features/dialogs/high-fee-dialog/high-fee-dialog';
 import { useNativeSegwitBalance } from '@app/query/bitcoin/balance/btc-native-segwit-balance.hooks';
 import { useCryptoCurrencyMarketData } from '@app/query/common/market-data/market-data.hooks';
 import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
+import { Button } from '@app/ui/components/button/button';
+import { AvailableBalance } from '@app/ui/components/containers/footers/available-balance';
+import { Footer } from '@app/ui/components/containers/footers/footer';
 import { BtcIcon } from '@app/ui/components/icons/btc-icon';
 
 import { AmountField } from '../../components/amount-field';
-import { FormFooter } from '../../components/form-footer';
 import { SelectedAssetField } from '../../components/selected-asset-field';
 import { SendCryptoAssetFormLayout } from '../../components/send-crypto-asset-form.layout';
 import { SendFiatValue } from '../../components/send-fiat-value';
@@ -92,8 +95,18 @@ export function BtcSendForm() {
                 <BitcoinRecipientField />
                 {currentNetwork.chain.bitcoin.bitcoinNetwork === 'testnet' && <TestnetBtcMessage />}
               </SendCryptoAssetFormLayout>
-              <FormFooter balance={btcBalance.balance} />
-              <HighFeeDrawer learnMoreUrl={HIGH_FEE_WARNING_LEARN_MORE_URL_BTC} />
+
+              <Footer>
+                <Button
+                  data-testid={SendCryptoAssetSelectors.PreviewSendTxBtn}
+                  onClick={() => props.handleSubmit()}
+                  type="submit"
+                >
+                  Continue
+                </Button>
+                <AvailableBalance balance={formatMoney(btcBalance.balance)} />
+              </Footer>
+              <HighFeeDialog learnMoreUrl={HIGH_FEE_WARNING_LEARN_MORE_URL_BTC} />
               <Outlet />
 
               {/* This is for testing purposes only, to make sure the form is ready to be submitted. */}

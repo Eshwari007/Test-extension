@@ -10,14 +10,14 @@ import { closeWindow } from '@shared/utils';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { isFullPageMode, isPopupMode } from '@app/common/utils';
 import { openIndexPageInNewTab } from '@app/common/utils/open-in-new-tab';
-import { Header } from '@app/components/header';
 import { RequestPassword } from '@app/components/request-password';
 import { useNewBrandApprover } from '@app/store/settings/settings.selectors';
+import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
 
 export function Unlock() {
   const navigate = useNavigate();
 
-  useRouteHeader(<Header />);
+  useRouteHeader(<HomeHeader />);
 
   const { hasApprovedNewBrand } = useNewBrandApprover();
 
@@ -36,18 +36,14 @@ export function Unlock() {
   return (
     <>
       {/* Hide the logo when user hasn't consented yet */}
+      {/*  TODO 4370 refactor this to not show brand in the header if not approved rather than add an empty box */}
       {!hasApprovedNewBrand && (
         <Box position="fixed" w="200px" h="60px" background="ink.2" top={0} left={0} />
       )}
 
       <RequestPassword
-        title={
-          <>
-            Your
-            <br />
-            session is locked
-          </>
-        }
+        sessionLocked
+        title={<>Your session is locked</>}
         caption="Enter the password you set on this device"
         onSuccess={handleSuccess}
       />

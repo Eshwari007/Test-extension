@@ -35,7 +35,7 @@ export class HomePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.drawerActionButton = page.getByTestId(HomePageSelectors.DrawerHeaderActionBtn);
+    this.drawerActionButton = page.getByTestId(HomePageSelectors.HeaderActionBtn);
     this.receiveButton = page.getByTestId(HomePageSelectors.ReceiveCryptoAssetBtn);
     this.sendButton = page.getByTestId(HomePageSelectors.SendCryptoAssetBtn);
     this.swapButton = page.getByTestId(HomePageSelectors.SwapBtn);

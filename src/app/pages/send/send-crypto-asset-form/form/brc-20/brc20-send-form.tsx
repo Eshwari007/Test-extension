@@ -1,16 +1,20 @@
 import { Outlet, useLocation } from 'react-router-dom';
 
+import { SendCryptoAssetSelectors } from '@tests/selectors/send.selectors';
 import { Form, Formik } from 'formik';
 import { Box, styled } from 'leather-styles/jsx';
 import get from 'lodash.get';
 
+import { formatMoney } from '@app/common/money/format-money';
 import { openInNewTab } from '@app/common/utils/open-in-new-tab';
 import { InfoLabel } from '@app/components/info-label';
+import { Button } from '@app/ui/components/button/button';
+import { AvailableBalance } from '@app/ui/components/containers/footers/available-balance';
+import { Footer } from '@app/ui/components/containers/footers/footer';
 import { Brc20TokenIcon } from '@app/ui/components/icons/brc20-token-icon';
 import { Link } from '@app/ui/components/link/link';
 
 import { AmountField } from '../../components/amount-field';
-import { FormFooter } from '../../components/form-footer';
 import { SelectedAssetField } from '../../components/selected-asset-field';
 import { SendCryptoAssetFormLayout } from '../../components/send-crypto-asset-form.layout';
 import { SendMaxButton } from '../../components/send-max-button';
@@ -79,11 +83,20 @@ export function Brc20SendForm() {
                   </Link>
                 </InfoLabel>
               </SendCryptoAssetFormLayout>
+              <Footer>
+                <Button
+                  data-testid={SendCryptoAssetSelectors.PreviewSendTxBtn}
+                  onClick={() => props.handleSubmit()}
+                  type="submit"
+                >
+                  Continue
+                </Button>
+                <AvailableBalance
+                  balance={formatMoney(moneyBalance)}
+                  balanceTooltipLabel="Total balance minus any amounts already represented by transfer inscriptions in your wallet."
+                />
+              </Footer>
 
-              <FormFooter
-                balance={moneyBalance}
-                balanceTooltipLabel="Total balance minus any amounts already represented by transfer inscriptions in your wallet."
-              />
               <Outlet />
             </Form>
           );

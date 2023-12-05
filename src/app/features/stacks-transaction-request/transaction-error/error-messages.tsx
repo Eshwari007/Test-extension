@@ -8,7 +8,7 @@ import { RouteUrls } from '@shared/route-urls';
 import { closeWindow } from '@shared/utils';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
-import { useDrawers } from '@app/common/hooks/use-drawers';
+import { useDialogs } from '@app/common/hooks/use-dialogs';
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { stacksValue } from '@app/common/stacks-utils';
 import { ErrorMessage } from '@app/features/stacks-transaction-request/transaction-error/error-message';
@@ -24,7 +24,7 @@ interface InsufficientFundsActionButtonsProps {
 }
 function InsufficientFundsActionButtons({ eventName }: InsufficientFundsActionButtonsProps) {
   const analytics = useAnalytics();
-  const { setIsShowingSwitchAccountsState } = useDrawers();
+  const { setIsShowingSwitchAccountsState } = useDialogs();
 
   const onGetStx = () => {
     void analytics.track(eventName);

@@ -70,8 +70,6 @@ export function WelcomePage() {
   return (
     <>
       <WelcomeLayout
-        tagline="Bitcoin for the rest of us"
-        subheader="Leather is the only Bitcoin wallet you need to tap into the emerging Bitcoin economy"
         isGeneratingWallet={isGeneratingWallet}
         onSelectConnectLedger={() =>
           doesBrowserSupportWebUsbApi() ? supportsWebUsbAction() : doesNotSupportWebUsbAction()

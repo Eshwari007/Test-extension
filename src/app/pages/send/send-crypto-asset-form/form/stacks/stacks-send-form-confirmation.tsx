@@ -6,7 +6,7 @@ import { CryptoCurrencies } from '@shared/models/currencies.model';
 
 import { useLocationStateWithCache } from '@app/common/hooks/use-location-state';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { ModalHeader } from '@app/components/modal-header';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 import { InfoIcon } from '@app/ui/components/icons/info-icon';
 import { BasicTooltip } from '@app/ui/components/tooltip/basic-tooltip';
 
@@ -47,8 +47,7 @@ export function StacksSendFormConfirmation() {
   } = formReviewTxSummary(stacksDeserializedTransaction, symbol, decimals);
 
   useRouteHeader(
-    <ModalHeader
-      hideActions
+    <PageHeader
       defaultClose
       onGoBack={() => navigate('../', { relative: 'path', replace: true })}
       title="Review"

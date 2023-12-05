@@ -16,12 +16,12 @@ import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { removeTrailingSlash } from '@app/common/url-join';
 import { CenteredPageContainer } from '@app/components/centered-page-container';
 import { ErrorLabel } from '@app/components/error-label';
-import { Header } from '@app/components/header';
 import {
   useCurrentStacksNetworkState,
   useNetworksActions,
 } from '@app/store/networks/networks.hooks';
 import { Button } from '@app/ui/components/button/button';
+import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
 import { Input } from '@app/ui/components/input';
 import { Title } from '@app/ui/components/typography/title';
 
@@ -62,7 +62,7 @@ export function AddNetwork() {
 
   const { setFieldValue } = formikProps;
 
-  useRouteHeader(<Header title="Add a network" onClose={() => navigate(RouteUrls.Home)} />);
+  useRouteHeader(<HomeHeader title="Add a network" onClose={() => navigate(RouteUrls.Home)} />);
 
   const handleApiChange = (newValue: BitcoinNetworkModes) => {
     setBitcoinApi(newValue);
@@ -70,14 +70,14 @@ export function AddNetwork() {
 
   const setStacksUrl = useCallback(
     (value: string) => {
-      setFieldValue('stacksUrl', value);
+      void setFieldValue('stacksUrl', value);
     },
     [setFieldValue]
   );
 
   const setBitcoinUrl = useCallback(
     (value: string) => {
-      setFieldValue('bitcoinUrl', value);
+      void setFieldValue('bitcoinUrl', value);
     },
     [setFieldValue]
   );
