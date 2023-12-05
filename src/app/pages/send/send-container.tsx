@@ -4,10 +4,10 @@ import { Flex } from 'leather-styles/jsx';
 
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { whenPageMode } from '@app/common/utils';
-import { ModalHeader } from '@app/components/modal-header';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 
 export function SendContainer() {
-  useRouteHeader(<ModalHeader hideActions defaultGoBack title="Send" />, true);
+  useRouteHeader(<PageHeader defaultGoBack title="Send" />, true);
 
   return whenPageMode({
     full: (

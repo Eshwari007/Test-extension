@@ -5,12 +5,12 @@ import { RouteUrls } from '@shared/route-urls';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useLocationState } from '@app/common/hooks/use-location-state';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { NetworkListLayout } from '@app/pages/select-network/components/network-list.layout';
 import { NetworkListItem } from '@app/pages/select-network/network-list-item';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
 import { useCurrentNetworkState, useNetworksActions } from '@app/store/networks/networks.hooks';
 import { useNetworks } from '@app/store/networks/networks.selectors';
+import { Dialog } from '@app/ui/components/containers/dialog/dialog';
 
 import { AddNetworkButton } from './components/add-network-button';
 
@@ -46,7 +46,7 @@ export function SelectNetwork() {
   }
 
   return (
-    <BaseDrawer title="Select Network" isShowing onClose={closeNetworkModal}>
+    <Dialog title="Select Network" isShowing onClose={closeNetworkModal}>
       <NetworkListLayout>
         {Object.keys(networks).map(id => (
           <NetworkListItem
@@ -62,6 +62,6 @@ export function SelectNetwork() {
         ))}
       </NetworkListLayout>
       <AddNetworkButton onAddNetwork={addNetwork} />
-    </BaseDrawer>
+    </Dialog>
   );
 }

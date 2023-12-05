@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import { bytesToHex, signatureVrsToRsv } from '@stacks/common';
 import { serializeCV } from '@stacks/transactions';
@@ -12,7 +12,6 @@ import { UnsignedMessage, whenSignableMessageOfType } from '@shared/signature/si
 
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { delay } from '@app/common/utils';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import {
   getStacksAppVersion,
   prepareLedgerDeviceStacksAppConnection,
@@ -23,6 +22,7 @@ import {
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { StacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.models';
 import { useSignatureRequestSearchParams } from '@app/store/signatures/requests.hooks';
+import { Dialog } from '@app/ui/components/containers/dialog/dialog';
 
 import { useLedgerAnalytics } from '../../hooks/use-ledger-analytics.hook';
 import { useLedgerNavigate } from '../../hooks/use-ledger-navigate';
@@ -51,6 +51,7 @@ function LedgerSignMsgData({ children }: LedgerSignMsgDataProps) {
 type LedgerSignMsgProps = LedgerSignMsgData;
 function LedgerSignStacksMsg({ account, unsignedMessage }: LedgerSignMsgProps) {
   useScrollLock(true);
+  const navigate = useNavigate();
 
   const location = useLocation();
   const ledgerNavigate = useLedgerNavigate();
@@ -156,16 +157,15 @@ function LedgerSignStacksMsg({ account, unsignedMessage }: LedgerSignMsgProps) {
 
   return (
     <LedgerMsgSigningProvider value={ledgerContextValue}>
-      <BaseDrawer
-        enableGoBack={allowUserToGoBack}
+      <Dialog
+        onGoBack={allowUserToGoBack ? () => navigate(-1) : undefined}
         isShowing
         isWaitingOnPerformedAction={awaitingDeviceConnection || canUserCancelAction}
         onClose={ledgerNavigate.cancelLedgerAction}
         pauseOnClickOutside
-        waitingOnPerformedActionMessage="Ledger device in use"
       >
         <Outlet />
-      </BaseDrawer>
+      </Dialog>
     </LedgerMsgSigningProvider>
   );
 }

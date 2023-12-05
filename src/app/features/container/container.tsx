@@ -12,10 +12,10 @@ import { useOnWalletLock } from '@app/routes/hooks/use-on-wallet-lock';
 import { useHasStateRehydrated } from '@app/store';
 import { useRouteHeaderState } from '@app/store/ui/ui.hooks';
 
+import { ContainerLayout } from '../../ui/components/containers/container.layout';
+import { SwitchAccountDialog } from '../dialogs/switch-account-dialog/switch-account-dialog';
 import { useRestoreFormState } from '../popup-send-form-restoration/use-restore-form-state';
 import { SettingsDropdown } from '../settings-dropdown/settings-dropdown';
-import { SwitchAccountDrawer } from '../switch-account-drawer/switch-account-drawer';
-import { ContainerLayout } from './container.layout';
 
 export function Container() {
   const [routeHeader] = useRouteHeaderState();
@@ -34,7 +34,7 @@ export function Container() {
 
   return (
     <>
-      <SwitchAccountDrawer />
+      <SwitchAccountDialog />
       <SettingsDropdown />
       <Toaster position="bottom-center" toastOptions={{ style: { fontSize: '14px' } }} />
       <ContainerLayout header={routeHeader}>

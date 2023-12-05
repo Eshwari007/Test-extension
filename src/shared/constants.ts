@@ -5,8 +5,9 @@ import { Blockchains } from './models/blockchain.model';
 
 export const gaiaUrl = 'https://hub.blockstack.org';
 
-export const POPUP_CENTER_WIDTH = 442;
-export const POPUP_CENTER_HEIGHT = 646;
+// #4250 setting consistent dimensions of extension + popup to match mobile
+export const POPUP_WIDTH = 390;
+export const POPUP_HEIGHT = 756;
 
 export const HIGH_FEE_AMOUNT_STX = 5;
 export const HIGH_FEE_WARNING_LEARN_MORE_URL_BTC = 'https://bitcoinfees.earn.com/';

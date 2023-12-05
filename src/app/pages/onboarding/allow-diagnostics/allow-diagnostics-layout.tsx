@@ -1,11 +1,10 @@
-import { Dialog } from '@radix-ui/themes';
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { css } from 'leather-styles/css';
 import { Box, Flex, HStack, Stack, styled } from 'leather-styles/jsx';
 
 import { Button } from '@app/ui/components/button/button';
+import { Dialog } from '@app/ui/components/containers/dialog/dialog';
 import { CheckmarkIcon } from '@app/ui/components/icons/checkmark-icon';
-import { LeatherIcon } from '@app/ui/components/icons/leather-icon';
 
 interface ReasonToAllowDiagnosticsProps {
   text: string;
@@ -25,18 +24,31 @@ interface AllowDiagnosticsLayoutProps {
   onUserAllowDiagnostics(): void;
   onUserDenyDiagnostics(): void;
 }
-export function AllowDiagnosticsLayout(props: AllowDiagnosticsLayoutProps) {
-  const { onUserAllowDiagnostics, onUserDenyDiagnostics } = props;
+export function AllowDiagnosticsLayout({
+  onUserAllowDiagnostics,
+  onUserDenyDiagnostics,
+}: AllowDiagnosticsLayoutProps) {
+  {
+    /* FIXME 4370 Need to add:
+     - new header
+     - new footer
+     - fix dialog styling
+    */
+  }
+
   return (
-    <Dialog.Root open>
-      <Dialog.Content
+    <Dialog isShowing>
+      <styled.div
         className={css({
-          width: '500px',
-          marginY: 'space.03',
-          backgroundColor: 'accent.background-primary',
+          padding: 'space.05',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 'space.07',
+          flex: '1 0 0',
+          alignSelf: 'stretch',
         })}
       >
-        <LeatherIcon width="72px" />
         <styled.h1 textStyle="heading.03" mt={['space.05', 'space.08']}>
           Help us improve
         </styled.h1>
@@ -69,7 +81,7 @@ export function AllowDiagnosticsLayout(props: AllowDiagnosticsLayoutProps) {
             Allow
           </Button>
         </HStack>
-      </Dialog.Content>
-    </Dialog.Root>
+      </styled.div>
+    </Dialog>
   );
 }

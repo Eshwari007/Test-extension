@@ -4,8 +4,8 @@ import { SwapSelectors } from '@tests/selectors/swap.selectors';
 
 import { LoadingKeys, useLoading } from '@app/common/hooks/use-loading';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { ModalHeader } from '@app/components/modal-header';
 import { Button } from '@app/ui/components/button/button';
+import { PageHeader } from '@app/ui/components/containers/headers/page-header';
 
 import { SwapAssetsPair } from '../components/swap-assets-pair/swap-assets-pair';
 import { SwapContentLayout } from '../components/swap-content.layout';
@@ -18,7 +18,7 @@ export function SwapReview() {
   const { onSubmitSwap } = useSwapContext();
   const { isLoading } = useLoading(LoadingKeys.SUBMIT_SWAP_TRANSACTION);
 
-  useRouteHeader(<ModalHeader defaultGoBack hideActions title="Review" />, true);
+  useRouteHeader(<PageHeader defaultGoBack title="Review" />, true);
 
   return (
     <>

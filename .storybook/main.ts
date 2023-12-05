@@ -26,6 +26,12 @@ const config: StorybookConfig = {
               },
             ],
           },
+
+          {
+            test: /\.(ts|tsx)$/,
+            loader: 'esbuild-loader',
+            options: { tsconfig: './tsconfig.json', target: 'es2020' },
+          },
         ],
       },
     },

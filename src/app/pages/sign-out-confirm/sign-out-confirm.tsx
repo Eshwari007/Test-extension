@@ -8,7 +8,7 @@ import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-
 
 import { SignOutConfirmLayout } from './sign-out-confirm.layout';
 
-export function SignOutConfirmDrawer() {
+export function SignOutConfirmDialog() {
   useBackgroundLocationRedirect();
   const { signOut } = useKeyActions();
   const navigate = useNavigate();

@@ -2,13 +2,14 @@ import { memo, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ChainID } from '@stacks/transactions';
-import { Flex, FlexProps, styled } from 'leather-styles/jsx';
+import { Flex, styled } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 
 import { useCurrentNetworkState } from '@app/store/networks/networks.hooks';
 
-export const NetworkModeBadge = memo((props: FlexProps) => {
+// TODO - need to refactor this so network is checked at top level and can be passed to page container
+export const NetworkModeBadge = memo(() => {
   const navigate = useNavigate();
   const { chain, name } = useCurrentNetworkState();
   const isTestnetChain = useMemo(
@@ -29,7 +30,6 @@ export const NetworkModeBadge = memo((props: FlexProps) => {
       px="space.03"
       position="relative"
       zIndex={999}
-      {...props}
     >
       <styled.span color="accent.text-subdued" textStyle="label.03">
         {name}

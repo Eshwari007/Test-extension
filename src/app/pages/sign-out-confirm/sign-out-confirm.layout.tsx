@@ -1,12 +1,12 @@
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { useFormik } from 'formik';
-import { Box, HStack, styled } from 'leather-styles/jsx';
+import { Box, Flex, styled } from 'leather-styles/jsx';
 
-import { useThemeSwitcher } from '@app/common/theme-provider';
 import { useWalletType } from '@app/common/use-wallet-type';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { Flag } from '@app/components/layout/flag';
 import { Button } from '@app/ui/components/button/button';
+import { Dialog } from '@app/ui/components/containers/dialog/dialog';
+import { Footer } from '@app/ui/components/containers/footers/footer';
 import { ErrorIcon } from '@app/ui/components/icons/error-icon';
 
 interface SignOutConfirmLayoutProps {
@@ -17,8 +17,6 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
   const { onUserDeleteWallet, onUserSafelyReturnToHomepage } = props;
 
   const { whenWallet, walletType } = useWalletType();
-  const { theme } = useThemeSwitcher();
-
   const form = useFormik({
     initialValues: {
       confirmBackup: whenWallet({ ledger: true, software: false }),
@@ -29,9 +27,41 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
     },
   });
 
+  const canSignOut = form.values.confirmBackup && form.values.confirmPasswordDisable;
+
   return (
-    <BaseDrawer title="Sign out" isShowing onClose={onUserSafelyReturnToHomepage}>
-      <Box mx="space.05" mb="space.06">
+    <Dialog
+      title="Sign out"
+      isShowing
+      onClose={onUserSafelyReturnToHomepage}
+      footer={
+        <Footer>
+          <Button
+            color="gray"
+            data-testid={SettingsSelectors.BtnSignOutReturnToHomeScreen}
+            flexGrow={1}
+            variant="outline"
+            onClick={() => onUserSafelyReturnToHomepage()}
+          >
+            Cancel
+          </Button>
+          <Button
+            _hover={{ opacity: 0.8 }}
+            background="error.label"
+            color="lightModeBrown.1"
+            opacity={!canSignOut ? 0.8 : undefined}
+            data-testid={SettingsSelectors.BtnSignOutActuallyDeleteWallet}
+            flexGrow={1}
+            disabled={!canSignOut}
+            onClick={() => canSignOut && onUserDeleteWallet()}
+            type="submit"
+          >
+            Sign out
+          </Button>
+        </Footer>
+      }
+    >
+      <Flex alignItems="center" flexDirection="column" pb={['space.05', 'space.08']} px="space.05">
         <form onChange={form.handleChange} onSubmit={form.handleSubmit}>
           <styled.p textStyle="label.02">
             When you sign out,
@@ -84,30 +114,8 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
               I understand my password will no longer work for accessing my wallet upon signing out
             </styled.p>
           </styled.label>
-          <HStack gap="space.04" mt="space.06">
-            <Button
-              data-testid={SettingsSelectors.BtnSignOutReturnToHomeScreen}
-              flexGrow={1}
-              onClick={() => onUserSafelyReturnToHomepage()}
-              variant="outline"
-            >
-              Cancel
-            </Button>
-            <Button
-              _disabled={{ color: 'accent.non-interactive' }}
-              _hover={{ background: 'error.label' }}
-              background="error.label"
-              color={theme === 'light' ? 'accent.background-primary' : 'accent.text-primary'}
-              data-testid={SettingsSelectors.BtnSignOutActuallyDeleteWallet}
-              flexGrow={1}
-              disabled={!(form.values.confirmBackup && form.values.confirmPasswordDisable)}
-              type="submit"
-            >
-              Sign out
-            </Button>
-          </HStack>
         </form>
-      </Box>
-    </BaseDrawer>
+      </Flex>
+    </Dialog>
   );
 }
