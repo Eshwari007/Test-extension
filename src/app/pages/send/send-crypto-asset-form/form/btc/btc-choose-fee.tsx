@@ -7,10 +7,10 @@ import { useLocationStateWithCache } from '@app/common/hooks/use-location-state'
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { BitcoinFeesList } from '@app/components/bitcoin-fees-list/bitcoin-fees-list';
 import { useBitcoinFeesList } from '@app/components/bitcoin-fees-list/use-bitcoin-fees-list';
-import { ModalHeader } from '@app/components/modal-header';
 import { BitcoinChooseFee } from '@app/features/bitcoin-choose-fee/bitcoin-choose-fee';
 import { useValidateBitcoinSpend } from '@app/features/bitcoin-choose-fee/hooks/use-validate-bitcoin-spend';
 import { UtxoResponseItem } from '@app/query/bitcoin/bitcoin-client';
+import { ModalHeader } from '@app/ui/components/containers/headers/modal-header';
 
 import { useSendBitcoinAssetContextState } from '../../family/bitcoin/components/send-bitcoin-asset-container';
 import { useBtcChooseFee } from './use-btc-choose-fee';

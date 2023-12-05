@@ -7,7 +7,7 @@ import { RouteUrls } from '@shared/route-urls';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { settingsActions } from '@app/store/settings/settings.actions';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { AllowDiagnosticsLayout } from './allow-diagnostics-layout';
 

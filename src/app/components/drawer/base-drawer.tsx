@@ -31,7 +31,7 @@ function useDrawer(isShowing: boolean, onClose: () => void, pause?: boolean) {
 interface BaseDrawerProps extends Omit<FlexProps, 'title'> {
   children?: ReactNode;
   enableGoBack?: boolean;
-  icon?: React.JSX.Element;
+  // icon?: React.JSX.Element;
   isShowing: boolean;
   isWaitingOnPerformedAction?: boolean;
   onClose?(): void;
@@ -43,7 +43,7 @@ export const BaseDrawer = memo((props: BaseDrawerProps) => {
   const {
     children,
     enableGoBack,
-    icon,
+    // icon,
     isShowing,
     isWaitingOnPerformedAction,
     onClose,
@@ -110,7 +110,7 @@ export const BaseDrawer = memo((props: BaseDrawerProps) => {
         >
           <DrawerHeader
             enableGoBack={enableGoBack}
-            icon={icon}
+            // icon={icon}
             isWaitingOnPerformedAction={isWaitingOnPerformedAction}
             onClose={onClose}
             onGoBack={onGoBack}

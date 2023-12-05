@@ -25,11 +25,11 @@ import {
   InfoCardRow,
   InfoCardSeparator,
 } from '@app/components/info-card/info-card';
-import { ModalHeader } from '@app/components/modal-header';
 import { useCurrentNativeSegwitUtxos } from '@app/query/bitcoin/address/utxos-by-address.hooks';
 import { useBitcoinBroadcastTransaction } from '@app/query/bitcoin/transaction/use-bitcoin-broadcast-transaction';
 import { useCryptoCurrencyMarketData } from '@app/query/common/market-data/market-data.hooks';
 import { LeatherButton } from '@app/ui/components/button';
+import { ModalHeader } from '@app/ui/components/containers/headers/modal-header';
 
 import { useSendFormNavigate } from '../../hooks/use-send-form-navigate';
 

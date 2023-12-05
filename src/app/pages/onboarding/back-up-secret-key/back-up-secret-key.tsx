@@ -7,7 +7,7 @@ import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { TwoColumnLayout } from '@app/components/secret-key/two-column.layout';
 import { SecretKeyDisplayer } from '@app/features/secret-key-displayer/secret-key-displayer';
 import { useDefaultWalletSecretKey } from '@app/store/in-memory-key/in-memory-key.selectors';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { BackUpSecretKeyContent } from './components/back-up-secret-key.content';
 

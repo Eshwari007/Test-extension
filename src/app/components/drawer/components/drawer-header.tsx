@@ -36,7 +36,7 @@ export function DrawerHeader({
           onAction={onGoBack}
         />
       ) : (
-        <Box width="36px" height="36px" />
+        <Box width="36px" height="36px" /> // FIXME - get rid of this without shifting title left
       )}
       {icon && icon}
       {title && <styled.h1 textStyle="heading.05">{title}</styled.h1>}

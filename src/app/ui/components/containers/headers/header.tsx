@@ -14,7 +14,7 @@ import { LeatherLogo } from '@app/ui/components/containers/leather-logo';
 import { ArrowLeftIcon } from '@app/ui/components/icons/arrow-left-icon';
 import { HamburgerIcon } from '@app/ui/components/icons/hamburger-icon';
 
-import { AppVersion } from '../../../components/app-version';
+import { AppVersion } from '../../../../components/app-version';
 
 function isSettingsClickable(pathname: RouteUrls) {
   return (

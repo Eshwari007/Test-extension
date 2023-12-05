@@ -8,7 +8,7 @@ import { FullPageLoadingSpinner } from '@app/components/loading-spinner';
 import { useCurrentStacksAccountAnchoredBalances } from '@app/query/stacks/balance/stx-balance.hooks';
 import { useCurrentAccountNativeSegwitIndexZeroSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { FundLayout } from './components/fund.layout';
 import { FiatProvidersList } from './fiat-providers-list';

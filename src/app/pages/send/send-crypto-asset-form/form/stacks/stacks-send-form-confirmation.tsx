@@ -6,8 +6,8 @@ import { CryptoCurrencies } from '@shared/models/currencies.model';
 
 import { useLocationStateWithCache } from '@app/common/hooks/use-location-state';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { ModalHeader } from '@app/components/modal-header';
 import { Tooltip } from '@app/components/tooltip';
+import { ModalHeader } from '@app/ui/components/containers/headers/modal-header';
 import { InfoIcon } from '@app/ui/components/icons/info-icon';
 
 import { useStacksBroadcastTransaction } from '../../family/stacks/hooks/use-stacks-broadcast-transaction';

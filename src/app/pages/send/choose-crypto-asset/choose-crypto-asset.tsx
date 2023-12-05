@@ -11,9 +11,9 @@ import { Brc20TokensLoader } from '@app/components/brc20-tokens-loader';
 import { Brc20TokenAssetList } from '@app/components/crypto-assets/bitcoin/brc20-token-asset-list/brc20-token-asset-list';
 import { ChooseCryptoAssetLayout } from '@app/components/crypto-assets/choose-crypto-asset/choose-crypto-asset.layout';
 import { CryptoAssetList } from '@app/components/crypto-assets/choose-crypto-asset/crypto-asset-list';
-import { ModalHeader } from '@app/components/modal-header';
 import { useConfigBitcoinSendEnabled } from '@app/query/common/remote-config/remote-config.query';
 import { useCheckLedgerBlockchainAvailable } from '@app/store/accounts/blockchain/utils';
+import { ModalHeader } from '@app/ui/components/containers/headers/modal-header';
 
 export function ChooseCryptoAsset() {
   const allTransferableCryptoAssetBalances = useAllTransferableCryptoAssetBalances();

@@ -4,8 +4,8 @@ import { SwapSelectors } from '@tests/selectors/swap.selectors';
 
 import { LoadingKeys, useLoading } from '@app/common/hooks/use-loading';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { ModalHeader } from '@app/components/modal-header';
 import { LeatherButton } from '@app/ui/components/button';
+import { ModalHeader } from '@app/ui/components/containers/headers/modal-header';
 
 import { SwapAssetsPair } from '../components/swap-assets-pair/swap-assets-pair';
 import { SwapContentLayout } from '../components/swap-content.layout';

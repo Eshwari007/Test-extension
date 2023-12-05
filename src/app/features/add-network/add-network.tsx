@@ -21,7 +21,7 @@ import {
   useNetworksActions,
 } from '@app/store/networks/networks.hooks';
 import { LeatherButton } from '@app/ui/components/button';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { Input } from '@app/ui/components/input';
 import { Title } from '@app/ui/components/typography/title';
 

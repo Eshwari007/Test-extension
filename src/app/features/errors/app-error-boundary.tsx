@@ -7,7 +7,7 @@ import { ErrorBoundary, FallbackProps, useErrorHandler } from '@app/features/err
 import { openGithubIssue } from '@app/features/errors/utils';
 import { useErrorStackTraceState } from '@app/store/ui/ui.hooks';
 import { CodeBlock } from '@app/ui/components/codeblock';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { Title } from '@app/ui/components/typography/title';
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {

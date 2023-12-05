@@ -7,7 +7,7 @@ import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { createNullArrayOfLength } from '@app/common/utils';
 import { TwoColumnLayout } from '@app/components/secret-key/two-column.layout';
 import { MnemonicForm } from '@app/pages/onboarding/sign-in/mnemonic-form';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { SignInContent } from './components/sign-in.content';
 

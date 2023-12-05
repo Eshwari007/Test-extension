@@ -9,7 +9,7 @@ import { RequestPassword } from '@app/components/request-password';
 import { TwoColumnLayout } from '@app/components/secret-key/two-column.layout';
 import { SecretKeyDisplayer } from '@app/features/secret-key-displayer/secret-key-displayer';
 import { useDefaultWalletSecretKey } from '@app/store/in-memory-key/in-memory-key.selectors';
-import { Header } from '@app/ui/components/containers/header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { ViewSecretKeyContent } from './components/view-secret-key.content';
 
