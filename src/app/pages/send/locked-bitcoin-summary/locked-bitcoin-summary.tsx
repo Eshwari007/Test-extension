@@ -38,7 +38,7 @@ export function LockBitcoinSummary() {
     toast.success('ID copied!');
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose title="Locked Bitcoin" />);
+  useRouteHeader(<ModalHeader defaultClose title="Locked Bitcoin" />);
 
   return (
     <InfoCard>

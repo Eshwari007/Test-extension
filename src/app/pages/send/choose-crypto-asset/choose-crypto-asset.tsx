@@ -24,7 +24,7 @@ export function ChooseCryptoAsset() {
 
   const checkBlockchainAvailable = useCheckLedgerBlockchainAvailable();
 
-  useRouteHeader(<ModalHeader hideActions defaultGoBack title=" " />);
+  useRouteHeader(<ModalHeader defaultGoBack />);
 
   function navigateToSendForm(cryptoAssetBalance: AllTransferableCryptoAssetBalances) {
     const { asset } = cryptoAssetBalance;

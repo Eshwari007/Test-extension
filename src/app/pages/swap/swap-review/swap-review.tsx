@@ -18,7 +18,7 @@ export function SwapReview() {
   const { onSubmitSwap } = useSwapContext();
   const { isLoading } = useLoading(LoadingKeys.SUBMIT_SWAP_TRANSACTION);
 
-  useRouteHeader(<ModalHeader defaultGoBack hideActions title="Review" />, true);
+  useRouteHeader(<ModalHeader defaultGoBack title="Review" />, true);
 
   return (
     <>

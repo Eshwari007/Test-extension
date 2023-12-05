@@ -21,7 +21,7 @@ export function Swap() {
   const { isFetchingExchangeRate, swappableAssetsFrom } = useSwapContext();
   const { dirty, isValid, setFieldValue, values } = useFormikContext<SwapFormValues>();
 
-  useRouteHeader(<ModalHeader defaultGoBack hideActions title="Swap" />, true);
+  useRouteHeader(<ModalHeader defaultGoBack title="Swap" />, true);
 
   useAsync(async () => {
     if (isUndefined(values.swapAssetFrom))

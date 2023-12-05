@@ -10,6 +10,7 @@ import { RouteUrls } from '@shared/route-urls';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useClipboard } from '@app/common/hooks/use-copy-to-clipboard';
 import { useLocationState } from '@app/common/hooks/use-location-state';
+import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
 import { StxAvatar } from '@app/components/crypto-assets/stacks/components/stx-avatar';
 import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
@@ -65,87 +66,171 @@ export function ReceiveModal({ type = 'full' }: ReceiveModalProps) {
       </>
     );
 
-  return (
-    <>
-      <BaseDrawer title="" isShowing onClose={() => navigate(backgroundLocation ?? '..')}>
-        <Box mx="space.06">
-          <styled.h1 mb="space.05" textStyle="heading.03">
-            {title}
-          </styled.h1>
-          {type === 'full' && (
-            <ReceiveItemList title="Tokens">
+  const isAtleastBreakpointMd = useViewportMinWidth('md');
+
+  if (isAtleastBreakpointMd) {
+    return (
+      <>
+        <BaseDrawer title="" isShowing onClose={() => navigate(backgroundLocation ?? '..')}>
+          <Box mx="space.06">
+            <styled.h1 mb="space.05" textStyle="heading.03">
+              {title}
+            </styled.h1>
+            {type === 'full' && (
+              <ReceiveItemList title="Tokens">
+                <ReceiveItem
+                  address={btcAddressNativeSegwit}
+                  icon={<BtcIcon />}
+                  dataTestId={HomePageSelectors.ReceiveBtcNativeSegwitQrCodeBtn}
+                  onCopyAddress={() => copyToClipboard(onCopyBtc)}
+                  onClickQrCode={() =>
+                    navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtc}`, {
+                      state: { backgroundLocation },
+                    })
+                  }
+                  title="Bitcoin"
+                />
+                <ReceiveItem
+                  address={stxAddress}
+                  icon={<StxAvatar />}
+                  dataTestId={HomePageSelectors.ReceiveStxQrCodeBtn}
+                  onCopyAddress={() => copyToClipboard(onCopyStx)}
+                  onClickQrCode={() =>
+                    navigate(`${RouteUrls.Home}${RouteUrls.ReceiveStx}`, {
+                      state: { backgroundLocation, btcAddressTaproot },
+                    })
+                  }
+                  title="Stacks"
+                />
+              </ReceiveItemList>
+            )}
+            <ReceiveItemList title={type === 'full' ? 'Collectibles' : undefined}>
+              <ReceiveItem
+                address={btcAddressTaproot}
+                icon={<OrdinalIcon />}
+                dataTestId={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
+                onCopyAddress={() =>
+                  copyToClipboard(onCopyOrdinal, 'select_stamp_to_add_new_collectible')
+                }
+                onClickQrCode={() => {
+                  void analytics.track('select_inscription_to_add_new_collectible');
+                  navigate(`${RouteUrls.Home}${RouteUrls.ReceiveCollectibleOrdinal}`, {
+                    state: {
+                      btcAddressTaproot,
+                      backgroundLocation,
+                    },
+                  });
+                }}
+                title="Ordinal inscription"
+              />
               <ReceiveItem
                 address={btcAddressNativeSegwit}
-                icon={<BtcIcon />}
-                dataTestId={HomePageSelectors.ReceiveBtcNativeSegwitQrCodeBtn}
-                onCopyAddress={() => copyToClipboard(onCopyBtc)}
+                icon={<StampsIcon />}
                 onClickQrCode={() =>
-                  navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtc}`, {
+                  navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtcStamp}`, {
                     state: { backgroundLocation },
                   })
                 }
-                title="Bitcoin"
+                onCopyAddress={() =>
+                  copyToClipboard(onCopyBtc, 'select_stamp_to_add_new_collectible')
+                }
+                title="Bitcoin Stamp"
               />
               <ReceiveItem
                 address={stxAddress}
                 icon={<StxAvatar />}
-                dataTestId={HomePageSelectors.ReceiveStxQrCodeBtn}
-                onCopyAddress={() => copyToClipboard(onCopyStx)}
+                onCopyAddress={() =>
+                  copyToClipboard(onCopyStx, 'select_nft_to_add_new_collectible')
+                }
                 onClickQrCode={() =>
                   navigate(`${RouteUrls.Home}${RouteUrls.ReceiveStx}`, {
-                    state: { backgroundLocation, btcAddressTaproot },
+                    state: { backgroundLocation },
                   })
                 }
-                title="Stacks"
+                title="Stacks NFT"
               />
             </ReceiveItemList>
-          )}
-          <ReceiveItemList title={type === 'full' ? 'Collectibles' : undefined}>
-            <ReceiveItem
-              address={btcAddressTaproot}
-              icon={<OrdinalIcon />}
-              dataTestId={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
-              onCopyAddress={() =>
-                copyToClipboard(onCopyOrdinal, 'select_stamp_to_add_new_collectible')
-              }
-              onClickQrCode={() => {
-                void analytics.track('select_inscription_to_add_new_collectible');
-                navigate(`${RouteUrls.Home}${RouteUrls.ReceiveCollectibleOrdinal}`, {
-                  state: {
-                    btcAddressTaproot,
-                    backgroundLocation,
-                  },
-                });
-              }}
-              title="Ordinal inscription"
-            />
+          </Box>
+        </BaseDrawer>
+      </>
+    );
+  } else {
+    return (
+      <Box mx="space.06">
+        <styled.h1 mb="space.05" textStyle="heading.03">
+          {title}
+        </styled.h1>
+        {type === 'full' && (
+          <ReceiveItemList title="Tokens">
             <ReceiveItem
               address={btcAddressNativeSegwit}
-              icon={<StampsIcon />}
+              icon={<BtcIcon />}
+              dataTestId={HomePageSelectors.ReceiveBtcNativeSegwitQrCodeBtn}
+              onCopyAddress={() => copyToClipboard(onCopyBtc)}
               onClickQrCode={() =>
-                navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtcStamp}`, {
+                navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtc}`, {
                   state: { backgroundLocation },
                 })
               }
-              onCopyAddress={() =>
-                copyToClipboard(onCopyBtc, 'select_stamp_to_add_new_collectible')
-              }
-              title="Bitcoin Stamp"
+              title="Bitcoin"
             />
             <ReceiveItem
               address={stxAddress}
               icon={<StxAvatar />}
-              onCopyAddress={() => copyToClipboard(onCopyStx, 'select_nft_to_add_new_collectible')}
+              dataTestId={HomePageSelectors.ReceiveStxQrCodeBtn}
+              onCopyAddress={() => copyToClipboard(onCopyStx)}
               onClickQrCode={() =>
                 navigate(`${RouteUrls.Home}${RouteUrls.ReceiveStx}`, {
-                  state: { backgroundLocation },
+                  state: { backgroundLocation, btcAddressTaproot },
                 })
               }
-              title="Stacks NFT"
+              title="Stacks"
             />
           </ReceiveItemList>
-        </Box>
-      </BaseDrawer>
-    </>
-  );
+        )}
+        <ReceiveItemList title={type === 'full' ? 'Collectibles' : undefined}>
+          <ReceiveItem
+            address={btcAddressTaproot}
+            icon={<OrdinalIcon />}
+            dataTestId={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
+            onCopyAddress={() =>
+              copyToClipboard(onCopyOrdinal, 'select_stamp_to_add_new_collectible')
+            }
+            onClickQrCode={() => {
+              void analytics.track('select_inscription_to_add_new_collectible');
+              navigate(`${RouteUrls.Home}${RouteUrls.ReceiveCollectibleOrdinal}`, {
+                state: {
+                  btcAddressTaproot,
+                  backgroundLocation,
+                },
+              });
+            }}
+            title="Ordinal inscription"
+          />
+          <ReceiveItem
+            address={btcAddressNativeSegwit}
+            icon={<StampsIcon />}
+            onClickQrCode={() =>
+              navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtcStamp}`, {
+                state: { backgroundLocation },
+              })
+            }
+            onCopyAddress={() => copyToClipboard(onCopyBtc, 'select_stamp_to_add_new_collectible')}
+            title="Bitcoin Stamp"
+          />
+          <ReceiveItem
+            address={stxAddress}
+            icon={<StxAvatar />}
+            onCopyAddress={() => copyToClipboard(onCopyStx, 'select_nft_to_add_new_collectible')}
+            onClickQrCode={() =>
+              navigate(`${RouteUrls.Home}${RouteUrls.ReceiveStx}`, {
+                state: { backgroundLocation },
+              })
+            }
+            title="Stacks NFT"
+          />
+        </ReceiveItemList>
+      </Box>
+    );
+  }
 }

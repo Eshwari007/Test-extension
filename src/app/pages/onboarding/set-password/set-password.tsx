@@ -19,11 +19,11 @@ import {
   blankPasswordValidation,
   validatePassword,
 } from '@app/common/validation/validate-password';
-import { Header } from '@app/components/header';
 import { TwoColumnLayout } from '@app/components/secret-key/two-column.layout';
 import { OnboardingGate } from '@app/routes/onboarding-gate';
 import { useStacksAccounts } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { LeatherButton } from '@app/ui/components/button';
+import { Header } from '@app/ui/components/containers/header';
 
 import { PasswordField } from './components/password-field';
 
@@ -53,7 +53,7 @@ function SetPasswordPage() {
   const { decodedAuthRequest } = useOnboardingState();
   const analytics = useAnalytics();
 
-  useRouteHeader(<Header hideActions onClose={() => navigate(-1)} />);
+  useRouteHeader(<Header onClose={() => navigate(-1)} />);
 
   useEffect(() => {
     void analytics.page('view', '/set-password');

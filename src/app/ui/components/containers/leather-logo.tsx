@@ -3,20 +3,14 @@ import { memo } from 'react';
 import { LeatherButton } from '@app/ui/components/button';
 import { LeatherIcon } from '@app/ui/components/icons/leather-icon';
 
-interface LeatherLogoProps {
-  isClickable: boolean;
-  onClick?(): void;
-}
-export const LeatherLogo = memo((props: LeatherLogoProps) => {
-  const { isClickable, onClick } = props;
-
+export const LeatherLogo = memo(({ onClick }: { onClick?: () => void }) => {
   return (
     <LeatherButton
-      _hover={{ color: 'accent.action-primary-hover' }}
+      _hover={onClick && { color: 'accent.action-primary-hover' }}
       color="accent.text-primary"
-      cursor={isClickable ? 'pointer' : 'unset'}
+      cursor={onClick ? 'pointer' : 'unset'}
       height="16px"
-      onClick={onClick}
+      onClick={onClick ? onClick : undefined}
       variant="text"
       width="76px"
     >

@@ -5,7 +5,7 @@ import { FlexProps, styled } from 'leather-styles/jsx';
 import { closeWindow } from '@shared/utils';
 
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { Header } from '@app/components/header';
+import { Header } from '@app/ui/components/containers/header';
 
 import { GenericErrorLayout } from './generic-error.layout';
 
@@ -23,7 +23,7 @@ interface GenericErrorProps extends FlexProps {
 export function GenericError(props: GenericErrorProps) {
   const { body, helpTextList, onClose = () => closeWindow(), title, ...rest } = props;
 
-  useRouteHeader(<Header hideActions />);
+  useRouteHeader(<Header />);
 
   return (
     <GenericErrorLayout

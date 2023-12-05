@@ -6,8 +6,8 @@ import { RouteUrls } from '@shared/route-urls';
 
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { Header } from '@app/components/header';
 import { settingsActions } from '@app/store/settings/settings.actions';
+import { Header } from '@app/ui/components/containers/header';
 
 import { AllowDiagnosticsLayout } from './allow-diagnostics-layout';
 
@@ -19,7 +19,7 @@ export function AllowDiagnosticsModal() {
 
   useEffect(() => void analytics.page('view', `${pathname}`), [analytics, pathname]);
 
-  useRouteHeader(<Header hideActions />);
+  useRouteHeader(<Header />);
 
   const setDiagnosticsPermissionsAndGoToOnboarding = useCallback(
     (areDiagnosticsAllowed: boolean) => {

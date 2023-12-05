@@ -54,7 +54,7 @@ export function StxSentSummary() {
     toast.success('ID copied!');
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose title="Sent" />);
+  useRouteHeader(<ModalHeader defaultClose title="Sent" />);
 
   return (
     <InfoCard

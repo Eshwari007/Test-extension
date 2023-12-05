@@ -16,12 +16,12 @@ import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { removeTrailingSlash } from '@app/common/url-join';
 import { CenteredPageContainer } from '@app/components/centered-page-container';
 import { ErrorLabel } from '@app/components/error-label';
-import { Header } from '@app/components/header';
 import {
   useCurrentStacksNetworkState,
   useNetworksActions,
 } from '@app/store/networks/networks.hooks';
 import { LeatherButton } from '@app/ui/components/button';
+import { Header } from '@app/ui/components/containers/header';
 import { Input } from '@app/ui/components/input';
 import { Title } from '@app/ui/components/typography/title';
 

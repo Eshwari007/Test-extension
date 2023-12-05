@@ -118,7 +118,7 @@ export function BrcChooseFee() {
     navigate(-1);
   }
 
-  useRouteHeader(<ModalHeader defaultGoBack hideActions onGoBack={onGoBack} title="Choose fee" />);
+  useRouteHeader(<ModalHeader defaultGoBack onGoBack={onGoBack} title="Choose fee" />);
 
   return isLoadingOrder ? (
     <Stack

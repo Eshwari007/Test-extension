@@ -40,7 +40,7 @@ export function BtcChooseFee() {
     isSendingMax
   );
 
-  useRouteHeader(<ModalHeader hideActions onGoBack={onGoBack} title="Choose fee" />);
+  useRouteHeader(<ModalHeader onGoBack={onGoBack} title="Choose fee" />);
 
   return (
     <>

@@ -10,9 +10,9 @@ import { closeWindow } from '@shared/utils';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { isFullPageMode, isPopupMode } from '@app/common/utils';
 import { openIndexPageInNewTab } from '@app/common/utils/open-in-new-tab';
-import { Header } from '@app/components/header';
 import { RequestPassword } from '@app/components/request-password';
 import { useNewBrandApprover } from '@app/store/settings/settings.selectors';
+import { Header } from '@app/ui/components/containers/header';
 
 export function Unlock() {
   const navigate = useNavigate();

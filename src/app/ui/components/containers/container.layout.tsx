@@ -6,7 +6,7 @@ interface ContainerLayoutProps {
 }
 export function ContainerLayout(props: ContainerLayoutProps) {
   const { children, header } = props;
-
+  console.log('header', header);
   return (
     <Flex flexDirection="column" flexGrow={1} width="100%" height="100%">
       {header || null}

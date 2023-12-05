@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 
 import { SharedComponentsSelectors } from '@tests/selectors/shared-component.selectors';
 import { Box, Flex, styled } from 'leather-styles/jsx';
-import { token } from 'leather-styles/tokens';
 
 import { RouteUrls } from '@shared/route-urls';
 
@@ -11,27 +10,23 @@ import { LeatherButton } from '@app/ui/components/button';
 import { ArrowLeftIcon } from '@app/ui/components/icons/arrow-left-icon';
 import { CloseIcon } from '@app/ui/components/icons/close-icon';
 
+// This is called ModalHeader but also gets shown on the Send flow which is a full page
+
+//  fuck me, another header?? maybe this is where actionButton comes from
 interface ModalHeaderProps {
-  actionButton?: React.JSX.Element;
-  closeIcon?: boolean;
-  hideActions?: boolean;
   onClose?(): void;
   onGoBack?(): void;
   defaultClose?: boolean;
   defaultGoBack?: boolean;
-  title: string;
+  title?: string;
 }
 
 export function ModalHeader({
-  actionButton,
-  hideActions,
   onClose,
   onGoBack,
-  closeIcon,
   title,
   defaultGoBack,
   defaultClose,
-  ...rest
 }: ModalHeaderProps) {
   const navigate = useNavigate();
 
@@ -43,15 +38,9 @@ export function ModalHeader({
   }
 
   const hasCloseIcon = onClose || defaultClose;
-
+  // console.log('title', title);
   return (
-    <Flex
-      alignItems={hideActions ? 'center' : 'flex-start'}
-      justifyContent="space-between"
-      p="space.04"
-      position="relative"
-      {...rest}
-    >
+    <Flex alignItems="center" justifyContent="space-between" p="space.04" position="relative">
       {onGoBack || defaultGoBack ? (
         <Box flexBasis="32.5%">
           <LeatherButton
@@ -67,15 +56,16 @@ export function ModalHeader({
         <Box flexBasis="32.5%" />
       )}
 
-      <Flex alignItems="center" flexBasis="35%" justifyContent="center">
-        <styled.h5 textStyle="heading.05" color={token('colors.accent.background-secondary')}>
-          {title}
-        </styled.h5>
-      </Flex>
-
+      {title && (
+        <Flex alignItems="center" flexBasis="35%" justifyContent="center">
+          <styled.h5 textStyle="heading.05" color="colors.accent.background-secondary">
+            {title}
+          </styled.h5>
+        </Flex>
+      )}
       <Flex alignItems="center" flexBasis="32.5%" justifyContent="flex-end" position="relative">
         <NetworkModeBadge />
-        {hasCloseIcon && (
+        {!hasCloseIcon && (
           <LeatherButton ml="space.02" onClick={onClose || defaultCloseAction} variant="ghost">
             <CloseIcon />
           </LeatherButton>

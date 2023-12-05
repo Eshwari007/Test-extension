@@ -103,7 +103,7 @@ export function Brc20SendFormConfirmation() {
     });
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose defaultGoBack title="Review" />);
+  useRouteHeader(<ModalHeader defaultClose defaultGoBack title="Review" />);
 
   return (
     <InfoCard data-testid={SendCryptoAssetSelectors.ConfirmationDetails}>

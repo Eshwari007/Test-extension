@@ -48,7 +48,6 @@ export function StacksSendFormConfirmation() {
 
   useRouteHeader(
     <ModalHeader
-      hideActions
       defaultClose
       onGoBack={() => navigate('../', { relative: 'path', replace: true })}
       title="Review"

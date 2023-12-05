@@ -6,7 +6,7 @@ import { Stack } from 'leather-styles/jsx';
 import { RouteUrls } from '@shared/route-urls';
 
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
-import { Header } from '@app/components/header';
+import { Header } from '@app/ui/components/containers/header';
 
 interface BitcoinContractListProps {
   children: ReactNode;

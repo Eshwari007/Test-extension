@@ -6,6 +6,7 @@ import { CloseIcon } from '@app/ui/components/icons/close-icon';
 
 import { HeaderActionButton } from './header-action-button';
 
+// TODO assess this also
 interface DrawerHeaderProps {
   enableGoBack?: boolean;
   icon?: React.JSX.Element;

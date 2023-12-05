@@ -53,7 +53,7 @@ export function BtcSentSummary() {
     toast.success('ID copied!');
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose title="Sent" />);
+  useRouteHeader(<ModalHeader defaultClose title="Sent" />);
 
   return (
     <InfoCard>

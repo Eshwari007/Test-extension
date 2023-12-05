@@ -47,7 +47,7 @@ export function Brc20SentSummary() {
     navigate('/');
   }
 
-  useRouteHeader(<ModalHeader hideActions defaultClose title="Creating transfer inscription" />);
+  useRouteHeader(<ModalHeader defaultClose title="Creating transfer inscription" />);
 
   return (
     <InfoCard>

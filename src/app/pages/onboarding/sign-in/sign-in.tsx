@@ -5,9 +5,9 @@ import { RouteUrls } from '@shared/route-urls';
 
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { createNullArrayOfLength } from '@app/common/utils';
-import { Header } from '@app/components/header';
 import { TwoColumnLayout } from '@app/components/secret-key/two-column.layout';
 import { MnemonicForm } from '@app/pages/onboarding/sign-in/mnemonic-form';
+import { Header } from '@app/ui/components/containers/header';
 
 import { SignInContent } from './components/sign-in.content';
 
@@ -17,7 +17,7 @@ export function SignIn() {
   const [twentyFourWordMode, setTwentyFourWordMode] = useState(true);
   const [mnemonic, setMnemonic] = useState<(string | null)[]>([]);
 
-  useRouteHeader(<Header onClose={() => navigate(RouteUrls.Onboarding)} hideActions />);
+  useRouteHeader(<Header onClose={() => navigate(RouteUrls.Onboarding)} />);
 
   useEffect(() => {
     const emptyMnemonicArray = twentyFourWordMode

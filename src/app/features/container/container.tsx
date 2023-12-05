@@ -12,10 +12,10 @@ import { useOnWalletLock } from '@app/routes/hooks/use-on-wallet-lock';
 import { useHasStateRehydrated } from '@app/store';
 import { useRouteHeaderState } from '@app/store/ui/ui.hooks';
 
+import { ContainerLayout } from '../../ui/components/containers/container.layout';
 import { useRestoreFormState } from '../popup-send-form-restoration/use-restore-form-state';
 import { SettingsDropdown } from '../settings-dropdown/settings-dropdown';
 import { SwitchAccountDrawer } from '../switch-account-drawer/switch-account-drawer';
-import { ContainerLayout } from './container.layout';
 
 export function Container() {
   const [routeHeader] = useRouteHeaderState();
@@ -31,6 +31,8 @@ export function Container() {
   useEffect(() => void analytics.page('view', `${pathname}`), [analytics, pathname]);
 
   if (!hasStateRehydrated) return <LoadingSpinner />;
+
+  console.info('routeHeader', routeHeader);
 
   return (
     <>
