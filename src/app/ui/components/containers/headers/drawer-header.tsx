@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { Box, Flex, styled } from 'leather-styles/jsx';
 import { useHover } from 'use-events';
 
@@ -13,7 +15,7 @@ interface DrawerHeaderProps {
   isWaitingOnPerformedAction?: boolean;
   onClose?(): void;
   onGoBack(): void;
-  title?: string;
+  title?: ReactNode;
   waitingOnPerformedActionMessage?: string;
 }
 export function DrawerHeader({
@@ -35,11 +37,17 @@ export function DrawerHeader({
           isWaitingOnPerformedAction={isWaitingOnPerformedAction}
           onAction={onGoBack}
         />
-      ) : (
-        <Box width="36px" height="36px" /> // FIXME - get rid of this without shifting title left
-      )}
+      ) : typeof title === 'string' ? (
+        <Box width="36px" height="36px" />
+      ) : null // FIXME - get rid of this without shifting title left
+      }
       {icon && icon}
-      {title && <styled.h1 textStyle="heading.05">{title}</styled.h1>}
+      {/* TODO clean this up and make titles consistent */}
+      {title && typeof title === 'string' ? (
+        <styled.h1 textStyle="heading.05">{title}</styled.h1>
+      ) : (
+        title
+      )}
       {isHovered && isWaitingOnPerformedAction && (
         <styled.span color="accent.text-subdued" textStyle="caption.01">
           {waitingOnPerformedActionMessage}

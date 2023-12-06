@@ -42,6 +42,7 @@ const setBodyOverflow = (shouldLock: boolean) => {
   }
 };
 
+// 4370 TODO check if this even works as tried using it
 export const useScrollLock = (shouldLock: boolean) => {
   // we generate a unique reference to the component that uses this thing
   const [elementId] = useState({});

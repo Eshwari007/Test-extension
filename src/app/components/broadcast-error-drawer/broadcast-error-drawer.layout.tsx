@@ -10,7 +10,7 @@ interface BroadcastErrorDrawerLayoutProps {
 }
 export function BroadcastErrorDrawerLayout({ message, onClose }: BroadcastErrorDrawerLayoutProps) {
   return (
-    <BaseDrawer isShowing onClose={onClose} textAlign="center">
+    <BaseDrawer isShowing onClose={onClose}>
       <Flex
         flexDirection="column"
         justifyContent="center"
@@ -18,6 +18,8 @@ export function BroadcastErrorDrawerLayout({ message, onClose }: BroadcastErrorD
         mb="space.02"
         position="relative"
         top="-24px"
+        // #4370 TODO check this alignment as its the only thing used by ...rest in baseDrawer
+        textAlign="center"
       >
         <styled.img src={GenericError} width="106px" height="72px" m="0 auto" />
         <styled.h1 mt="space.05" textStyle="heading.05">

@@ -10,7 +10,6 @@ import { RouteUrls } from '@shared/route-urls';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useClipboard } from '@app/common/hooks/use-copy-to-clipboard';
 import { useLocationState } from '@app/common/hooks/use-location-state';
-import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
 import { StxAvatar } from '@app/components/crypto-assets/stacks/components/stx-avatar';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
 import { useZeroIndexTaprootAddress } from '@app/store/accounts/blockchain/bitcoin/bitcoin.hooks';
@@ -66,100 +65,17 @@ export function ReceiveModal({ type = 'full' }: ReceiveModalProps) {
       </>
     );
 
-  const isAtleastBreakpointMd = useViewportMinWidth('md');
-
-  if (isAtleastBreakpointMd) {
-    return (
-      <>
-        <BaseDrawer title="" isShowing onClose={() => navigate(backgroundLocation ?? '..')}>
-          <Box mx="space.06">
-            <styled.h1 mb="space.05" textStyle="heading.03">
-              {title}
-            </styled.h1>
-            {type === 'full' && (
-              <ReceiveItemList title="Tokens">
-                <ReceiveItem
-                  address={btcAddressNativeSegwit}
-                  icon={<BtcIcon />}
-                  dataTestId={HomePageSelectors.ReceiveBtcNativeSegwitQrCodeBtn}
-                  onCopyAddress={() => copyToClipboard(onCopyBtc)}
-                  onClickQrCode={() =>
-                    navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtc}`, {
-                      state: { backgroundLocation },
-                    })
-                  }
-                  title="Bitcoin"
-                />
-                <ReceiveItem
-                  address={stxAddress}
-                  icon={<StxAvatar />}
-                  dataTestId={HomePageSelectors.ReceiveStxQrCodeBtn}
-                  onCopyAddress={() => copyToClipboard(onCopyStx)}
-                  onClickQrCode={() =>
-                    navigate(`${RouteUrls.Home}${RouteUrls.ReceiveStx}`, {
-                      state: { backgroundLocation, btcAddressTaproot },
-                    })
-                  }
-                  title="Stacks"
-                />
-              </ReceiveItemList>
-            )}
-            <ReceiveItemList title={type === 'full' ? 'Collectibles' : undefined}>
-              <ReceiveItem
-                address={btcAddressTaproot}
-                icon={<OrdinalIcon />}
-                dataTestId={HomePageSelectors.ReceiveBtcTaprootQrCodeBtn}
-                onCopyAddress={() =>
-                  copyToClipboard(onCopyOrdinal, 'select_stamp_to_add_new_collectible')
-                }
-                onClickQrCode={() => {
-                  void analytics.track('select_inscription_to_add_new_collectible');
-                  navigate(`${RouteUrls.Home}${RouteUrls.ReceiveCollectibleOrdinal}`, {
-                    state: {
-                      btcAddressTaproot,
-                      backgroundLocation,
-                    },
-                  });
-                }}
-                title="Ordinal inscription"
-              />
-              <ReceiveItem
-                address={btcAddressNativeSegwit}
-                icon={<StampsIcon />}
-                onClickQrCode={() =>
-                  navigate(`${RouteUrls.Home}${RouteUrls.ReceiveBtcStamp}`, {
-                    state: { backgroundLocation },
-                  })
-                }
-                onCopyAddress={() =>
-                  copyToClipboard(onCopyBtc, 'select_stamp_to_add_new_collectible')
-                }
-                title="Bitcoin Stamp"
-              />
-              <ReceiveItem
-                address={stxAddress}
-                icon={<StxAvatar />}
-                onCopyAddress={() =>
-                  copyToClipboard(onCopyStx, 'select_nft_to_add_new_collectible')
-                }
-                onClickQrCode={() =>
-                  navigate(`${RouteUrls.Home}${RouteUrls.ReceiveStx}`, {
-                    state: { backgroundLocation },
-                  })
-                }
-                title="Stacks NFT"
-              />
-            </ReceiveItemList>
-          </Box>
-        </BaseDrawer>
-      </>
-    );
-  } else {
-    return (
-      <Box mx="space.06">
+  return (
+    <BaseDrawer
+      title={
         <styled.h1 mb="space.05" textStyle="heading.03">
           {title}
         </styled.h1>
+      }
+      isShowing
+      onClose={() => navigate(backgroundLocation ?? '..')}
+    >
+      <Box mx="space.06">
         {type === 'full' && (
           <ReceiveItemList title="Tokens">
             <ReceiveItem
@@ -231,6 +147,6 @@ export function ReceiveModal({ type = 'full' }: ReceiveModalProps) {
           />
         </ReceiveItemList>
       </Box>
-    );
-  }
+    </BaseDrawer>
+  );
 }

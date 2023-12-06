@@ -17,12 +17,11 @@ export function UnsupportedBrowserLayout() {
       <LedgerWrapper image={<UnsupportedBrowserImg />}>
         <LedgerTitle mb="space.03">Your browser isn't supported</LedgerTitle>
         <styled.span textStyle="label.03" color="accent.text-subdued">
-          {' '}
-          To connect your Ledger with Leather try{' '}
+          {'To connect your Ledger with Leather try '}
           <ExternalLink textDecoration="underline" href="https://www.google.com/chrome/">
             Chrome
-          </ExternalLink>{' '}
-          or{' '}
+          </ExternalLink>
+          {' or '}
           <ExternalLink textDecoration="underline" href="https://brave.com/download/">
             Brave
           </ExternalLink>
