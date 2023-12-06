@@ -8,7 +8,7 @@ interface CreateAccountActionProps {
 export function CreateAccountAction({ onCreateAccount }: CreateAccountActionProps) {
   return (
     <Flex
-      mt="100px"
+      // mt="100px"
       py="space.05"
       px="space.05"
       flexGrow="1"
@@ -16,6 +16,8 @@ export function CreateAccountAction({ onCreateAccount }: CreateAccountActionProp
       bottom={0}
       width="100%"
       zIndex={1}
+      backgroundColor="accent.background-primary"
+      minHeight="92px" // give footer minHeight 92px to help offset vh of virtuoso
     >
       <LeatherButton fullWidth onClick={() => onCreateAccount()}>
         Create new account

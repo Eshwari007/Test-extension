@@ -39,7 +39,7 @@ export const SwitchAccountDrawer = memo(() => {
 
   return isShowing ? (
     <ControlledDrawer title="Select account" isShowing={isShowing} onClose={onClose}>
-      <Box mb={whenWallet({ ledger: 'space.04', software: '' })}>
+      <Box id="switch-account-list" mb={whenWallet({ ledger: 'space.04', software: '' })}>
         <SwitchAccountList
           currentAccountIndex={currentAccountIndex}
           handleClose={onClose}
