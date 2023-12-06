@@ -40,7 +40,7 @@ export function ModalWrapper({ children, isShowing }: ModalWrapperProps) {
     );
   } else {
     return (
-      <Box position="absolute" top="-80px" width="100%" height="100vh">
+      <Box position="absolute" top="-80px" width="100%" zIndex={1}>
         {children}
       </Box>
     );
