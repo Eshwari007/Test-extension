@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
-import { Box, Flex, FlexProps } from 'leather-styles/jsx';
+import { Box, Flex } from 'leather-styles/jsx';
 
 import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
 
-interface ModalWrapperProps extends Omit<FlexProps, 'title'> {
+interface ModalWrapperProps {
   children: ReactNode;
-  isShowing: boolean;
+  isShowing: boolean; // TODO try refactor away this isShowing
 }
 
 export function ModalWrapper({ children, isShowing }: ModalWrapperProps) {
@@ -16,6 +16,7 @@ export function ModalWrapper({ children, isShowing }: ModalWrapperProps) {
   if (isAtleastBreakpointMd) {
     return (
       <Flex
+        id="modal-flex"
         display={isShowing ? 'flex' : 'none'}
         bg="overlay"
         transition="transition"
@@ -23,12 +24,12 @@ export function ModalWrapper({ children, isShowing }: ModalWrapperProps) {
         top={0}
         left={0}
         height="100%"
-        pt="space.05"
+        // pt="space.05"
         width="100%"
-        alignItems={['flex-end', 'center', 'center']}
+        alignItems="center"
         justifyContent="center"
         flexDirection="column"
-        zIndex={1000}
+        // zIndex={1000}
         style={{
           pointerEvents: !isShowing ? 'none' : 'unset',
           userSelect: !isShowing ? 'none' : 'unset',
