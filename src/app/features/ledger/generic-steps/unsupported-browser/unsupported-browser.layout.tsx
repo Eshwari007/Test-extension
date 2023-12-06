@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { styled } from 'leather-styles/jsx';
 
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { ExternalLink } from '@app/components/external-link';
 import { UnsupportedBrowserImg } from '@app/features/ledger/illustrations/ledger-illu-unsupported-browser';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { LedgerTitle } from '../../components/ledger-title';
 import { LedgerWrapper } from '../../components/ledger-wrapper';

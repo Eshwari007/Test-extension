@@ -12,7 +12,6 @@ import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useBitcoinExplorerLink } from '@app/common/hooks/use-bitcoin-explorer-link';
 import { useClipboard } from '@app/common/hooks/use-copy-to-clipboard';
 import { FormAddressDisplayer } from '@app/components/address-displayer/form-address-displayer';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import {
   InfoCard,
   InfoCardBtn,
@@ -20,6 +19,7 @@ import {
   InfoCardSeparator,
 } from '@app/components/info-card/info-card';
 import { InscriptionPreview } from '@app/components/inscription-preview-card/components/inscription-preview';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 import { CheckmarkIcon } from '@app/ui/components/icons/checkmark-icon';
 import { CopyIcon } from '@app/ui/components/icons/copy-icon';
 import { ExternalLinkIcon } from '@app/ui/components/icons/external-link-icon';

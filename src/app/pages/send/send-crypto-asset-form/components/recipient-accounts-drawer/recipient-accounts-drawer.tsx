@@ -4,9 +4,9 @@ import { Virtuoso } from 'react-virtuoso';
 
 import { Box } from 'leather-styles/jsx';
 
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { useFilteredBitcoinAccounts } from '@app/store/accounts/blockchain/bitcoin/bitcoin.ledger';
 import { useStacksAccounts } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { AccountListItem } from './account-list-item';
 

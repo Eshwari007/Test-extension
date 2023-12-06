@@ -1,7 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { LedgerRequestKeysContext, LedgerRequestKeysProvider } from './ledger-request-keys.context';
 

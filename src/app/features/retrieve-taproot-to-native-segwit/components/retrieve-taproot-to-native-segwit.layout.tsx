@@ -1,8 +1,8 @@
 import { Flex, styled } from 'leather-styles/jsx';
 
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { WarningLabel } from '@app/components/warning-label';
 import { LeatherButton } from '@app/ui/components/button';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 import { BtcIcon } from '@app/ui/components/icons/btc-icon';
 
 interface RetrieveTaprootToNativeSegwitLayoutProps {

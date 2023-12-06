@@ -4,7 +4,7 @@ import { Flex } from 'leather-styles/jsx';
 
 import { RouteUrls } from '@shared/route-urls';
 
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 import { CheckmarkIcon } from '@app/ui/components/icons/checkmark-icon';
 
 export function IncreaseFeeSentDrawer() {

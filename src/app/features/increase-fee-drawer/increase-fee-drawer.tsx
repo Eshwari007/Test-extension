@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 import { Flex, Stack } from 'leather-styles/jsx';
 
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 import { Spinner } from '@app/ui/components/spinner';
 import { Caption } from '@app/ui/components/typography/caption';
 

@@ -4,7 +4,7 @@ import { SwapSelectors } from '@tests/selectors/swap.selectors';
 import { Box, styled } from 'leather-styles/jsx';
 import get from 'lodash.get';
 
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { useSwapContext } from '../swap.context';
 import { SwapAssetList } from './components/swap-asset-list';

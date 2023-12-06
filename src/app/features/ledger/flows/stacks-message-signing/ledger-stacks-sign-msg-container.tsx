@@ -12,7 +12,6 @@ import { UnsignedMessage, whenSignableMessageOfType } from '@shared/signature/si
 
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { delay } from '@app/common/utils';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import {
   getStacksAppVersion,
   prepareLedgerDeviceStacksAppConnection,
@@ -23,6 +22,7 @@ import {
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { StacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.models';
 import { useSignatureRequestSearchParams } from '@app/store/signatures/requests.hooks';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { useLedgerAnalytics } from '../../hooks/use-ledger-analytics.hook';
 import { useLedgerNavigate } from '../../hooks/use-ledger-navigate';

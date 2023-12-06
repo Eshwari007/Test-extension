@@ -15,7 +15,6 @@ import { useKeyActions } from '@app/common/hooks/use-key-actions';
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { makeLedgerCompatibleUnsignedAuthResponsePayload } from '@app/common/unsafe-auth-response';
 import { delay } from '@app/common/utils';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import {
   getStacksAppVersion,
   prepareLedgerDeviceStacksAppConnection,
@@ -25,6 +24,7 @@ import {
   useCurrentStacksAccount,
   useStacksAccounts,
 } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { useLedgerNavigate } from '../../hooks/use-ledger-navigate';
 import { useLedgerResponseState } from '../../utils/generic-ledger-utils';

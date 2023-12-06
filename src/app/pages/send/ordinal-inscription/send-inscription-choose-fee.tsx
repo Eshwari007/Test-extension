@@ -8,10 +8,10 @@ import {
   BitcoinFeesList,
   OnChooseFeeArgs,
 } from '@app/components/bitcoin-fees-list/bitcoin-fees-list';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { LoadingSpinner } from '@app/components/loading-spinner';
 import { BitcoinChooseFee } from '@app/features/bitcoin-choose-fee/bitcoin-choose-fee';
 import { useValidateBitcoinSpend } from '@app/features/bitcoin-choose-fee/hooks/use-validate-bitcoin-spend';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { useSendInscriptionState } from './components/send-inscription-container';
 import { useSendInscriptionFeesList } from './hooks/use-send-inscription-fees-list';

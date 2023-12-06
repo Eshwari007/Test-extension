@@ -4,11 +4,11 @@ import { Box } from 'leather-styles/jsx';
 
 import { useCreateAccount } from '@app/common/hooks/account/use-create-account';
 import { useWalletType } from '@app/common/use-wallet-type';
-import { ControlledDrawer } from '@app/components/drawer/controlled-drawer';
 import { useCurrentAccountIndex } from '@app/store/accounts/account';
 import { useFilteredBitcoinAccounts } from '@app/store/accounts/blockchain/bitcoin/bitcoin.ledger';
 import { useStacksAccounts } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { useShowSwitchAccountsState } from '@app/store/ui/ui.hooks';
+import { ControlledDrawer } from '@app/ui/components/containers/drawer/controlled-drawer';
 
 import { AccountListUnavailable } from './components/account-list-unavailable';
 import { CreateAccountAction } from './components/create-account-action';

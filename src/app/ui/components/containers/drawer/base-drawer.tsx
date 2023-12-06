@@ -8,7 +8,7 @@ import { noop } from '@shared/utils';
 import { useEventListener } from '@app/common/hooks/use-event-listener';
 import { useOnClickOutside } from '@app/common/hooks/use-onclickoutside';
 
-import { DrawerHeader } from './components/drawer-header';
+import { DrawerHeader } from '../headers/drawer-header';
 
 function useDrawer(isShowing: boolean, onClose: () => void, pause?: boolean) {
   const ref = useRef(null);

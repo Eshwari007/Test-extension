@@ -4,7 +4,7 @@ import { useHover } from 'use-events';
 import { ArrowLeftIcon } from '@app/ui/components/icons/arrow-left-icon';
 import { CloseIcon } from '@app/ui/components/icons/close-icon';
 
-import { HeaderActionButton } from './header-action-button';
+import { HeaderActionButton } from '../drawer/components/header-action-button';
 
 // TODO assess this also
 interface DrawerHeaderProps {

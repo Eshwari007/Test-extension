@@ -11,7 +11,6 @@ import { RouteUrls } from '@shared/route-urls';
 import { useScrollLock } from '@app/common/hooks/use-scroll-lock';
 import { appEvents } from '@app/common/publish-subscribe';
 import { delay } from '@app/common/utils';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import {
   LedgerTxSigningContext,
   LedgerTxSigningProvider,
@@ -26,6 +25,7 @@ import {
   useActionCancellableByUser,
 } from '@app/features/ledger/utils/stacks-ledger-utils';
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { ledgerSignTxRoutes } from '../../generic-flows/tx-signing/ledger-sign-tx-route-generator';
 import { useLedgerAnalytics } from '../../hooks/use-ledger-analytics.hook';

@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
 import { useLocationState } from '@app/common/hooks/use-location-state';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { ThemeList } from './theme-list';
 

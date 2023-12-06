@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useDrawers } from '@app/common/hooks/use-drawers';
-import { ControlledDrawer } from '@app/components/drawer/controlled-drawer';
+import { ControlledDrawer } from '@app/ui/components/containers/drawer/controlled-drawer';
 
 // import { ErrorIcon } from '@app/ui/components/icons/error-icon';
 import { HighFeeConfirmation } from './components/high-fee-confirmation';

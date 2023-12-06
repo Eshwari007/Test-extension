@@ -5,9 +5,9 @@ import { Box, Flex, styled } from 'leather-styles/jsx';
 
 import { useLocationState } from '@app/common/hooks/use-location-state';
 import { AddressDisplayer } from '@app/components/address-displayer/address-displayer';
-import { BaseDrawer } from '@app/components/drawer/base-drawer';
 import { useBackgroundLocationRedirect } from '@app/routes/hooks/use-background-location-redirect';
 import { LeatherButton } from '@app/ui/components/button';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { QrCode } from './address-qr-code';
 
