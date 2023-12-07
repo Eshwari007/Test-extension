@@ -7,7 +7,7 @@ interface PopupOptions {
   h?: number;
   skipPopupFallback?: boolean;
 }
-export function popupCenter(options: PopupOptions): Promise<any> {
+export function popup(options: PopupOptions): Promise<any> {
   const { url, w = POPUP_CENTER_WIDTH, h = POPUP_CENTER_HEIGHT } = options;
 
   return new Promise(resolve => {
