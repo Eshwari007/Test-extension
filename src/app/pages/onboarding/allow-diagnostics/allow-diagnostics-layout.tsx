@@ -3,6 +3,7 @@ import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { css } from 'leather-styles/css';
 import { Box, Flex, HStack, Stack, styled } from 'leather-styles/jsx';
 
+import { isPopupMode } from '@app/common/utils';
 import { LeatherButton } from '@app/ui/components/button';
 import { CheckmarkIcon } from '@app/ui/components/icons/checkmark-icon';
 import { LeatherIcon } from '@app/ui/components/icons/leather-icon';
@@ -25,6 +26,13 @@ interface AllowDiagnosticsLayoutProps {
   onUserAllowDiagnostics(): void;
   onUserDenyDiagnostics(): void;
 }
+
+// // #4250 TODO
+// Popup mode is just slightly wider than extension view
+// isPopupMode() returns true for extension / popup
+// could also change sm breakpoint
+// sm: '398px', -> sm: '442px',
+
 export function AllowDiagnosticsLayout(props: AllowDiagnosticsLayoutProps) {
   const { onUserAllowDiagnostics, onUserDenyDiagnostics } = props;
   return (
@@ -34,6 +42,8 @@ export function AllowDiagnosticsLayout(props: AllowDiagnosticsLayoutProps) {
           width: '500px',
           marginY: 'space.03',
           backgroundColor: 'accent.background-primary',
+          // adding a minHeight here works for extension/popup but we lose margins
+          // minHeight: isPopupMode() ? '600px' : undefined,
         })}
       >
         <LeatherIcon width="72px" />

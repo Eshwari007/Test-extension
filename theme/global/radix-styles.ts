@@ -101,4 +101,9 @@ export const radixTabStyles = {
   '.rt-TabsTrigger[data-state="active"]::before': {
     backgroundColor: 'accent.text-primary',
   },
+  // #4250 TODO this removes bottom padding of Dialog.Root.
+  // if used refactor to move into it's own style obj
+  '.rt-DialogOverlay': {
+    paddingBottom: 0,
+  },
 };

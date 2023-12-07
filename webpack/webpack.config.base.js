@@ -197,6 +197,8 @@ const config = {
       filename: 'index.html',
       ...HTML_PROD_OPTIONS,
     }),
+    // #4250 TODO - find out the difference between popup.html & popup-center.html
+    // it seems like we never use popup.html
     new HtmlWebpackPlugin({
       template: path.join(SRC_ROOT_PATH, '../', 'public', 'html', 'popup.html'),
       filename: 'popup.html',

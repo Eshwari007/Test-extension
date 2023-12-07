@@ -1,7 +1,7 @@
 import { defineGlobalStyles } from '@pandacss/dev';
 
 import { fullPageStyles } from './full-page-styles';
-import { popupCenterStyles } from './popup-center-styles';
+// import { popupCenterStyles } from './popup-center-styles';
 import { popupStyles } from './popup-styles';
 import { radixStyles, radixTabStyles } from './radix-styles';
 import { tippyStyles } from './tippy-styles';
@@ -10,6 +10,7 @@ import { tippyStyles } from './tippy-styles';
 export const globalCss = defineGlobalStyles({
   // TODO: investigate cleaner solution
   // this is needed to prevent BG scroll in extension view
+  // FIXME PETE - need to make sure scroll works in popout mode
   html: {
     overflow: 'hidden',
   },
@@ -25,14 +26,14 @@ export const globalCss = defineGlobalStyles({
     },
   },
   body: {
-    overflowY: 'scroll',
+    overflowY: 'scroll', //  TODO: investigate this adds an un-necessary scroll bar to popout mode
     '&.no-scroll, &.no-scroll .main-content': {
       overflow: 'hidden',
     },
   },
   ...fullPageStyles,
   ...popupStyles,
-  ...popupCenterStyles,
+  // ...popupCenterStyles,
   ...tippyStyles,
   ...radixStyles,
   ...radixTabStyles,

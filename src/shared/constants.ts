@@ -5,8 +5,10 @@ import { Blockchains } from './models/blockchain.model';
 
 export const gaiaUrl = 'https://hub.blockstack.org';
 
-export const POPUP_CENTER_WIDTH = 442;
-export const POPUP_CENTER_HEIGHT = 646;
+// #4250 TODO - maybe we can change this to: '392px' x '600px' to make it the same as the extension
+// these are options to popupCenter but always defaulted to this
+export const POPUP_CENTER_WIDTH = 392;
+export const POPUP_CENTER_HEIGHT = 600;
 
 export const HIGH_FEE_AMOUNT_STX = 5;
 export const HIGH_FEE_WARNING_LEARN_MORE_URL_BTC = 'https://bitcoinfees.earn.com/';
