@@ -15,6 +15,9 @@ interface SwitchAccountListProps {
 export const SwitchAccountList = memo(
   ({ currentAccountIndex, handleClose, addressesNum }: SwitchAccountListProps) => {
     const { whenWallet } = useWalletType();
+    // PETE - this is pretty close now but the Create new account has a bit too much space below
+    // great progress though! that part can be solved by footers
+    // next test all flows to make sure they mostly look OK
 
     return (
       <Box

@@ -1,7 +1,9 @@
+// TODO - not sure why we call this a drawer when it's a modal
+// 4370 TODO - can investigate swapping this for radix dialog and using modal true / false
 import { ReactNode, Suspense, memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Flex, FlexProps } from 'leather-styles/jsx';
+import { Flex, FlexProps } from 'leather-styles/jsx';
 
 import { noop } from '@shared/utils';
 
@@ -10,8 +12,6 @@ import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
 import { DrawerHeader } from '../headers/drawer-header';
 import { useDrawer } from './hooks/use-drawer';
 import { ModalWrapper } from './modal-wrapper';
-
-// PETe - now when moving from Receive -> QR the UI re-renders everything and we see a flash. Maybe that memo was stopping that???
 
 interface BaseDrawerProps extends Omit<FlexProps, 'title'> {
   children?: ReactNode;
@@ -51,7 +51,7 @@ export const BaseDrawer = memo(
     }, []);
 
     return (
-      <ModalWrapper isShowing={isShowing}>
+      <ModalWrapper isShowing={isShowing} isAtleastBreakpointMd={isAtleastBreakpointMd}>
         <Flex
           id="drawer-flex"
           flexDirection="column"
@@ -65,11 +65,8 @@ export const BaseDrawer = memo(
           width="100%"
           maxWidth={['768px', '768px', '472px']} // ???
           bg="accent.background-primary"
-          borderTopLeftRadius="lg"
-          borderTopRightRadius="lg"
-          borderBottomLeftRadius={[0, 0, 'lg']}
-          borderBottomRightRadius={[0, 0, 'lg']}
-          // position="relative"
+          // removing this border on small gives the impression of it being a full page
+          borderRadius={[0, 0, 'lg']}
           mt={['auto', 'auto', 'unset']}
           // maxHeight={['calc(100vh - 24px)', 'calc(100vh - 96px)']}
           // height is 100vh + height of page header it obscures
