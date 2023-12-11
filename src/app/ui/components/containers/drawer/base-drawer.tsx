@@ -50,6 +50,9 @@ export const BaseDrawer = memo(
       };
     }, []);
 
+    console.log('typeof title', title, typeof title);
+
+    // TODO - clean up this isAtleastBreakpointMd logic
     return (
       <ModalWrapper isShowing={isShowing} isAtleastBreakpointMd={isAtleastBreakpointMd}>
         <Flex
@@ -61,13 +64,17 @@ export const BaseDrawer = memo(
           transform={isShowing ? 'none' : 'translateY(35px)'}
           transition={isShowing ? 'transition' + ' 0.1s' : 'transition'}
           transitionDuration="0.4s"
-          willChange="transform, opacity"
+          // willChange="transform, opacity"
+          // FIXME - make this better this works for 'receive' as it has a taller header but obscures Select account
+          // need to get this working properly in popup mode - for change theme it makes it too high
+          top={0}
+          position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
           width="100%"
           maxWidth={['768px', '768px', '472px']} // ???
           bg="accent.background-primary"
           // removing this border on small gives the impression of it being a full page
           borderRadius={[0, 0, 'lg']}
-          mt={['auto', 'auto', 'unset']}
+          mt={isAtleastBreakpointMd ? '20vh' : 'unset'}
           // maxHeight={['calc(100vh - 24px)', 'calc(100vh - 96px)']}
           // height is 100vh + height of page header it obscures
           // should remove these max heights but they help with create-account it seems

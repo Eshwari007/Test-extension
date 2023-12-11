@@ -13,16 +13,18 @@ interface ModalWrapperProps {
 
 export const ModalWrapper = memo(
   ({ children, isShowing, isAtleastBreakpointMd }: ModalWrapperProps) => {
+    console.log('isAtleastBreakpointMd isShowing', isAtleastBreakpointMd, isShowing);
     return (
       <Flex
         id="modal-flex"
         display={isShowing ? 'flex' : 'none'}
-        bg="overlay"
+        bg={isAtleastBreakpointMd ? 'overlay' : 'overlay'}
         transition="transition"
         position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
         top={isAtleastBreakpointMd ? 0 : typeof title !== 'string' ? 0 : '-80px'} // FIXME - make this better this works for 'receive' as it has a taller header but obscures Select account
         left={0}
-        height={isAtleastBreakpointMd ? '100%' : undefined}
+        // height={isAtleastBreakpointMd ? '100%' : undefined} // PETE this is what breaks the bg colour - if not height
+        height="100%"
         width="100%"
         alignItems="center"
         justifyContent="center"
@@ -31,6 +33,7 @@ export const ModalWrapper = memo(
         style={{
           pointerEvents: !isShowing ? 'none' : 'unset',
           userSelect: !isShowing ? 'none' : 'unset',
+          // background: 'red',
           willChange: 'background',
         }}
       >
