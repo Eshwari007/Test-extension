@@ -5,10 +5,7 @@ import { Blockchains } from './models/blockchain.model';
 
 export const gaiaUrl = 'https://hub.blockstack.org';
 
-// #4250 TODO - maybe we can change this to: '398px' to make it the same as the extension
-// these are options to popup but always defaulted to this
-//  name this better and add a better comment
-// set to the same dimensions as mobile
+// #4250 setting consistent dimensions of extension + popup to match mobile
 export const POPUP_CENTER_WIDTH = 390;
 export const POPUP_CENTER_HEIGHT = 756;
 

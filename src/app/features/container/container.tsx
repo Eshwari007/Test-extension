@@ -32,8 +32,6 @@ export function Container() {
 
   if (!hasStateRehydrated) return <LoadingSpinner />;
 
-  console.info('routeHeader', routeHeader);
-
   return (
     <>
       <SwitchAccountDrawer />

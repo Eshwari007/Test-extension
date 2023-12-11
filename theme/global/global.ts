@@ -32,7 +32,6 @@ export const globalCss = defineGlobalStyles({
   },
   ...fullPageStyles,
   ...popupStyles,
-  // ...popupStyles,
   ...tippyStyles,
   ...radixStyles,
   ...radixTabStyles,

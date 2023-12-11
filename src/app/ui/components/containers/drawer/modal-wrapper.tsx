@@ -4,7 +4,6 @@ import { Flex } from 'leather-styles/jsx';
 import { title } from 'process';
 
 // FIXME - !important - test POPUP view ! need to figure that out
-// check whenPageMode to test this out too
 
 interface ModalWrapperProps {
   children: ReactNode; // use HasChildren ?
@@ -12,16 +11,8 @@ interface ModalWrapperProps {
   isAtleastBreakpointMd: boolean;
 }
 
-// FIXME: need to fix this - get it to move smoothly between views without flashing the ?UI
-// this works but it also means that you can click elements behind page if not modal mode
-// now try doing this without swapping the modal, just a style object!
-// NEXT;
-
 export const ModalWrapper = memo(
   ({ children, isShowing, isAtleastBreakpointMd }: ModalWrapperProps) => {
-    // console.log('isAtleastBreakpointMd', isAtleastBreakpointMd);
-    // show as modal on larger sizes
-
     return (
       <Flex
         id="modal-flex"

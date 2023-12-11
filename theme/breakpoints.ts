@@ -4,5 +4,5 @@ import { breakpoints as leatherBreakpoints } from '@leather-wallet/tokens';
 export const breakpoints = {
   ...leatherBreakpoints,
 
-  sm: '445px',
+  // sm: '445px',
 };

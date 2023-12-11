@@ -12,7 +12,6 @@ import { CloseIcon } from '@app/ui/components/icons/close-icon';
 
 // This is called ModalHeader but also gets shown on the Send flow which is a full page
 
-//  fuck me, another header?? maybe this is where actionButton comes from
 interface ModalHeaderProps {
   onClose?(): void;
   onGoBack?(): void;
@@ -38,7 +37,6 @@ export function ModalHeader({
   }
 
   const hasCloseIcon = onClose || defaultClose;
-  // console.log('title', title);
   return (
     <Flex alignItems="center" justifyContent="space-between" p="space.04" position="relative">
       {onGoBack || defaultGoBack ? (
