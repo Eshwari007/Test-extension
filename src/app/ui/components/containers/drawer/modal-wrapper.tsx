@@ -26,7 +26,8 @@ export const ModalWrapper = memo(
         // need to set as 0 on wide and account for headers on small
         top={isAtleastBreakpointMd ? 0 : typeof title !== 'string' ? 0 : '-80px'} // need to set this -80 to cover tyhe header for not select account in small view - do it better
         left={0}
-        height={isAtleastBreakpointMd ? '100%' : '100vh'} // PETE this is what breaks the bg colour - if not height
+        // PETE this is what breaks the bg colour - if not height
+        height={isAtleastBreakpointMd ? '100%' : undefined}
         // height="100vh"
         width="100%"
         alignItems="center"

@@ -3,7 +3,7 @@
 import { ReactNode, Suspense, memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Flex, FlexProps, styled } from 'leather-styles/jsx';
+import { Box, Flex, FlexProps } from 'leather-styles/jsx';
 
 import { noop } from '@shared/utils';
 
@@ -81,6 +81,7 @@ export const BaseDrawer = memo(
           // need to get this working properly in popup mode - for change theme it makes it too high
           top={0}
           position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
+          // position="fixed" // fixed to stop BG scroll?
           width="100%"
           // ??? without setting max-width here this messes up everything and create account button breaks
           // should be the same max width on all sizes now
@@ -93,32 +94,33 @@ export const BaseDrawer = memo(
           zIndex={1}
         >
           {/* TODO check what this Box did / does - nothing I think as receive + select account OK */}
-          {/* <Box
+          <Box
             css={{
               overflowY: 'scroll',
               '&::-webkit-scrollbar': {
                 display: 'none',
               },
             }}
-          > */}
-          {/* // FIXME this should be passed in as a slot like Footer */}
-          <DrawerHeader
-            enableGoBack={enableGoBack}
-            isWaitingOnPerformedAction={isWaitingOnPerformedAction}
-            onClose={onClose}
-            onGoBack={onGoBack}
-            title={title}
-            waitingOnPerformedActionMessage={waitingOnPerformedActionMessage}
-            data-testId="drawer-header"
-          />
-          {/* TODO check if this flex is even needed
+          >
+            {/* // FIXME this should be passed in as a slot like Footer */}
+            <DrawerHeader
+              enableGoBack={enableGoBack}
+              isWaitingOnPerformedAction={isWaitingOnPerformedAction}
+              onClose={onClose}
+              onGoBack={onGoBack}
+              title={title}
+              waitingOnPerformedActionMessage={waitingOnPerformedActionMessage}
+              data-testId="drawer-header"
+            />
+            {/* TODO check if this flex is even needed
             try add padding from sign-out-confirm here to make it consistent
           */}
-          <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
-            <Suspense fallback={<></>}>{children}</Suspense>
-          </Flex>
-          {/* {children} */}
-          {footer && <Footer>{footer}</Footer>}
+            <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
+              <Suspense fallback={<></>}>{children}</Suspense>
+            </Flex>
+            {/* {children} */}
+            {footer && <Footer>{footer}</Footer>}
+          </Box>
         </Flex>
       </ModalWrapper>
     );

@@ -25,7 +25,8 @@ export const globalCss = defineGlobalStyles({
     },
   },
   body: {
-    // overflowY: 'scroll', //  TODO: investigate this adds an un-necessary scroll bar to popout mode
+    // scroll is needed here so homepage will be able to scroll in extension view
+    overflowY: 'auto', //  TODO: investigate this adds an un-necessary scroll bar to popout mode
     '&.no-scroll, &.no-scroll .main-content': {
       overflow: 'hidden',
     },
