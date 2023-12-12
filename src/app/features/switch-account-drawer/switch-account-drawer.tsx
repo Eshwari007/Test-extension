@@ -8,10 +8,10 @@ import { useCurrentAccountIndex } from '@app/store/accounts/account';
 import { useFilteredBitcoinAccounts } from '@app/store/accounts/blockchain/bitcoin/bitcoin.ledger';
 import { useStacksAccounts } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { useShowSwitchAccountsState } from '@app/store/ui/ui.hooks';
+import { LeatherButton } from '@app/ui/components/button';
 import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { AccountListUnavailable } from './components/account-list-unavailable';
-import { CreateAccountAction } from './components/create-account-action';
 import { SwitchAccountList } from './components/switch-account-list';
 
 export const SwitchAccountDrawer = memo(() => {
@@ -44,7 +44,11 @@ export const SwitchAccountDrawer = memo(() => {
       isShowing={isShowing}
       onClose={onClose}
       footer={whenWallet({
-        software: <CreateAccountAction onCreateAccount={onCreateAccount} />,
+        software: (
+          <LeatherButton fullWidth onClick={() => onCreateAccount()}>
+            Create new account
+          </LeatherButton>
+        ),
         ledger: <></>,
       })}
     >

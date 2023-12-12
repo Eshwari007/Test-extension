@@ -9,6 +9,7 @@ import { noop } from '@shared/utils';
 
 import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
 
+import { Footer } from '../footers/footer';
 import { DrawerHeader } from '../headers/drawer-header';
 import { useDrawer } from './hooks/use-drawer';
 import { ModalWrapper } from './modal-wrapper';
@@ -80,6 +81,7 @@ export const BaseDrawer = memo(
           // ??? without setting max-width here this messes up everything and create account button breaks
           // should be the same max width on all sizes now
           maxWidth={['768px', '768px', '472px']}
+          minHeight={isAtleastBreakpointMd ? undefined : '100vh'}
           bg="accent.background-primary"
           // removing this border on small gives the impression of it being a full page
           borderRadius={[0, 0, 'lg']}
@@ -99,6 +101,7 @@ export const BaseDrawer = memo(
               },
             }}
           > */}
+          {/* // FIXME this should be passed in as a slot like Footer */}
           <DrawerHeader
             enableGoBack={enableGoBack}
             isWaitingOnPerformedAction={isWaitingOnPerformedAction}
@@ -108,12 +111,11 @@ export const BaseDrawer = memo(
             waitingOnPerformedActionMessage={waitingOnPerformedActionMessage}
             data-testId="drawer-header"
           />
-          {/* <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
+          <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
             <Suspense fallback={<></>}>{children}</Suspense>
-          </Flex> */}
-          {children}
-          {/* </Box> */}
-          {footer}
+          </Flex>
+          {/* {children} */}
+          {footer && <Footer>{footer}</Footer>}
         </Flex>
       </ModalWrapper>
     );

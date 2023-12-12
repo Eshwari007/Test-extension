@@ -1,6 +1,6 @@
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { useFormik } from 'formik';
-import { Box, HStack, styled } from 'leather-styles/jsx';
+import { Box, Flex, HStack, styled } from 'leather-styles/jsx';
 
 import { useWalletType } from '@app/common/use-wallet-type';
 import { Flag } from '@app/components/layout/flag';
@@ -28,8 +28,38 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
   });
 
   return (
-    <BaseDrawer title="Sign out" isShowing onClose={onUserSafelyReturnToHomepage}>
-      <Box mx="space.05" mb="space.06">
+    <BaseDrawer
+      title="Sign out"
+      isShowing
+      onClose={onUserSafelyReturnToHomepage}
+      footer={
+        // <HStack gap="space.04" mt={['16rem', 'space.06']}>
+        <>
+          <LeatherButton
+            color="gray"
+            data-testid={SettingsSelectors.BtnSignOutReturnToHomeScreen}
+            flexGrow={1}
+            variant="outline"
+            onClick={() => onUserSafelyReturnToHomepage()}
+          >
+            Cancel
+          </LeatherButton>
+          <LeatherButton
+            _hover={{ background: 'error.label' }}
+            background="error.label"
+            data-testid={SettingsSelectors.BtnSignOutActuallyDeleteWallet}
+            flexGrow={1}
+            disabled={!(form.values.confirmBackup && form.values.confirmPasswordDisable)}
+            type="submit"
+          >
+            Sign out
+          </LeatherButton>
+        </>
+        // </HStack>
+      }
+    >
+      {/* TODO make the basedrawer do this automatically for all content */}
+      <Flex alignItems="center" flexDirection="column" pb={['space.05', 'space.08']} px="space.05">
         <form onChange={form.handleChange} onSubmit={form.handleSubmit}>
           <styled.p textStyle="label.02">
             When you sign out,
@@ -82,29 +112,8 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
               I understand my password will no longer work for accessing my wallet upon signing out
             </styled.p>
           </styled.label>
-          <HStack gap="space.04" mt="space.06">
-            <LeatherButton
-              color="gray"
-              data-testid={SettingsSelectors.BtnSignOutReturnToHomeScreen}
-              flexGrow={1}
-              variant="outline"
-              onClick={() => onUserSafelyReturnToHomepage()}
-            >
-              Cancel
-            </LeatherButton>
-            <LeatherButton
-              _hover={{ background: 'error.label' }}
-              background="error.label"
-              data-testid={SettingsSelectors.BtnSignOutActuallyDeleteWallet}
-              flexGrow={1}
-              disabled={!(form.values.confirmBackup && form.values.confirmPasswordDisable)}
-              type="submit"
-            >
-              Sign out
-            </LeatherButton>
-          </HStack>
         </form>
-      </Box>
+      </Flex>
     </BaseDrawer>
   );
 }

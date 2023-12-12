@@ -26,7 +26,16 @@ export function ReceiveTokensLayout(props: ReceiveTokensLayoutProps) {
   const backgroundLocation = useLocationState<Location>('backgroundLocation');
 
   return (
-    <BaseDrawer title="Receive" isShowing onClose={() => navigate(backgroundLocation ?? '..')}>
+    <BaseDrawer
+      title="Receive"
+      isShowing
+      onClose={() => navigate(backgroundLocation ?? '..')}
+      footer={
+        <LeatherButton fullWidth mt="space.05" onClick={() => onCopyAddressToClipboard(address)}>
+          Copy address
+        </LeatherButton>
+      }
+    >
       {warning && warning}
       <Flex alignItems="center" flexDirection="column" pb={['space.05', 'space.08']} px="space.05">
         <styled.h2 mt="space.05" textStyle="heading.03">
@@ -51,9 +60,6 @@ export function ReceiveTokensLayout(props: ReceiveTokensLayoutProps) {
             <AddressDisplayer address={address} />
           </Flex>
         </Flex>
-        <LeatherButton fullWidth mt="space.05" onClick={() => onCopyAddressToClipboard(address)}>
-          Copy address
-        </LeatherButton>
       </Flex>
     </BaseDrawer>
   );
