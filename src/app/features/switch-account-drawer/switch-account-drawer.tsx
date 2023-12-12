@@ -8,7 +8,7 @@ import { useCurrentAccountIndex } from '@app/store/accounts/account';
 import { useFilteredBitcoinAccounts } from '@app/store/accounts/blockchain/bitcoin/bitcoin.ledger';
 import { useStacksAccounts } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { useShowSwitchAccountsState } from '@app/store/ui/ui.hooks';
-import { ControlledDrawer } from '@app/ui/components/containers/drawer/controlled-drawer';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 import { AccountListUnavailable } from './components/account-list-unavailable';
 import { CreateAccountAction } from './components/create-account-action';
@@ -38,7 +38,7 @@ export const SwitchAccountDrawer = memo(() => {
   }
 
   return isShowing ? (
-    <ControlledDrawer title="Select account" isShowing={isShowing} onClose={onClose}>
+    <BaseDrawer title="Select account" isShowing={isShowing} onClose={onClose}>
       <Box id="switch-account-list" mb={whenWallet({ ledger: 'space.04', software: '' })}>
         <SwitchAccountList
           currentAccountIndex={currentAccountIndex}
@@ -50,6 +50,6 @@ export const SwitchAccountDrawer = memo(() => {
           ledger: <></>,
         })}
       </Box>
-    </ControlledDrawer>
+    </BaseDrawer>
   ) : null;
 });

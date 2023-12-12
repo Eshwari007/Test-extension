@@ -11,7 +11,7 @@ export function CreateAccountAction({ onCreateAccount }: CreateAccountActionProp
       // mt="100px"
       py="space.05"
       px="space.05"
-      flexGrow="1"
+      // flexGrow="1"
       position="fixed"
       bottom={0}
       width="100%"

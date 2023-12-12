@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useDrawers } from '@app/common/hooks/use-drawers';
-import { ControlledDrawer } from '@app/ui/components/containers/drawer/controlled-drawer';
+import { BaseDrawer } from '@app/ui/components/containers/drawer/base-drawer';
 
 // import { ErrorIcon } from '@app/ui/components/icons/error-icon';
 import { HighFeeConfirmation } from './components/high-fee-confirmation';
@@ -16,7 +16,7 @@ export function HighFeeDrawer({ learnMoreUrl }: { learnMoreUrl: string }) {
   }, [isShowingHighFeeConfirmation, setIsShowingHighFeeConfirmation]);
 
   return (
-    <ControlledDrawer
+    <BaseDrawer
       // TODO - see if we can remove this - only place using this icon slot
       // icon={<ErrorIcon color="error.label" size="xl" />}
       // figure out how this works in general
@@ -24,6 +24,6 @@ export function HighFeeDrawer({ learnMoreUrl }: { learnMoreUrl: string }) {
       onClose={() => setIsShowingHighFeeConfirmation(false)}
     >
       {isShowingHighFeeConfirmation && <HighFeeConfirmation learnMoreUrl={learnMoreUrl} />}
-    </ControlledDrawer>
+    </BaseDrawer>
   );
 }
