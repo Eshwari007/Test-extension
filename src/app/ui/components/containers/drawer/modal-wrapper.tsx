@@ -18,13 +18,13 @@ export const ModalWrapper = memo(
       <Flex
         id="modal-flex"
         display={isShowing ? 'flex' : 'none'}
-        bg={isAtleastBreakpointMd ? 'overlay' : 'overlay'}
-        // bg="overlay"
+        bg="overlay"
         transition="transition"
         position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
+        // TODO fix headers properly
         // FIXME - make this better this works for 'receive' as it has a taller header but obscures Select account
-        // top={isAtleastBreakpointMd ? 0 : typeof title !== 'string' ? 0 : '-80px'}
-        top={typeof title !== 'string' ? 0 : '-80px'} // need to set this -80 to cover tyhe header for not select account in small view - do it better
+        // need to set as 0 on wide and account for headers on small
+        top={isAtleastBreakpointMd ? 0 : typeof title !== 'string' ? 0 : '-80px'} // need to set this -80 to cover tyhe header for not select account in small view - do it better
         left={0}
         height={isAtleastBreakpointMd ? '100%' : '100vh'} // PETE this is what breaks the bg colour - if not height
         // height="100vh"
@@ -36,7 +36,6 @@ export const ModalWrapper = memo(
         style={{
           pointerEvents: !isShowing ? 'none' : 'unset',
           userSelect: !isShowing ? 'none' : 'unset',
-          // background: 'red',
           willChange: 'background',
         }}
       >

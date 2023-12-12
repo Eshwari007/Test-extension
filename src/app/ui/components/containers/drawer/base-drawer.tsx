@@ -46,6 +46,10 @@ export const BaseDrawer = memo(
     // useScrollLock works but somehow messes up display of modal?
     // useScrollLock(true);
 
+    // PETE - stop now and return to fix this
+    // - need overlay to be full height in modal
+    // - need to block BG scroll
+
     // sometimes this adds an un-necessary scrollbar
     useEffect(() => {
       document.body.style.overflowY = 'hidden';
@@ -86,10 +90,6 @@ export const BaseDrawer = memo(
           // removing this border on small gives the impression of it being a full page
           borderRadius={[0, 0, 'lg']}
           mt={isAtleastBreakpointMd ? '20vh' : 'unset'}
-          // maxHeight={['calc(100vh - 24px)', 'calc(100vh - 96px)']}
-          // height is 100vh + height of page header it obscures
-          // should remove these max heights but they help with create-account it seems
-          // maxHeight={['calc(100vh + 80px)', 'calc(100vh - 96px)']}
           zIndex={1}
         >
           {/* TODO check what this Box did / does - nothing I think as receive + select account OK */}
@@ -111,6 +111,9 @@ export const BaseDrawer = memo(
             waitingOnPerformedActionMessage={waitingOnPerformedActionMessage}
             data-testId="drawer-header"
           />
+          {/* TODO check if this flex is even needed
+            try add padding from sign-out-confirm here to make it consistent
+          */}
           <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
             <Suspense fallback={<></>}>{children}</Suspense>
           </Flex>
