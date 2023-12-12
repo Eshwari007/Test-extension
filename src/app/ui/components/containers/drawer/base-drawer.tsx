@@ -3,7 +3,7 @@
 import { ReactNode, Suspense, memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Flex, FlexProps } from 'leather-styles/jsx';
+import { Flex, FlexProps, styled } from 'leather-styles/jsx';
 
 import { noop } from '@shared/utils';
 
@@ -16,6 +16,7 @@ import { ModalWrapper } from './modal-wrapper';
 interface BaseDrawerProps extends Omit<FlexProps, 'title'> {
   children?: ReactNode;
   enableGoBack?: boolean;
+  footer?: ReactNode;
   isShowing: boolean;
   isWaitingOnPerformedAction?: boolean;
   onClose?(): void;
@@ -27,6 +28,7 @@ export const BaseDrawer = memo(
   ({
     children,
     enableGoBack,
+    footer,
     isShowing,
     isWaitingOnPerformedAction,
     onClose,
@@ -43,10 +45,11 @@ export const BaseDrawer = memo(
     // useScrollLock works but somehow messes up display of modal?
     // useScrollLock(true);
 
+    // sometimes this adds an un-necessary scrollbar
     useEffect(() => {
       document.body.style.overflowY = 'hidden';
       return () => {
-        document.body.style.overflowY = 'scroll';
+        document.body.style.overflowY = 'auto';
       };
     }, []);
 
@@ -54,11 +57,15 @@ export const BaseDrawer = memo(
 
     // TODO - clean up this isAtleastBreakpointMd logic
     return (
-      <ModalWrapper isShowing={isShowing} isAtleastBreakpointMd={isAtleastBreakpointMd}>
+      <ModalWrapper
+        isShowing={isShowing}
+        isAtleastBreakpointMd={isAtleastBreakpointMd}
+        title={title}
+      >
         <Flex
           id="drawer-flex"
           flexDirection="column"
-          flexGrow={0}
+          // flexGrow={0}
           ref={ref}
           opacity={isShowing ? 1 : 0}
           transform={isShowing ? 'none' : 'translateY(35px)'}
@@ -70,7 +77,9 @@ export const BaseDrawer = memo(
           top={0}
           position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
           width="100%"
-          maxWidth={['768px', '768px', '472px']} // ???
+          // ??? without setting max-width here this messes up everything and create account button breaks
+          // should be the same max width on all sizes now
+          maxWidth={['768px', '768px', '472px']}
           bg="accent.background-primary"
           // removing this border on small gives the impression of it being a full page
           borderRadius={[0, 0, 'lg']}
@@ -78,7 +87,7 @@ export const BaseDrawer = memo(
           // maxHeight={['calc(100vh - 24px)', 'calc(100vh - 96px)']}
           // height is 100vh + height of page header it obscures
           // should remove these max heights but they help with create-account it seems
-          maxHeight={['calc(100vh + 80px)', 'calc(100vh - 96px)']}
+          // maxHeight={['calc(100vh + 80px)', 'calc(100vh - 96px)']}
           zIndex={1}
         >
           {/* TODO check what this Box did / does - nothing I think as receive + select account OK */}
@@ -97,11 +106,14 @@ export const BaseDrawer = memo(
             onGoBack={onGoBack}
             title={title}
             waitingOnPerformedActionMessage={waitingOnPerformedActionMessage}
+            data-testId="drawer-header"
           />
-          <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
+          {/* <Flex maxHeight="100%" flexGrow={1} flexDirection="column">
             <Suspense fallback={<></>}>{children}</Suspense>
-          </Flex>
+          </Flex> */}
+          {children}
           {/* </Box> */}
+          {footer}
         </Flex>
       </ModalWrapper>
     );

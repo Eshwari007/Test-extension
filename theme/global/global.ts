@@ -25,7 +25,7 @@ export const globalCss = defineGlobalStyles({
     },
   },
   body: {
-    overflowY: 'scroll', //  TODO: investigate this adds an un-necessary scroll bar to popout mode
+    // overflowY: 'scroll', //  TODO: investigate this adds an un-necessary scroll bar to popout mode
     '&.no-scroll, &.no-scroll .main-content': {
       overflow: 'hidden',
     },

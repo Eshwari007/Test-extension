@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { Box } from 'leather-styles/jsx';
+import { styled } from 'leather-styles/jsx';
 
 import { useCreateAccount } from '@app/common/hooks/account/use-create-account';
 import { useWalletType } from '@app/common/use-wallet-type';
@@ -36,20 +36,23 @@ export const SwitchAccountDrawer = memo(() => {
   if (isShowing && stacksAddressesNum === 0 && btcAddressesNum === 0) {
     return <AccountListUnavailable />;
   }
+  console.log('currentAccountIndex', currentAccountIndex);
 
-  return isShowing ? (
-    <BaseDrawer title="Select account" isShowing={isShowing} onClose={onClose}>
-      <Box id="switch-account-list" mb={whenWallet({ ledger: 'space.04', software: '' })}>
-        <SwitchAccountList
-          currentAccountIndex={currentAccountIndex}
-          handleClose={onClose}
-          addressesNum={stacksAddressesNum || btcAddressesNum}
-        />
-        {whenWallet({
-          software: <CreateAccountAction onCreateAccount={onCreateAccount} />,
-          ledger: <></>,
-        })}
-      </Box>
+  return (
+    <BaseDrawer
+      title={<styled.h1 textStyle="heading.05">Select account</styled.h1>} // FIXME this is a hack for Select Account that needs to be fixed
+      isShowing={isShowing}
+      onClose={onClose}
+      footer={whenWallet({
+        software: <CreateAccountAction onCreateAccount={onCreateAccount} />,
+        ledger: <></>,
+      })}
+    >
+      <SwitchAccountList
+        currentAccountIndex={currentAccountIndex}
+        handleClose={onClose}
+        addressesNum={stacksAddressesNum || btcAddressesNum}
+      />
     </BaseDrawer>
-  ) : null;
+  );
 });
