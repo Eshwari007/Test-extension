@@ -42,6 +42,8 @@ export const BaseDrawer = memo(
 
     const isAtleastBreakpointMd = useViewportMinWidth('md');
     const onGoBack = () => navigate(-1);
+
+    debugger;
     // TODO investigate useScrollLock
     // useScrollLock works but somehow messes up display of modal?
     // useScrollLock(true);
@@ -80,8 +82,8 @@ export const BaseDrawer = memo(
           // FIXME - make this better this works for 'receive' as it has a taller header but obscures Select account
           // need to get this working properly in popup mode - for change theme it makes it too high
           top={0}
-          position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
-          // position="fixed" // fixed to stop BG scroll?
+          // position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
+          position="fixed" // fixed to stop BG scroll?
           width="100%"
           // ??? without setting max-width here this messes up everything and create account button breaks
           // should be the same max width on all sizes now

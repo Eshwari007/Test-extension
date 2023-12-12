@@ -20,7 +20,8 @@ export const ModalWrapper = memo(
         display={isShowing ? 'flex' : 'none'}
         bg="overlay"
         transition="transition"
-        position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
+        // position={isAtleastBreakpointMd ? 'fixed' : 'absolute'}
+        position="fixed"
         // TODO fix headers properly
         // FIXME - make this better this works for 'receive' as it has a taller header but obscures Select account
         // need to set as 0 on wide and account for headers on small
