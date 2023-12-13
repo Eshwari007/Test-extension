@@ -1,4 +1,4 @@
-import { ReactNode, memo, useEffect, useRef } from 'react';
+import { ReactNode, memo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
 import { Box } from 'leather-styles/jsx';
@@ -18,26 +18,6 @@ export const SwitchAccountList = memo(
   ({ currentAccountIndex, handleClose, addressesNum }: SwitchAccountListProps) => {
     const { whenWallet } = useWalletType();
     const isAtleastBreakpointMd = useViewportMinWidth('md');
-    // PETE - this is pretty close now but the Create new account has a bit too much space below
-    // great progress though! that part can be solved by footers
-    // next test all flows to make sure they mostly look OK
-
-    //     tried these headers and footers but then bottom footer not setGlobalAnalyticsKey
-    //     I think its close enough now with a bit more testing
-
-    // just make sure it looks good in extension
-
-    // const Header = () => 'Select Account';
-    // const Footer = () => <CreateAccountAction onCreateAccount={() => null} />;
-    // const virtuoso = useRef(null);
-    // console.log('currentAccountIndex sw', currentAccountIndex);
-    // useEffect(
-    //   () =>
-    //     virtuoso.current.scrollToIndex({
-    //       index: currentAccountIndex,
-    //     }),
-    //   [virtuoso, currentAccountIndex]
-    // );
 
     return (
       <Box

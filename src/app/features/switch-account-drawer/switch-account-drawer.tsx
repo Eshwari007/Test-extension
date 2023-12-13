@@ -15,6 +15,7 @@ import { AccountListUnavailable } from './components/account-list-unavailable';
 import { SwitchAccountList } from './components/switch-account-list';
 
 export const SwitchAccountDrawer = memo(() => {
+  //TODO - see if I can get rid of this jotai stuff
   const [isShowing, setShowSwitchAccountsState] = useShowSwitchAccountsState();
 
   const currentAccountIndex = useCurrentAccountIndex();
@@ -37,6 +38,11 @@ export const SwitchAccountDrawer = memo(() => {
     return <AccountListUnavailable />;
   }
   console.log('currentAccountIndex', currentAccountIndex);
+
+  // without this early return it crashes on new install with:
+  // Wallet is neither of type `ledger` nor `software`
+  if (!isShowing) return null;
+  // FIXME - how is this even getting loaded at all on install?!?!?!
 
   return (
     <BaseDrawer
