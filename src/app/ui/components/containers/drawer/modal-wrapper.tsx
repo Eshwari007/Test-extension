@@ -28,7 +28,7 @@ export const ModalWrapper = memo(
         top={isAtleastBreakpointMd ? 0 : typeof title !== 'string' ? 0 : '-80px'} // need to set this -80 to cover tyhe header for not select account in small view - do it better
         left={0}
         // PETE this is what breaks the bg colour - if not height
-        height={isAtleastBreakpointMd ? '100%' : undefined}
+        height={isAtleastBreakpointMd ? '100vh' : undefined} // is this causing the flash???
         // height="100vh"
         width="100%"
         alignItems="center"

@@ -43,7 +43,10 @@ export const BaseDrawer = memo(
     const isAtleastBreakpointMd = useViewportMinWidth('md');
     const onGoBack = () => navigate(-1);
 
-    debugger;
+    // debugger;
+    // flashing has to be something to do with height, maybe the one I set undefined?
+    // - see in this debugger it renders a larger drawer then reduces the size
+
     // TODO investigate useScrollLock
     // useScrollLock works but somehow messes up display of modal?
     // useScrollLock(true);
@@ -61,10 +64,12 @@ export const BaseDrawer = memo(
     }, []);
 
     console.log('typeof title', title, typeof title);
+    // if (!isShowing) return null;
 
     // TODO - clean up this isAtleastBreakpointMd logic
     return (
       <ModalWrapper
+        data-testid="modal-wrapper"
         isShowing={isShowing}
         isAtleastBreakpointMd={isAtleastBreakpointMd}
         title={title}
@@ -88,7 +93,7 @@ export const BaseDrawer = memo(
           // ??? without setting max-width here this messes up everything and create account button breaks
           // should be the same max width on all sizes now
           maxWidth={['768px', '768px', '472px']}
-          minHeight={isAtleastBreakpointMd ? undefined : '100vh'}
+          minHeight={isAtleastBreakpointMd ? '100%' : '100vh'}
           bg="accent.background-primary"
           // removing this border on small gives the impression of it being a full page
           borderRadius={[0, 0, 'lg']}
