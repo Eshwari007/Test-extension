@@ -65,6 +65,8 @@ export function ReceiveModal({ type = 'full' }: ReceiveModalProps) {
       </>
     );
 
+  console.log('receive modal base drawer', title);
+
   return (
     <BaseDrawer
       title={

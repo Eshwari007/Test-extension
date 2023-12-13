@@ -11,6 +11,7 @@ import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
 
 import { Footer } from '../footers/footer';
 import { DrawerHeader } from '../headers/drawer-header';
+import { Modal } from '../modal/modal';
 import { useDrawer } from './hooks/use-drawer';
 import { ModalWrapper } from './modal-wrapper';
 
@@ -66,6 +67,25 @@ export const BaseDrawer = memo(
     console.log('typeof title', title, typeof title);
     // if (!isShowing) return null;
 
+    return (
+      <Modal
+        title={
+          <DrawerHeader
+            enableGoBack={enableGoBack}
+            isWaitingOnPerformedAction={isWaitingOnPerformedAction}
+            onClose={onClose}
+            onGoBack={onGoBack}
+            title={title}
+            waitingOnPerformedActionMessage={waitingOnPerformedActionMessage}
+            data-testId="drawer-header"
+          />
+        }
+        footer={footer ? <Footer>{footer}</Footer> : undefined}
+      >
+        {children}
+      </Modal>
+    );
+
     // TODO - clean up this isAtleastBreakpointMd logic
     return (
       <ModalWrapper
@@ -93,7 +113,7 @@ export const BaseDrawer = memo(
           // ??? without setting max-width here this messes up everything and create account button breaks
           // should be the same max width on all sizes now
           maxWidth={['768px', '768px', '472px']}
-          minHeight={isAtleastBreakpointMd ? '100%' : '100vh'}
+          minHeight={isAtleastBreakpointMd ? undefined : '100vh'}
           bg="accent.background-primary"
           // removing this border on small gives the impression of it being a full page
           borderRadius={[0, 0, 'lg']}

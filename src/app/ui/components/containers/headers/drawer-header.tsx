@@ -28,18 +28,19 @@ export function DrawerHeader({
   waitingOnPerformedActionMessage,
 }: DrawerHeaderProps) {
   const [isHovered, bind] = useHover();
-
+  console.log('DrawerHeader', title);
   return (
     <Flex justifyContent="space-between" alignItems="center" p="space.04" {...bind}>
-      {enableGoBack ? (
-        <HeaderActionButton
-          icon={<ArrowLeftIcon />}
-          isWaitingOnPerformedAction={isWaitingOnPerformedAction}
-          onAction={onGoBack}
-        />
-      ) : typeof title === 'string' ? (
-        <Box width="36px" height="36px" />
-      ) : null // FIXME - get rid of this without shifting title left
+      {
+        enableGoBack ? (
+          <HeaderActionButton
+            icon={<ArrowLeftIcon />}
+            isWaitingOnPerformedAction={isWaitingOnPerformedAction}
+            onAction={onGoBack}
+          />
+        ) : typeof title === 'string' ? (
+          <Box width="36px" height="36px" />
+        ) : null // FIXME - get rid of this without shifting title left
       }
       {icon && icon}
       {/* TODO clean this up and make titles consistent */}
