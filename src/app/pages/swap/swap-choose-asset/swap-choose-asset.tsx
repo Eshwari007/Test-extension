@@ -37,7 +37,7 @@ export function SwapChooseAsset() {
   );
 
   return (
-    <BaseDrawer title="" isShowing onClose={() => navigate(-1)}>
+    <BaseDrawer isShowing onClose={() => navigate(-1)}>
       <Box data-testid={SwapSelectors.ChooseAssetList} mx="space.06">
         <styled.h1 mb="space.05" textStyle="heading.03">
           {title}

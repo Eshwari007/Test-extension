@@ -1,6 +1,6 @@
 import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { useFormik } from 'formik';
-import { Box, Flex, HStack, styled } from 'leather-styles/jsx';
+import { Box, Flex, styled } from 'leather-styles/jsx';
 
 import { useWalletType } from '@app/common/use-wallet-type';
 import { Flag } from '@app/components/layout/flag';
@@ -33,7 +33,6 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
       isShowing
       onClose={onUserSafelyReturnToHomepage}
       footer={
-        // <HStack gap="space.04" mt={['16rem', 'space.06']}>
         <>
           <LeatherButton
             color="gray"
@@ -55,10 +54,9 @@ export function SignOutConfirmLayout(props: SignOutConfirmLayoutProps) {
             Sign out
           </LeatherButton>
         </>
-        // </HStack>
       }
     >
-      {/* TODO make the basedrawer do this automatically for all content */}
+      {/* #4370 TODO make the basedrawer do this automatically for all content */}
       <Flex alignItems="center" flexDirection="column" pb={['space.05', 'space.08']} px="space.05">
         <form onChange={form.handleChange} onSubmit={form.handleSubmit}>
           <styled.p textStyle="label.02">
