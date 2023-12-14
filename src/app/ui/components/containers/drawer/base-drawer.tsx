@@ -64,7 +64,7 @@ export const BaseDrawer = memo(
       };
     }, []);
 
-    console.log('typeof title', title, typeof title);
+    // console.log('typeof title', title, typeof title);
     // if (!isShowing) return null;
 
     return (
@@ -80,6 +80,7 @@ export const BaseDrawer = memo(
             data-testId="drawer-header"
           />
         }
+        onClose={onClose}
         footer={footer ? <Footer>{footer}</Footer> : undefined}
       >
         {children}

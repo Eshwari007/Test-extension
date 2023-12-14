@@ -1,27 +1,15 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
 import * as Dialog from '@radix-ui/react-dialog';
-import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
 import { css } from 'leather-styles/css';
-import { Box, Flex, HStack, Stack, styled } from 'leather-styles/jsx';
-import { title } from 'process';
-
-import { HasChildren } from '@app/common/has-children';
-import { useViewportMinWidth } from '@app/common/hooks/use-media-query';
-// import { isPopupMode } from '@app/common/utils';
-import { LeatherButton } from '@app/ui/components/button';
-import { CheckmarkIcon } from '@app/ui/components/icons/checkmark-icon';
-import { LeatherIcon } from '@app/ui/components/icons/leather-icon';
 
 interface ModalLayoutProps {
   children: ReactNode;
   title: ReactNode;
   footer?: ReactNode;
+  onClose?(): void; // check as this always needs to be provided
 }
-
-export function Modal({ children, title, footer }: ModalLayoutProps) {
-  const [open, setOpen] = useState(false);
-  const isAtleastBreakpointMd = useViewportMinWidth('md');
+export function Modal({ children, onClose, title, footer }: ModalLayoutProps) {
   return (
     <Dialog.Root open>
       <Dialog.Portal>
@@ -34,7 +22,7 @@ export function Modal({ children, title, footer }: ModalLayoutProps) {
           })}
         >
           <Dialog.Content
-            // onPointerDownOutside={() => setOpen(!open)}
+            onPointerDownOutside={onClose}
             className={css({
               backgroundColor: 'accent.background-primary',
               borderRadius: '6px',
@@ -44,11 +32,10 @@ export function Modal({ children, title, footer }: ModalLayoutProps) {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              width: isAtleastBreakpointMd ? '90vw' : '100vw',
-              height: isAtleastBreakpointMd ? undefined : '100vh',
-              maxWidth: '450px',
-              maxHeight: isAtleastBreakpointMd ? '85vh' : '100vh',
-              // padding: '25px',
+              width: { base: '100vw', md: '90vw' },
+              height: { base: '100vh', md: 'unset' },
+              maxWidth: { base: '100vw', md: '450px' },
+              maxHeight: { base: '100vh', md: '85vh' },
               animation: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
             })}
           >
@@ -56,7 +43,6 @@ export function Modal({ children, title, footer }: ModalLayoutProps) {
             <Dialog.Title />
             {title}
             {children}
-
             {footer}
             <Dialog.Close />
           </Dialog.Content>
