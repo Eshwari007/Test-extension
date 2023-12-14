@@ -10,11 +10,11 @@ import { useWalletType } from '@app/common/use-wallet-type';
 import { ChooseAssetContainer } from '@app/components/crypto-assets/choose-crypto-asset/choose-asset-container';
 import { ChooseCryptoAssetLayout } from '@app/components/crypto-assets/choose-crypto-asset/choose-crypto-asset.layout';
 import { CryptoAssetList } from '@app/components/crypto-assets/choose-crypto-asset/crypto-asset-list';
-import { ModalHeader } from '@app/components/modal-header';
 import { useNativeSegwitBalance } from '@app/query/bitcoin/balance/btc-native-segwit-balance.hooks';
 import { createStacksCryptoCurrencyAssetTypeWrapper } from '@app/query/stacks/balance/stacks-ft-balances.utils';
 import { useCurrentAccountNativeSegwitSigner } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 import { useCheckLedgerBlockchainAvailable } from '@app/store/accounts/blockchain/utils';
+import { ModalHeader } from '@app/ui/components/containers/headers/modal-header';
 
 function useBtcCryptoCurrencyAssetBalance() {
   const currentBtcSigner = useCurrentAccountNativeSegwitSigner();
@@ -53,7 +53,7 @@ export function ChooseCryptoAssetToFund() {
     [cryptoCurrencyAssetBalances, checkBlockchainAvailable, whenWallet]
   );
 
-  useRouteHeader(<ModalHeader hideActions onGoBack={() => navigate(RouteUrls.Home)} title=" " />);
+  useRouteHeader(<ModalHeader onGoBack={() => navigate(RouteUrls.Home)} />);
 
   const navigateToSendForm = useCallback(
     (cryptoAssetBalance: AllTransferableCryptoAssetBalances) => {
