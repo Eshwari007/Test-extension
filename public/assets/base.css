@@ -44,3 +44,8 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.splash-screen {
+  /* lightModeBrown.11  */
+  background-color: #4a423b !important;
+}

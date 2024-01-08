@@ -47,9 +47,25 @@ function setUserSelectedTheme(theme: UserSelectedTheme) {
 interface ThemeSwitcherProviderProps {
   children: React.JSX.Element | React.JSX.Element[];
 }
+
+function removeDefaultBg() {
+  const body = document.querySelector('body');
+  const html = document.querySelector('html');
+  const defClassName = 'splash-screen';
+
+  if (!body || !html) return;
+
+  body.classList.remove(defClassName);
+  html.classList.remove(defClassName);
+}
+
 export function ThemeSwitcherProvider({ children }: ThemeSwitcherProviderProps) {
   const userSelectedTheme = useUserSelectedTheme();
   const [theme, setTheme] = useState<ComputedTheme>(() => getComputedTheme(userSelectedTheme));
+
+  useEffect(() => {
+    removeDefaultBg();
+  }, []);
 
   useEffect(() => {
     switch (userSelectedTheme) {
