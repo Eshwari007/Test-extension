@@ -1,14 +1,15 @@
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
-import { SettingsSelectors } from '@tests/selectors/settings.selectors';
+// import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { Flex, HStack, styled } from 'leather-styles/jsx';
 
-// import { useHover } from 'use-events';
-import { Button } from '@app/ui/components/button/button';
+// import { Button } from '@app/ui/components/button/button';
 import { ArrowLeftIcon } from '@app/ui/components/icons/arrow-left-icon';
 import { CloseIcon } from '@app/ui/components/icons/close-icon';
 import { HamburgerIcon } from '@app/ui/components/icons/hamburger-icon';
 import { LeatherLogo } from '@app/ui/components/leather-logo';
 
+// import { useHover } from 'use-events';
+import { DropdownMenu } from '../../dowpdown-menu/dropdown-menu';
 import { NetworkModeBadge } from './components/network-mode-badge';
 import { HeaderActionButton } from './header-action-button';
 
@@ -119,15 +120,29 @@ export function Header({
           {/* // FIXME 4370 task #6 - network mode relies on accessing state so fails on Storybook  */}
           <NetworkModeBadge isTestnetChain name="Testnet" onClick={() => null} />
           {variant !== 'onboarding' && (
-            <Button
-              data-testid={SettingsSelectors.SettingsMenuBtn}
-              // FIXME 4370 task #6 - need to make this settings menu clickable here
-              // onClick={() => setIsShowingSettings(!isShowingSettings)}
-              onClick={() => null}
-              variant="ghost"
-            >
-              <HamburgerIcon />
-            </Button>
+            <>
+              {/* <Button
+                data-testid={SettingsSelectors.SettingsMenuBtn}
+                // FIXME 4370 task #6 - need to make this settings menu clickable here
+                // onClick={() => setIsShowingSettings(!isShowingSettings)}
+                onClick={() => null}
+                variant="ghost"
+              >
+                <HamburgerIcon />
+              </Button> */}
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <HamburgerIcon />
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Portal>
+                  <DropdownMenu.Content>
+                    <DropdownMenu.Group>
+                      <DropdownMenu.Item>Some setting</DropdownMenu.Item>
+                    </DropdownMenu.Group>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Portal>
+              </DropdownMenu.Root>
+            </>
           )}
           {variant === 'page' && onClose && (
             <HeaderActionButton
