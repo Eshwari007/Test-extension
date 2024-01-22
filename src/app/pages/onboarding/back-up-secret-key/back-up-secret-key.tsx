@@ -6,7 +6,7 @@ import { RouteUrls } from '@shared/route-urls';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { SecretKeyDisplayer } from '@app/features/secret-key-displayer/secret-key-displayer';
 import { useDefaultWalletSecretKey } from '@app/store/in-memory-key/in-memory-key.selectors';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { TwoColumnLayout } from '@app/ui/components/containers/two-column.layout';
 
 import { BackUpSecretKeyContent } from './components/back-up-secret-key.content';
@@ -15,7 +15,7 @@ export const BackUpSecretKeyPage = memo(() => {
   const secretKey = useDefaultWalletSecretKey();
   const navigate = useNavigate();
 
-  useRouteHeader(<HomeHeader />);
+  useRouteHeader(<Header variant="home" />);
 
   useEffect(() => {
     if (!secretKey) navigate(RouteUrls.Onboarding);

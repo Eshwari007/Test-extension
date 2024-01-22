@@ -9,7 +9,7 @@ import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { FullPageLoadingSpinner } from '@app/components/loading-spinner';
 import { useCurrentAccountNativeSegwitIndexZeroSignerNullable } from '@app/store/accounts/blockchain/bitcoin/native-segwit-account.hooks';
 import { useCurrentStacksAccount } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { FundLayout } from './components/fund.layout';
 import { FiatProvidersList } from './fiat-providers-list';
@@ -49,7 +49,7 @@ export function FundPage() {
   const address = getAddress();
   const balance = getBalance();
 
-  useRouteHeader(<HomeHeader onClose={() => navigate(RouteUrls.FundChooseCurrency)} title=" " />);
+  useRouteHeader(<Header variant="home" onClose={() => navigate(RouteUrls.FundChooseCurrency)} />);
 
   if (!address || !balance) return <FullPageLoadingSpinner />;
   return (

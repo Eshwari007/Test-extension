@@ -12,12 +12,12 @@ import { isFullPageMode, isPopupMode } from '@app/common/utils';
 import { openIndexPageInNewTab } from '@app/common/utils/open-in-new-tab';
 import { RequestPassword } from '@app/components/request-password';
 import { useNewBrandApprover } from '@app/store/settings/settings.selectors';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 export function Unlock() {
   const navigate = useNavigate();
 
-  useRouteHeader(<HomeHeader />);
+  useRouteHeader(<Header variant="home" />);
 
   const { hasApprovedNewBrand } = useNewBrandApprover();
 

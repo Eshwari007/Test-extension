@@ -7,13 +7,14 @@ import { ErrorBoundary, FallbackProps, useErrorHandler } from '@app/features/err
 import { openGithubIssue } from '@app/features/errors/utils';
 import { useErrorStackTraceState } from '@app/store/ui/ui.hooks';
 import { CodeBlock } from '@app/ui/components/codeblock';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { Title } from '@app/ui/components/typography/title';
 
+//  FIXME - need to make sure this actually shows correctly
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   const [value] = useErrorStackTraceState();
 
-  useRouteHeader(<HomeHeader />);
+  useRouteHeader(<Header variant="home" />);
 
   return (
     <Stack gap="space.06" flexGrow={1}>

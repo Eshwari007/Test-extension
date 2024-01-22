@@ -7,7 +7,7 @@ import { RouteUrls } from '@shared/route-urls';
 import { useAnalytics } from '@app/common/hooks/analytics/use-analytics';
 import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { settingsActions } from '@app/store/settings/settings.actions';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 
 import { AllowDiagnosticsLayout } from './allow-diagnostics-layout';
 
@@ -19,7 +19,10 @@ export function AllowDiagnosticsModal() {
 
   useEffect(() => void analytics.page('view', `${pathname}`), [analytics, pathname]);
 
-  useRouteHeader(<HomeHeader />);
+  /* FIXME 4370 Need to add: don't set header here and instead set it in sub-layout when doing that styling
+   */
+
+  useRouteHeader(<Header variant="home" />);
 
   const setDiagnosticsPermissionsAndGoToOnboarding = useCallback(
     (areDiagnosticsAllowed: boolean) => {

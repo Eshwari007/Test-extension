@@ -22,7 +22,7 @@ import {
 import { OnboardingGate } from '@app/routes/onboarding-gate';
 import { useStacksAccounts } from '@app/store/accounts/blockchain/stacks/stacks-account.hooks';
 import { Button } from '@app/ui/components/button/button';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { TwoColumnLayout } from '@app/ui/components/containers/two-column.layout';
 
 import { PasswordField } from './components/password-field';
@@ -53,7 +53,7 @@ function SetPasswordPage() {
   const { decodedAuthRequest } = useOnboardingState();
   const analytics = useAnalytics();
 
-  useRouteHeader(<HomeHeader onClose={() => navigate(-1)} />);
+  useRouteHeader(<Header variant="home" onClose={() => navigate(-1)} />);
 
   useEffect(() => {
     void analytics.page('view', '/set-password');

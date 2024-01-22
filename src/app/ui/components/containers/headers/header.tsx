@@ -1,8 +1,6 @@
 import { OnboardingSelectors } from '@tests/selectors/onboarding.selectors';
-// import { SettingsSelectors } from '@tests/selectors/settings.selectors';
 import { Flex, HStack, styled } from 'leather-styles/jsx';
 
-// import { Button } from '@app/ui/components/button/button';
 import { ArrowLeftIcon } from '@app/ui/components/icons/arrow-left-icon';
 import { CloseIcon } from '@app/ui/components/icons/close-icon';
 import { HamburgerIcon } from '@app/ui/components/icons/hamburger-icon';
@@ -130,7 +128,7 @@ export function Header({
               >
                 <HamburgerIcon />
               </Button> */}
-              <DropdownMenu.Root>
+              {/* <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
                   <HamburgerIcon />
                 </DropdownMenu.Trigger>
@@ -141,7 +139,7 @@ export function Header({
                     </DropdownMenu.Group>
                   </DropdownMenu.Content>
                 </DropdownMenu.Portal>
-              </DropdownMenu.Root>
+              </DropdownMenu.Root> */}
             </>
           )}
           {variant === 'page' && onClose && (

@@ -21,7 +21,7 @@ import {
   useNetworksActions,
 } from '@app/store/networks/networks.hooks';
 import { Button } from '@app/ui/components/button/button';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { Input } from '@app/ui/components/input';
 import { Title } from '@app/ui/components/typography/title';
 
@@ -62,7 +62,9 @@ export function AddNetwork() {
 
   const { setFieldValue } = formikProps;
 
-  useRouteHeader(<HomeHeader title="Add a network" onClose={() => navigate(RouteUrls.Home)} />);
+  useRouteHeader(
+    <Header variant="home" title="Add a network" onClose={() => navigate(RouteUrls.Home)} />
+  );
 
   const handleApiChange = (newValue: BitcoinNetworkModes) => {
     setBitcoinApi(newValue);

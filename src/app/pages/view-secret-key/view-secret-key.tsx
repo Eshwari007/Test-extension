@@ -8,7 +8,7 @@ import { useRouteHeader } from '@app/common/hooks/use-route-header';
 import { RequestPassword } from '@app/components/request-password';
 import { SecretKeyDisplayer } from '@app/features/secret-key-displayer/secret-key-displayer';
 import { useDefaultWalletSecretKey } from '@app/store/in-memory-key/in-memory-key.selectors';
-import { HomeHeader } from '@app/ui/components/containers/headers/home-header';
+import { Header } from '@app/ui/components/containers/headers/header';
 import { TwoColumnLayout } from '@app/ui/components/containers/two-column.layout';
 
 import { ViewSecretKeyContent } from './components/view-secret-key.content';
@@ -19,7 +19,7 @@ export function ViewSecretKey() {
   const defaultWalletSecretKey = useDefaultWalletSecretKey();
   const [showSecretKey, setShowSecretKey] = useState(false);
 
-  useRouteHeader(<HomeHeader onClose={() => navigate(RouteUrls.Home)} />);
+  useRouteHeader(<Header variant="home" onClose={() => navigate(RouteUrls.Home)} />);
 
   useEffect(() => {
     void analytics.page('view', '/save-secret-key');
