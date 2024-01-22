@@ -1,6 +1,5 @@
 import {
   useShowHighFeeConfirmationState,
-  useShowSettingsStore,
   useShowSwitchAccountsState,
   useShowTxSettingsCallback,
 } from '@app/store/ui/ui.hooks';
@@ -11,7 +10,6 @@ export function useDialogs() {
   const [isShowingHighFeeConfirmation, setIsShowingHighFeeConfirmation] =
     useShowHighFeeConfirmationState();
 
-  const [isShowingSettings, setIsShowingSettings] = useShowSettingsStore();
   const [isShowingTxSettingsCallback, setIsShowingTxSettingsCallback] = useShowTxSettingsCallback();
 
   return {
@@ -19,8 +17,6 @@ export function useDialogs() {
     setIsShowingSwitchAccountsState,
     isShowingHighFeeConfirmation,
     setIsShowingHighFeeConfirmation,
-    isShowingSettings,
-    setIsShowingSettings,
     isShowingTxSettingsCallback,
     setIsShowingTxSettingsCallback,
   };

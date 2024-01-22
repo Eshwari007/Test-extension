@@ -20,18 +20,20 @@ export interface DialogProps {
 }
 
 //  TODO 4370 task #1  - manual task to sift through all Dialogs and read the props
+// make sure that
 export const Dialog = memo(
   ({
     children,
     header, //so far only passed in my receive-modal + swap-choose
     footer,
+    //=> this is needed to block closing of Ledger dialog + some others
+    // check useDialog
     isWaitingOnPerformedAction,
     onGoBack,
     onClose,
     title,
     isShowing,
-  } // waitingOnPerformedActionMessage,
-  : DialogProps) => {
+  }: DialogProps) => {
     if (!isShowing) return null;
 
     return (

@@ -59,12 +59,6 @@ export function Header({
   // waitingOnPerformedActionMessage, // seems ledger needs this and it's always hardcoded as "Ledger device in use"
   title, // should make this a consistent string and also have an option for bigTitle? a different variant perhaps?
 }: HeaderProps) {
-  // FIXME - in oldHeader - clicking settings is controlled by state hooks? Weird.
-  // need to get new settings menu in place and check this and possibly stop using jotai
-
-  // useDialogs is the old useDrawers but why does the SettingsMenu button interaction belong there?
-  // const { isShowingSettings, setIsShowingSettings } = useDialogs();
-
   if (variant === 'big-title') {
     return (
       <styled.header p="space.05">
@@ -119,16 +113,7 @@ export function Header({
           <NetworkModeBadge isTestnetChain name="Testnet" onClick={() => null} />
           {variant !== 'onboarding' && (
             <>
-              {/* <Button
-                data-testid={SettingsSelectors.SettingsMenuBtn}
-                // FIXME 4370 task #6 - need to make this settings menu clickable here
-                // onClick={() => setIsShowingSettings(!isShowingSettings)}
-                onClick={() => null}
-                variant="ghost"
-              >
-                <HamburgerIcon />
-              </Button> */}
-              {/* <DropdownMenu.Root>
+              <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
                   <HamburgerIcon />
                 </DropdownMenu.Trigger>
@@ -139,7 +124,7 @@ export function Header({
                     </DropdownMenu.Group>
                   </DropdownMenu.Content>
                 </DropdownMenu.Portal>
-              </DropdownMenu.Root> */}
+              </DropdownMenu.Root>
             </>
           )}
           {variant === 'page' && onClose && (

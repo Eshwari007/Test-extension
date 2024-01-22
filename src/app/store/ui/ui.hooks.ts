@@ -5,7 +5,6 @@ import {
   loadingState,
   routeHeaderState,
   showHighFeeConfirmationState,
-  showSettingsStore,
   showSwitchAccountsState,
   showTxSettingsCallback,
 } from './ui';
@@ -16,10 +15,6 @@ export function useShowHighFeeConfirmationState() {
 
 export function useShowSwitchAccountsState() {
   return useAtom(showSwitchAccountsState);
-}
-
-export function useShowSettingsStore() {
-  return useAtom(showSettingsStore);
 }
 
 export function useShowTxSettingsCallback() {
