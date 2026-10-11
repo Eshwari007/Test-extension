@@ -25,6 +25,7 @@ from typing import Any
 
 import pandas as pd
 
+from .data import alpaca_headers
 from .portfolio import Fill
 
 
@@ -186,16 +187,14 @@ class AlpacaBroker(Broker):
 
     def __init__(self, paper: bool = True, key: str | None = None, secret: str | None = None):
         self.base = self.PAPER_URL if paper else self.LIVE_URL
-        self.key = key or os.environ.get("APCA_API_KEY_ID", "")
-        self.secret = secret or os.environ.get("APCA_API_SECRET_KEY", "")
-        if not self.key or not self.secret:
-            raise RuntimeError("Set APCA_API_KEY_ID and APCA_API_SECRET_KEY")
+        # Empty when the keys are injected by an egress proxy (cloud network secret).
+        self.headers = alpaca_headers(key, secret)
 
     def _request(self, method: str, path: str, body: dict | None = None) -> Any:
         data = json.dumps(body).encode() if body is not None else None
         req = urllib.request.Request(self.base + path, data=data, method=method)
-        req.add_header("APCA-API-KEY-ID", self.key)
-        req.add_header("APCA-API-SECRET-KEY", self.secret)
+        for k, v in self.headers.items():
+            req.add_header(k, v)
         req.add_header("Content-Type", "application/json")
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:

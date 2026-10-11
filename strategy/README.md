@@ -59,7 +59,7 @@ python -m strategy.cli validate --candidate C2 --variant V3 --tier T2 --syntheti
 
 # Phase 1: real data
 python -m strategy.cli fetch --timeframe 1d --start 2021-01-01                       # Alpaca, the execution venue (default)
-python -m strategy.cli fetch --timeframe 1h --start 2022-01-01                       # needs APCA_API_KEY_ID / APCA_API_SECRET_KEY
+python -m strategy.cli fetch --timeframe 1h --start 2022-01-01                       # keys: APCA_* env vars, or a cloud network secret
 python -m strategy.cli fetch --source coinbase --timeframe 1d --start 2019-01-01     # optional: reference exchange for pre-Alpaca history
 python -m strategy.cli quality --timeframe 1d
 

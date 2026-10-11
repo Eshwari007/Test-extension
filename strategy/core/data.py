@@ -112,6 +112,19 @@ def _get_json(url: str, headers: dict[str, str] | None = None, retries: int = 4)
             delay *= 2
 
 
+def alpaca_headers(key: str | None = None, secret: str | None = None) -> dict[str, str]:
+    """Alpaca auth headers from args or APCA_* env vars.
+
+    Returns {} when no keys are set: in a cloud environment with a network
+    secret configured, the egress proxy injects the headers itself.
+    """
+    key = key or os.environ.get("APCA_API_KEY_ID", "")
+    secret = secret or os.environ.get("APCA_API_SECRET_KEY", "")
+    if key and secret:
+        return {"APCA-API-KEY-ID": key, "APCA-API-SECRET-KEY": secret}
+    return {}
+
+
 def fetch_alpaca_bars(
     symbol: str,
     timeframe: str,
@@ -123,9 +136,7 @@ def fetch_alpaca_bars(
     """Alpaca crypto bars, paged. timeframe: 1Min, 15Min, 1Hour, 1Day (or our short names)."""
     tf_map = {"1m": "1Min", "15m": "15Min", "1h": "1Hour", "1d": "1Day"}
     tf = tf_map.get(timeframe, timeframe)
-    key = key or os.environ.get("APCA_API_KEY_ID", "")
-    secret = secret or os.environ.get("APCA_API_SECRET_KEY", "")
-    headers = {"APCA-API-KEY-ID": key, "APCA-API-SECRET-KEY": secret}
+    headers = alpaca_headers(key, secret)
     pair = symbol if "/" in symbol else f"{symbol}/USD"
     params: dict[str, Any] = {"symbols": pair, "timeframe": tf, "start": start, "limit": 10000}
     if end:
@@ -147,9 +158,7 @@ def fetch_alpaca_bars(
 
 def fetch_alpaca_assets(key: str | None = None, secret: str | None = None) -> list[dict[str, Any]]:
     """GET /v2/assets?asset_class=crypto — re-pull at the start of Phase 1."""
-    key = key or os.environ.get("APCA_API_KEY_ID", "")
-    secret = secret or os.environ.get("APCA_API_SECRET_KEY", "")
-    headers = {"APCA-API-KEY-ID": key, "APCA-API-SECRET-KEY": secret}
+    headers = alpaca_headers(key, secret)
     return _get_json("https://api.alpaca.markets/v2/assets?asset_class=crypto&status=active", headers)
 
 
