@@ -11,10 +11,11 @@ tiers:
   memecoin: [SHIB, PEPE, BONK, WIF, TRUMP]
 
 # Rebrands whose history must be stitched (old -> new) and documented.
+# new_per_old = how many new tokens one old token converted into.
 rebrands:
-  MATIC: POL
-  MKR: SKY
-  RNDR: RENDER
+  MATIC: { new: POL, new_per_old: 1 }
+  MKR: { new: SKY, new_per_old: 24000 }
+  RNDR: { new: RENDER, new_per_old: 1 }
 
 # Eligibility rules, applied monthly using only data available at that date.
 eligibility:

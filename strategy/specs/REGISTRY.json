@@ -1,5 +1,5 @@
 {
-  "reason": "Phase 1: add listings.yaml (Alpaca listing history incl. SOL delisting). No candidate parameter changed.",
+  "reason": "Phase 1: rebrands carry conversion ratio (MKR->SKY 1:24000). Documentation of data handling; no candidate parameter changed.",
   "files": {
     "c1_intraday.yaml": "8b38667f7a1bfd2ba548a9cdf4837b2d44996a3e1d5d708a31aaf7575ca02e70",
     "c2_swing.yaml": "622149bbad955edc96f6a85a2fab2ca7f2fe0c024ca39a3a490c0704e7d16bd2",
@@ -8,6 +8,6 @@
     "listings.yaml": "dd163b25cd60161818385406928eb2f1b8557c25de13f0bb3b720be93f32cc52",
     "periods.yaml": "e10f2ee52c8e9040ffc3e59cd90fc9f3e1a940249d99d1ba62f3ed2a38e05640",
     "risk_tiers.yaml": "490e02dae9ed4df3ff0d071f05def074e0668034fc3e94aeebdf9eb00af40aef",
-    "universe.yaml": "dd01742179a4331f6bc1b45e54edb4f872b4cdfa46cd2e168cbfd92dd558b1ae"
+    "universe.yaml": "1137d7d46557d033b1b494e50abef7252b5222657c07cc31453b3f7e36c49e4c"
   }
 }

@@ -264,12 +264,19 @@ def quality_check(
     )
 
 
-def stitch_rebrand(old: pd.DataFrame, new: pd.DataFrame) -> pd.DataFrame:
-    """Prepend the old ticker's history to the new one (e.g. MATIC -> POL). 1:1 conversions only."""
+def stitch_rebrand(old: pd.DataFrame, new: pd.DataFrame, new_per_old: float = 1.0) -> pd.DataFrame:
+    """Prepend the old ticker's history to the new one (e.g. MATIC -> POL).
+
+    `new_per_old` is the conversion ratio (1 old token = N new tokens): prices are
+    divided by it and volumes multiplied, so MKR -> SKY uses 24000.
+    """
     if old is None or old.empty:
         return new
-    old = normalize_bars(old)
+    old = normalize_bars(old).copy()
     new = normalize_bars(new)
+    for c in ("open", "high", "low", "close"):
+        old[c] = old[c] / new_per_old
+    old["volume"] = old["volume"] * new_per_old
     cutoff = new.index[0]
     return pd.concat([old[old.index < cutoff], new]).sort_index()
 
