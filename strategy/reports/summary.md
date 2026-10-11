@@ -27,7 +27,7 @@ data was examined, and every spec change is in a dated commit with its reason.
 | K8 | BTC regime filter cuts drawdowns | Not separately ablated; filter was on in every run. |
 | K9 | Fees erase most intraday edge | **Confirmed**: C1 fees 24–35 % of gross profit, negative expectancy. |
 | K10 | Tier caps keep worst day < 70 % of limit | Worst hold-out day −3.7 % at T4 vs limit 60 %; holds trivially at this exposure. |
-| K11 | Each candidate beats random entries | C2 V1 T1: 1 000-run result in `runs/phase4/C2_random_entry_V1_T1.txt`. Cannot rescue G4. |
+| K11 | Each candidate beats random entries | **Rejected**: C2 V1 T1 at the 72nd percentile of 1 000 random-entry runs (needs > 95th). The entry signal adds nothing beyond the regime filter. |
 | K12 | Backtest costs match Alpaca reality | Not reached (Phase 5). |
 | K13 | Higher tiers → higher long-run growth | **Rejected**: Calmar and return fall with every tier up, in and out of sample, for every candidate. |
 

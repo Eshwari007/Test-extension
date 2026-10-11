@@ -34,7 +34,7 @@ Benchmarks on the hold-out: equal-weight eligible-alt basket **−31.9 % (max DD
 | Net return after costs > 0 | | V1 T1 and T2 only |
 | Max DD ≤ ⅔ tier limit | | all pass |
 | Monte Carlo 95th-pct DD ≤ tier limit | 5 000 resamples | all pass |
-| Beats random-entry benchmark | > 95th pct | run for V1 T1 (see below); cannot rescue the other gates |
+| Beats random-entry benchmark | > 95th pct | **FAIL**: V1 T1 real +1.62 % sits at the 72nd percentile of 1 000 random-entry runs (random median +0.37 %, 95th pct +3.43 %) |
 | Walk-forward windows positive | ≥ 60 % | **24–29 %** at every tier (17 windows, 12 m train / 3 m test) |
 | Survives double-cost stress | net > 0 | V1 T1 only |
 | Minimum OOS trades | 100 | **26–55** at every config |
@@ -57,7 +57,7 @@ Claims register updates (results column):
 
 - **K4** (V1 ladder is the best exit): holds — V1 beats V2 and V3 on return/max-DD in and out of sample. Moot, since no variant passes.
 - **K8** (BTC regime filter cuts drawdowns): not separately tested; the filter was on in every run.
-- **K11** (beats random entries): V1 T1 result recorded in `runs/phase4/C2_random_entry_V1_T1.txt` when the 1 000-run job finishes. Informational.
+- **K11** (beats random entries): **rejected.** With identical exits, sizing, regime filter and trade count, random entries matched or beat the breakout signal 28 % of the time; the signal adds nothing beyond the regime filter.
 - **K13** (higher tiers → higher long-run growth): **rejected.** Calmar and net return fall with every tier up, in sample and out.
 
 ## Statistical floor

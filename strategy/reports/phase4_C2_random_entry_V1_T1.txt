@@ -1,0 +1,2 @@
+  reference history merged from strategy/data/ref for 30 coins
+C2 V1 T1: real net_return +1.62% at percentile 72.4% (random p50 +0.37%, p95 +3.43%) -> FAIL  [1900s]
