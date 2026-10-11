@@ -1,0 +1,33 @@
+  BTC 1d: 2110 bars, missing 0.000%, 0 gaps, 0 extreme moves, 0 zero-volume bars -> PASS
+  SOL 1d: 1692 bars, missing 0.118%, 1 gaps, 0 extreme moves, 11 zero-volume bars -> PASS
+  XRP 1d: 1015 bars, missing 0.000%, 0 gaps, 0 extreme moves, 0 zero-volume bars -> PASS
+  DOGE 1d: 2110 bars, missing 0.000%, 0 gaps, 4 extreme moves, 2 zero-volume bars -> PASS
+  ADA 1d: 241 bars, missing 0.000%, 0 gaps, 0 extreme moves, 8 zero-volume bars -> PASS
+  AVAX 1d: 1789 bars, missing 0.000%, 0 gaps, 0 extreme moves, 33 zero-volume bars -> PASS
+  LINK 1d: 2110 bars, missing 0.000%, 0 gaps, 0 extreme moves, 5 zero-volume bars -> PASS
+  LTC 1d: 2110 bars, missing 0.000%, 0 gaps, 0 extreme moves, 5 zero-volume bars -> PASS
+  BCH 1d: 2110 bars, missing 0.000%, 0 gaps, 2 extreme moves, 15 zero-volume bars -> PASS
+  DOT 1d: 1151 bars, missing 0.000%, 0 gaps, 0 extreme moves, 28 zero-volume bars -> PASS
+  UNI 1d: 2110 bars, missing 0.000%, 0 gaps, 1 extreme moves, 126 zero-volume bars -> PASS
+  AAVE 1d: 1915 bars, missing 0.000%, 0 gaps, 0 extreme moves, 35 zero-volume bars -> PASS
+  ARB 1d: 238 bars, missing 0.000%, 0 gaps, 0 extreme moves, 16 zero-volume bars -> PASS
+  CRV 1d: 1151 bars, missing 0.000%, 0 gaps, 0 extreme moves, 56 zero-volume bars -> PASS
+  GRT 1d: 1915 bars, missing 0.000%, 0 gaps, 1 extreme moves, 7 zero-volume bars -> PASS
+  LDO 1d: 237 bars, missing 0.000%, 0 gaps, 0 extreme moves, 41 zero-volume bars -> PASS
+  FIL 1d: 238 bars, missing 0.000%, 0 gaps, 0 extreme moves, 16 zero-volume bars -> PASS
+  POL 1d: 235 bars, missing 0.000%, 0 gaps, 0 extreme moves, 40 zero-volume bars -> PASS
+  RENDER 1d: 235 bars, missing 0.000%, 0 gaps, 0 extreme moves, 17 zero-volume bars -> PASS
+  SUSHI 1d: 1907 bars, missing 0.000%, 0 gaps, 0 extreme moves, 206 zero-volume bars -> PASS
+  YFI 1d: 1775 bars, missing 0.000%, 0 gaps, 0 extreme moves, 431 zero-volume bars -> PASS
+  BAT 1d: 2110 bars, missing 0.000%, 0 gaps, 0 extreme moves, 52 zero-volume bars -> PASS
+  XTZ 1d: 1151 bars, missing 0.000%, 0 gaps, 0 extreme moves, 78 zero-volume bars -> PASS
+  SKY 1d: 380 bars, missing 0.000%, 0 gaps, 0 extreme moves, 47 zero-volume bars -> PASS
+  ONDO 1d: 237 bars, missing 0.000%, 0 gaps, 0 extreme moves, 16 zero-volume bars -> PASS
+  HYPE 1d: 237 bars, missing 0.000%, 0 gaps, 0 extreme moves, 16 zero-volume bars -> PASS
+  SHIB 1d: 1308 bars, missing 0.000%, 0 gaps, 1 extreme moves, 41 zero-volume bars -> PASS
+  PEPE 1d: 621 bars, missing 0.000%, 0 gaps, 0 extreme moves, 36 zero-volume bars -> PASS
+  BONK 1d: 238 bars, missing 0.000%, 0 gaps, 0 extreme moves, 16 zero-volume bars -> PASS
+  WIF 1d: 235 bars, missing 0.000%, 0 gaps, 0 extreme moves, 32 zero-volume bars -> PASS
+  TRUMP 1d: 628 bars, missing 0.000%, 0 gaps, 0 extreme moves, 82 zero-volume bars -> PASS
+
+Gate G1: PASS

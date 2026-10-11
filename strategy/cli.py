@@ -90,13 +90,14 @@ def cmd_fetch(args) -> None:
 def cmd_quality(args) -> None:
     spec = load_spec("C2", verify=False)
     store = D.BarStore(args.data)
+    listings = D.load_listings(SPEC_DIR / "listings.yaml") if (SPEC_DIR / "listings.yaml").exists() else {}
     failed = []
     for sym in ["BTC"] + _universe_symbols(spec):
         df = store.load(sym, args.timeframe)
         if df is None:
             print(f"  {sym}: missing (excluded)")
             continue
-        rep = D.quality_check(sym, args.timeframe, df)
+        rep = D.quality_check(sym, args.timeframe, df, listings.get(sym))
         print("  " + rep.summary())
         if not rep.passed:
             failed.append(sym)

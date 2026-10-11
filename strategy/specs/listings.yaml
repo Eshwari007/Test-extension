@@ -1,0 +1,38 @@
+# Alpaca listing history (point-in-time universe, Phase 1 — Gate G1).
+# Source: first/last daily bar on Alpaca per coin, plus known delisting windows found by the
+# quality checks. A coin is only eligible while listed, so delisted periods never enter a backtest.
+# Dates are the first/last UTC day the pair traded on Alpaca; null = still listed.
+
+listed:
+  SOL:
+    - { from: "2021-01-01", to: "2023-07-06", note: "Delisted after SEC named SOL a security (June 2023)" }
+    - { from: "2024-08-26", to: null, note: "Relisted" }
+  DOGE:  [{ from: "2021-01-01", to: null }]
+  LINK:  [{ from: "2021-01-01", to: null }]
+  LTC:   [{ from: "2021-01-01", to: null }]
+  BCH:   [{ from: "2021-01-01", to: null }]
+  UNI:   [{ from: "2021-01-01", to: null }]
+  BAT:   [{ from: "2021-01-01", to: null }]
+  AAVE:  [{ from: "2021-07-15", to: null }]
+  GRT:   [{ from: "2021-07-15", to: null }]
+  SUSHI: [{ from: "2021-07-23", to: null }]
+  AVAX:  [{ from: "2021-11-18", to: null }]
+  YFI:   [{ from: "2021-12-02", to: null }]
+  SHIB:  [{ from: "2023-03-14", to: null }]
+  DOT:   [{ from: "2023-08-18", to: null }]
+  CRV:   [{ from: "2023-08-18", to: null }]
+  XTZ:   [{ from: "2023-08-18", to: null }]
+  XRP:   [{ from: "2024-01-01", to: null }]
+  TRUMP: [{ from: "2025-01-22", to: null }]
+  PEPE:  [{ from: "2025-01-29", to: null }]
+  SKY:   [{ from: "2025-09-27", to: null }]
+  ADA:   [{ from: "2026-02-13", to: null }]
+  BONK:  [{ from: "2026-02-16", to: null }]
+  ARB:   [{ from: "2026-02-16", to: null }]
+  FIL:   [{ from: "2026-02-16", to: null }]
+  LDO:   [{ from: "2026-02-17", to: null }]
+  ONDO:  [{ from: "2026-02-17", to: null }]
+  HYPE:  [{ from: "2026-02-17", to: null }]
+  WIF:   [{ from: "2026-02-19", to: null }]
+  POL:   [{ from: "2026-02-19", to: null }]
+  RENDER: [{ from: "2026-02-19", to: null }]

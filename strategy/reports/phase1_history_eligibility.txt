@@ -1,0 +1,94 @@
+== History depth on Alpaca (daily bars) ==
+symbol      tier      first       last  days  train_days  median_dv_30d_M  median_dv_all_M
+   SOL large_cap 2021-01-01 2026-10-11  1692         915              0.0              0.8
+  DOGE large_cap 2021-01-01 2026-10-11  2110        1095              0.0              0.1
+  LINK large_cap 2021-01-01 2026-10-11  2110        1095              0.0              0.0
+   LTC large_cap 2021-01-01 2026-10-11  2110        1095              0.0              0.0
+   BCH large_cap 2021-01-01 2026-10-11  2110        1095              0.0              0.0
+   UNI large_cap 2021-01-01 2026-10-11  2110        1095              0.0              0.0
+  AAVE large_cap 2021-07-15 2026-10-11  1915         900              0.0              0.0
+  AVAX large_cap 2021-11-18 2026-10-11  1789         774              0.0              0.0
+   DOT large_cap 2023-08-18 2026-10-11  1151         136              0.0              0.0
+   XRP large_cap 2024-01-01 2026-10-11  1015           0              0.0              0.1
+   ADA large_cap 2026-02-13 2026-10-11   241           0              0.0              0.0
+  SHIB  memecoin 2023-03-14 2026-10-11  1308         293              0.0              0.0
+ TRUMP  memecoin 2025-01-22 2026-10-11   628           0              0.0              0.0
+  PEPE  memecoin 2025-01-29 2026-10-11   621           0              0.0              0.0
+  BONK  memecoin 2026-02-16 2026-10-11   238           0              0.0              0.0
+   WIF  memecoin 2026-02-19 2026-10-11   235           0              0.0              0.0
+   BAT   mid_cap 2021-01-01 2026-10-11  2110        1095              0.0              0.0
+   GRT   mid_cap 2021-07-15 2026-10-11  1915         900              0.0              0.0
+ SUSHI   mid_cap 2021-07-23 2026-10-11  1907         892              0.0              0.0
+   YFI   mid_cap 2021-12-02 2026-10-11  1775         760              0.0              0.0
+   CRV   mid_cap 2023-08-18 2026-10-11  1151         136              0.0              0.0
+   XTZ   mid_cap 2023-08-18 2026-10-11  1151         136              0.0              0.0
+   SKY   mid_cap 2025-09-27 2026-10-11   380           0              0.0              0.0
+   ARB   mid_cap 2026-02-16 2026-10-11   238           0              0.0              0.0
+   FIL   mid_cap 2026-02-16 2026-10-11   238           0              0.0              0.0
+   LDO   mid_cap 2026-02-17 2026-10-11   237           0              0.0              0.0
+  ONDO   mid_cap 2026-02-17 2026-10-11   237           0              0.0              0.0
+  HYPE   mid_cap 2026-02-17 2026-10-11   237           0              0.0              0.0
+   POL   mid_cap 2026-02-19 2026-10-11   235           0              0.0              0.0
+RENDER   mid_cap 2026-02-19 2026-10-11   235           0              0.0              0.0
+
+Training period (through 2023-12-31) coverage:  12 coins with >=365 training days; 14 with none
+
+== Eligibility (position: >=365 days history, median 30d $vol >= $20M, Alpaca volume) ==
+eligible coins per month (first/last 6):
+2021-01-01 00:00:00+00:00    0
+2021-02-01 00:00:00+00:00    0
+2021-03-01 00:00:00+00:00    0
+2021-04-01 00:00:00+00:00    0
+2021-05-01 00:00:00+00:00    0
+2021-06-01 00:00:00+00:00    0
+Freq: MS
+...
+2026-05-01 00:00:00+00:00    0
+2026-06-01 00:00:00+00:00    0
+2026-07-01 00:00:00+00:00    0
+2026-08-01 00:00:00+00:00    0
+2026-09-01 00:00:00+00:00    0
+2026-10-01 00:00:00+00:00    0
+Freq: MS
+ever eligible: ['SOL']
+never eligible: ['AAVE', 'ADA', 'ARB', 'AVAX', 'BAT', 'BCH', 'BONK', 'CRV', 'DOGE', 'DOT', 'FIL', 'GRT', 'HYPE', 'LDO', 'LINK', 'LTC', 'ONDO', 'PEPE', 'POL', 'RENDER', 'SHIB', 'SKY', 'SUSHI', 'TRUMP', 'UNI', 'WIF', 'XRP', 'XTZ', 'YFI']
+
+== Eligibility (swing: >=90 days history, median 30d $vol >= $20M, Alpaca volume) ==
+eligible coins per month (first/last 6):
+2021-01-01 00:00:00+00:00    0
+2021-02-01 00:00:00+00:00    0
+2021-03-01 00:00:00+00:00    0
+2021-04-01 00:00:00+00:00    0
+2021-05-01 00:00:00+00:00    1
+2021-06-01 00:00:00+00:00    1
+Freq: MS
+...
+2026-05-01 00:00:00+00:00    0
+2026-06-01 00:00:00+00:00    0
+2026-07-01 00:00:00+00:00    0
+2026-08-01 00:00:00+00:00    0
+2026-09-01 00:00:00+00:00    0
+2026-10-01 00:00:00+00:00    0
+Freq: MS
+ever eligible: ['DOGE', 'SOL']
+never eligible: ['AAVE', 'ADA', 'ARB', 'AVAX', 'BAT', 'BCH', 'BONK', 'CRV', 'DOT', 'FIL', 'GRT', 'HYPE', 'LDO', 'LINK', 'LTC', 'ONDO', 'PEPE', 'POL', 'RENDER', 'SHIB', 'SKY', 'SUSHI', 'TRUMP', 'UNI', 'WIF', 'XRP', 'XTZ', 'YFI']
+
+== Eligibility (intraday: >=90 days history, median 30d $vol >= $20M, Alpaca volume) ==
+eligible coins per month (first/last 6):
+2021-01-01 00:00:00+00:00    0
+2021-02-01 00:00:00+00:00    0
+2021-03-01 00:00:00+00:00    0
+2021-04-01 00:00:00+00:00    0
+2021-05-01 00:00:00+00:00    1
+2021-06-01 00:00:00+00:00    1
+Freq: MS
+...
+2026-05-01 00:00:00+00:00    0
+2026-06-01 00:00:00+00:00    0
+2026-07-01 00:00:00+00:00    0
+2026-08-01 00:00:00+00:00    0
+2026-09-01 00:00:00+00:00    0
+2026-10-01 00:00:00+00:00    0
+Freq: MS
+ever eligible: ['DOGE', 'SOL']
+never eligible: ['AAVE', 'ADA', 'ARB', 'AVAX', 'BAT', 'BCH', 'BONK', 'CRV', 'DOT', 'FIL', 'GRT', 'HYPE', 'LDO', 'LINK', 'LTC', 'ONDO', 'PEPE', 'POL', 'RENDER', 'SHIB', 'SKY', 'SUSHI', 'TRUMP', 'UNI', 'WIF', 'XRP', 'XTZ', 'YFI']

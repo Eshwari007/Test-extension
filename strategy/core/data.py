@@ -156,10 +156,11 @@ def fetch_alpaca_bars(
     return normalize_bars(df)
 
 
-def fetch_alpaca_assets(key: str | None = None, secret: str | None = None) -> list[dict[str, Any]]:
+def fetch_alpaca_assets(key: str | None = None, secret: str | None = None, paper: bool = True) -> list[dict[str, Any]]:
     """GET /v2/assets?asset_class=crypto — re-pull at the start of Phase 1."""
     headers = alpaca_headers(key, secret)
-    return _get_json("https://api.alpaca.markets/v2/assets?asset_class=crypto&status=active", headers)
+    base = "https://paper-api.alpaca.markets" if paper else "https://api.alpaca.markets"
+    return _get_json(f"{base}/v2/assets?asset_class=crypto&status=active", headers)
 
 
 def fetch_coinbase_candles(symbol: str, timeframe: str, start: str, end: str | None = None) -> pd.DataFrame:
@@ -213,8 +214,18 @@ class QualityReport:
         )
 
 
-def quality_check(symbol: str, timeframe: str, raw: pd.DataFrame) -> QualityReport:
-    """Flag missing bars, +/-50% moves and zero volume. Gaps are logged, never forward-filled."""
+def quality_check(
+    symbol: str,
+    timeframe: str,
+    raw: pd.DataFrame,
+    listing_windows: list[tuple[pd.Timestamp, pd.Timestamp | None]] | None = None,
+) -> QualityReport:
+    """Flag missing bars, +/-50% moves and zero volume. Gaps are logged, never forward-filled.
+
+    `listing_windows` (from specs/listings.yaml) marks when the coin was tradable; bars
+    outside those windows are not expected, so a documented delisting is not a gap, and
+    the first bar after a relisting is not an extreme move.
+    """
     if raw.empty:
         return QualityReport(symbol, timeframe, 0, 1.0)
     before = len(raw)
@@ -222,6 +233,12 @@ def quality_check(symbol: str, timeframe: str, raw: pd.DataFrame) -> QualityRepo
     dup = before - len(df)
     delta = TIMEFRAME_DELTA[timeframe]
     expected = pd.date_range(df.index[0], df.index[-1], freq=delta, tz="UTC")
+    if listing_windows:
+        mask = np.zeros(len(expected), dtype=bool)
+        for start, stop in listing_windows:
+            hi = stop + pd.Timedelta(days=1) if stop is not None else expected[-1] + delta
+            mask |= (expected >= start) & (expected < hi)
+        expected = expected[mask]
     missing = expected.difference(df.index)
     gaps: list[tuple[pd.Timestamp, pd.Timestamp]] = []
     if len(missing):
@@ -230,6 +247,9 @@ def quality_check(symbol: str, timeframe: str, raw: pd.DataFrame) -> QualityRepo
         ends = np.r_[breaks, len(missing) - 1]
         gaps = [(missing[s], missing[e]) for s, e in zip(starts, ends)]
     move = (df["close"] / df["close"].shift(1) - 1).abs()
+    if listing_windows:
+        for start, _ in listing_windows:
+            move[(df.index >= start) & (df.index < start + delta)] = 0.0  # first bar after (re)listing
     extreme = list(df.index[move >= 0.5])
     zero_vol = list(df.index[df["volume"] <= 0])
     return QualityReport(
@@ -263,14 +283,17 @@ def build_eligibility_table(
     min_median_dollar_volume: float,
     start: pd.Timestamp | None = None,
     end: pd.Timestamp | None = None,
-    listings: dict[str, tuple[pd.Timestamp | None, pd.Timestamp | None]] | None = None,
+    listings: dict[str, list[tuple[pd.Timestamp, pd.Timestamp | None]]] | None = None,
+    reference_bars: dict[str, pd.DataFrame] | None = None,
 ) -> pd.DataFrame:
     """Monthly boolean table (rows = month starts, columns = symbols).
 
     A coin is eligible on month M if, using only data before M:
-      1. it is listed (per `listings`, or simply has bars) on that date;
-      2. it has >= min_history_days daily bars before M;
-      3. its median 30-day dollar volume before M is >= the threshold.
+      1. it is listed on Alpaca (per `listings`, or simply has bars) on that date;
+      2. it has >= min_history_days daily bars before M (reference bars count, so a
+         coin with long exchange history qualifies as soon as Alpaca lists it);
+      3. its median 30-day dollar volume before M, on the reference exchange when
+         `reference_bars` is given, is >= the threshold.
     Delisted coins stay in the table for the months they qualified, so the
     universe is survivorship-free.
     """
@@ -283,14 +306,15 @@ def build_eligibility_table(
     months = pd.date_range(start.normalize().replace(day=1), end, freq="MS", tz="UTC")
     table = pd.DataFrame(False, index=months, columns=sorted(daily_bars))
     for sym, df in daily_bars.items():
-        dv = (df["close"] * df["volume"]).rolling(30, min_periods=30).median()
-        listed_from, listed_to = (listings or {}).get(sym, (None, None))
+        ref = (reference_bars or {}).get(sym)
+        vol_src = ref if ref is not None else df
+        hist_src = ref if ref is not None else df
+        dv = (vol_src["close"] * vol_src["volume"]).rolling(30, min_periods=30).median()
+        windows = (listings or {}).get(sym)
         for m in months:
-            hist = df[df.index < m]
-            if listed_from is not None and m < listed_from:
+            if not listed_at(windows, m):
                 continue
-            if listed_to is not None and m > listed_to:
-                continue
+            hist = hist_src[hist_src.index < m]
             if len(hist) < min_history_days:
                 continue
             recent_dv = dv[dv.index < m].dropna()
@@ -298,6 +322,27 @@ def build_eligibility_table(
                 continue
             table.loc[m, sym] = True
     return table
+
+
+def load_listings(path: Path | str) -> dict[str, list[tuple[pd.Timestamp, pd.Timestamp | None]]]:
+    """specs/listings.yaml -> {symbol: [(from, to_or_None), ...]}."""
+    import yaml
+
+    with open(path, encoding="utf-8") as fh:
+        raw = yaml.safe_load(fh) or {}
+    out: dict[str, list[tuple[pd.Timestamp, pd.Timestamp | None]]] = {}
+    for sym, windows in (raw.get("listed") or {}).items():
+        out[sym] = [
+            (pd.Timestamp(w["from"], tz="UTC"), pd.Timestamp(w["to"], tz="UTC") if w.get("to") else None)
+            for w in windows
+        ]
+    return out
+
+
+def listed_at(windows: list[tuple[pd.Timestamp, pd.Timestamp | None]] | None, t: pd.Timestamp) -> bool:
+    if not windows:
+        return True
+    return any(t >= a and (b is None or t <= b) for a, b in windows)
 
 
 def eligible_at(table: pd.DataFrame, t: pd.Timestamp) -> set[str]:
