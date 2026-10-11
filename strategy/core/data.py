@@ -346,6 +346,15 @@ def load_listings(path: Path | str) -> dict[str, list[tuple[pd.Timestamp, pd.Tim
     return out
 
 
+def load_exclusions(path: Path | str) -> dict[str, dict[str, str]]:
+    """specs/listings.yaml -> {timeframe: {symbol: reason}} of Gate G1 exclusions."""
+    import yaml
+
+    with open(path, encoding="utf-8") as fh:
+        raw = yaml.safe_load(fh) or {}
+    return {str(tf): dict(v or {}) for tf, v in (raw.get("exclusions") or {}).items()}
+
+
 def listed_at(windows: list[tuple[pd.Timestamp, pd.Timestamp | None]] | None, t: pd.Timestamp) -> bool:
     if not windows:
         return True

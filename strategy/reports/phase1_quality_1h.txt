@@ -1,0 +1,33 @@
+  BTC 1h: 50616 bars, missing 0.028%, 5 gaps, 0 extreme moves, 957 zero-volume bars -> PASS
+  SOL 1h: 40534 bars, missing 0.276%, 12 gaps, 3 extreme moves, 3513 zero-volume bars -> PASS
+  XRP 1h: 24313 bars, missing 0.152%, 10 gaps, 0 extreme moves, 967 zero-volume bars -> PASS
+  DOGE 1h: 50606 bars, missing 0.047%, 10 gaps, 2 extreme moves, 9214 zero-volume bars -> PASS
+  ADA 1h: 5767 bars, missing 0.017%, 1 gaps, 0 extreme moves, 1648 zero-volume bars -> PASS
+  AVAX 1h: 42910 bars, missing 0.021%, 4 gaps, 0 extreme moves, 13563 zero-volume bars -> PASS
+  LINK 1h: 50604 bars, missing 0.051%, 12 gaps, 0 extreme moves, 13189 zero-volume bars -> PASS
+  LTC 1h: 50612 bars, missing 0.036%, 6 gaps, 0 extreme moves, 14967 zero-volume bars -> PASS
+  BCH 1h: 50493 bars, missing 0.271%, 111 gaps, 0 extreme moves, 16860 zero-volume bars -> PASS
+  DOT 1h: 27595 bars, missing 0.043%, 6 gaps, 0 extreme moves, 13135 zero-volume bars -> PASS
+  UNI 1h: 50546 bars, missing 0.166%, 64 gaps, 1 extreme moves, 18495 zero-volume bars -> PASS
+  AAVE 1h: 45819 bars, missing 0.270%, 101 gaps, 0 extreme moves, 17290 zero-volume bars -> PASS
+  ARB 1h: 5694 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4461 zero-volume bars -> PASS
+  CRV 1h: 27595 bars, missing 0.043%, 8 gaps, 0 extreme moves, 19293 zero-volume bars -> PASS
+  GRT 1h: 45899 bars, missing 0.096%, 32 gaps, 2 extreme moves, 17889 zero-volume bars -> PASS
+  LDO 1h: 5670 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4857 zero-volume bars -> PASS
+  FIL 1h: 5694 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4539 zero-volume bars -> PASS
+  POL 1h: 5626 bars, missing 0.018%, 1 gaps, 0 extreme moves, 5019 zero-volume bars -> PASS
+  RENDER 1h: 5625 bars, missing 0.036%, 2 gaps, 0 extreme moves, 4495 zero-volume bars -> PASS
+  SUSHI 1h: 45652 bars, missing 0.216%, 87 gaps, 2 extreme moves, 23996 zero-volume bars -> PASS
+  YFI 1h: 41777 bars, missing 1.893%, 566 gaps, 0 extreme moves, 26443 zero-volume bars -> FAIL
+  BAT 1h: 50055 bars, missing 1.136%, 422 gaps, 0 extreme moves, 21846 zero-volume bars -> FAIL
+  XTZ 1h: 27603 bars, missing 0.014%, 3 gaps, 0 extreme moves, 21080 zero-volume bars -> PASS
+  SKY 1h: 9096 bars, missing 0.154%, 3 gaps, 0 extreme moves, 7470 zero-volume bars -> PASS
+  ONDO 1h: 5670 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4396 zero-volume bars -> PASS
+  HYPE 1h: 5670 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4340 zero-volume bars -> PASS
+  SHIB 1h: 31358 bars, missing 0.041%, 3 gaps, 3 extreme moves, 20592 zero-volume bars -> PASS
+  PEPE 1h: 14879 bars, missing 0.081%, 5 gaps, 3 extreme moves, 10769 zero-volume bars -> PASS
+  BONK 1h: 5695 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4495 zero-volume bars -> PASS
+  WIF 1h: 5627 bars, missing 0.018%, 1 gaps, 0 extreme moves, 4752 zero-volume bars -> PASS
+  TRUMP 1h: 15034 bars, missing 0.146%, 6 gaps, 3 extreme moves, 12267 zero-volume bars -> PASS
+
+Gate G1: FAIL for YFI, BAT

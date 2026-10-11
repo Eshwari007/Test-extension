@@ -1,0 +1,7 @@
+MATIC->POL x1: stitched 2041 bars from 2021-03-11; seam closes 0.2091 -> 0.2021 (ratio 0.967)
+MKR->SKY x24000: stitched 2316 bars from 2020-06-09; seam closes 0.0576 -> 0.0557 (ratio 0.968)
+RNDR->RENDER x1: stitched 1712 bars from 2022-02-03; seam closes 3.0896 -> 2.9830 (ratio 0.965)
+  POL 1d: 2041 bars, missing 0.000%, 0 gaps, 2 extreme moves, 0 zero-volume bars -> PASS
+  RENDER 1d: 1712 bars, missing 0.000%, 0 gaps, 0 extreme moves, 0 zero-volume bars -> PASS
+  SKY 1d: 2316 bars, missing 0.000%, 0 gaps, 2 extreme moves, 0 zero-volume bars -> PASS
+Gate G1: PASS

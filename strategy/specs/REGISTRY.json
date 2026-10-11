@@ -1,13 +1,13 @@
 {
-  "reason": "Phase 1: rebrands carry conversion ratio (MKR->SKY 1:24000). Documentation of data handling; no candidate parameter changed.",
+  "reason": "Phase 1: Gate G1 exclusions (YFI, BAT on 1h). No candidate parameter changed.",
   "files": {
     "c1_intraday.yaml": "8b38667f7a1bfd2ba548a9cdf4837b2d44996a3e1d5d708a31aaf7575ca02e70",
     "c2_swing.yaml": "622149bbad955edc96f6a85a2fab2ca7f2fe0c024ca39a3a490c0704e7d16bd2",
     "c3_position.yaml": "e8ee7f3591a94c09bc3553e2b102d5eef3173d2d6b18795a31a1972f3eb9ffea",
     "costs.yaml": "bb27989e9210fab7f146476eb85f6227410c9eddb3ae05d5e4161b416da30f09",
-    "listings.yaml": "dd163b25cd60161818385406928eb2f1b8557c25de13f0bb3b720be93f32cc52",
+    "listings.yaml": "586ff368e9f4bd53a33f2a6e378198ef1d619862fd909dcc2dd8b1f11e71c84a",
     "periods.yaml": "e10f2ee52c8e9040ffc3e59cd90fc9f3e1a940249d99d1ba62f3ed2a38e05640",
     "risk_tiers.yaml": "490e02dae9ed4df3ff0d071f05def074e0668034fc3e94aeebdf9eb00af40aef",
-    "universe.yaml": "1137d7d46557d033b1b494e50abef7252b5222657c07cc31453b3f7e36c49e4c"
+    "universe.yaml": "726a4fbea65a438d305c6fa2a72eb6c68d39f67f7fa99ea537c045465c3ac55b"
   }
 }

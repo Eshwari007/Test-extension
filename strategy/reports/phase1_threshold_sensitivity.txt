@@ -1,0 +1,8 @@
+== Eligibility sensitivity to the liquidity threshold (swing/intraday rule: 90d history) ==
+ threshold_M  median_coins_per_month  min_coins  months_with_lt3  coins_ever_training  coins_ever_holdout  memecoins_ever
+           2                      11          4                0                   14                  23               4
+           5                       8          3                0                   14                  20               3
+          10                       5          0                3                   13                  18               3
+          20                       4          0               20                    9                  15               3
+
+For context: the universe has 30 coins; the plan's tiers allow 3-6 open positions.

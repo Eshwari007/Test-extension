@@ -36,3 +36,10 @@ listed:
   WIF:   [{ from: "2026-02-19", to: null }]
   POL:   [{ from: "2026-02-19", to: null }]
   RENDER: [{ from: "2026-02-19", to: null }]
+
+# Data-quality exclusions (Gate G1). A coin listed here is removed from the universe for the
+# given signal timeframe only; it stays in the daily universe if it passes there.
+exclusions:
+  "1h":
+    YFI: "Alpaca 1h bars 1.89% missing (566 gaps) — no-trade hours on a thin book; over the 0.5% limit"
+    BAT: "Alpaca 1h bars 1.14% missing (422 gaps) — no-trade hours on a thin book; over the 0.5% limit"

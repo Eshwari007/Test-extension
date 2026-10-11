@@ -54,7 +54,11 @@ def _load_bars(args, spec):
     if btc_daily is None:
         sys.exit("No BTC_1d bars in the store; run `fetch` first or pass --synthetic")
     btc_signal = btc_daily if tf == "1d" else store.load("BTC", tf)
-    bars = store.load_many(_universe_symbols(spec), tf)
+    excluded = D.load_exclusions(SPEC_DIR / "listings.yaml").get(tf, {}) if (SPEC_DIR / "listings.yaml").exists() else {}
+    symbols = [s for s in _universe_symbols(spec) if s not in excluded]
+    for s, why in excluded.items():
+        print(f"  excluded {s} on {tf}: {why}")
+    bars = store.load_many(symbols, tf)
     if not bars:
         sys.exit(f"No {tf} bars for the universe in {args.data}")
     return bars, btc_daily, btc_signal

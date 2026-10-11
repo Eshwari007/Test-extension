@@ -39,18 +39,49 @@ Raw outputs: `phase1_assets.txt`, `phase1_quality_1d.txt`, `phase1_history_eligi
 
 **Gate G1 (daily): PASS**, with the SOL delisting logged and the reference-exchange dependency below.
 
-## Blocking item: reference exchange
+## Reference exchange (Coinbase)
 
-The plan requires a reference exchange for (a) signal history before each coin's Alpaca listing and
-(b) the 30-day dollar-volume eligibility rule. Coinbase (`api.exchange.coinbase.com`) is wired in
-`core/data.py` but the cloud environment's network policy denies it (403). Until it is allowed:
+Daily bars from 2017-01-01 for BTC and all 30 coins (`data/ref`). Rebrands stitched and documented:
+MATIC→POL (1:1), RNDR→RENDER (1:1), **MKR→SKY (1:24000 — the first stitch assumed 1:1 and was caught by
+the seam check; prices now divided and volumes multiplied by the ratio)**. Quality: **G1 PASS on all 31**,
+no gaps, no zero-volume bars. Extreme moves (XRP, ADA, LTC, BCH, UNI, GRT, FIL, POL, SKY, SHIB) are
+real 2017–2021 events, consistent across both sources.
 
-- the eligibility table is built on Alpaca history and volume only, which marks almost every coin ineligible;
-- the training period effectively contains ~12 coins.
+## Liquidity threshold — Phase 1 decision
 
-Action: add `api.exchange.coinbase.com` to the environment's allowed domains, then run
-`python -m strategy.cli fetch --source coinbase --timeframe 1d --start 2019-01-01`.
+Sensitivity of the eligible universe to the 30-day median dollar-volume threshold (Coinbase volume,
+90-day history rule, Alpaca listing required):
+
+| Threshold | Median coins/month | Min | Months with <3 | Coins in training | Coins in hold-out | Memecoins ever |
+|---|---|---|---|---|---|---|
+| $2M | 11 | 4 | 0 | 14 | 23 | 4 |
+| **$5M** | **8** | **3** | **0** | **14** | **20** | **3** |
+| $10M | 5 | 0 | 3 | 13 | 18 | 3 |
+| $20M (proposed) | 4 | 0 | 20 | 9 | 15 | 3 |
+
+**Decision (2026-10-11): $5M.** At $20M the universe was smaller than the tiers' position slots in 20 of
+69 months and empty in H2 2023. Recorded in `universe.yaml` and re-frozen with the reason.
+
+Final eligibility (`data/eligibility_{position,swing,intraday}.csv`), 2021-01 → 2026-10:
+
+- **Position (365d):** median 7 coins/month (3–15). Training: AAVE AVAX BCH DOGE DOT GRT LINK LTC SHIB SOL SUSHI UNI YFI.
+  Hold-out adds ADA CRV ONDO PEPE XRP XTZ.
+- **Swing / Intraday (90d):** median 8 (3–15). Training adds BAT; hold-out adds HYPE TRUMP.
+- **Never eligible at $5M:** BONK FIL LDO POL RENDER SKY WIF (+ BAT HYPE TRUMP for the position rule).
 
 ## Hourly bars (C1)
 
-See `phase1_quality_1h.txt` (appended when the hourly fetch completes).
+Alpaca 1h bars from 2021-01-01 (up to 50,616 per coin). **G1: 29 of 31 PASS.** Excluded for the 1h
+timeframe, reason logged in `listings.yaml`: **YFI** (1.89% missing) and **BAT** (1.14%). Alpaca emits no
+bar in an hour with no trades, so the misses are thin-book hours; both coins are marginal at $5M anyway.
+
+Caveat for C1: zero-volume hours are common even on passing coins (DOGE 18%, SUSHI 53%, XTZ 76% of
+hours). C1's entry needs *1h volume > 2× its 7-day average*; on Alpaca-venue volume that signal is
+noisy. Phase 3 should run C1 with reference-exchange hourly volume as a pre-registered data variant
+(Coinbase 1h fetch is ~5,000 calls; not pulled yet).
+
+## Gate G1: PASS
+
+Every coin passes or is excluded with the reason logged. Open items carried into Phase 3:
+Alpaca minimum order sizes (from the assets snapshot) and the live fee tier are recorded but not yet
+checked against the $10k starting capital.

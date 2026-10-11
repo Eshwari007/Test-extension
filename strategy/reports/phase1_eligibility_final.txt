@@ -1,0 +1,15 @@
+== position (>= 365d history, >= $5M) ==
+  coins/month: median 7, min 3, max 15
+  training: ['AAVE', 'AVAX', 'BCH', 'DOGE', 'DOT', 'GRT', 'LINK', 'LTC', 'SHIB', 'SOL', 'SUSHI', 'UNI', 'YFI']
+  hold-out: ['AAVE', 'ADA', 'AVAX', 'BCH', 'CRV', 'DOGE', 'DOT', 'GRT', 'LINK', 'LTC', 'ONDO', 'PEPE', 'SHIB', 'SOL', 'SUSHI', 'UNI', 'XRP', 'XTZ']
+  never:    ['BAT', 'BONK', 'FIL', 'HYPE', 'LDO', 'POL', 'RENDER', 'SKY', 'TRUMP', 'WIF']
+== swing (>= 90d history, >= $5M) ==
+  coins/month: median 8, min 3, max 15
+  training: ['AAVE', 'AVAX', 'BAT', 'BCH', 'DOGE', 'DOT', 'GRT', 'LINK', 'LTC', 'SHIB', 'SOL', 'SUSHI', 'UNI', 'YFI']
+  hold-out: ['AAVE', 'ADA', 'AVAX', 'BCH', 'CRV', 'DOGE', 'DOT', 'GRT', 'HYPE', 'LINK', 'LTC', 'ONDO', 'PEPE', 'SHIB', 'SOL', 'SUSHI', 'TRUMP', 'UNI', 'XRP', 'XTZ']
+  never:    ['BONK', 'FIL', 'LDO', 'POL', 'RENDER', 'SKY', 'WIF']
+== intraday (>= 90d history, >= $5M) ==
+  coins/month: median 8, min 3, max 15
+  training: ['AAVE', 'AVAX', 'BAT', 'BCH', 'DOGE', 'DOT', 'GRT', 'LINK', 'LTC', 'SHIB', 'SOL', 'SUSHI', 'UNI', 'YFI']
+  hold-out: ['AAVE', 'ADA', 'AVAX', 'BCH', 'CRV', 'DOGE', 'DOT', 'GRT', 'HYPE', 'LINK', 'LTC', 'ONDO', 'PEPE', 'SHIB', 'SOL', 'SUSHI', 'TRUMP', 'UNI', 'XRP', 'XTZ']
+  never:    ['BONK', 'FIL', 'LDO', 'POL', 'RENDER', 'SKY', 'WIF']

@@ -23,6 +23,6 @@ eligibility:
     position: 365
     swing: 90
     intraday: 90
-  min_median_dollar_volume_30d: 20000000
+  min_median_dollar_volume_30d: 5000000   # Phase 1 decision (2026-10-11): $20M left <3 eligible coins in 20 of 69 months on Coinbase volume
   max_median_spread: 0.003
   rebalance: monthly
