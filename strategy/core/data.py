@@ -399,6 +399,20 @@ def combine_history(
     return out.dropna(subset=["close"])
 
 
+def overlay_volume(bars: pd.DataFrame, reference: pd.DataFrame | None) -> pd.DataFrame:
+    """Replace the volume column with the reference exchange's volume where both have a bar.
+
+    Prices stay the execution venue's; only the volume used by volume-based signals changes.
+    Bars without a reference counterpart keep their own volume.
+    """
+    if reference is None or reference.empty:
+        return bars
+    out = bars.copy()
+    ref_vol = reference["volume"].reindex(out.index)
+    out["volume"] = ref_vol.where(ref_vol.notna(), out["volume"])
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Synthetic data (engine tests; never for research conclusions)
 # ---------------------------------------------------------------------------

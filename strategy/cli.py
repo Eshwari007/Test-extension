@@ -69,6 +69,9 @@ def _load_bars(args, spec):
         ref_bars = ref.load_many(symbols, tf)
         bars = {s: D.combine_history(bars.get(s), ref_bars.get(s), listings.get(s)) for s in set(bars) | set(ref_bars)}
         bars = {s: df for s, df in bars.items() if df is not None and len(df)}
+        if getattr(args, "volume_source", "alpaca") == "reference":
+            bars = {s: D.overlay_volume(df, ref_bars.get(s)) for s, df in bars.items()}
+            print("  volume source: reference exchange (prices stay Alpaca's)")
         rb = ref.load("BTC", "1d")
         if rb is not None:
             btc_daily = D.combine_history(btc_daily, rb, None)
@@ -277,6 +280,8 @@ def main(argv: list[str] | None = None) -> None:
         b.add_argument("--data", default="strategy/data/bars")
         b.add_argument("--ref", default="strategy/data/ref", help="reference-exchange store ('' to disable)")
         b.add_argument("--eligibility", default="strategy/data", help="dir with eligibility_<rule>.csv ('' to disable)")
+        b.add_argument("--volume-source", choices=["alpaca", "reference"], default="alpaca",
+                       help="volume used by volume-based signals (pre-registered data variant for C1)")
         b.add_argument("--start", default=None)
         b.add_argument("--end", default=None)
         b.add_argument("--cash", type=float, default=10_000.0)

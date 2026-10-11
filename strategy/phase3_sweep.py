@@ -25,10 +25,11 @@ METRIC_KEYS = ("net_return", "cagr", "max_drawdown", "calmar", "sharpe", "sortin
                "win_rate", "trade_count", "exposure_pct", "worst_day", "fees_pct_gross_profit", "max_coin_profit_share", "killed")
 
 
-def _ns(cand, variant, tier, start, end):
+def _ns(cand, variant, tier, start, end, volume_source="alpaca"):
     return argparse.Namespace(candidate=cand, variant=variant, tier=tier, data="strategy/data/bars", ref="strategy/data/ref",
                               eligibility="strategy/data", start=start, end=end, cash=10_000.0, stress=False, synthetic=False,
-                              n_synthetic=0, benchmarks=False, no_verify=False, out=None, seed=0, mc_runs=0, random_runs=0)
+                              n_synthetic=0, benchmarks=False, no_verify=False, out=None, seed=0, mc_runs=0, random_runs=0,
+                              volume_source=volume_source)
 
 
 def main(argv=None):
@@ -37,13 +38,15 @@ def main(argv=None):
     p.add_argument("--end", default="2023-12-31")
     p.add_argument("--candidates", default="C2,C3")
     p.add_argument("--tiers", default="T1,T2,T3,T4")
+    p.add_argument("--volume-source", default="alpaca", help="alpaca | reference (C1 data variant)")
+    p.add_argument("--tag", default="", help="suffix for output files")
     a = p.parse_args(argv)
     OUT.mkdir(parents=True, exist_ok=True)
     plan = {"C1": [None], "C2": ["V1", "V2", "V3"], "C3": [None]}
     rows, cache = [], {}
     for cand in a.candidates.split(","):
         spec = load_spec(cand)
-        cache[cand] = cli._load_bars(_ns(cand, None, "T2", a.start, a.end), spec)
+        cache[cand] = cli._load_bars(_ns(cand, None, "T2", a.start, a.end, a.volume_source), spec)
         bars, btc_daily, btc_signal = cache[cand]
         elig = cli._load_eligibility(_ns(cand, None, "T2", a.start, a.end), spec)
         for v in plan[cand]:
@@ -53,17 +56,18 @@ def main(argv=None):
                                      start=a.start, end=a.end, initial_cash=10_000, eligibility=elig,
                                      stress=stress, taker_everywhere=stress)
                     m = r.metrics()
-                    rows.append({"candidate": cand, "variant": v or "-", "tier": tier, "stress": stress,
+                    rows.append({"candidate": cand, "variant": v or "-", "tier": tier, "stress": stress, "volume": a.volume_source,
                                  "config": r.config_hash, **{k: m[k] for k in METRIC_KEYS},
                                  "flattens": sum(1 for e in r.governor_events if e["to"] == "FLATTEN")})
                     if not stress:
-                        r.equity.to_csv(OUT / f"equity_{cand}_{v or 'base'}_{tier}.csv")
-                        r.trades.to_csv(OUT / f"trades_{cand}_{v or 'base'}_{tier}.csv", index=False)
+                        r.equity.to_csv(OUT / f"equity_{cand}_{v or 'base'}_{tier}{a.tag}.csv")
+                        r.trades.to_csv(OUT / f"trades_{cand}_{v or 'base'}_{tier}{a.tag}.csv", index=False)
                     RunLog(cli.RUN_LOG).record({"phase": 3, "candidate": cand, "variant": v, "tier": tier, "stress": stress,
+                                                "volume_source": a.volume_source,
                                                 "config_hash": r.config_hash, "start": a.start, "end": a.end,
                                                 "metrics": {k: x for k, x in m.items() if isinstance(x, (int, float, bool))}})
     df = pd.DataFrame(rows)
-    df.to_csv(OUT / "insample_metrics.csv", index=False)
+    df.to_csv(OUT / f"insample_metrics{a.tag}.csv", index=False)
     pd.set_option("display.width", 250)
     pd.set_option("display.max_columns", 30)
     show = df[~df.stress][["candidate", "variant", "tier", "net_return", "cagr", "max_drawdown", "calmar", "sharpe",
