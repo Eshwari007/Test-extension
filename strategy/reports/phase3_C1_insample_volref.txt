@@ -1,0 +1,25 @@
+  excluded YFI on 1h: Alpaca 1h bars 1.89% missing (566 gaps) — no-trade hours on a thin book; over the 0.5% limit
+  excluded BAT on 1h: Alpaca 1h bars 1.14% missing (422 gaps) — no-trade hours on a thin book; over the 0.5% limit
+  volume source: reference exchange (prices stay Alpaca's)
+  reference history merged from strategy/data/ref for 28 coins
+== Phase 3 in-sample 2021-01-01..2023-12-31, net of costs; % columns in percent ==
+candidate variant tier  net_return  cagr  max_drawdown  calmar  sharpe  profit_factor  expectancy_r  win_rate  trade_count  exposure_pct  fees_pct_gross_profit  flattens  killed
+       C1       -   T1        -5.1  -1.3           7.3   -0.18   -0.43           0.76         -0.17      30.8           78           0.3                   24.3         0   False
+       C1       -   T2        -9.9  -2.8          12.3   -0.23   -0.53           0.74         -0.18      30.0           90           0.5                   25.7         0   False
+       C1       -   T3       -16.6  -4.9          19.7   -0.25   -0.53           0.75         -0.25      29.5          105           1.0                   26.6         0   False
+       C1       -   T4       -25.8  -7.9          29.9   -0.27   -0.49           0.79         -0.22      30.8          146           2.1                   25.9         0   False
+
+== Cost stress (double slippage, taker everywhere) ==
+candidate variant tier  net_return  max_drawdown  trade_count
+       C1       -   T1        -5.3           7.4           72
+       C1       -   T2       -10.2          12.5           90
+       C1       -   T3       -16.5          19.4           88
+       C1       -   T4       -25.5          29.3          140
+
+== Benchmarks 2021-01-01..2023-12-31 ==
+  Equal-weight eligible-alt basket B&H   return +1387.9%  max DD 89.9%  CAGR +120.7%
+  BTC B&H                                return +43.7%  max DD 76.7%  CAGR +12.9%
+  Cash                                   return +0.0%  max DD 0.0%
+
+Gate G3 (>=1 candidate net-positive after costs with in-sample max DD < 40%): FAIL
+passing configs: []

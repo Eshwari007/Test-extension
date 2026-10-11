@@ -1,0 +1,24 @@
+  excluded YFI on 1h: Alpaca 1h bars 1.89% missing (566 gaps) — no-trade hours on a thin book; over the 0.5% limit
+  excluded BAT on 1h: Alpaca 1h bars 1.14% missing (422 gaps) — no-trade hours on a thin book; over the 0.5% limit
+  reference history merged from strategy/data/ref for 28 coins
+== Phase 3 in-sample 2021-01-01..2023-12-31, net of costs; % columns in percent ==
+candidate variant tier  net_return  cagr  max_drawdown  calmar  sharpe  profit_factor  expectancy_r  win_rate  trade_count  exposure_pct  fees_pct_gross_profit  flattens  killed
+       C1       -   T1        -7.0  -2.2           8.0   -0.28   -0.88           0.50         -0.39      23.4           47           0.2                   32.3         0   False
+       C1       -   T2       -11.9  -3.8          13.3   -0.29   -0.99           0.47         -0.42      22.4           49           0.2                   34.5         0   False
+       C1       -   T3       -19.2  -6.4          21.2   -0.30   -0.89           0.59         -0.33      24.6           65           0.6                   29.5         0   False
+       C1       -   T4       -29.3 -10.2          32.1   -0.32   -0.89           0.60         -0.33      25.0           72           1.1                   30.1         0   False
+
+== Cost stress (double slippage, taker everywhere) ==
+candidate variant tier  net_return  max_drawdown  trade_count
+       C1       -   T1        -7.1           8.0           46
+       C1       -   T2       -12.4          13.7           49
+       C1       -   T3       -19.6          21.6           59
+       C1       -   T4       -29.3          32.0           71
+
+== Benchmarks 2021-01-01..2023-12-31 ==
+  Equal-weight eligible-alt basket B&H   return +1387.9%  max DD 89.9%  CAGR +120.7%
+  BTC B&H                                return +43.7%  max DD 76.7%  CAGR +12.9%
+  Cash                                   return +0.0%  max DD 0.0%
+
+Gate G3 (>=1 candidate net-positive after costs with in-sample max DD < 40%): FAIL
+passing configs: []
