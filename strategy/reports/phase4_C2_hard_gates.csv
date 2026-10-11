@@ -1,0 +1,9 @@
+variant,tier,net_return_positive,max_dd_within_2_3_tier,mc_p95_dd_within_tier,beats_random_entry,walk_forward_60pct,survives_double_cost,min_oos_trades,profit_concentration,all_pass
+V1,T1,True,True,True,,False,True,False,False,False
+V1,T2,True,True,True,,False,False,False,False,False
+V1,T3,False,True,True,,False,False,False,True,False
+V1,T4,False,True,True,,False,False,False,False,False
+V2,T1,False,True,True,,False,False,False,True,False
+V2,T2,False,True,True,,False,False,False,True,False
+V2,T3,False,True,True,,False,False,False,True,False
+V2,T4,False,True,True,,False,False,False,False,False

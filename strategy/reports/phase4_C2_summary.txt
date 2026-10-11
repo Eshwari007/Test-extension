@@ -1,0 +1,64 @@
+  reference history merged from strategy/data/ref for 30 coins
+== C2 hold-out 2024-01-01..2026-06-30 — touched once ==
+variant tier  net_return  cagr  max_drawdown  calmar  sharpe  sortino  profit_factor  expectancy_r  win_rate  trade_count  exposure_pct  fees_pct_gross_profit  max_coin_profit_share  stress_net_return  flattens  killed  seconds
+     V1   T1         1.6   0.6           3.6    0.18    0.28     0.30           1.29          0.13      50.0           26           2.1                    5.4                   89.4                1.5         0   False      4.6
+     V1   T2         0.2   0.1           8.3    0.01    0.04     0.04           1.01          0.01      45.2           42           4.0                    6.1                 1480.1               -0.1         0   False      3.3
+     V1   T3        -8.3  -3.4          16.9   -0.20   -0.41    -0.38           0.71         -0.06      38.8           49           6.8                    7.6                    NaN               -7.8         0   False      3.7
+     V1   T4        -7.4  -3.0          26.5   -0.11   -0.16    -0.15           0.85          0.02      40.0           55          12.2                    6.7                    NaN               -8.5         0   False      4.3
+     V2   T1        -2.8  -1.1           5.8   -0.19   -0.36    -0.42           0.71         -0.12      28.6           28           1.8                    5.3                    NaN               -2.9         0   False      4.1
+     V2   T2        -4.9  -2.0          11.7   -0.17   -0.39    -0.44           0.71         -0.17      26.2           42           2.8                    5.4                    NaN               -5.0         0   False      4.3
+     V2   T3        -7.0  -2.9          21.2   -0.14   -0.26    -0.30           0.79         -0.09      28.0           50           6.0                    5.1                    NaN               -7.3         0   False      4.2
+     V2   T4        -4.3  -1.7          33.1   -0.05   -0.03    -0.03           0.92          0.01      30.9           55          10.7                    4.7                    NaN               -4.8         0   False      4.5
+  Equal-weight eligible-alt basket B&H   return -31.9%  max DD 76.1%  CAGR -14.3%
+  BTC B&H                                return +32.4%  max DD 53.1%  CAGR +11.9%
+
+== Monte Carlo (5000 runs, seed 0) and Kelly ==
+variant tier  dd_p95  dd_p50  terminal_p05  terminal_p50  terminal_p95  tier_limit  mc_pass    kelly  half_kelly  risk_per_trade
+     V1   T1  0.0457  0.0217        0.9675        1.0160        1.0683        0.15     True  17.5377      8.7688          0.0050
+     V1   T2  0.1048  0.0540        0.9151        0.9994        1.1029        0.25     True   1.0146      0.5073          0.0075
+     V1   T3  0.2134  0.1226        0.8037        0.9191        1.0651        0.40     True -10.1705     -5.0852          0.0125
+     V1   T4  0.2930  0.1604        0.7468        0.9407        1.2122        0.60     True  -2.0837     -1.0418          0.0200
+     V2   T1  0.0886  0.0519        0.9168        0.9694        1.0442        0.15     True -17.2322     -8.6161          0.0050
+     V2   T2  0.1395  0.0820        0.8690        0.9490        1.0585        0.25     True -12.7942     -6.3971          0.0075
+     V2   T3  0.2304  0.1349        0.7895        0.9311        1.1343        0.40     True  -4.7606     -2.3803          0.0125
+     V2   T4  0.3053  0.1705        0.7421        0.9714        1.3352        0.60     True  -0.2145     -0.1072          0.0200
+
+== Walk-forward 12m train / 3m test, 2021-01-01..2026-06-30, choosing among ['V1', 'V2', 'V3'] ==
+  T1: 17 windows, positive 29%, max window share nan%, chosen: {'V1': np.int64(12), 'V2': np.int64(4), 'V3': np.int64(1)} -> FAIL
+  T2: 17 windows, positive 24%, max window share nan%, chosen: {'V1': np.int64(13), 'V2': np.int64(2), 'V3': np.int64(2)} -> FAIL
+  T3: 17 windows, positive 24%, max window share nan%, chosen: {'V1': np.int64(8), 'V2': np.int64(6), 'V3': np.int64(3)} -> FAIL
+  T4: 17 windows, positive 29%, max window share 793%, chosen: {'V1': np.int64(11), 'V2': np.int64(4), 'V3': np.int64(2)} -> FAIL
+
+== Parameter sensitivity, +/-25% one at a time, on the hold-out ==
+  V1 T1: baseline Calmar 0.18, worst -1.07x (stop.atr_multiple=1.875 -> Calmar -0.19) -> FAIL
+  V1 T2: baseline Calmar 0.01, worst -21.00x (stop.atr_multiple=1.875 -> Calmar -0.15) -> FAIL
+  V1 T3: baseline Calmar -0.20, worst 0.00x (regime.btc_daily_sma=150 -> Calmar -0.19) -> FAIL
+  V1 T4: baseline Calmar -0.11, worst 0.00x (regime.btc_daily_sma=150 -> Calmar -0.18) -> FAIL
+  V2 T1: baseline Calmar -0.19, worst 0.00x (entry.breakout_lookback_bars=15 -> Calmar -0.32) -> FAIL
+  V2 T2: baseline Calmar -0.17, worst 0.00x (entry.breakout_lookback_bars=15 -> Calmar -0.23) -> FAIL
+  V2 T3: baseline Calmar -0.14, worst 0.00x (stop.atr_multiple=1.875 -> Calmar -0.22) -> FAIL
+  V2 T4: baseline Calmar -0.05, worst 0.00x (entry.breakout_lookback_bars=25 -> Calmar -0.21) -> FAIL
+
+== Regime / tier / coin breakdown (hold-out) and deflated Sharpe ==
+variant tier     bull  bear      chop top_coin  top_coin_share  bear_loss_vs_limit  deflated_sharpe  trials
+     V1   T1  450.084   0.0  -288.215      BCH           0.894                -0.0            0.015     130
+     V1   T2  717.754   0.0  -702.733      SOL          14.801                -0.0            0.005     130
+     V1   T3  408.879   0.0 -1234.703      BCH             NaN                -0.0            0.001     130
+     V1   T4 1437.131   0.0 -2176.560      BCH             NaN                -0.0            0.002     130
+     V2   T1   36.007   0.0  -316.236      BCH             NaN                -0.0            0.001     130
+     V2   T2  -47.008   0.0  -440.820      BCH             NaN                -0.0            0.001     130
+     V2   T3  422.733   0.0 -1121.298      BCH             NaN                -0.0            0.001     130
+     V2   T4 1506.073   0.0 -1935.062      BCH             NaN                -0.0            0.004     130
+
+== Hard gates (random-entry benchmark pending unless already run) ==
+variant tier  net_return_positive  max_dd_within_2_3_tier  mc_p95_dd_within_tier beats_random_entry  walk_forward_60pct  survives_double_cost  min_oos_trades  profit_concentration  all_pass
+     V1   T1                 True                    True                   True               None               False                  True           False                 False     False
+     V1   T2                 True                    True                   True               None               False                 False           False                 False     False
+     V1   T3                False                    True                   True               None               False                 False           False                  True     False
+     V1   T4                False                    True                   True               None               False                 False           False                 False     False
+     V2   T1                False                    True                   True               None               False                 False           False                  True     False
+     V2   T2                False                    True                   True               None               False                 False           False                  True     False
+     V2   T3                False                    True                   True               None               False                 False           False                  True     False
+     V2   T4                False                    True                   True               None               False                 False           False                 False     False
+
+Trials counted in the run log: 130. Gate G4 is decided after the random-entry benchmark.
