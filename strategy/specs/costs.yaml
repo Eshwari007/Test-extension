@@ -1,0 +1,24 @@
+# Execution and cost model (plan: "Execution and cost model").
+# Signals use closed bars only; orders fill at the NEXT bar's open.
+
+fees:
+  maker: 0.0015
+  taker: 0.0025
+
+slippage:
+  # Market orders: slippage = max(half the measured spread, floor).
+  floor: 0.0005
+  # Extra slippage for thinner books.
+  extra_midcap: 0.0010
+  extra_memecoin: 0.0010
+  # Stress case multiplies the slippage component (not fees).
+  stress_multiplier: 2.0
+
+stops:
+  # Fill at the worse of the stop price and the next bar's open.
+  fill: worse_of_stop_and_open
+  order_type: market
+
+limit_orders:
+  # A limit fills only if price trades through the limit by at least one tick.
+  requires_trade_through: true

@@ -1,0 +1,17 @@
+# Data periods (plan: "Periods").
+training:
+  start: null          # earliest available data
+  end: "2023-12-31"
+holdout:
+  start: "2024-01-01"
+  end: "2026-06-30"    # touched once per candidate, in Phase 4
+
+walk_forward:
+  train_months: 12
+  test_months: 3
+
+# Statistical floor: minimum out-of-sample trades before any conclusion.
+min_oos_trades:
+  C1: 100
+  C2: 100
+  C3: 30

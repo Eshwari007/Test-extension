@@ -1,0 +1,6 @@
+# Downloaded bars and run artifacts are never committed; the spec hashes and run log count are what matter.
+data/
+runs/
+__pycache__/
+*.pyc
+.pytest_cache/

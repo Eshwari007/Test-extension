@@ -1,0 +1,8 @@
+# Core (research engine)
+pandas>=2.0
+numpy>=1.24
+PyYAML>=6.0
+# Optional
+pyarrow>=14          # Parquet bar storage (CSV fallback without it)
+pytest>=7            # tests also run under: python -m unittest discover -s strategy/tests -t .
+alpaca-py>=0.20      # only for a native SDK adapter; the REST adapter here needs nothing extra

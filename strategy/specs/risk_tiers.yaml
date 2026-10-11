@@ -1,0 +1,44 @@
+# Frozen risk tiers (plan: "Risk tiers: choosing the drawdown level").
+# Shared risk overlay applied identically to every candidate.
+# Any change to this file after Gate G0 requires a new commit stating the reason.
+
+tiers:
+  T1:
+    name: Conservative
+    max_drawdown: 0.15
+    risk_per_trade: 0.005
+    gross_exposure_cap: 0.35
+    max_positions: 3
+    max_memecoins: 1
+  T2:
+    name: Moderate
+    max_drawdown: 0.25
+    risk_per_trade: 0.0075
+    gross_exposure_cap: 0.50
+    max_positions: 4
+    max_memecoins: 1
+  T3:
+    name: Aggressive
+    max_drawdown: 0.40
+    risk_per_trade: 0.0125
+    gross_exposure_cap: 0.75
+    max_positions: 5
+    max_memecoins: 2
+  T4:
+    name: Max growth
+    max_drawdown: 0.60
+    risk_per_trade: 0.02
+    gross_exposure_cap: 1.00
+    max_positions: 6
+    max_memecoins: 3
+
+# Drawdown governor, as a share of the tier's max_drawdown limit L,
+# measured from the equity peak.
+governor:
+  halve_size: 0.33
+  block_entries: 0.53
+  flatten: 0.80
+  kill: 1.00
+
+# Venue constraint: Alpaca crypto has no margin and a $200k notional cap per order.
+max_order_notional_usd: 200000

@@ -1,0 +1,26 @@
+# Candidate C3 — Position momentum (frozen defaults, not tuned).
+# Hypothesis: the strongest coins over 1-3 months keep outperforming for the next week or month.
+
+id: C3
+name: Position momentum rotation
+signal_timeframe: 1d
+execution_timeframe: 1d
+history_rule: position
+
+regime:
+  btc_daily_sma: 200               # else 100% cash
+
+ranking:
+  lookback_days: 90                # 90-day return / 90-day volatility
+  hold_top: 3
+  drop_below_rank: 6
+
+rebalance:
+  frequency: weekly
+  weekday: 0                       # Monday (UTC)
+
+stop:
+  type: none                       # exits are rank-drop or regime-off only
+
+expected_rebalances_per_year: [50, 150]
+main_risk: Slow reaction to sudden crashes

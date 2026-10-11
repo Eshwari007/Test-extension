@@ -1,0 +1,29 @@
+# Candidate C1 — Intraday breakout (frozen defaults, not tuned).
+# Hypothesis: coins breaking a 24h range on high relative volume keep running for hours.
+
+id: C1
+name: Intraday range breakout
+signal_timeframe: 1h
+execution_timeframe: 15m
+history_rule: intraday
+
+regime:
+  btc_daily_sma: 200
+  btc_hourly_sma: 100
+
+entry:
+  breakout_lookback_bars: 24       # 1h close > prior 24h high
+  volume_multiple: 2.0             # 1h volume > 2x its 7-day average
+  volume_avg_bars: 168             # 7 days of 1h bars
+
+stop:
+  atr_period: 14
+  atr_multiple: 1.5
+
+exit:
+  type: target_or_time
+  target_r: 2.0
+  max_hold_bars: 24
+
+expected_trades_per_year: [150, 400]
+main_risk: Fees and slippage erase the edge

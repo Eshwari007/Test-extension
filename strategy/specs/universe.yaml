@@ -1,0 +1,27 @@
+# Tradable universe (plan: "Tradable universe").
+# Alpaca's non-BTC/ETH, non-stablecoin, non-PAXG coins as of March 2026.
+# Re-pull from GET /v2/assets?asset_class=crypto at the start of Phase 1.
+
+regime_symbol: BTC
+quote: USD
+
+tiers:
+  large_cap: [SOL, XRP, DOGE, ADA, AVAX, LINK, LTC, BCH, DOT, UNI, AAVE]
+  mid_cap: [ARB, CRV, GRT, LDO, FIL, POL, RENDER, SUSHI, YFI, BAT, XTZ, SKY, ONDO, HYPE]
+  memecoin: [SHIB, PEPE, BONK, WIF, TRUMP]
+
+# Rebrands whose history must be stitched (old -> new) and documented.
+rebrands:
+  MATIC: POL
+  MKR: SKY
+  RNDR: RENDER
+
+# Eligibility rules, applied monthly using only data available at that date.
+eligibility:
+  min_history_days:
+    position: 365
+    swing: 90
+    intraday: 90
+  min_median_dollar_volume_30d: 20000000
+  max_median_spread: 0.003
+  rebalance: monthly

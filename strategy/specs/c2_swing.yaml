@@ -1,0 +1,43 @@
+# Candidate C2 — Swing breakout (frozen defaults, not tuned).
+# Hypothesis: coins making 20-day highs in a risk-on market keep trending for days to weeks.
+
+id: C2
+name: Swing 20-day breakout
+signal_timeframe: 1d
+execution_timeframe: 1d
+history_rule: swing
+
+regime:
+  btc_daily_sma: 200
+
+entry:
+  breakout_lookback_bars: 20       # daily close > prior 20-day high
+  trend_sma: 50                    # and coin close > SMA(50)
+
+stop:
+  atr_period: 14
+  atr_multiple: 2.5
+
+# Pre-registered exit variants; each is tested separately.
+exit_variants:
+  V1:
+    type: fixed_ladder
+    rungs:
+      - { fraction: 0.50, gain: 0.10 }
+      - { fraction: 0.25, gain: 0.20 }
+      - { fraction: 0.25, gain: 0.50 }
+  V2:
+    type: r_ladder
+    rungs:
+      - { fraction: 0.50, r: 1.5, move_stop_to_breakeven: true }
+      - { fraction: 0.25, r: 3.0 }
+    trail_remainder:
+      atr_multiple: 3.0
+  V3:
+    type: chandelier
+    atr_multiple: 3.0
+
+default_exit_variant: V3
+
+expected_trades_per_year: [40, 120]
+main_risk: Whipsaw in choppy markets
