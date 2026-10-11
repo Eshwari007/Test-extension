@@ -61,7 +61,36 @@ def _load_bars(args, spec):
     bars = store.load_many(symbols, tf)
     if not bars:
         sys.exit(f"No {tf} bars for the universe in {args.data}")
+    # Reference exchange: indicator history before each coin's Alpaca listing, and BTC regime history.
+    ref_dir = Path(args.ref) if args.ref else None
+    if ref_dir and ref_dir.exists():
+        ref = D.BarStore(ref_dir)
+        listings = D.load_listings(SPEC_DIR / "listings.yaml") if (SPEC_DIR / "listings.yaml").exists() else {}
+        ref_bars = ref.load_many(symbols, tf)
+        bars = {s: D.combine_history(bars.get(s), ref_bars.get(s), listings.get(s)) for s in set(bars) | set(ref_bars)}
+        bars = {s: df for s, df in bars.items() if df is not None and len(df)}
+        rb = ref.load("BTC", "1d")
+        if rb is not None:
+            btc_daily = D.combine_history(btc_daily, rb, None)
+        if tf != "1d":
+            rs = ref.load("BTC", tf)
+            if rs is not None:
+                btc_signal = D.combine_history(btc_signal, rs, None)
+        print(f"  reference history merged from {ref_dir} for {len(ref_bars)} coins")
     return bars, btc_daily, btc_signal
+
+
+def _load_eligibility(args, spec):
+    """Point-in-time eligibility table for the candidate's history rule, or None."""
+    if args.synthetic or not args.eligibility:
+        return None
+    rule = spec.candidate["history_rule"]
+    path = Path(args.eligibility) / f"eligibility_{rule}.csv"
+    if not path.exists():
+        sys.exit(f"No eligibility table at {path}; build it in Phase 1 first")
+    tab = pd.read_csv(path, index_col=0, parse_dates=True)
+    tab.index = pd.DatetimeIndex(pd.to_datetime(tab.index, utc=True))
+    return tab.astype(bool)
 
 
 def cmd_freeze(args) -> None:
@@ -109,6 +138,10 @@ def cmd_quality(args) -> None:
 
 
 def _run(args, spec, strategy, bars, btc_daily, btc_signal, **kw):
+    kw.setdefault("eligibility", _load_eligibility(args, spec))
+    if args.start is None and kw["eligibility"] is not None:
+        tab = kw["eligibility"]
+        args.start = str(tab.index[tab.any(axis=1)][0].date())  # first month with an eligible coin
     return run_backtest(spec, strategy, bars, btc_daily, btc_signal, tier=args.tier, start=args.start, end=args.end,
                         initial_cash=args.cash, stress=args.stress, **kw)
 
@@ -170,7 +203,7 @@ def cmd_validate(args) -> None:
 
     print(f"\n== Random-entry benchmark ({args.random_runs} runs)")
     kw = dict(bars=bars, btc_daily=btc_daily, btc_signal=btc_signal, tier=args.tier, start=args.start, end=args.end,
-              initial_cash=args.cash)
+              initial_cash=args.cash, eligibility=_load_eligibility(args, spec))
     rnd = V.random_entry_benchmark(spec, strategy, oos, kw, n_runs=args.random_runs, seed=args.seed)
     print(f"  real {rnd.metric} {rnd.real_value:+.2%} at percentile {rnd.percentile:.1%} of random runs")
 
@@ -180,7 +213,8 @@ def cmd_validate(args) -> None:
 
     def wf_run(variant, s, e):
         strat = make_strategy(spec.candidate, variant)
-        return run_backtest(spec, strat, bars, btc_daily, btc_signal, tier=args.tier, start=s, end=e, initial_cash=args.cash)
+        return run_backtest(spec, strat, bars, btc_daily, btc_signal, tier=args.tier, start=s, end=e, initial_cash=args.cash,
+                            eligibility=_load_eligibility(args, spec))
 
     wf = V.walk_forward(wf_run, variants, full_start, pd.Timestamp(args.end, tz="UTC"),
                         spec.periods["walk_forward"]["train_months"], spec.periods["walk_forward"]["test_months"])
@@ -241,6 +275,8 @@ def main(argv: list[str] | None = None) -> None:
         b.add_argument("--variant", default=None)
         b.add_argument("--tier", choices=["T1", "T2", "T3", "T4"], default="T2")
         b.add_argument("--data", default="strategy/data/bars")
+        b.add_argument("--ref", default="strategy/data/ref", help="reference-exchange store ('' to disable)")
+        b.add_argument("--eligibility", default="strategy/data", help="dir with eligibility_<rule>.csv ('' to disable)")
         b.add_argument("--start", default=None)
         b.add_argument("--end", default=None)
         b.add_argument("--cash", type=float, default=10_000.0)

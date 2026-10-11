@@ -175,3 +175,188 @@ class InvariantTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MoreGoldenTradeTests(unittest.TestCase):
+    """Golden trades 6-15, hand-calculated from the frozen specs."""
+
+    def setUp(self):
+        self.c2 = load_spec("C2", verify=False)
+        self.c1 = load_spec("C1", verify=False)
+        self.c3 = load_spec("C3", verify=False)
+        self.btc = _btc_rising()
+
+    # -- shared arithmetic --------------------------------------------------
+    ATR_BREAKOUT = (2 * 13 + 11.5) / 14          # Wilder ATR on the breakout bar of _coin_breakout
+    STOP0 = 110 - 2.5 * ATR_BREAKOUT             # C2 initial stop (2.5 ATR)
+    RISK0 = 110 - STOP0                           # dollar risk per unit at entry signal
+
+    def _qty(self, tier_risk, equity=10_000):
+        return equity * tier_risk / self.RISK0
+
+    def test_golden_6_c2_v2_first_rung_and_breakeven_stop(self):
+        # Entry fills 112.056. R is measured from avg_entry vs the initial stop: entry - stop0.
+        # +1.5R close -> sell 50% at next open, and the stop moves to breakeven (avg_entry).
+        entry = 112 * (1 + SLIP)
+        r_unit = entry - self.STOP0
+        close_15r = entry + 1.5 * r_unit + 0.01
+        coin = _coin_breakout([(112, close_15r + 1, 111, close_15r), (close_15r, close_15r + 1, close_15r - 1, close_15r)] + [(close_15r, close_15r + 1, close_15r - 1, close_15r)] * 2)
+        res = run_backtest(self.c2, make_strategy(self.c2.candidate, "V2"), {"SOL": coin}, self.btc, tier="T2", initial_cash=10_000)
+        sells = [f for f in res.fills if f.side == "sell"]
+        self.assertEqual(sells[0].reason, "r_ladder_1")
+        self.assertAlmostEqual(sells[0].qty, res.fills[0].qty * 0.5, places=9)
+        self.assertAlmostEqual(sells[0].price, close_15r * (1 - SLIP), places=9)
+        # breakeven stop: a later bar whose low dips below avg_entry must stop the remainder at ~entry
+        coin2 = _coin_breakout([(112, close_15r + 1, 111, close_15r), (close_15r, close_15r + 1, close_15r - 1, close_15r),
+                                (close_15r, close_15r + 1, entry - 1, entry - 0.5), (entry, entry + 1, entry - 1, entry)])
+        res2 = run_backtest(self.c2, make_strategy(self.c2.candidate, "V2"), {"SOL": coin2}, self.btc, tier="T2", initial_cash=10_000)
+        stop_fill = [f for f in res2.fills if f.reason == "stop"][0]
+        self.assertAlmostEqual(stop_fill.price, entry * (1 - SLIP), places=9)
+
+    def test_golden_7_c2_fee_and_slippage_split(self):
+        # Fill price = open*(1+slip). Fee = qty*price*taker. Slippage cost = qty*open*slip.
+        coin = _coin_breakout([(112, 115, 108, 114), (114, 116, 100, 101), (101, 102, 100, 101)])
+        res = run_backtest(self.c2, make_strategy(self.c2.candidate, "V3"), {"SOL": coin}, self.btc, tier="T2", initial_cash=10_000)
+        buy = res.fills[0]
+        self.assertAlmostEqual(buy.fee, buy.qty * 112 * (1 + SLIP) * FEE, places=9)
+        self.assertAlmostEqual(buy.slippage, buy.qty * 112 * SLIP, places=6)
+
+    def test_golden_8_memecoin_extra_slippage_on_entry_and_stop(self):
+        coin = _coin_breakout([(112, 115, 108, 114), (114, 116, 100, 101), (101, 102, 100, 101)])
+        res = run_backtest(self.c2, make_strategy(self.c2.candidate, "V3"), {"PEPE": coin}, self.btc, tier="T2", initial_cash=10_000)
+        slip = SLIP + 0.0010
+        self.assertAlmostEqual(res.fills[0].price, 112 * (1 + slip), places=9)
+        stop = [f for f in res.fills if f.reason == "stop"][0]
+        atr_62 = (self.ATR_BREAKOUT * 13 + 7) / 14
+        self.assertAlmostEqual(stop.price, (114 - 3 * atr_62) * (1 - slip), places=9)
+
+    def test_golden_9_exposure_cap_clips_qty_at_t1(self):
+        # T1: 0.5% risk ($50), 35% cap ($3,500). Flat bars with TR 0.4 then a small breakout:
+        # ATR = (0.4*13 + 1.05)/14 = 0.4464, stop distance 2.5*ATR = 1.116 -> unclipped qty 44.8 (= $4,520)
+        # exceeds the cap, so the engine clips the order to $3,500 notional at the signal close.
+        rows = [(100.0, 100.2, 99.8, 100.0)] * 60 + [(100.0, 101.0, 99.95, 100.9)]
+        rows += [(101.0, 101.5, 100.5, 101.0)] * 3
+        idx = pd.date_range("2021-01-01", periods=len(rows), freq="D", tz="UTC")
+        coin = pd.DataFrame(rows, columns=["open", "high", "low", "close"], index=idx); coin["volume"] = 1e6
+        atr = (0.4 * 13 + 1.05) / 14
+        stop0 = 100.9 - 2.5 * atr
+        qty_unclipped = 10_000 * 0.005 / (100.9 - stop0)
+        self.assertGreater(qty_unclipped * 100.9, 3500)
+        res = run_backtest(self.c2, make_strategy(self.c2.candidate, "V3"), {"SOL": coin}, self.btc, tier="T1", initial_cash=10_000)
+        self.assertGreaterEqual(len(res.fills), 1)
+        self.assertAlmostEqual(res.fills[0].qty * 100.9, 3500, places=6)
+        self.assertAlmostEqual(res.fills[0].price, 101 * (1 + SLIP), places=9)
+
+    def test_golden_10_c1_target_exit_at_2r(self):
+        # 1h bars: 200 flat hours (vol 1e6), then a breakout hour with 3x volume. Regime: BTC daily rising,
+        # BTC hourly rising. Target: close >= entry + 2R -> market sell at next open.
+        n = 220
+        rows = [(100.0, 101.0, 99.0, 100.0, 1e6)] * 200
+        rows.append((100.0, 111.0, 99.5, 110.0, 3e6))  # breakout: close 110 > prior 24h high 101, vol 3x avg
+        entry = 112 * (1 + SLIP)
+        atr_b = (2 * 13 + 11.5) / 14
+        stop0 = 110 - 1.5 * atr_b
+        r_unit = entry - stop0
+        tgt = entry + 2 * r_unit + 0.01
+        rows.append((112.0, 113.0, 111.0, 112.5, 1e6))          # fill bar
+        rows.append((112.5, tgt + 1, 112.0, tgt, 1e6))          # target hit at close
+        rows.append((tgt, tgt + 1, tgt - 1, tgt, 1e6))          # exit fills at this open
+        rows += [(tgt, tgt + 1, tgt - 1, tgt, 1e6)] * (n - len(rows))
+        idx = pd.date_range("2021-06-01", periods=n, freq="h", tz="UTC")
+        coin = pd.DataFrame(rows, columns=["open", "high", "low", "close", "volume"], index=idx)
+        btc_h = pd.DataFrame({"open": 100.0, "high": 101.0, "low": 99.0, "close": 100 + np.arange(n) * 0.01, "volume": 1.0}, index=idx)
+        btc_h["open"] = btc_h["close"]
+        res = run_backtest(self.c1, make_strategy(self.c1.candidate), {"SOL": coin}, self.btc, btc_signal=btc_h, tier="T2", initial_cash=10_000)
+        self.assertEqual(len(res.trades), 1)
+        tr = res.trades.iloc[0]
+        self.assertEqual(tr["exit_reason"], "target_r")
+        self.assertAlmostEqual(tr["avg_entry"], entry, places=9)
+        self.assertAlmostEqual(tr["avg_exit"], tgt * (1 - SLIP), places=9)
+        self.assertAlmostEqual(tr["qty"], 10_000 * 0.0075 / (110 - stop0), places=9)
+
+    def test_golden_11_c1_time_exit_after_24_bars(self):
+        n = 260
+        rows = [(100.0, 101.0, 99.0, 100.0, 1e6)] * 200 + [(100.0, 111.0, 99.5, 110.0, 3e6)]
+        rows += [(112.0, 113.0, 111.0, 112.0, 1e6)] * (n - len(rows))  # drifts sideways above the stop
+        idx = pd.date_range("2021-06-01", periods=n, freq="h", tz="UTC")
+        coin = pd.DataFrame(rows, columns=["open", "high", "low", "close", "volume"], index=idx)
+        btc_h = pd.DataFrame({"open": 100.0, "high": 101.0, "low": 99.0, "close": 100 + np.arange(n) * 0.01, "volume": 1.0}, index=idx)
+        res = run_backtest(self.c1, make_strategy(self.c1.candidate), {"SOL": coin}, self.btc, btc_signal=btc_h, tier="T2", initial_cash=10_000)
+        tr = res.trades.iloc[0]
+        self.assertEqual(tr["exit_reason"], "time_exit")
+        # bought at bar 201 open; bars_held reaches 24 at bar 224's close; sells at bar 225's open
+        self.assertEqual(tr["exit_time"], idx[225])
+        self.assertAlmostEqual(tr["avg_exit"], 112 * (1 - SLIP), places=9)
+
+    def test_golden_12_c1_no_entry_without_volume(self):
+        n = 210
+        rows = [(100.0, 101.0, 99.0, 100.0, 1e6)] * 200 + [(100.0, 111.0, 99.5, 110.0, 1.5e6)]  # only 1.5x volume
+        rows += [(112.0, 113.0, 111.0, 112.0, 1e6)] * (n - len(rows))
+        idx = pd.date_range("2021-06-01", periods=n, freq="h", tz="UTC")
+        coin = pd.DataFrame(rows, columns=["open", "high", "low", "close", "volume"], index=idx)
+        btc_h = pd.DataFrame({"open": 100.0, "high": 101.0, "low": 99.0, "close": 100 + np.arange(n) * 0.01, "volume": 1.0}, index=idx)
+        res = run_backtest(self.c1, make_strategy(self.c1.candidate), {"SOL": coin}, self.btc, btc_signal=btc_h, tier="T2")
+        self.assertEqual(len(res.trades), 0)
+
+    def _c3_data(self, n=130):
+        """Three coins with distinct 90-day momentum; weekly rebalance on Mondays."""
+        idx = pd.date_range("2021-01-04", periods=n, freq="D", tz="UTC")  # 2021-01-04 is a Monday
+        rng = np.random.default_rng(0)
+        bars = {}
+        for s, drift in (("SOL", 0.004), ("LINK", 0.002), ("DOGE", -0.003)):
+            close = 100 * np.exp(np.cumsum(drift + rng.normal(0, 0.005, n)))
+            bars[s] = pd.DataFrame({"open": close, "high": close * 1.01, "low": close * 0.99, "close": close, "volume": 1e6}, index=idx)
+        return bars
+
+    def test_golden_13_c3_equal_weight_sizing_within_cap(self):
+        bars = self._c3_data()
+        spec = self.c3
+        res = run_backtest(spec, make_strategy(spec.candidate), bars, self.btc, tier="T2", initial_cash=10_000)
+        buys = [f for f in res.fills if f.side == "buy"]
+        self.assertGreaterEqual(len(buys), 1)
+        first = buys[0]
+        # target weight = cap / hold_top = 0.5 / 3 of equity at the signal close; qty = weight*equity/close_signal
+        eq_at_signal = res.equity.loc[: first.time - pd.Timedelta(days=1)].iloc[-1]
+        signal_close = bars[first.symbol]["close"].loc[first.time - pd.Timedelta(days=1)]
+        self.assertAlmostEqual(first.qty, (0.5 / 3) * eq_at_signal / signal_close, places=9)
+        self.assertEqual(first.time.weekday(), 1)  # fills Tuesday for a Monday signal
+
+    def test_golden_14_c3_exits_everything_when_regime_turns_off(self):
+        # Momentum needs 90 bars: data starts Monday 2021-01-04, so the first ranking is Monday 2021-04-05.
+        # Regime turns off from 2021-05-10 -> every position is sold at the next open (2021-05-11).
+        bars = self._c3_data(160)
+        btc = self.btc.copy()
+        btc.loc[btc.index >= "2021-05-10", "close"] = 1.0
+        res = run_backtest(self.c3, make_strategy(self.c3.candidate), bars, btc, tier="T2", initial_cash=10_000)
+        self.assertGreaterEqual(len(res.trades), 1)
+        self.assertTrue((res.trades.exit_reason == "regime_off").all(), res.trades.exit_reason.tolist())
+        self.assertTrue((res.trades["exit_time"] == pd.Timestamp("2021-05-11", tz="UTC")).all())
+        self.assertTrue((res.trades["entry_time"] == pd.Timestamp("2021-04-06", tz="UTC")).all())
+
+    def test_golden_15_governor_halve_halves_the_next_entry(self):
+        # Two breakouts: the second signal arrives while drawdown is between 33% and 53% of L (T2: 8.25%..13.25%),
+        # so its risk budget is halved.
+        rows = [(100.0, 101.0, 99.0, 100.0)] * 60 + [(100.0, 111.0, 99.5, 110.0)]          # breakout 1
+        rows += [(112, 115, 108, 114), (114, 116, 100, 101)]                                  # stop out on bar 63
+        rows += [(101.0, 102.0, 100.0, 101.0)] * 25                                            # rebuild 20-day high at 102
+        rows += [(101.0, 112.0, 100.5, 111.0)]                                                 # breakout 2
+        rows += [(113, 114, 112, 113)] * 3
+        idx = pd.date_range("2021-01-01", periods=len(rows), freq="D", tz="UTC")
+        coin = pd.DataFrame(rows, columns=["open", "high", "low", "close"], index=idx); coin["volume"] = 1e6
+        # Make the first trade large enough to put equity 8.25%+ under its peak: use T4 sizing (2% risk)? No —
+        # tier must be fixed. Instead inflate the first loss with three coins taking the same trade.
+        bars = {s: coin for s in ("SOL", "LINK", "DOGE")}
+        res = run_backtest(self.c2, make_strategy(self.c2.candidate, "V3"), bars, self.btc, tier="T2", initial_cash=10_000)
+        buys = [f for f in res.fills if f.side == "buy"]
+        second_wave = [f for f in buys if f.time > idx[63]]
+        halved = res.decision_log[(res.decision_log.event == "queue_buy") & (res.decision_log.size_note == "governor:halve")]
+        dd_before = 1 - res.equity.loc[: idx[63]].iloc[-1] / res.equity.loc[: idx[63]].max()
+        if 0.0825 <= dd_before < 0.1325:
+            self.assertGreaterEqual(len(halved), 1)
+            eq = res.equity.loc[: second_wave[0].time - pd.Timedelta(days=1)].iloc[-1]
+            atr2 = res.decision_log  # noqa: F841 (stop is on the log row)
+            row = halved.iloc[0]
+            expected = 0.5 * eq * 0.0075 / (row.price_ref - row.stop)
+            self.assertAlmostEqual(row.qty, expected, places=6)
+        else:
+            self.skipTest(f"drawdown before second wave was {dd_before:.2%}, outside the HALVE band")

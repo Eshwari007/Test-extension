@@ -371,6 +371,34 @@ def eligible_at(table: pd.DataFrame, t: pd.Timestamp) -> set[str]:
     return set(row.index[row.astype(bool)])
 
 
+def combine_history(
+    alpaca: pd.DataFrame | None,
+    reference: pd.DataFrame | None,
+    windows: list[tuple[pd.Timestamp, pd.Timestamp | None]] | None,
+) -> pd.DataFrame | None:
+    """Execution-venue bars while listed on Alpaca, reference-exchange bars otherwise.
+
+    Reference bars only ever feed indicator history: eligibility requires an Alpaca
+    listing, so no trade can fill on a reference bar. Where Alpaca has no bar for a
+    day inside a listing window (no trades), the reference bar fills the hole so the
+    indicator windows stay contiguous; such days carry zero Alpaca volume anyway.
+    """
+    if alpaca is None or alpaca.empty:
+        return reference
+    if reference is None or reference.empty:
+        return alpaca
+    if not windows:
+        windows = [(alpaca.index[0], None)]
+    listed = pd.Series(False, index=reference.index.union(alpaca.index))
+    for a, b in windows:
+        listed[(listed.index >= a) & ((listed.index <= b) if b is not None else True)] = True
+    out = reference.reindex(listed.index)
+    alp = alpaca.reindex(listed.index)
+    use_alp = listed & alp["close"].notna()
+    out[use_alp] = alp[use_alp]
+    return out.dropna(subset=["close"])
+
+
 # ---------------------------------------------------------------------------
 # Synthetic data (engine tests; never for research conclusions)
 # ---------------------------------------------------------------------------

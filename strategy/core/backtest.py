@@ -79,7 +79,8 @@ def run_backtest(
     portfolio = Portfolio(initial_cash)
     broker = SimBroker(spec.costs, spec.coin_tier, stress=stress, taker_everywhere=taker_everywhere)
     broker.measured_spread = dict(measured_spread or {})
-    risk = RiskManager(risk_tier, spec.governor, spec.max_order_notional_usd, spec.coin_tier)
+    risk = RiskManager(risk_tier, spec.governor, spec.max_order_notional_usd, spec.coin_tier,
+                       cooldown_bars=spec.governor.get("flatten_cooldown_bars", 30))
     execution = ExecutionEngine(broker, risk, portfolio, DecisionLog())
 
     # ---- timeline and row lookups ---------------------------------------------
@@ -124,7 +125,7 @@ def run_backtest(
             prices[sym] = float(bar["close"])
         equity = portfolio.mark(t, prices)
         exposure_rows.append((t, portfolio.gross_exposure(prices) / equity if equity > 0 else 0.0))
-        level = risk.governor_level(portfolio.drawdown(prices))
+        level = risk.governor_level(equity)
         if level != last_level:
             governor_events.append({"time": t, "from": last_level.name, "to": level.name, "equity": equity,
                                     "drawdown": portfolio.drawdown(prices)})
@@ -139,10 +140,11 @@ def run_backtest(
         if level >= GovernorLevel.FLATTEN:
             if level == GovernorLevel.KILL:
                 killed = True
-            execution.flatten(ctx, f"governor:{level.name.lower()}")
+            if portfolio.positions or any(p.order.side == "buy" for p in execution.pending):
+                execution.flatten(ctx, f"governor:{level.name.lower()}")
             if killed and not portfolio.positions and not execution.pending:
                 break
-            continue
+            continue  # in cash during the cooldown; the governor re-bases when it ends
 
         # 4. manage open positions
         for sym, pos in list(portfolio.positions.items()):
@@ -175,6 +177,12 @@ def run_backtest(
             if fill is not None:
                 portfolio.apply_fill(fill)
         portfolio.equity_curve[-1] = (t, portfolio.equity(prices))
+
+    # A killed run sits in cash to the end of the window, so metrics cover the whole period.
+    if killed and timeline and portfolio.equity_curve and portfolio.equity_curve[-1][0] < timeline[-1]:
+        final = portfolio.equity(prices)
+        portfolio.equity_curve.append((timeline[-1], final))
+        exposure_rows.append((timeline[-1], 0.0))
 
     exposure = pd.Series(dict(exposure_rows), dtype=float)
     return BacktestResult(

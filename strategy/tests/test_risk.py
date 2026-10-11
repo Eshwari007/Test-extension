@@ -73,18 +73,39 @@ class RiskTests(unittest.TestCase):
     def test_governor_thresholds_exact(self):
         L = 0.25
         eps = 1e-9
-        self.assertEqual(self.rm.governor_level(0.33 * L - eps), GovernorLevel.NORMAL)
-        self.assertEqual(self.rm.governor_level(0.33 * L), GovernorLevel.HALVE)
-        self.assertEqual(self.rm.governor_level(0.53 * L - eps), GovernorLevel.HALVE)
-        self.assertEqual(self.rm.governor_level(0.53 * L), GovernorLevel.BLOCK)
-        self.assertEqual(self.rm.governor_level(0.80 * L - eps), GovernorLevel.BLOCK)
-        self.assertEqual(self.rm.governor_level(0.80 * L), GovernorLevel.FLATTEN)
-        self.assertEqual(self.rm.governor_level(L - eps), GovernorLevel.FLATTEN)
-        self.assertEqual(self.rm.governor_level(L), GovernorLevel.KILL)
+        self.assertEqual(self.rm.level_for_drawdown(0.33 * L - eps), GovernorLevel.NORMAL)
+        self.assertEqual(self.rm.level_for_drawdown(0.33 * L), GovernorLevel.HALVE)
+        self.assertEqual(self.rm.level_for_drawdown(0.53 * L - eps), GovernorLevel.HALVE)
+        self.assertEqual(self.rm.level_for_drawdown(0.53 * L), GovernorLevel.BLOCK)
+        self.assertEqual(self.rm.level_for_drawdown(0.80 * L - eps), GovernorLevel.BLOCK)
+        self.assertEqual(self.rm.level_for_drawdown(0.80 * L), GovernorLevel.FLATTEN)
+        self.assertEqual(self.rm.level_for_drawdown(L - eps), GovernorLevel.FLATTEN)
+        self.assertEqual(self.rm.level_for_drawdown(L), GovernorLevel.KILL)
 
     def test_kill_is_sticky(self):
-        self.assertEqual(self.rm.governor_level(0.25), GovernorLevel.KILL)
-        self.assertEqual(self.rm.governor_level(0.0), GovernorLevel.KILL)
+        self.assertEqual(self.rm.level_for_drawdown(0.25), GovernorLevel.KILL)
+        self.assertEqual(self.rm.level_for_drawdown(0.0), GovernorLevel.KILL)
+
+    def test_governor_resumes_after_flatten_cooldown_and_rebases(self):
+        rm = RiskManager(self.tier, self.spec.governor, 200_000, self.spec.coin_tier, cooldown_bars=3)
+        self.assertEqual(rm.governor_level(10_000), GovernorLevel.NORMAL)
+        self.assertEqual(rm.governor_level(7_990), GovernorLevel.FLATTEN)      # -20.1% >= 80% of L
+        self.assertEqual(rm.governor_level(7_990), GovernorLevel.FLATTEN)      # cooldown 1
+        self.assertEqual(rm.governor_level(7_990), GovernorLevel.FLATTEN)      # cooldown 2
+        self.assertEqual(rm.governor_level(7_990), GovernorLevel.FLATTEN)      # cooldown 3
+        self.assertEqual(rm.governor_level(7_990), GovernorLevel.NORMAL)       # re-based at 7,990
+        self.assertEqual(rm.governor_level(8_500), GovernorLevel.NORMAL)       # new governor peak 8,500
+        self.assertEqual(rm.governor_level(7_790), GovernorLevel.HALVE)        # -8.4% of 8,500 > 33% of L; -22% all-time < L
+        self.assertFalse(rm.killed)
+
+    def test_kill_measures_from_all_time_peak_even_after_rebase(self):
+        rm = RiskManager(self.tier, self.spec.governor, 200_000, self.spec.coin_tier, cooldown_bars=1)
+        rm.governor_level(10_000)
+        rm.governor_level(7_990)   # flatten
+        rm.governor_level(7_990)   # cooldown
+        self.assertEqual(rm.governor_level(7_990), GovernorLevel.NORMAL)
+        self.assertEqual(rm.governor_level(7_490), GovernorLevel.KILL)         # -25.1% from 10,000 >= L
+        self.assertTrue(rm.killed)
 
     def test_tier_table_matches_plan(self):
         rows = {
@@ -101,10 +122,10 @@ class RiskTests(unittest.TestCase):
     def test_governor_dollar_steps_match_plan_table(self):
         # Plan table: T3 (40%) halves at -13%, blocks at -21%, flattens at -32%, kills at -40%
         rm = RiskManager(self.spec.tiers["T3"], self.spec.governor, 200_000, self.spec.coin_tier)
-        self.assertEqual(rm.governor_level(0.1321), GovernorLevel.HALVE)
-        self.assertEqual(rm.governor_level(0.2121), GovernorLevel.BLOCK)
-        self.assertEqual(rm.governor_level(0.3201), GovernorLevel.FLATTEN)
-        self.assertEqual(rm.governor_level(0.40), GovernorLevel.KILL)
+        self.assertEqual(rm.level_for_drawdown(0.1321), GovernorLevel.HALVE)
+        self.assertEqual(rm.level_for_drawdown(0.2121), GovernorLevel.BLOCK)
+        self.assertEqual(rm.level_for_drawdown(0.3201), GovernorLevel.FLATTEN)
+        self.assertEqual(rm.level_for_drawdown(0.40), GovernorLevel.KILL)
 
 
 if __name__ == "__main__":

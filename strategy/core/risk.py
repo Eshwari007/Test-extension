@@ -34,15 +34,59 @@ class RiskManager:
         governor: dict[str, float],
         max_order_notional: float,
         coin_tier_lookup,
+        cooldown_bars: int = 30,
     ):
         self.tier = tier
         self.governor = governor
         self.max_order_notional = max_order_notional
         self.coin_tier = coin_tier_lookup
         self.killed = False
+        # Resume rule after a flatten (the plan defines the steps down, not the way back):
+        # stay in cash for `cooldown_bars`, then re-base the governor peak to current equity
+        # and resume. The KILL step always measures from the all-time peak and is never re-based.
+        self.cooldown_bars = cooldown_bars
+        self.flattened = False
+        self.cooldown_left = 0
+        self.governor_peak: float | None = None
+        self.all_time_peak: float | None = None
 
     # ---- governor ----------------------------------------------------------
-    def governor_level(self, drawdown: float) -> GovernorLevel:
+    def governor_level(self, equity: float) -> GovernorLevel:
+        """Governor step for the current equity. Call once per bar, after marking."""
+        if self.killed:
+            return GovernorLevel.KILL
+        if self.all_time_peak is None:
+            self.all_time_peak = self.governor_peak = equity
+        self.all_time_peak = max(self.all_time_peak, equity)
+        if self.tier.max_drawdown <= 0:
+            return GovernorLevel.NORMAL
+        if 1 - equity / self.all_time_peak >= self.governor["kill"] * self.tier.max_drawdown:
+            self.killed = True
+            return GovernorLevel.KILL
+
+        if self.flattened:
+            if self.cooldown_left > 0:
+                self.cooldown_left -= 1
+                return GovernorLevel.FLATTEN
+            self.flattened = False
+            self.governor_peak = equity          # re-base after the cooldown
+            return GovernorLevel.NORMAL
+
+        assert self.governor_peak is not None
+        self.governor_peak = max(self.governor_peak, equity)
+        share = (1 - equity / self.governor_peak) / self.tier.max_drawdown
+        if share >= self.governor["flatten"]:
+            self.flattened = True
+            self.cooldown_left = self.cooldown_bars
+            return GovernorLevel.FLATTEN
+        if share >= self.governor["block_entries"]:
+            return GovernorLevel.BLOCK
+        if share >= self.governor["halve_size"]:
+            return GovernorLevel.HALVE
+        return GovernorLevel.NORMAL
+
+    def level_for_drawdown(self, drawdown: float) -> GovernorLevel:
+        """Stateless threshold lookup (tests and reporting)."""
         if self.killed:
             return GovernorLevel.KILL
         share = drawdown / self.tier.max_drawdown if self.tier.max_drawdown > 0 else 0.0
