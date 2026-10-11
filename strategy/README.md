@@ -58,8 +58,9 @@ python -m strategy.cli backtest --candidate C2 --variant V3 --tier T2 --syntheti
 python -m strategy.cli validate --candidate C2 --variant V3 --tier T2 --synthetic --no-verify --mc-runs 500 --random-runs 50
 
 # Phase 1: real data
-python -m strategy.cli fetch --source coinbase --timeframe 1d --start 2019-01-01
-python -m strategy.cli fetch --source alpaca   --timeframe 1h --start 2022-01-01   # needs APCA_API_KEY_ID / APCA_API_SECRET_KEY
+python -m strategy.cli fetch --timeframe 1d --start 2021-01-01                       # Alpaca, the execution venue (default)
+python -m strategy.cli fetch --timeframe 1h --start 2022-01-01                       # needs APCA_API_KEY_ID / APCA_API_SECRET_KEY
+python -m strategy.cli fetch --source coinbase --timeframe 1d --start 2019-01-01     # optional: reference exchange for pre-Alpaca history
 python -m strategy.cli quality --timeframe 1d
 
 # Phase 3: in-sample only
@@ -99,7 +100,7 @@ The plan asks for 20 golden trades; five are included. Add the rest from a sprea
 ## Open decisions (from the plan, still yours)
 
 - Starting capital for the live pilot (`--cash`, default 10 000).
-- Reference exchange: `fetch --source coinbase` is wired; Kraken/Binance are a small addition in `core/data.py`.
+- Reference exchange for pre-Alpaca history: Coinbase is wired (`fetch --source coinbase`); Kraken/Binance are a small addition in `core/data.py`. Alpaca is the default and the execution venue.
 - Liquidity threshold (`universe.yaml: min_median_dollar_volume_30d`, proposed 20 M).
 - Hosting and alerting for the live bot (Phase 5).
 

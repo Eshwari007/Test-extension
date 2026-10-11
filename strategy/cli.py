@@ -1,7 +1,7 @@
 """Command line entry point.
 
   python -m strategy.cli freeze  --reason "Gate G0"
-  python -m strategy.cli fetch   --source coinbase --timeframe 1d --start 2019-01-01 --data data/bars
+  python -m strategy.cli fetch   --timeframe 1d --start 2021-01-01 --data data/bars          # Alpaca (default)
   python -m strategy.cli quality --timeframe 1d --data data/bars
   python -m strategy.cli backtest --candidate C2 --variant V3 --tier T2 --data data/bars \
           --start 2024-01-01 --end 2026-06-30 [--stress] [--synthetic]
@@ -217,7 +217,8 @@ def main(argv: list[str] | None = None) -> None:
     f.set_defaults(fn=cmd_freeze)
 
     ft = sub.add_parser("fetch")
-    ft.add_argument("--source", choices=["coinbase", "alpaca"], default="coinbase")
+    ft.add_argument("--source", choices=["alpaca", "coinbase"], default="alpaca",
+                    help="alpaca = execution venue (default); coinbase = reference exchange for longer history")
     ft.add_argument("--timeframe", default="1d")
     ft.add_argument("--start", required=True)
     ft.add_argument("--end", default=None)
