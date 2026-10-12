@@ -1,0 +1,43 @@
+=== TRUE BENCHMARKS (no entry filters at all) ===
+BENCH: buy every leader at 09:45, hold 3d, 5% stop             ALL n=2578 win=0.475 avgR=0.069   pf=1.16  dd= -117.2 | IS avgR=0.066   pf=1.17  | OOS avgR=0.073   pf=1.16  n=1152
+BENCH: hold 5d                                                 ALL n=2093 win=0.449 avgR=0.123   pf=1.24  dd= -101.4 | IS avgR=0.099   pf=1.2   | OOS avgR=0.153   pf=1.28  n=947
+BENCH: hold 8d                                                 ALL n=1712 win=0.408 avgR=0.148   pf=1.26  dd= -102.9 | IS avgR=0.155   pf=1.29  | OOS avgR=0.139   pf=1.22  n=778
+BENCH: buy every leader at 09:45, 1d                           ALL n=3983 win=0.49  avgR=0.028   pf=1.09  dd=  -97.0 | IS avgR=0.011   pf=1.04  | OOS avgR=0.049   pf=1.15  n=1745
+BENCH: + SPY above VWAP only                                   ALL n=1965 win=0.479 avgR=0.06    pf=1.14  dd=  -89.1 | IS avgR=0.049   pf=1.13  | OOS avgR=0.074   pf=1.15  n=895
+BENCH: + vol>=1.5 at 09:45 only                                ALL n=1002 win=0.421 avgR=0.052   pf=1.1   dd=  -79.7 | IS avgR=0.036   pf=1.07  | OOS avgR=0.068   pf=1.12  n=504
+BENCH: + day gain>=1% at 09:45 only                            ALL n=1391 win=0.457 avgR=0.078   pf=1.17  dd=  -98.5 | IS avgR=0.141   pf=1.36  | OOS avgR=0.014   pf=1.03  n=683
+
+=== CANDIDATES ===
+S: ORB15 vol1.5 3d 5%                                          ALL n= 690 win=0.513 avgR=0.189   pf=1.5   dd=  -19.0 | IS avgR=0.174   pf=1.51  | OOS avgR=0.209   pf=1.49  n=299
+S + vol2.0                                                     ALL n= 450 win=0.527 avgR=0.261   pf=1.75  dd=  -11.5 | IS avgR=0.228   pf=1.71  | OOS avgR=0.308   pf=1.8   n=184
+S + within10% 52w                                              ALL n= 415 win=0.54  avgR=0.288   pf=1.8   dd=  -13.1 | IS avgR=0.214   pf=1.63  | OOS avgR=0.372   pf=1.98  n=194
+S + vol2.0 + within10%                                         ALL n= 269 win=0.561 avgR=0.361   pf=2.13  dd=   -6.7 | IS avgR=0.256   pf=1.79  | OOS avgR=0.501   pf=2.59  n=116
+S + top10                                                      ALL n= 480 win=0.517 avgR=0.212   pf=1.55  dd=  -14.8 | IS avgR=0.144   pf=1.39  | OOS avgR=0.307   pf=1.73  n=200
+S + top10 + within10%                                          ALL n= 292 win=0.558 avgR=0.359   pf=2.03  dd=   -9.6 | IS avgR=0.236   pf=1.68  | OOS avgR=0.511   pf=2.45  n=131
+S + latest 12:00 + within10%                                   ALL n= 224 win=0.54  avgR=0.323   pf=1.81  dd=  -10.3 | IS avgR=0.247   pf=1.68  | OOS avgR=0.4     pf=1.92  n=112
+S hold 5d                                                      ALL n= 644 win=0.464 avgR=0.216   pf=1.45  dd=  -32.2 | IS avgR=0.137   pf=1.29  | OOS avgR=0.317   pf=1.64  n=283
+S hold 5d + within10%                                          ALL n= 383 win=0.491 avgR=0.285   pf=1.62  dd=  -23.8 | IS avgR=0.163   pf=1.34  | OOS avgR=0.424   pf=1.95  n=179
+S hold 8d + within10%                                          ALL n= 353 win=0.442 avgR=0.342   pf=1.62  dd=  -26.7 | IS avgR=0.163   pf=1.28  | OOS avgR=0.555   pf=2.05  n=161
+S hold 5d + within10% + vol2.0                                 ALL n= 256 win=0.492 avgR=0.305   pf=1.69  dd=  -12.1 | IS avgR=0.156   pf=1.33  | OOS avgR=0.497   pf=2.24  n=112
+S hold 5d + within10% + 8% stop                                ALL n= 374 win=0.527 avgR=0.17    pf=1.53  dd=  -17.7 | IS avgR=0.08    pf=1.24  | OOS avgR=0.274   pf=1.87  n=173
+S hold 5d + within10% + ema21 trail 2R                         ALL n= 406 win=0.51  avgR=0.228   pf=1.51  dd=  -25.6 | IS avgR=0.078   pf=1.16  | OOS avgR=0.397   pf=1.98  n=191
+
+=== PORTFOLIO SIMULATIONS (5 bps slippage each side) ===
+PORTFOLIO BENCH 3d 5%                              max_pos=10 size=10% slip=5bp | taken=1314 skipped=1264 | final=$151,828 total=+51.8% CAGR=+26.7% maxDD=-25.4% Sharpe=1.01 avg exposure=72% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+17.2%', 2026: '+27.6%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S: ORB15 vol1.5 3d 5%                    max_pos=10 size=10% slip=5bp | taken= 674 skipped=  16 | final=$174,276 total=+74.3% CAGR=+37.0% maxDD=-9.0% Sharpe=1.93 avg exposure=38% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+33.2%', 2026: '+30.1%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S: ORB15 vol1.5 3d 5%                    max_pos= 5 size=20% slip=5bp | taken= 469 skipped= 221 | final=$196,877 total=+96.9% CAGR=+46.8% maxDD=-18.6% Sharpe=1.64 avg exposure=53% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+67.9%', 2026: '+15.9%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S + within10%                            max_pos=10 size=10% slip=5bp | taken= 415 skipped=   0 | final=$169,709 total=+69.7% CAGR=+34.9% maxDD=-5.6% Sharpe=2.32 avg exposure=24% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+23.3%', 2026: '+37.4%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S + within10%                            max_pos= 5 size=20% slip=5bp | taken= 349 skipped=  66 | final=$272,024 total=+172.0% CAGR=+76.2% maxDD=-10.5% Sharpe=2.51 avg exposure=41% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+55.0%', 2026: '+74.8%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S 5d + within10%                         max_pos=10 size=10% slip=5bp | taken= 380 skipped=   3 | final=$160,096 total=+60.1% CAGR=+30.5% maxDD=-13.4% Sharpe=1.66 avg exposure=34% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+16.1%', 2026: '+36.9%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S 5d + within10%                         max_pos= 5 size=20% slip=5bp | taken= 292 skipped=  91 | final=$212,225 total=+112.2% CAGR=+53.1% maxDD=-18.6% Sharpe=1.80 avg exposure=52% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+45.3%', 2026: '+43.5%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S 5d + within10%                         max_pos= 8 size=12% slip=5bp | taken= 366 skipped=  17 | final=$177,838 total=+77.8% CAGR=+38.5% maxDD=-16.0% Sharpe=1.68 avg exposure=41% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+20.7%', 2026: '+46.0%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}
+PORTFOLIO S 5d + within10% (10bp slip)             max_pos=10 size=10% slip=10bp | taken= 380 skipped=   3 | final=$154,610 total=+54.6% CAGR=+28.0% maxDD=-13.7% Sharpe=1.54 avg exposure=34% | SPY total=+33.2% CAGR=+17.6% maxDD=-19.0%
+   by year: {2025: '+13.9%', 2026: '+34.8%'}  SPY: {2025: '+16.6%', 2026: '+14.0%'}

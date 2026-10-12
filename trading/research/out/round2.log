@@ -1,0 +1,69 @@
+=== EXITS (flag entry, pole 0.75) ===
+spec exits (T 2.5/5.5/10 + ema9 trail)                  ALL n= 263 win=0.456 avgR=-0.053  pf=0.88  dd= -22.7 | IS avgR=-0.096  pf=0.78  n=134 | OOS avgR=-0.009  pf=0.98  n=129
+hold to close, no targets, no trail                     ALL n= 263 win=0.395 avgR=-0.073  pf=0.85  dd= -28.1 | IS avgR=-0.123  pf=0.76  n=134 | OOS avgR=-0.021  pf=0.96  n=129
+hold to close, BE after 1R                              ALL n= 263 win=0.35  avgR=-0.049  pf=0.88  dd= -23.1 | IS avgR=-0.107  pf=0.75  n=134 | OOS avgR=0.011   pf=1.03  n=129
+hold to close, ema21 trail after 1R                     ALL n= 263 win=0.437 avgR=-0.074  pf=0.83  dd= -26.0 | IS avgR=-0.123  pf=0.73  n=134 | OOS avgR=-0.023  pf=0.94  n=129
+hold to close, ema21 trail after 2R                     ALL n= 263 win=0.395 avgR=-0.093  pf=0.81  dd= -31.2 | IS avgR=-0.146  pf=0.71  n=134 | OOS avgR=-0.037  pf=0.92  n=129
+targets 1.5/3/5 + ema9 trail                            ALL n= 263 win=0.464 avgR=-0.055  pf=0.87  dd= -21.9 | IS avgR=-0.09   pf=0.79  n=134 | OOS avgR=-0.019  pf=0.96  n=129
+targets 5/10/15 + ema21 trail                           ALL n= 263 win=0.437 avgR=-0.071  pf=0.84  dd= -25.2 | IS avgR=-0.117  pf=0.74  n=134 | OOS avgR=-0.023  pf=0.94  n=129
+
+=== STOPS ===
+ATR stop 1.0x, hold to close, ema21 trail               ALL n= 263 win=0.259 avgR=-0.198  pf=0.71  dd= -68.0 | IS avgR=-0.291  pf=0.58  n=134 | OOS avgR=-0.102  pf=0.84  n=129
+ATR stop 1.0x, spec exits                               ALL n= 263 win=0.342 avgR=-0.101  pf=0.82  dd= -49.2 | IS avgR=-0.253  pf=0.56  n=134 | OOS avgR=0.057   pf=1.1   n=129
+ATR stop 1.5x, hold to close, ema21 trail               ALL n= 263 win=0.319 avgR=-0.197  pf=0.67  dd= -62.0 | IS avgR=-0.256  pf=0.59  n=134 | OOS avgR=-0.137  pf=0.76  n=129
+ATR stop 1.5x, spec exits                               ALL n= 263 win=0.392 avgR=-0.161  pf=0.7   dd= -54.3 | IS avgR=-0.261  pf=0.53  n=134 | OOS avgR=-0.057  pf=0.89  n=129
+ATR stop 2.0x, hold to close, ema21 trail               ALL n= 263 win=0.407 avgR=-0.107  pf=0.79  dd= -38.7 | IS avgR=-0.168  pf=0.68  n=134 | OOS avgR=-0.042  pf=0.91  n=129
+ATR stop 2.0x, spec exits                               ALL n= 263 win=0.433 avgR=-0.102  pf=0.79  dd= -40.4 | IS avgR=-0.214  pf=0.59  n=134 | OOS avgR=0.015   pf=1.03  n=129
+ATR stop 3.0x, hold to close, ema21 trail               ALL n= 263 win=0.43  avgR=-0.069  pf=0.83  dd= -23.3 | IS avgR=-0.081  pf=0.8   n=134 | OOS avgR=-0.057  pf=0.86  n=129
+ATR stop 3.0x, spec exits                               ALL n= 263 win=0.43  avgR=-0.061  pf=0.85  dd= -21.5 | IS avgR=-0.079  pf=0.81  n=134 | OOS avgR=-0.043  pf=0.89  n=129
+pole_low stop, hold to close, ema21 trail               ALL n= 263 win=0.437 avgR=-0.068  pf=0.76  dd= -20.8 | IS avgR=-0.083  pf=0.7   n=134 | OOS avgR=-0.052  pf=0.81  n=129
+
+=== SWING HOLDS (overnight) ===
+swing 1d, no targets, no trail, flag stop               ALL n= 272 win=0.239 avgR=0.052   pf=1.05  dd= -44.7 | IS avgR=0.212   pf=1.22  n=131 | OOS avgR=-0.096  pf=0.91  n=141
+swing 1d, ATR2 stop, no targets, ema21 trail            ALL n= 279 win=0.341 avgR=-0.001  pf=1.0   dd= -55.4 | IS avgR=0.112   pf=1.15  n=136 | OOS avgR=-0.108  pf=0.86  n=143
+swing 1d, ATR2 stop, targets 5/10/15                    ALL n= 274 win=0.197 avgR=0.041   pf=1.04  dd= -57.6 | IS avgR=0.3     pf=1.3   n=132 | OOS avgR=-0.199  pf=0.82  n=142
+swing 2d, no targets, no trail, flag stop               ALL n= 270 win=0.196 avgR=0.096   pf=1.09  dd= -58.5 | IS avgR=0.443   pf=1.45  n=130 | OOS avgR=-0.226  pf=0.8   n=140
+swing 2d, ATR2 stop, no targets, ema21 trail            ALL n= 279 win=0.341 avgR=-0.001  pf=1.0   dd= -55.4 | IS avgR=0.112   pf=1.15  n=136 | OOS avgR=-0.108  pf=0.86  n=143
+swing 2d, ATR2 stop, targets 5/10/15                    ALL n= 273 win=0.179 avgR=0.06    pf=1.06  dd= -60.1 | IS avgR=0.352   pf=1.34  n=132 | OOS avgR=-0.212  pf=0.81  n=141
+swing 3d, no targets, no trail, flag stop               ALL n= 269 win=0.175 avgR=0.32    pf=1.29  dd= -51.8 | IS avgR=0.741   pf=1.72  n=129 | OOS avgR=-0.068  pf=0.94  n=140
+swing 3d, ATR2 stop, no targets, ema21 trail            ALL n= 279 win=0.341 avgR=-0.001  pf=1.0   dd= -55.4 | IS avgR=0.112   pf=1.15  n=136 | OOS avgR=-0.108  pf=0.86  n=143
+swing 3d, ATR2 stop, targets 5/10/15                    ALL n= 273 win=0.172 avgR=0.18    pf=1.17  dd= -43.6 | IS avgR=0.379   pf=1.37  n=132 | OOS avgR=-0.005  pf=1.0   n=141
+swing 5d, no targets, no trail, flag stop               ALL n= 267 win=0.15  avgR=0.334   pf=1.28  dd= -86.3 | IS avgR=0.727   pf=1.69  n=128 | OOS avgR=-0.029  pf=0.98  n=139
+swing 5d, ATR2 stop, no targets, ema21 trail            ALL n= 279 win=0.341 avgR=-0.001  pf=1.0   dd= -55.4 | IS avgR=0.112   pf=1.15  n=136 | OOS avgR=-0.108  pf=0.86  n=143
+swing 5d, ATR2 stop, targets 5/10/15                    ALL n= 271 win=0.17  avgR=0.119   pf=1.11  dd= -55.9 | IS avgR=0.271   pf=1.26  n=131 | OOS avgR=-0.023  pf=0.98  n=140
+swing 10d, no targets, no trail, flag stop              ALL n= 262 win=0.092 avgR=0.15    pf=1.12  dd= -85.5 | IS avgR=0.129   pf=1.11  n=125 | OOS avgR=0.17    pf=1.12  n=137
+swing 10d, ATR2 stop, no targets, ema21 trail           ALL n= 279 win=0.341 avgR=-0.001  pf=1.0   dd= -55.4 | IS avgR=0.112   pf=1.15  n=136 | OOS avgR=-0.108  pf=0.86  n=143
+swing 10d, ATR2 stop, targets 5/10/15                   ALL n= 268 win=0.168 avgR=0.047   pf=1.04  dd= -54.0 | IS avgR=0.238   pf=1.23  n=130 | OOS avgR=-0.133  pf=0.89  n=138
+
+=== OPENING RANGE BREAKOUT (leaders only) ===
+ORB 15min, vol>=0, hold to close, no trail              ALL n=2569 win=0.491 avgR=-0.012  pf=0.96  dd= -68.8 | IS avgR=-0.035  pf=0.89  n=1496 | OOS avgR=0.02    pf=1.07  n=1073
+ORB 15min, vol>=0, hold to close, ema21 trail           ALL n=2569 win=0.504 avgR=-0.011  pf=0.96  dd= -63.4 | IS avgR=-0.031  pf=0.9   n=1496 | OOS avgR=0.017   pf=1.06  n=1073
+ORB 15min, vol>=0, spec exits                           ALL n=2569 win=0.512 avgR=-0.008  pf=0.97  dd= -54.6 | IS avgR=-0.029  pf=0.9   n=1496 | OOS avgR=0.022   pf=1.08  n=1073
+ORB 15min, vol>=0, ATR2 stop, hold to close             ALL n=2569 win=0.401 avgR=-0.01   pf=0.98  dd=-102.1 | IS avgR=-0.055  pf=0.9   n=1496 | OOS avgR=0.052   pf=1.1   n=1073
+ORB 15min, vol>=0, swing 3d ATR2                        ALL n=2036 win=0.181 avgR=0.129   pf=1.14  dd=-204.9 | IS avgR=0.141   pf=1.15  n=1187 | OOS avgR=0.112   pf=1.11  n=849
+ORB 15min, vol>=1.5, hold to close, no trail            ALL n= 853 win=0.508 avgR=0.013   pf=1.05  dd= -23.2 | IS avgR=-0.035  pf=0.86  n=487 | OOS avgR=0.077   pf=1.35  n=366
+ORB 15min, vol>=1.5, hold to close, ema21 trail         ALL n= 853 win=0.515 avgR=0.007   pf=1.03  dd= -22.5 | IS avgR=-0.034  pf=0.86  n=487 | OOS avgR=0.062   pf=1.28  n=366
+ORB 15min, vol>=1.5, spec exits                         ALL n= 853 win=0.525 avgR=0.012   pf=1.05  dd= -19.2 | IS avgR=-0.027  pf=0.89  n=487 | OOS avgR=0.062   pf=1.29  n=366
+ORB 15min, vol>=1.5, ATR2 stop, hold to close           ALL n= 853 win=0.403 avgR=0.051   pf=1.1   dd= -38.8 | IS avgR=-0.046  pf=0.92  n=487 | OOS avgR=0.179   pf=1.36  n=366
+ORB 15min, vol>=1.5, swing 3d ATR2                      ALL n= 788 win=0.187 avgR=0.285   pf=1.27  dd=-113.1 | IS avgR=0.26    pf=1.25  n=453 | OOS avgR=0.319   pf=1.3   n=335
+ORB 30min, vol>=0, hold to close, no trail              ALL n=2426 win=0.493 avgR=-0.013  pf=0.95  dd= -50.0 | IS avgR=-0.022  pf=0.91  n=1413 | OOS avgR=-0.001  pf=1.0   n=1013
+ORB 30min, vol>=0, hold to close, ema21 trail           ALL n=2426 win=0.499 avgR=-0.015  pf=0.94  dd= -49.2 | IS avgR=-0.026  pf=0.9   n=1413 | OOS avgR=0.002   pf=1.01  n=1013
+ORB 30min, vol>=0, spec exits                           ALL n=2426 win=0.506 avgR=-0.014  pf=0.94  dd= -43.2 | IS avgR=-0.026  pf=0.9   n=1413 | OOS avgR=0.003   pf=1.01  n=1013
+ORB 30min, vol>=0, ATR2 stop, hold to close             ALL n=2426 win=0.413 avgR=-0.007  pf=0.99  dd= -94.1 | IS avgR=-0.029  pf=0.94  n=1413 | OOS avgR=0.023   pf=1.04  n=1013
+ORB 30min, vol>=0, swing 3d ATR2                        ALL n=1945 win=0.182 avgR=0.095   pf=1.1   dd=-275.4 | IS avgR=0.103   pf=1.11  n=1133 | OOS avgR=0.083   pf=1.08  n=812
+ORB 30min, vol>=1.5, hold to close, no trail            ALL n= 757 win=0.507 avgR=0.008   pf=1.04  dd= -15.9 | IS avgR=0.001   pf=1.0   n=452 | OOS avgR=0.018   pf=1.1   n=305
+ORB 30min, vol>=1.5, hold to close, ema21 trail         ALL n= 757 win=0.511 avgR=0.007   pf=1.04  dd= -17.1 | IS avgR=-0.001  pf=1.0   n=452 | OOS avgR=0.019   pf=1.1   n=305
+ORB 30min, vol>=1.5, spec exits                         ALL n= 757 win=0.517 avgR=0.007   pf=1.04  dd= -14.9 | IS avgR=0.002   pf=1.01  n=452 | OOS avgR=0.014   pf=1.07  n=305
+ORB 30min, vol>=1.5, ATR2 stop, hold to close           ALL n= 757 win=0.413 avgR=0.047   pf=1.09  dd= -25.0 | IS avgR=-0.016  pf=0.97  n=452 | OOS avgR=0.138   pf=1.28  n=305
+ORB 30min, vol>=1.5, swing 3d ATR2                      ALL n= 729 win=0.174 avgR=0.19    pf=1.17  dd=-126.4 | IS avgR=0.241   pf=1.22  n=437 | OOS avgR=0.113   pf=1.1   n=292
+ORB 60min, vol>=0, hold to close, no trail              ALL n=2163 win=0.48  avgR=-0.021  pf=0.9   dd= -59.9 | IS avgR=-0.031  pf=0.85  n=1290 | OOS avgR=-0.006  pf=0.97  n=873
+ORB 60min, vol>=0, hold to close, ema21 trail           ALL n=2163 win=0.484 avgR=-0.018  pf=0.91  dd= -55.0 | IS avgR=-0.031  pf=0.85  n=1290 | OOS avgR=0.0     pf=1.0   n=873
+ORB 60min, vol>=0, spec exits                           ALL n=2163 win=0.492 avgR=-0.015  pf=0.92  dd= -46.4 | IS avgR=-0.027  pf=0.87  n=1290 | OOS avgR=0.002   pf=1.01  n=873
+ORB 60min, vol>=0, ATR2 stop, hold to close             ALL n=2163 win=0.387 avgR=-0.048  pf=0.91  dd=-142.1 | IS avgR=-0.085  pf=0.84  n=1290 | OOS avgR=0.007   pf=1.01  n=873
+ORB 60min, vol>=0, swing 3d ATR2                        ALL n=1812 win=0.158 avgR=0.01    pf=1.01  dd=-290.3 | IS avgR=0.043   pf=1.04  n=1071 | OOS avgR=-0.037  pf=0.97  n=741
+ORB 60min, vol>=1.5, hold to close, no trail            ALL n= 707 win=0.485 avgR=-0.012  pf=0.93  dd= -21.2 | IS avgR=-0.033  pf=0.8   n=427 | OOS avgR=0.021   pf=1.15  n=280
+ORB 60min, vol>=1.5, hold to close, ema21 trail         ALL n= 707 win=0.488 avgR=-0.01   pf=0.93  dd= -20.5 | IS avgR=-0.032  pf=0.8   n=427 | OOS avgR=0.022   pf=1.16  n=280
+ORB 60min, vol>=1.5, spec exits                         ALL n= 707 win=0.491 avgR=-0.006  pf=0.96  dd= -18.4 | IS avgR=-0.027  pf=0.83  n=427 | OOS avgR=0.026   pf=1.19  n=280
+ORB 60min, vol>=1.5, ATR2 stop, hold to close           ALL n= 707 win=0.383 avgR=-0.028  pf=0.95  dd= -65.9 | IS avgR=-0.112  pf=0.79  n=427 | OOS avgR=0.101   pf=1.2   n=280
+ORB 60min, vol>=1.5, swing 3d ATR2                      ALL n= 704 win=0.128 avgR=0.003   pf=1.0   dd=-169.7 | IS avgR=0.001   pf=1.0   n=422 | OOS avgR=0.006   pf=1.0   n=282
+ORB 30min no filters at all, hold to close              ALL n=3377 win=0.487 avgR=-0.023  pf=0.92  dd= -98.5 | IS avgR=-0.03   pf=0.89  n=1920 | OOS avgR=-0.013  pf=0.95  n=1457

@@ -1,0 +1,85 @@
+433
+0
+tee: out/run.log: No such file or directory
+loaded 433 symbols, 444 sessions in 12s
+
+=== BASELINE (PDF rules) ===
+spec, intraday, full period                                  n=  29 win=0.517  totR=   -3.5 avgR=-0.121  pf=0.74   maxDD=  -5.0 pnl=$-1,769
+         n  win      R      pnl
+month                          
+2025-01  2  0.0 -1.720  -854.72
+2025-02  1  1.0  0.201   100.44
+2025-04  1  1.0  0.234   117.19
+2025-05  1  0.0 -1.000  -499.77
+2025-06  2  0.5 -0.492  -245.92
+2025-09  3  1.0  2.231  1110.99
+2025-10  1  0.0 -1.000  -499.29
+2025-11  1  1.0  0.071    35.15
+2026-01  1  1.0  0.774   385.61
+2026-03  5  0.4  0.274   136.60
+2026-04  2  0.5  0.660   317.92
+2026-05  2  1.0  0.788   392.02
+2026-06  1  1.0  0.418   201.92
+2026-07  1  1.0  0.065    31.85
+2026-08  1  0.0 -1.016  -503.66
+2026-09  2  0.0 -2.000  -999.37
+2026-10  2  0.0 -2.000  -995.85
+spec, overnight                                              n=  30 win=0.467  totR=   -3.9 avgR=-0.131  pf=0.83   maxDD= -15.2 pnl=$-1,820
+
+=== ONE-AT-A-TIME SENSITIVITY (full period, intraday) ===
+(each on top of pole_min=0.75 so there are enough trades)
+pole_min=0.75 reference                                      n= 263 win=0.456  totR=  -14.0 avgR=-0.053  pf=0.88   maxDD= -22.7 pnl=$-6,994
+pole_min=1.0                                                 n= 132 win=0.477  totR=   -3.1 avgR=-0.024  pf=0.94   maxDD= -10.3 pnl=$-1,548
+pole_min=0.75                                                n= 263 win=0.456  totR=  -14.0 avgR=-0.053  pf=0.88   maxDD= -22.7 pnl=$-6,994
+pole_min=0.5                                                 n= 547 win=0.466  totR=  -26.4 avgR=-0.048  pf=0.89   maxDD= -39.6 pnl=$-13,186
+pole_min=0.0 (off)                                           n=1924 win=0.493  totR=  -39.8 avgR=-0.021  pf=0.95   maxDD= -79.3 pnl=$-19,867
+flag_max_range=1.5                                           n= 314 win=0.462  totR=  -13.3 avgR=-0.042  pf=0.9    maxDD= -22.6 pnl=$-6,659
+flag_max_range=2.0                                           n= 360 win=0.453  totR=  -18.4 avgR=-0.051  pf=0.87   maxDD= -26.5 pnl=$-9,187
+vol_mult=1.2                                                 n= 408 win=0.488  totR=   -4.5 avgR=-0.011  pf=0.97   maxDD= -17.5 pnl=$-2,219
+vol_mult=1.0                                                 n= 543 win=0.477  totR=  -16.8 avgR=-0.031  pf=0.93   maxDD= -22.9 pnl=$-8,379
+vol off                                                      n=1014 win=0.468  totR=  -53.6 avgR=-0.053  pf=0.89   maxDD= -58.7 pnl=$-26,757
+vol_mult=2.0                                                 n= 141 win=0.475  totR=   -6.2 avgR=-0.044  pf=0.89   maxDD= -13.6 pnl=$-3,090
+no ema stack                                                 n= 264 win=0.458  totR=  -12.0 avgR=-0.045  pf=0.89   maxDD= -22.7 pnl=$-6,002
+no flag_above_vwap                                           n= 295 win=0.458  totR=  -16.8 avgR=-0.057  pf=0.86   maxDD= -24.5 pnl=$-8,378
+no spy filter                                                n= 341 win=0.469  totR=  -17.6 avgR=-0.052  pf=0.88   maxDD= -28.4 pnl=$-8,832
+top_n=30                                                     n= 439 win=0.451  totR=  -31.4 avgR=-0.072  pf=0.84   maxDD= -45.8 pnl=$-15,749
+top_n=10                                                     n= 188 win=0.468  totR=   -3.3 avgR=-0.017  pf=0.96   maxDD= -18.2 pnl=$-1,660
+flag_bars=4                                                  n= 412 win=0.488  totR=    1.2 avgR=0.003   pf=1.01   maxDD= -18.0 pnl=$709
+flag_bars=8                                                  n= 178 win=0.41   totR=  -17.9 avgR=-0.101  pf=0.78   maxDD= -27.9 pnl=$-8,916
+pole_bars=4                                                  n= 161 win=0.509  totR=   -1.5 avgR=-0.009  pf=0.98   maxDD= -10.4 pnl=$-740
+pole_bars=10                                                 n= 463 win=0.471  totR=  -13.7 avgR=-0.03   pf=0.93   maxDD= -28.0 pnl=$-6,801
+earliest=10:00                                               n= 263 win=0.456  totR=  -14.0 avgR=-0.053  pf=0.88   maxDD= -22.7 pnl=$-6,994
+latest=14:00                                                 n= 161 win=0.46   totR=   -5.1 avgR=-0.032  pf=0.94   maxDD= -17.1 pnl=$-2,618
+latest=12:00                                                 n=  56 win=0.464  totR=   -6.0 avgR=-0.106  pf=0.79   maxDD=  -9.0 pnl=$-2,981
+min_risk_pct=0.5                                             n= 250 win=0.456  totR=  -14.2 avgR=-0.057  pf=0.87   maxDD= -20.6 pnl=$-7,120
+min_risk_pct=0.8                                             n= 188 win=0.441  totR=  -17.8 avgR=-0.095  pf=0.78   maxDD= -23.3 pnl=$-8,932
+stop=pole_low                                                n= 263 win=0.437  totR=  -14.3 avgR=-0.054  pf=0.8    maxDD= -16.8 pnl=$-7,095
+stop=atr1.5                                                  n= 263 win=0.392  totR=  -42.4 avgR=-0.161  pf=0.7    maxDD= -54.3 pnl=$-21,154
+trail=ema21                                                  n= 263 win=0.437  totR=  -17.7 avgR=-0.067  pf=0.85   maxDD= -24.6 pnl=$-8,874
+trail=none                                                   n= 263 win=0.395  totR=  -18.5 avgR=-0.07   pf=0.86   maxDD= -27.3 pnl=$-9,235
+trail=be                                                     n= 263 win=0.354  totR=  -12.7 avgR=-0.048  pf=0.89   maxDD= -22.4 pnl=$-6,394
+trail trigger 2R                                             n= 263 win=0.395  totR=  -23.5 avgR=-0.089  pf=0.82   maxDD= -30.0 pnl=$-11,712
+no targets, ema9 trail                                       n= 263 win=0.456  totR=  -15.1 avgR=-0.057  pf=0.87   maxDD= -23.4 pnl=$-7,539
+hold overnight                                               n= 278 win=0.399  totR=    0.0 avgR=0.0     pf=1.0    maxDD= -56.0 pnl=$159
+overnight 3d                                                 n= 278 win=0.399  totR=    0.0 avgR=0.0     pf=1.0    maxDD= -56.0 pnl=$159
+require_200sma                                               n= 237 win=0.456  totR=   -8.4 avgR=-0.036  pf=0.92   maxDD= -15.4 pnl=$-4,255
+max_off_high=10                                              n= 161 win=0.46   totR=   -4.7 avgR=-0.029  pf=0.93   maxDD= -14.6 pnl=$-2,375
+
+=== GRID SEARCH, in-sample 2025 ===
+2304 combinations
+  grid done in 1809s
+
+Top 25 in-sample by avgR*sqrt(n), n>=40:
+   n   win  totR  avgR   pf  maxdd_R     pnl  pole_min  flag_max_range  vol_mult  flag_above_vwap  spy_vwap  top_n latest  min_risk_pct trail      hold    score
+ 437 0.426 171.3 0.392 1.63    -33.9 85553.0      0.50             1.2       1.5            False     False     15  15:55           0.0 ema21 overnight 8.194582
+ 598 0.436 189.1 0.316 1.50    -38.5 94440.0      0.50             1.2       1.2            False     False     15  15:55           0.0 ema21 overnight 7.727476
+ 469 0.463 161.7 0.345 1.58    -26.4 80734.0      0.50             1.2       1.2            False     False     15  15:55           0.6 ema21 overnight 7.471461
+ 345 0.461 137.0 0.397 1.66    -22.0 68374.0      0.50             1.2       1.5            False     False     15  15:55           0.6 ema21 overnight 7.373948
+ 345 0.490 135.8 0.394 1.66    -19.9 67779.0      0.50             1.2       1.5            False     False     15  15:55           0.6  ema9 overnight 7.318225
+ 470 0.489 155.2 0.330 1.56    -23.7 77466.0      0.50             1.2       1.2            False     False     15  15:55           0.6  ema9 overnight 7.154230
+ 437 0.467 148.9 0.341 1.56    -29.4 74373.0      0.50             1.2       1.5            False     False     15  15:55           0.0  ema9 overnight 7.128450
+ 514 0.424 160.5 0.312 1.50    -40.4 80166.0      0.50             2.0       1.5            False     False     15  15:55           0.0 ema21 overnight 7.073529
+ 697 0.438 177.7 0.255 1.41    -39.2 88773.0      0.50             2.0       1.2            False     False     15  15:55           0.0 ema21 overnight 6.732193
+ 183 0.426  86.0 0.470 1.72    -16.2 42921.0      0.75             1.2       1.5            False     False     15  15:55           0.0 ema21 overnight 6.358042
+
+[exited with code 0]

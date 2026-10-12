@@ -1,0 +1,119 @@
+=== BENCHMARKS: buy every leader unconditionally at 09:45 (bar 3) and hold N days ===
+BENCH buy@09:45 all leaders, hold 1d, ATR2 stop            ALL n= 387 win=0.318 avgR=0.208   pf=1.29  dd=  -37.2 | IS avgR=-0.009  pf=0.99  | OOS avgR=0.431   pf=1.63  n=191
+BENCH buy@09:45 all leaders, hold 1d, 5% stop              ALL n= 373 win=0.536 avgR=0.138   pf=1.46  dd=  -10.1 | IS avgR=0.113   pf=1.43  | OOS avgR=0.164   pf=1.49  n=186
+BENCH buy@09:45 all leaders, hold 1d, no stop              ALL n= 356 win=0.567 avgR=0.019   pf=1.68  dd=   -1.1 | IS avgR=0.017   pf=1.71  | OOS avgR=0.022   pf=1.65  n=174
+BENCH buy@09:45 all leaders, hold 3d, ATR2 stop            ALL n= 366 win=0.199 avgR=0.046   pf=1.05  dd=  -63.6 | IS avgR=-0.203  pf=0.77  | OOS avgR=0.308   pf=1.36  n=178
+BENCH buy@09:45 all leaders, hold 3d, 5% stop              ALL n= 340 win=0.482 avgR=0.161   pf=1.33  dd=  -19.3 | IS avgR=0.144   pf=1.31  | OOS avgR=0.178   pf=1.34  n=167
+BENCH buy@09:45 all leaders, hold 3d, no stop              ALL n= 315 win=0.559 avgR=0.026   pf=1.5   dd=   -2.8 | IS avgR=0.028   pf=1.61  | OOS avgR=0.024   pf=1.41  n=152
+BENCH buy@09:45 all leaders, hold 5d, ATR2 stop            ALL n= 353 win=0.164 avgR=0.118   pf=1.13  dd=  -44.5 | IS avgR=-0.029  pf=0.97  | OOS avgR=0.277   pf=1.3   n=170
+BENCH buy@09:45 all leaders, hold 5d, 5% stop              ALL n= 318 win=0.453 avgR=0.227   pf=1.42  dd=  -20.2 | IS avgR=0.242   pf=1.47  | OOS avgR=0.211   pf=1.37  n=158
+BENCH buy@09:45 all leaders, hold 5d, no stop              ALL n= 287 win=0.592 avgR=0.044   pf=1.77  dd=   -2.6 | IS avgR=0.044   pf=1.89  | OOS avgR=0.044   pf=1.68  n=140
+
+=== ORB-15 vol1.5 swing: stop type x hold ===
+ORB15 vol1.5 hold 1d stop ATR2                             ALL n= 840 win=0.269 avgR=0.342   pf=1.38  dd=  -93.6 | IS avgR=0.274   pf=1.3   | OOS avgR=0.433   pf=1.51  n=358
+ORB15 vol1.5 hold 1d stop ATR4                             ALL n= 815 win=0.409 avgR=0.237   pf=1.38  dd=  -55.5 | IS avgR=0.166   pf=1.25  | OOS avgR=0.334   pf=1.57  n=346
+ORB15 vol1.5 hold 1d stop ORB low                          ALL n= 804 win=0.459 avgR=0.142   pf=1.29  dd=  -30.0 | IS avgR=0.072   pf=1.14  | OOS avgR=0.236   pf=1.51  n=342
+ORB15 vol1.5 hold 1d stop 3%                               ALL n= 806 win=0.488 avgR=0.154   pf=1.37  dd=  -24.2 | IS avgR=0.109   pf=1.28  | OOS avgR=0.214   pf=1.48  n=348
+ORB15 vol1.5 hold 1d stop 5%                               ALL n= 791 win=0.53  avgR=0.119   pf=1.48  dd=  -15.1 | IS avgR=0.097   pf=1.44  | OOS avgR=0.149   pf=1.52  n=340
+ORB15 vol1.5 hold 1d stop 8%                               ALL n= 786 win=0.538 avgR=0.071   pf=1.44  dd=  -11.6 | IS avgR=0.057   pf=1.41  | OOS avgR=0.089   pf=1.47  n=336
+ORB15 vol1.5 hold 2d stop ATR2                             ALL n= 818 win=0.203 avgR=0.193   pf=1.19  dd= -112.3 | IS avgR=0.174   pf=1.17  | OOS avgR=0.218   pf=1.21  n=350
+ORB15 vol1.5 hold 2d stop ATR4                             ALL n= 782 win=0.332 avgR=0.195   pf=1.26  dd=  -70.0 | IS avgR=0.1     pf=1.13  | OOS avgR=0.326   pf=1.45  n=328
+ORB15 vol1.5 hold 2d stop ORB low                          ALL n= 770 win=0.403 avgR=0.136   pf=1.22  dd=  -38.6 | IS avgR=0.073   pf=1.11  | OOS avgR=0.223   pf=1.38  n=326
+ORB15 vol1.5 hold 2d stop 3%                               ALL n= 771 win=0.425 avgR=0.118   pf=1.22  dd=  -34.9 | IS avgR=0.08    pf=1.16  | OOS avgR=0.167   pf=1.29  n=334
+ORB15 vol1.5 hold 2d stop 5%                               ALL n= 742 win=0.518 avgR=0.125   pf=1.37  dd=  -19.8 | IS avgR=0.097   pf=1.32  | OOS avgR=0.161   pf=1.42  n=320
+ORB15 vol1.5 hold 2d stop 8%                               ALL n= 729 win=0.547 avgR=0.08    pf=1.35  dd=  -17.5 | IS avgR=0.055   pf=1.26  | OOS avgR=0.114   pf=1.45  n=313
+ORB15 vol1.5 hold 3d stop ATR2                             ALL n= 788 win=0.187 avgR=0.285   pf=1.27  dd= -113.1 | IS avgR=0.26    pf=1.25  | OOS avgR=0.319   pf=1.3   n=335
+ORB15 vol1.5 hold 3d stop ATR4                             ALL n= 750 win=0.308 avgR=0.236   pf=1.3   dd=  -71.5 | IS avgR=0.139   pf=1.17  | OOS avgR=0.371   pf=1.48  n=313
+ORB15 vol1.5 hold 3d stop ORB low                          ALL n= 725 win=0.377 avgR=0.165   pf=1.25  dd=  -44.1 | IS avgR=0.106   pf=1.16  | OOS avgR=0.244   pf=1.38  n=307
+ORB15 vol1.5 hold 3d stop 3%                               ALL n= 729 win=0.414 avgR=0.192   pf=1.33  dd=  -35.2 | IS avgR=0.161   pf=1.3   | OOS avgR=0.232   pf=1.37  n=316
+ORB15 vol1.5 hold 3d stop 5%                               ALL n= 690 win=0.513 avgR=0.189   pf=1.5   dd=  -19.0 | IS avgR=0.174   pf=1.51  | OOS avgR=0.209   pf=1.49  n=299
+ORB15 vol1.5 hold 3d stop 8%                               ALL n= 674 win=0.555 avgR=0.121   pf=1.47  dd=  -16.9 | IS avgR=0.103   pf=1.45  | OOS avgR=0.145   pf=1.49  n=291
+ORB15 vol1.5 hold 5d stop ATR2                             ALL n= 757 win=0.143 avgR=0.488   pf=1.42  dd= -181.3 | IS avgR=0.324   pf=1.28  | OOS avgR=0.713   pf=1.63  n=320
+ORB15 vol1.5 hold 5d stop ATR4                             ALL n= 711 win=0.252 avgR=0.38    pf=1.42  dd= -107.0 | IS avgR=0.244   pf=1.26  | OOS avgR=0.569   pf=1.66  n=298
+ORB15 vol1.5 hold 5d stop ORB low                          ALL n= 681 win=0.322 avgR=0.29    pf=1.38  dd=  -59.6 | IS avgR=0.173   pf=1.22  | OOS avgR=0.447   pf=1.62  n=290
+ORB15 vol1.5 hold 5d stop 3%                               ALL n= 686 win=0.356 avgR=0.267   pf=1.38  dd=  -44.9 | IS avgR=0.162   pf=1.24  | OOS avgR=0.404   pf=1.57  n=297
+ORB15 vol1.5 hold 5d stop 5%                               ALL n= 644 win=0.464 avgR=0.216   pf=1.45  dd=  -32.2 | IS avgR=0.137   pf=1.29  | OOS avgR=0.317   pf=1.64  n=283
+ORB15 vol1.5 hold 5d stop 8%                               ALL n= 620 win=0.527 avgR=0.153   pf=1.47  dd=  -22.7 | IS avgR=0.106   pf=1.35  | OOS avgR=0.214   pf=1.6   n=269
+ORB15 vol1.5 hold 8d stop ATR2                             ALL n= 730 win=0.127 avgR=0.836   pf=1.71  dd= -176.1 | IS avgR=0.635   pf=1.53  | OOS avgR=1.114   pf=2.0   n=306
+ORB15 vol1.5 hold 8d stop ATR4                             ALL n= 674 win=0.218 avgR=0.529   pf=1.55  dd= -106.7 | IS avgR=0.354   pf=1.35  | OOS avgR=0.777   pf=1.87  n=279
+ORB15 vol1.5 hold 8d stop ORB low                          ALL n= 640 win=0.277 avgR=0.418   pf=1.5   dd=  -58.7 | IS avgR=0.284   pf=1.32  | OOS avgR=0.6     pf=1.77  n=271
+ORB15 vol1.5 hold 8d stop 3%                               ALL n= 644 win=0.309 avgR=0.339   pf=1.44  dd=  -56.6 | IS avgR=0.225   pf=1.29  | OOS avgR=0.491   pf=1.64  n=276
+ORB15 vol1.5 hold 8d stop 5%                               ALL n= 592 win=0.412 avgR=0.26    pf=1.45  dd=  -38.7 | IS avgR=0.172   pf=1.31  | OOS avgR=0.374   pf=1.63  n=256
+ORB15 vol1.5 hold 8d stop 8%                               ALL n= 553 win=0.486 avgR=0.191   pf=1.47  dd=  -27.6 | IS avgR=0.161   pf=1.43  | OOS avgR=0.23    pf=1.51  n=239
+
+=== ORB-15 swing 3d, 5% stop: filters ===
+ref: ORB15 vol1.5 3d 5%                                    ALL n= 690 win=0.513 avgR=0.189   pf=1.5   dd=  -19.0 | IS avgR=0.174   pf=1.51  | OOS avgR=0.209   pf=1.49  n=299
+vol>=1.2                                                   ALL n= 899 win=0.513 avgR=0.17    pf=1.44  dd=  -31.4 | IS avgR=0.158   pf=1.46  | OOS avgR=0.185   pf=1.41  n=397
+vol>=2.0                                                   ALL n= 450 win=0.527 avgR=0.261   pf=1.75  dd=  -11.5 | IS avgR=0.228   pf=1.71  | OOS avgR=0.308   pf=1.8   n=184
+vol off                                                    ALL n=1522 win=0.495 avgR=0.104   pf=1.26  dd=  -57.9 | IS avgR=0.105   pf=1.29  | OOS avgR=0.103   pf=1.22  n=659
+no ema stack                                               ALL n= 788 win=0.508 avgR=0.206   pf=1.53  dd=  -24.5 | IS avgR=0.182   pf=1.52  | OOS avgR=0.238   pf=1.55  n=334
+no vwap                                                    ALL n= 695 win=0.514 avgR=0.191   pf=1.5   dd=  -18.5 | IS avgR=0.178   pf=1.52  | OOS avgR=0.208   pf=1.49  n=303
+no spy                                                     ALL n= 919 win=0.492 avgR=0.148   pf=1.37  dd=  -34.7 | IS avgR=0.16    pf=1.44  | OOS avgR=0.134   pf=1.3   n=409
+no ema/vwap/spy filters                                    ALL n=1076 win=0.494 avgR=0.146   pf=1.37  dd=  -50.4 | IS avgR=0.168   pf=1.46  | OOS avgR=0.119   pf=1.27  n=474
+top_n=10                                                   ALL n= 480 win=0.517 avgR=0.212   pf=1.55  dd=  -14.8 | IS avgR=0.144   pf=1.39  | OOS avgR=0.307   pf=1.73  n=200
+top_n=5                                                    ALL n= 238 win=0.496 avgR=0.224   pf=1.52  dd=  -14.7 | IS avgR=0.251   pf=1.71  | OOS avgR=0.188   pf=1.36  n=105
+top_n=30                                                   ALL n=1360 win=0.502 avgR=0.127   pf=1.34  dd=  -31.2 | IS avgR=0.084   pf=1.25  | OOS avgR=0.182   pf=1.44  n=590
+latest 10:30                                               ALL n= 294 win=0.514 avgR=0.243   pf=1.56  dd=  -15.4 | IS avgR=0.168   pf=1.4   | OOS avgR=0.321   pf=1.72  n=144
+latest 12:00                                               ALL n= 365 win=0.512 avgR=0.236   pf=1.57  dd=  -14.7 | IS avgR=0.159   pf=1.4   | OOS avgR=0.328   pf=1.75  n=166
+day gain >= 1% at entry                                    ALL n= 478 win=0.515 avgR=0.263   pf=1.67  dd=  -21.4 | IS avgR=0.311   pf=1.95  | OOS avgR=0.215   pf=1.46  n=240
+day gain >= 2% at entry                                    ALL n= 270 win=0.493 avgR=0.273   pf=1.61  dd=  -16.2 | IS avgR=0.248   pf=1.61  | OOS avgR=0.293   pf=1.61  n=151
+require 200sma                                             ALL n= 605 win=0.517 avgR=0.199   pf=1.53  dd=  -18.1 | IS avgR=0.173   pf=1.52  | OOS avgR=0.23    pf=1.54  n=278
+within 10% of 52w high                                     ALL n= 415 win=0.54  avgR=0.288   pf=1.8   dd=  -13.1 | IS avgR=0.214   pf=1.63  | OOS avgR=0.372   pf=1.98  n=194
+within 5% of 52w high                                      ALL n= 301 win=0.545 avgR=0.264   pf=1.75  dd=   -9.8 | IS avgR=0.109   pf=1.3   | OOS avgR=0.435   pf=2.27  n=143
+ORB 30min instead of 15                                    ALL n= 639 win=0.504 avgR=0.14    pf=1.38  dd=  -18.8 | IS avgR=0.141   pf=1.43  | OOS avgR=0.14    pf=1.32  n=260
+ORB 10min                                                  ALL n= 627 win=0.525 avgR=0.178   pf=1.49  dd=  -22.2 | IS avgR=0.175   pf=1.53  | OOS avgR=0.183   pf=1.44  n=258
+ema21 trail after 2R                                       ALL n= 710 win=0.523 avgR=0.174   pf=1.46  dd=  -19.2 | IS avgR=0.137   pf=1.39  | OOS avgR=0.222   pf=1.54  n=308
+BE after 2R                                                ALL n= 690 win=0.509 avgR=0.192   pf=1.52  dd=  -17.3 | IS avgR=0.172   pf=1.51  | OOS avgR=0.218   pf=1.54  n=299
+targets 5/10/15                                            ALL n= 700 win=0.534 avgR=0.16    pf=1.45  dd=  -18.2 | IS avgR=0.144   pf=1.44  | OOS avgR=0.181   pf=1.46  n=303
+
+=== DEEP DIVE: ORB15 vol1.5, 3d hold, 5% stop ===
+        n    win   avgR    totR       pnl
+year                                     
+2025  391  0.540  0.174  68.128  33877.98
+2026  299  0.478  0.209  62.488  30828.23
+          n   win      R       pnl
+month                             
+2025-01  34  0.68   7.31   3626.31
+2025-02  30  0.53   4.86   2426.28
+2025-03  22  0.45  -5.10  -2561.32
+2025-04  42  0.62   6.62   3287.10
+2025-05  43  0.56  10.02   4968.69
+2025-06  29  0.59  12.46   6202.03
+2025-07  38  0.58  -0.20   -113.65
+2025-08  34  0.50   7.33   3661.64
+2025-09  27  0.67  15.46   7664.00
+2025-10  31  0.45  11.89   5942.71
+2025-11  30  0.33  -8.03  -3994.61
+2025-12  31  0.45   5.52   2768.80
+2026-01  38  0.55  11.73   5811.52
+2026-02  34  0.47   4.05   1923.77
+2026-03  26  0.27 -10.62  -5186.39
+2026-04  34  0.74  31.08  15333.87
+2026-05  40  0.60  37.75  18517.95
+2026-06  40  0.30  -8.75  -4263.04
+2026-07  19  0.32  -5.33  -2656.60
+2026-08  27  0.44  -0.32   -121.08
+2026-09  25  0.44   0.44    202.58
+2026-10  16  0.56   2.45   1265.65
+
+R distribution: {'count': 690.0, 'mean': 0.19, 'std': 1.24, 'min': -2.61, '25%': -1.0, '50%': 0.03, '75%': 0.83, 'max': 6.16}
+losses worse than -1.5R (gaps): 5  worst 5:         session symbol      R             exits
+491  2026-04-06    APA -2.608   1.00@37.05:stop
+23   2025-01-23    FIX -2.365  1.00@484.03:stop
+47   2025-02-13   TWLO -1.887  1.00@131.86:stop
+538  2026-05-14    STX -1.642  1.00@767.38:stop
+234  2025-07-25    RCL -1.556  1.00@325.35:stop
+top 10 winners:         session symbol      R      pnl                exits
+310  2025-10-10     BE  6.160  3075.52  1.00@116.61:maxhold
+52   2025-02-14   SMCI  5.708  2842.56   1.00@59.27:maxhold
+526  2026-05-05    AMD  5.648  2805.32  1.00@455.00:maxhold
+524  2026-05-01     MU  5.030  2411.10  1.00@666.59:maxhold
+320  2025-10-21   SNDK  4.996  2491.73  1.00@186.07:maxhold
+424  2026-01-26    STX  4.572  2242.48  1.00@446.40:maxhold
+548  2026-05-21     MU  4.520  2225.08  1.00@928.51:maxhold
+190  2025-06-23   COIN  4.361  2148.16  1.00@374.97:maxhold
+575  2026-06-11    ARM  4.081  2013.90  1.00@396.13:maxhold
+367  2025-12-09   ECHO  4.073  2034.48  1.00@107.36:maxhold
+max concurrent positions: 15
+total pnl $64,706; top 10 trades = $24,290; without top 10: $40,416
+exit reasons: {'maxhold': 474, 'stop': 191, 'trail': 18, 'end': 7}
