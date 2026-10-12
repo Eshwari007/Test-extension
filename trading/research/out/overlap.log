@@ -1,0 +1,10 @@
+sessions 444; avg Gajjala list size 15.0; avg RDT-swing list size 11.3
+share of Gajjala names also in RDT-swing (any rank): 12%; in RDT-swing top 15: 10%
+share of RDT-swing top-15 names also in Gajjala top 15: 18%
+
+Daily-bar proxy (buy next open, 5% stop, sell 3rd close), no intraday entry filter:
+  Gajjala Stage 1 top 15         n= 6611 avg=+0.38% win=51% PF=1.23
+  RDT Swing approx, top 15 by RS n= 3454 avg=+0.01% win=52% PF=1.01
+  RDT Swing approx, all          n= 5000 avg=+0.06% win=52% PF=1.05
+  Gajjala names NOT in RDT swing n= 5825 avg=+0.41% win=51% PF=1.24
+  Gajjala names ALSO in RDT swing n=  786 avg=+0.14% win=53% PF=1.10

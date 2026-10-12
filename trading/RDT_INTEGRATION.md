@@ -50,9 +50,54 @@ its own exit profile. The engine already has the concept of multi-day holds (str
 Swing Trade Setup") and per-strategy toggles (`disabled_strategies`), so a per-strategy exit
 profile is the natural extension.
 
-## 2. Proposed integration (to be confirmed against the code)
+## 2. The new strategy row
 
-### 2a. Scanner side (EOD pipeline step 4, `rdt_morning_scanner_alpaca.py`)
+In the same format as the existing five (six) strategies:
+
+| Strategy | Direction | Rule | Starting confidence |
+|---|---|---|---|
+| Gajjala Momentum Swing | Long, 3-day hold | Scan (daily, prior close): 21-day return beats SPY, close above SMA50, price above $10, 20-day average dollar volume at least $25M, within 10% of the 52-week high; rank by 21-day return, keep the top 15. Entry (5-min, 09:45 to 15:55): first close above the 09:30-09:44 high, bar volume at least 1.5x the 20-bar average, close > EMA9 > EMA21, close above session VWAP, SPY above its own session VWAP. Exit: 5% hard stop, else sell at the close of the 3rd session after entry. No tiers, no breakeven move, no stall cuts. | 0.65, +0.02 per rank above 10 (rank 1 = 0.83), capped at 0.90 |
+
+Why a rank-scaled confidence: in the backtest, top-10 names had PF 2.03 vs 1.80 for the top 15, and
+top-30 fell to 1.44. The rank is the quality signal, so it should feed the 0.75 gate instead of a flat
+number. Skip the strategy entirely when SPY is below its EMA50 (not tested in a bear; the SPY-VWAP
+gate covers single bad days, not a downtrend).
+
+### Is it new, or the Swing Trade Setup again?
+
+Both want relative strength, a 50-day trend and proximity to the 52-week high, so I measured the overlap
+on 444 sessions with the Swing Trade Setup approximated as: 10-day RS vs SPY >= 1pp, close above EMA50,
+5-day ATR under 80% of the 20-day, within 10% of the 52-week high (`research/overlap.py`,
+`research/out/overlap.log`):
+
+| | Avg names / day | Share of Gajjala names also in it |
+|---|---|---|
+| Gajjala Stage 1 top 15 | 15.0 | |
+| RDT Swing Trade Setup (all qualifying) | 11.3 | 12% |
+| RDT Swing Trade Setup top 15 by RS | 11.3 | 10% |
+
+Only about 1 name in 8 appears on both lists. The reason is the volatility filter: the Swing setup wants
+contracting ATR (a quiet base), the Gajjala list wants the names that already moved the most in 21 days,
+which are rarely quiet. They are different stocks.
+
+They also behave differently. Daily-bar proxy on the same period (buy next open, 5% stop, sell the
+3rd close, no intraday filter at all):
+
+| List | Trades | Avg return | PF |
+|---|---|---|---|
+| Gajjala Stage 1 top 15 | 6,611 | +0.38% | 1.23 |
+| Gajjala names not in the Swing setup | 5,825 | +0.41% | 1.24 |
+| Gajjala names also in the Swing setup | 786 | +0.14% | 1.10 |
+| RDT Swing setup, all qualifying | 5,000 | +0.06% | 1.05 |
+| RDT Swing setup, top 15 by RS | 3,454 | +0.01% | 1.01 |
+
+The 3-day drift lives in the high-momentum names the Swing setup excludes. The intraday entry filter
+then lifts PF from 1.23 to 1.80 (section 1). So the addition is not a duplicate and should not be merged
+into strategy 5; it is a separate long strategy with its own exit profile.
+
+## 3. Proposed integration (to be confirmed against the code)
+
+### 3a. Scanner side (EOD pipeline step 4, `rdt_morning_scanner_alpaca.py`)
 
 Add a sixth strategy, `Gajjala Momentum Swing`, computed from the same Alpaca daily bars the
 production scanner already pulls:
@@ -68,7 +113,7 @@ is the quality gate; rank 1 to 15 can map to 0.95 down to 0.80), and the indicat
 already stores (rs_score = 21-day return minus SPY, pct_from_52w_high, adv20, atr14_pct). Reuse
 `stage1()` from `gajjala_swing_scanner_us.py` as the reference implementation; it is 30 lines.
 
-### 2b. Engine side (`rdt_trading_engine.py`)
+### 3b. Engine side (`rdt_trading_engine.py`)
 
 Branch on strategy at three points. Everything else (slots, R-sizing, daily-loss halt,
 reconcilers, legs, EOD reports, dashboard) stays shared.
@@ -93,7 +138,7 @@ Suggested config keys (both books, paper first): `gajjala_enabled`, `gajjala_sto
 `gajjala_size_mode='risk'|'fixed_pct'`. Add the strategy name to `disabled_strategies` as the
 kill-switch, same as Algo Lines.
 
-### 2c. What TAPE-001 already says that agrees
+### 3c. What TAPE-001 already says that agrees
 
 Your own tape study points the same way, which is the main reason to trust the cross-check:
 
@@ -107,7 +152,7 @@ The Gajjala Stage 1 list is essentially "20-day RS >= 12pp, near the 50-day high
 the entry is "ORB@9:45 pass + above VWAP + volume". The one thing it adds that TAPE-001 does not
 cover is the 3-session hold with no tier ladder, and that is where the 2x2 says the money is.
 
-## 3. Validation plan before real money
+## 4. Validation plan before real money
 
 1. Paper book only, `gajjala_enabled=True`, real book off.
 2. Run `gajjala_swing_scanner_us.py --date <day>` against the engine's disposition log each night for
@@ -117,8 +162,9 @@ cover is the 3-session hold with no tier ladder, and that is where the 2x2 says 
 4. Watch the one known weak spot: Q3 2026 produced only 26 signals and flat equity. If the
    signal count stays below 5 a week for a month, that is the strategy idling, not broken.
 
-## 4. Files
+## 5. Files
 
+- `research/overlap.py`, `research/out/overlap.log`: overlap with the Swing Trade Setup
 - `research/rdt_compat.py`: the 2x2 replay (RDT gate and exit approximations are at the top)
 - `research/out/rdt_compat.log`: results; `rdt_compat_A.csv` to `_D.csv`: trade lists per cell
 - `gajjala_swing_scanner_us.py`: reference implementation of the Stage 1 filter and the entry check
