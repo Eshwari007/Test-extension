@@ -1,0 +1,44 @@
+=== 1. Where did the +65% come from? ===
+log-return split: overnight gaps +39.5%  vs intraday open->close +11.7%  (total log +50.1%)
+10 biggest |days| contribute -6.9% of +50.1% log return; the other 241 days: +56.9%
+up days 138 (55%), down days 113; avg up +3.03% avg down -3.25%
+
+phases (close-to-close):
+  Oct 9 25 -> Dec 2 25 (pre-earnings)      93.62 ->   94.72   +1.2%
+  Dec 3 25 crash day                       94.72 ->   68.85  -27.3%
+  Dec 3 25 -> Mar 30 26 (base/low)         68.85 ->   56.99  -17.2%
+  Mar 30 -> May 27 (leg 1)                 56.99 ->   85.74  +50.4%
+  May 28 crash day                         85.74 ->   73.04  -14.8%
+  May 28 -> Aug 10 (consolidation)         73.04 ->   97.98  +34.1%
+  Aug 11 -> Oct 9 (leg 2)                  97.98 ->  154.49  +57.7%
+
+=== 2. Trend structure (days in state, over the year) ===
+close > EMA21: 54% of days; > EMA50: 56%; > SMA200: 69%
+within 10% of 52w high: 19% of days; 21d return beats SPY: 53%
+leg 2 (Aug 10 -> Oct 9): +58%, max pullback -21.8%, days closing below EMA21: 9 of 44
+leg 1 (Mar 30 -> May 27): +50%, max pullback -12.9%, days below EMA21: 9 of 41
+
+=== 3. When did the Stage 1 scanner see it? ===
+on the top-30 list 36 sessions; in top 15: 23; rank 1: 7 sessions
+  top-15 from 2026-08-11 to 2026-08-28: close 109.38 -> 93.40 (-15%)
+  top-15 from 2026-09-29 to 2026-10-09: close 130.05 -> 154.49 (+19%)
+
+=== 4. Capture methods on P alone, Oct 9 2025 -> Oct 9 2026 (daily bars, $100k notional per method) ===
+  buy and hold (Oct 9 2025 -> Oct 9 2026)                    total= +65.0%  max DD -42%
+  buy and hold from Mar 30 2026 low                          total=+171.1%
+  A. Stage-1 qualifies -> hold 3 days, 5% stop, re-enter     trades= 14 win=57% total=  +5.1%  exposure~13%  worst=-11.7%
+  B. 20-day high breakout, exit close < EMA21                trades=  4 win=75% total= +65.7%  exposure~24%  worst=-4.7%
+  C. 20-day high breakout, exit close < 10-day low           trades=  4 win=75% total= +49.4%  exposure~24%  worst=-14.1%
+  D. 20-day high breakout, exit close < EMA50                trades=  3 win=67% total= +70.2%  exposure~31%  worst=-14.1%
+  E. EMA21 reclaim (above EMA50), exit close < EMA21         trades= 13 win=31% total=  +5.0%  exposure~25%  worst=-21.9%
+  F. EMA21 reclaim, exit close < 10-day low                  trades=  7 win=29% total=  +9.9%  exposure~32%  worst=-21.9%
+  G. Stage-1 qualifies, exit close < EMA21 (swing -> trend)  trades=  3 win=33% total= +27.9%  exposure~16%  worst=-7.5%
+  H. Stage-1 qualifies, exit < 10-day low or -8% stop        trades=  3 win=67% total= +29.3%  exposure~17%  worst=-7.5%
+  I. 5% gap-up on 2x vol, close>open, exit close < EMA21     trades=  2 win=0% total= -25.8%  exposure~9%  worst=-14.6%
+  J. New 52-week high close, exit close < EMA21              trades=  0 win=0% total=  +0.0%  exposure~0%  worst=+0.0%
+  K. Stage-1, RDT-style ATR stop + breakeven at T1, out day 4 trades= 15 win=73% total= +27.9%  exposure~10%  worst=-6.3%
+
+=== 5. The two earnings crashes: were you in? ===
+  2025-12-03: prev close 94.72, open 78.80 (-16.8% gap), close 68.85 (-27.3%); above EMA21 the day before: True; Stage-1 qualified day before: False
+  2026-05-28: prev close 85.74, open 74.50 (-13.1% gap), close 73.04 (-14.8%); above EMA21 the day before: True; Stage-1 qualified day before: False
+  2026-08-27: prev close 108.90, open 110.66 (+1.6% gap), close 99.24 (-8.9%); above EMA21 the day before: True; Stage-1 qualified day before: True

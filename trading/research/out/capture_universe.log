@@ -1,0 +1,11 @@
+=== Universe-wide daily-bar capture tests (entries next open, exits next open) ===
+B0. 20d breakout + >EMA50, exit <EMA21  (all 516 names, no filter) ALL n= 4462 win=35% avg=+0.74% PF=1.27 avg hold=22d | IS n= 2525 win=34% avg=+0.62% PF=1.23 avg hold=23d | OOS n= 1937 win=36% avg=+0.90% PF=1.32 avg hold=21d
+B1. same + SPY above EMA50                                     ALL n= 4168 win=36% avg=+0.91% PF=1.34 avg hold=23d | IS n= 2320 win=36% avg=+0.85% PF=1.34 avg hold=24d | OOS n= 1848 win=37% avg=+0.99% PF=1.35 avg hold=21d
+B2. same + Stage-1 filter (RS>SPY, >SMA50, $25M, within 10% 52w hi) ALL n= 2637 win=37% avg=+0.96% PF=1.36 avg hold=24d | IS n= 1427 win=36% avg=+0.76% PF=1.30 avg hold=25d | OOS n= 1210 win=38% avg=+1.20% PF=1.43 avg hold=22d
+B3. B2 + breakout volume >= 1.5x 20d avg                       ALL n= 1271 win=39% avg=+1.20% PF=1.40 avg hold=26d | IS n=  709 win=39% avg=+1.01% PF=1.35 avg hold=27d | OOS n=  562 win=39% avg=+1.44% PF=1.46 avg hold=25d
+B4. B2, exit <EMA21 or -8% stop                                ALL n= 2662 win=37% avg=+0.93% PF=1.36 avg hold=23d | IS n= 1435 win=36% avg=+0.75% PF=1.30 avg hold=25d | OOS n= 1227 win=37% avg=+1.15% PF=1.42 avg hold=22d
+B5. B2, exit <10-day low                                       ALL n= 2195 win=40% avg=+1.51% PF=1.45 avg hold=37d | IS n= 1215 win=39% avg=+1.48% PF=1.47 avg hold=39d | OOS n=  980 win=40% avg=+1.54% PF=1.43 avg hold=34d
+B6. B2, exit <EMA50                                            ALL n= 2063 win=35% avg=+2.42% PF=1.73 avg hold=43d | IS n= 1156 win=34% avg=+3.12% PF=1.97 avg hold=46d | OOS n=  907 win=35% avg=+1.54% PF=1.45 avg hold=38d
+A.  Stage-1 any day, hold 3d, 5% stop (Gajjala daily proxy)    ALL n=16159 win=51% avg=+0.11% PF=1.09 avg hold=4d | IS n= 8680 win=52% avg=+0.05% PF=1.04 avg hold=4d | OOS n= 7479 win=50% avg=+0.20% PF=1.15 avg hold=4d
+A2. Stage-1 + 20d breakout day, hold 3d, 5% stop               ALL n= 5535 win=49% avg=+0.06% PF=1.04 avg hold=4d | IS n= 2998 win=50% avg=-0.05% PF=0.96 avg hold=4d | OOS n= 2537 win=48% avg=+0.19% PF=1.13 avg hold=4d
+J.  New 52w-high close (Stage-1), exit <EMA21                  ALL n= 1463 win=36% avg=+0.84% PF=1.28 avg hold=25d | IS n=  769 win=35% avg=+0.54% PF=1.18 avg hold=26d | OOS n=  694 win=36% avg=+1.18% PF=1.37 avg hold=24d

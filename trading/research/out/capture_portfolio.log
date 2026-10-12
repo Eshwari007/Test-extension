@@ -1,0 +1,9 @@
+SPY: total +33.2%, maxDD -19.0%
+B3 breakout+vol, Stage-1, exit <EMA21    10x10%: taken= 201 skipped=1070 final=$160,114 total=+60.1% CAGR=+30.5% maxDD=-17.2% Sharpe=1.38 2025=+11.0% 2026=+44.2%
+B3 breakout+vol, Stage-1, exit <EMA21     5x20%: taken=  89 skipped=1182 final=$189,805 total=+89.8% CAGR=+43.7% maxDD=-21.4% Sharpe=1.45 2025=+11.9% 2026=+69.7%
+B6 breakout, Stage-1, exit <EMA50        10x10%: taken= 146 skipped=1917 final=$118,195 total=+18.2% CAGR=+9.9% maxDD=-29.6% Sharpe=0.52 2025=-14.7% 2026=+38.5%
+B6 breakout, Stage-1, exit <EMA50         5x20%: taken=  62 skipped=2001 final=$121,643 total=+21.6% CAGR=+11.7% maxDD=-29.9% Sharpe=0.58 2025=-4.4% 2026=+27.3%
+B5 breakout, Stage-1, exit <10d low      10x10%: taken= 169 skipped=2026 final=$111,863 total=+11.9% CAGR=+6.6% maxDD=-19.8% Sharpe=0.42 2025=-4.4% 2026=+17.0%
+B5 breakout, Stage-1, exit <10d low       5x20%: taken=  96 skipped=2099 final=$78,939 total=-21.1% CAGR=-12.5% maxDD=-50.7% Sharpe=-0.46 2025=-27.2% 2026=+8.4%
+A  Stage-1 any day, 3d hold, 5% stop     10x10%: taken=1534 skipped=14625 final=$116,177 total=+16.2% CAGR=+8.9% maxDD=-16.7% Sharpe=0.59 2025=+5.0% 2026=+10.7%
+A  Stage-1 any day, 3d hold, 5% stop      5x20%: taken= 761 skipped=15398 final=$110,259 total=+10.3% CAGR=+5.7% maxDD=-18.4% Sharpe=0.39 2025=-7.7% 2026=+19.5%

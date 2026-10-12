@@ -1,0 +1,20 @@
+
+B. 20-day high breakout (close>EMA50), exit close<EMA21: total +65.7%
+     entry       exit  in_px  out_px   ret
+2026-04-17 2026-05-29  68.00   73.76  0.08
+2026-07-10 2026-07-14  80.58   76.81 -0.05
+2026-08-05 2026-08-28  84.61   97.75  0.16
+2026-09-22 2026-10-09 111.39  154.49  0.39
+
+J. New 52-week-high close, exit close<EMA21 (fixed): total +4.2%
+     entry       exit  in_px  out_px   ret
+2025-10-30 2025-11-07  96.44   91.96 -0.05
+2026-08-12 2026-08-28 112.47   97.75 -0.13
+2026-09-25 2026-10-09 122.88  154.49  0.26
+
+=== Tuned Gajjala swing strategy's actual trades in P (5-min entries, 5% stop, 3-session hold) ===
+   session                      time  entry   stop                 exit_time               exits     R    pnl
+2025-09-09 2025-09-09 11:25:00-04:00  80.16  76.16 2025-09-12 15:55:00-04:00  1.00@82.31:maxhold 0.536 266.20
+2026-10-05 2026-10-05 14:15:00-04:00 143.02 135.87 2026-10-08 15:55:00-04:00 1.00@150.67:maxhold 1.070 527.85
+P trades: 2, total R +1.6, P&L $794 on $100k/10% sizing
+chart saved
