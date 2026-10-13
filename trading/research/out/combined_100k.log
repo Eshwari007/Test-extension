@@ -1,0 +1,35 @@
+trend trades 1271, earnings-sized gap days inside a hold: 91; collar adds +87.2 pct-points of trade return in total
+
+$100,000, Jan 2 2025 -> Oct 9 2026 (21.3 months), 5 bps slippage per side:
+SPY buy and hold                                     final $133,171  total +33.2%  CAGR +17.6%  maxDD -19.0%  Sharpe 1.04  2025 +16.6%  2026 +14.2%
+Swing book only, 10 slots x 10%                      final $169,709  total +69.7%  CAGR +34.9%  maxDD -5.6%  Sharpe 2.32  2025 +23.0%  2026 +38.0%
+Trend book only, 10 slots x 10%, no collar           final $160,114  total +60.1%  CAGR +30.5%  maxDD -17.2%  Sharpe 1.38  2025 +11.0%  2026 +44.2%
+Trend book only, 10 slots x 10%, with collar         final $145,696  total +45.7%  CAGR +23.8%  maxDD -20.9%  Sharpe 1.14  2025 +12.4%  2026 +29.6%
+50/50: swing 5x20% + trend 5x20%, no collar          final $209,048  total +109.0%  CAGR +51.8%  maxDD -10.4%  Sharpe 2.20  2025 +28.7%  2026 +62.5%
+50/50: swing 5x20% + trend 5x20%, with collar        final $210,713  total +110.7%  CAGR +52.5%  maxDD -9.1%  Sharpe 2.24  2025 +31.8%  2026 +59.9%
+50/50: swing 10x10% + trend 10x10% (half-size slots), collar final $158,101  total +58.1%  CAGR +29.6%  maxDD -11.5%  Sharpe 1.84  2025 +17.8%  2026 +34.2%
+
+monthly P&L of the 50/50 + collar portfolio:
+2025-01     3.2
+2025-02     6.4
+2025-03    -3.6
+2025-04    -4.3
+2025-05     5.7
+2025-06     3.6
+2025-07    -0.8
+2025-08     6.4
+2025-09     5.1
+2025-10     4.0
+2025-11    -0.7
+2025-12     3.0
+2026-01     6.4
+2026-02     6.2
+2026-03    -2.2
+2026-04    16.4
+2026-05    23.1
+2026-06    -2.5
+2026-07    -4.3
+2026-08    -0.4
+2026-09     0.1
+2026-10     1.4
+Freq: M
