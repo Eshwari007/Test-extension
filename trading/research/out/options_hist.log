@@ -1,0 +1,43 @@
+
+=== Q3 FY26: reaction day 2025-12-03; hedge set up at close 2025-11-25 with P=83.15; reaction close 68.85 (-17.2%), open 78.80 ===
+  PSTG251205: no data
+  expiry root PSTG251219: 19 contracts with data
+ strike   pct  put_setup  put_react  call_setup  call_react
+   65.0 -0.22       1.22       1.58         NaN        5.80
+   70.0 -0.16       1.96       3.70         NaN        2.75
+   75.0 -0.10       2.91       7.05       12.00        1.25
+   80.0 -0.04       4.79      11.32        8.55        0.60
+   85.0  0.02       7.40      16.20        5.90        0.25
+   90.0  0.08      11.66      20.48        4.09        0.18
+   95.0  0.14        NaN      25.43        2.57        0.15
+  100.0  0.20        NaN      29.50        1.58        0.08
+  105.0  0.26        NaN        NaN        1.04        0.05
+  110.0  0.32        NaN      35.60        0.60        0.05
+  put 75.0 (-10%) cost $291 (3.5% of position) -> worth $705 after: unhedged -1,430  hedged -1,016  (-12.2% vs -17.2%) | collar with call 95.0 (+14%) sold @ $257: net cost $34 (+0.4%), collared P&L -774 (-9.3%)
+  put 80.0 (-4%) cost $479 (5.8% of position) -> worth $1,132 after: unhedged -1,430  hedged -777  (-9.3% vs -17.2%) | collar with call 95.0 (+14%) sold @ $257: net cost $222 (+2.7%), collared P&L -535 (-6.4%)
+
+=== Q1 FY27: reaction day 2026-05-28; hedge set up at close 2026-05-20 with P=77.93; reaction close 73.04 (-6.3%), open 74.50 ===
+  P260529: no data
+  P260605: no data
+  P260618: no data
+
+=== Q2 FY27: reaction day 2026-08-27; hedge set up at close 2026-08-20 with P=109.98; reaction close 99.24 (-9.8%), open 110.66 ===
+  P260828: no data
+  P260904: no data
+  expiry root P260918: 24 contracts with data
+ strike   pct  put_setup  put_react  call_setup  call_react
+   85.0 -0.23       1.55       1.05       29.15       14.67
+   90.0 -0.18       2.35       2.25       23.27       11.60
+   95.0 -0.14       3.75       3.99       19.30        7.30
+  100.0 -0.09       5.35       6.80       16.40        5.60
+  105.0 -0.05       7.50       8.20       13.00        3.89
+  110.0  0.00       9.80      13.70       11.01        2.30
+  115.0  0.05      12.70      19.00        8.70        1.25
+  120.0  0.09      15.88      22.50        6.78        0.95
+  125.0  0.14      15.26      20.20        5.80        0.60
+  130.0  0.18        NaN      32.10        4.55        0.35
+  135.0  0.23        NaN        NaN        3.34        0.35
+  140.0  0.27        NaN        NaN        3.10        0.16
+  145.0  0.32      31.22      31.22        2.34        0.15
+  put 100.0 (-9%) cost $535 (4.9% of position) -> worth $680 after: unhedged -1,074  hedged -929  (-8.4% vs -9.8%) | collar with call 125.0 (+14%) sold @ $580: net cost $-45 (-0.4%), collared P&L -409 (-3.7%)
+  put 105.0 (-5%) cost $750 (6.8% of position) -> worth $820 after: unhedged -1,074  hedged -1,004  (-9.1% vs -9.8%) | collar with call 125.0 (+14%) sold @ $580: net cost $170 (+1.5%), collared P&L -484 (-4.4%)

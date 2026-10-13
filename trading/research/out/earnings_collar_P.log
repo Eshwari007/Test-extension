@@ -1,0 +1,24 @@
+P spot 152.93, 100 shares = $15,293; earnings 2026-11-18; first expiry after: 2026-11-20 (38 days); IV ~72%
+
+Quotes (2026-11-20):
+  put  140 (-8%)  bid 7.5 ask 8.13  delta -0.3037
+  call 175 (+14%)  bid 6.24 ask 6.48  delta 0.3195
+  far put 115 (-25%)  bid 1.58 ask 1.82
+
+Per 100 shares (buy at ask, sell at bid):
+  collar                                       cost $+189 (+1.24% of position)  worst case to expiry -9.7%  cap +13.2%
+  spread-collar (protection ends at far put)   cost $+31 (+0.20% of position)  worst case to expiry -8.7%  cap +14.2%
+  protective put                               cost $+813 (+5.32% of position)  worst case to expiry -13.8%  no cap
+
+Scenario at expiry (stock move -> hedged P&L on 100 shares, collar):
+   -30%: unhedged $-4,588   collar $-1,482
+   -20%: unhedged $-3,059   collar $-1,482
+   -15%: unhedged $-2,294   collar $-1,482
+   -10%: unhedged $-1,529   collar $-1,482
+    -5%: unhedged $-765   collar $-954
+    +0%: unhedged $+0   collar $-189
+    +5%: unhedged $+765   collar $+576
+   +10%: unhedged $+1,529   collar $+1,340
+   +15%: unhedged $+2,294   collar $+2,018
+   +20%: unhedged $+3,059   collar $+2,018
+   +30%: unhedged $+4,588   collar $+2,018
