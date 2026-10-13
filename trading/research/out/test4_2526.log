@@ -1,0 +1,14 @@
+=== TEST 4, 2025-01-02 -> 2026-10-09: 1992 trend entry signals; baseline = Stage-1 days without a breakout (10413 sampled) ===
+horizon | mean excess vs SPY (entry-to-exit, next-open fills) | t-stat | hit rate | raw mean | baseline (Stage-1, no breakout) excess
+   1d    +0.15%   t= 2.15   hit 51%   raw +0.13%   baseline +0.01% (t=0.27)
+   5d    +0.30%   t= 2.06   hit 51%   raw +0.53%   baseline +0.03% (t=0.58)
+  10d    +0.78%   t= 4.14   hit 51%   raw +1.06%   baseline +0.04% (t=0.60)
+  20d    +1.67%   t= 5.92   hit 52%   raw +1.88%   baseline +0.10% (t=0.99)
+
+by year, 20d excess:
+      size  mean
+year            
+2025  1107  1.43
+2026   885  1.98
+
+months with positive 20d excess: 13 of 21; median month +0.50%

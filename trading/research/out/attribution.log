@@ -1,0 +1,9 @@
+2025-01-02 -> 2026-10-09, SPY +33.2%; trend book 20x5% ranked + regime switch, next-open + 5 bps
+universe                           stop      cands  cand avg  cand PF |   total   maxDD  taken    PF     avg
+point-in-time S&P 500              -8% stop   1205    +0.12%     1.04 |  +23.2%  -16.0%    350  1.47  +1.29%
+point-in-time S&P 500              none       1193    +0.39%     1.14 |  +32.7%  -14.6%    339  1.67  +1.79%
+today's S&P 500 + NDX extras       -8% stop   1286    +0.88%     1.29 |  +63.4%  -16.6%    342  2.12  +3.15%
+today's S&P 500 + NDX extras       none       1271    +1.20%     1.40 |  +72.3%  -14.5%    324  2.34  +3.64%
+
+names tradeable only with today's list (not S&P members at signal time): 25: ['APP', 'ARM', 'ASML', 'AZN', 'BE', 'CCEP', 'CIEN', 'CRH', 'CVNA', 'ECHO', 'FERG', 'FISV', 'FLEX', 'GFS', 'HOOD', 'ILMN', 'MELI', 'MRVL', 'P', 'RDDT', 'SHOP', 'TEAM', 'TWLO', 'VRT', 'ZS']
+their candidate trades: 77, avg +9.27%, sum of returns +714 pct-points (vs +1529 for all)

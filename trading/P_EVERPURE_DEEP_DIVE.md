@@ -1,5 +1,8 @@
 # Everpure (NYSE: P) — one-year deep dive and how to capture a stock like this
 
+> **Superseded (Oct 13 2026):** the point-in-time constituent test in `VALIDATION_VERDICT.md` shows that about half of the edge reported here was survivorship bias from using today's S&P 500 list. Read that file first; the numbers below stand only as a record of the work.
+
+
 Window: Oct 9 2025 to Oct 9 2026, 252 sessions. Data: Alpaca SIP daily and 5-minute bars.
 P is the former Pure Storage (PSTG): renamed Everpure in February 2026, ticker changed to P on
 April 17 2026. Enterprise flash storage, now selling itself as an AI-data-platform company.

@@ -1,0 +1,21 @@
+PIT file: rows 2720 first 1996-01-02 last 2026-08-18 tickers on last row 503
+632 distinct tickers in the index at some point since 2020-06-01
+  100/632 symbols, 98 with data, 6s
+  200/632 symbols, 198 with data, 12s
+  300/632 symbols, 297 with data, 17s
+  400/632 symbols, 396 with data, 23s
+  500/632 symbols, 496 with data, 29s
+  600/632 symbols, 596 with data, 34s
+  632/632 symbols, 627 with data, 36s
+coverage (members with Alpaca data) by year:
+      members  with_data
+y                       
+2020    505.0      501.0
+2021    505.0      501.0
+2022    504.0      501.0
+2023    503.0      500.0
+2024    503.0      500.0
+2025    503.0      500.0
+2026    503.0      503.0
+5 tickers with no Alpaca data, e.g. ['BK', 'BLL', 'FI', 'MMC', 'WLTW']
+DONE

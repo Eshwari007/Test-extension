@@ -1,5 +1,8 @@
 # Adding the Gajjala momentum swing setup to the RDT engine
 
+> **Superseded (Oct 13 2026):** the point-in-time constituent test in `VALIDATION_VERDICT.md` shows that about half of the edge reported here was survivorship bias from using today's S&P 500 list. Read that file first; the numbers below stand only as a record of the work.
+
+
 Status: design + compatibility backtest. Written without access to `rdt_trading_engine.py`
 (repo `SatishKE/IBKR-rdt` is not reachable from this session), against RDT_SYSTEM_OVERVIEW v2.8
 and the TAPE-001 study. Everything below about the engine's internals is read from those docs

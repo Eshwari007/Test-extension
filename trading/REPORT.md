@@ -1,5 +1,8 @@
 # Gajjala Momentum Scanner (US): what works, what doesn't, and the version to trade
 
+> **Superseded (Oct 13 2026):** the point-in-time constituent test in `VALIDATION_VERDICT.md` shows that about half of the edge reported here was survivorship bias from using today's S&P 500 list. Read that file first; the numbers below stand only as a record of the work.
+
+
 Research period: Jan 2, 2025 to Oct 9, 2026 (444 sessions). Data: Alpaca SIP, split-adjusted.
 Universe: current S&P 500 constituents plus 13 Nasdaq-100 names outside the S&P 500 (516 symbols).
 Account: $100,000. Slippage: 5 bps per side in the portfolio simulations. No commissions.

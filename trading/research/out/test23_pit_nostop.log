@@ -1,0 +1,20 @@
+disaster stop: False
+candidate trades 2020-2026 (PIT universe): 4450
+
+=== TEST 3: trend book by calendar window, PIT universe, next-open + 5 bps ===
+window        SPY | 20x5 rk+reg  excess  maxDD    PF    n | 10x10 rk+reg  excess  maxDD    PF | 20x5 no regime  excess  maxDD | 20d entry excess     n regime-off days
+2021       +28.7% |      +15.0%  -13.7% -11.5%  1.34  224 |        +9.8%  -18.9% -12.1%  1.17 |         +13.7%  -15.1% -11.3% |           -0.33%   932              23
+2022       -19.9% |       -0.2%  +19.8%  -6.8%  0.97  123 |        +3.5%  +23.5%  -6.5%  1.26 |          -2.8%  +17.1% -13.2% |           +1.35%   389             163
+2023       +24.8% |       -2.7%  -27.5% -11.1%  0.82  191 |        -6.0%  -30.8% -16.3%  0.79 |          -1.6%  -26.4% -12.6% |           -0.99%   603              69
+2024       +24.0% |      +15.5%   -8.5%  -6.1%  1.67  189 |       +28.8%   +4.8%  -7.2%  2.12 |         +11.1%  -12.9%  -8.3% |           -0.45%   928              27
+2025       +16.6% |       +9.3%   -7.3%  -7.0%  1.64  188 |       +10.5%   -6.1% -10.4%  1.82 |          +2.9%  -13.8% -15.2% |           +0.22%   644              60
+2026 YTD   +14.0% |      +13.6%   -0.3% -14.0%  1.55  165 |       +27.4%  +13.4% -16.0%  2.12 |         +27.8%  +13.9% -11.5% |           +0.44%   522              39
+
+=== TEST 2: 2022 bear market detail (20x5%, ranked) ===
+  regime switch ON: total -0.2%, maxDD -6.8%, PF 0.97, n 123, win 38%; monthly: 01:-1 02:-2 03:+3 04:-3 05:-0 06:+0 07:+1 08:+2 09:-1 10:+1 11:+2 12:-4
+  regime switch OFF: total -2.8%, maxDD -13.2%, PF 0.89, n 186, win 33%; monthly: 01:-0 02:-3 03:+6 04:-4 05:-2 06:-2 07:+0 08:+2 09:-3 10:+5 11:+1 12:-4
+  SPY 2022: -19.9%, maxDD -25.4%; regime switch blocked entries on 163 of 251 sessions
+
+=== worst-window summary (the bar: positive excess in >=4 of 6, worst DD <= 25%, PF >= 1.2 in every window) ===
+  20x5% ranked+regime: excess positive in 1 of 6; worst DD -14.0%; min PF 0.82; mean excess -6.3 pp/yr; median -7.9
+  10x10% ranked+regime: excess positive in 3 of 6; worst DD -16.3%; min PF 0.79; mean excess -2.4 pp/yr; median -0.7

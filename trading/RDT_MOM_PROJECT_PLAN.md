@@ -1,5 +1,8 @@
 # rdt_mom: Momentum Swing + Trend Engine — Project Plan and System Logic
 
+> **Superseded (Oct 13 2026):** the point-in-time constituent test in `VALIDATION_VERDICT.md` shows that about half of the edge reported here was survivorship bias from using today's S&P 500 list. Read that file first; the numbers below stand only as a record of the work.
+
+
 Version 1.1 — Oct 13 2026 (revised after the 2023-2024 out-of-sample test). Author: Claude, for Sat (Esh).
 Decisions taken: standalone engine in the style of `rdt_trading_engine.py`, own MySQL tables in `stocks_db`,
 paper-automated from day one (real book off), macOS LaunchAgent, scope = swing book + trend book.

@@ -1,0 +1,19 @@
+candidate trades 2020-2026 (PIT universe): 4475
+
+=== TEST 3: trend book by calendar window, PIT universe, next-open + 5 bps ===
+window        SPY | 20x5 rk+reg  excess  maxDD    PF    n | 10x10 rk+reg  excess  maxDD    PF | 20x5 no regime  excess  maxDD | 20d entry excess     n regime-off days
+2021       +28.7% |      +13.1%  -15.6% -11.9%  1.29  229 |        +3.7%  -25.0% -13.9%  1.02 |          +8.7%  -20.0% -11.9% |           -0.33%   938              23
+2022       -19.9% |       -0.5%  +19.4%  -7.0%  0.92  125 |        +3.2%  +23.1%  -6.5%  1.23 |          -3.8%  +16.2% -13.2% |           +1.38%   390             163
+2023       +24.8% |       -2.3%  -27.2% -11.4%  0.83  194 |        -7.3%  -32.1% -17.5%  0.76 |          +1.1%  -23.8% -11.0% |           -0.99%   603              69
+2024       +24.0% |      +15.3%   -8.7%  -6.2%  1.71  190 |       +20.6%   -3.4%  -7.6%  1.63 |         +10.1%  -13.9%  -6.6% |           -0.39%   932              27
+2025       +16.6% |       +6.6%  -10.0%  -6.5%  1.45  189 |        +8.1%   -8.5% -12.7%  1.55 |          -0.5%  -17.1% -14.5% |           +0.18%   649              60
+2026 YTD   +14.0% |       +7.6%   -6.4% -15.7%  1.31  175 |       +19.7%   +5.7% -20.2%  1.79 |         +10.6%   -3.3% -14.1% |           +0.61%   529              39
+
+=== TEST 2: 2022 bear market detail (20x5%, ranked) ===
+  regime switch ON: total -0.5%, maxDD -7.0%, PF 0.92, n 125, win 38%; monthly: 01:-1 02:-2 03:+3 04:-3 05:-0 06:+0 07:+1 08:+2 09:-1 10:+1 11:+2 12:-4
+  regime switch OFF: total -3.8%, maxDD -13.2%, PF 0.86, n 189, win 33%; monthly: 01:-1 02:-3 03:+4 04:-2 05:-3 06:-2 07:+0 08:+2 09:-3 10:+5 11:+1 12:-4
+  SPY 2022: -19.9%, maxDD -25.4%; regime switch blocked entries on 163 of 251 sessions
+
+=== worst-window summary (the bar: positive excess in >=4 of 6, worst DD <= 25%, PF >= 1.2 in every window) ===
+  20x5% ranked+regime: excess positive in 1 of 6; worst DD -15.7%; min PF 0.83; mean excess -8.1 pp/yr; median -9.3
+  10x10% ranked+regime: excess positive in 2 of 6; worst DD -20.2%; min PF 0.76; mean excess -6.7 pp/yr; median -5.9
