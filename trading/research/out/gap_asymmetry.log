@@ -1,0 +1,8 @@
+Gaps of 7%+ on 2x+ volume (earnings-sized), Jan 2025 - Oct 9 2026, 516 names:
+all names                                               n= 894  up 47% avg +13.0% (gap +12.2%)  |  down 53% avg -12.3% (gap -11.7%)  |  mean close-to-close -0.48%  |  share beyond -11%: 27%, beyond +15%: 15%
+stock in Stage-1 leader state the day before            n= 209  up 50% avg +12.8% (gap +12.4%)  |  down 50% avg -12.6% (gap -11.0%)  |  mean close-to-close +0.04%  |  share beyond -11%: 26%, beyond +15%: 17%
+not in leader state                                     n= 685  up 46% avg +13.0% (gap +12.2%)  |  down 54% avg -12.2% (gap -11.9%)  |  mean close-to-close -0.64%  |  share beyond -11%: 27%, beyond +15%: 14%
+leader AND above EMA21 (= would be in a trend-hold)     n= 206  up 49% avg +12.9% (gap +12.5%)  |  down 51% avg -12.6% (gap -11.0%)  |  mean close-to-close -0.11%  |  share beyond -11%: 27%, beyond +15%: 17%
+
+On the 206 trend-hold events: mean unhedged -0.11%, mean collared (free collar -10%/+15%) +0.85%; std 14.8% -> 10.3%; worst -51% -> -10%
+events where the cap bit (>+15%): 34 giving up avg 6.7pp each; events where the floor saved (<-10%): 62 saving avg 6.8pp each

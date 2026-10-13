@@ -115,7 +115,42 @@ trend-hold strategy (see `P_EVERPURE_DEEP_DIVE.md` section 6):
 
 Not financial advice. Three events on one stock plus one live chain.
 
+## 6. Is it a good strategy? The universe test
+
+Three events on one stock could be luck, so the question was tested on every earnings-sized gap
+(7%+ open gap on 2x+ volume) across all 516 names, Jan 2025 to Oct 9 2026 (`research/gap_asymmetry.py`,
+`research/out/gap_asymmetry.log`, 894 events):
+
+| State the day before | Events | Up / down | Avg up day | Avg down day | Mean close-to-close |
+|---|---|---|---|---|---|
+| All names | 894 | 47% / 53% | +13.0% | -12.3% | -0.48% |
+| Stage 1 leader | 209 | 50% / 50% | +12.8% | -12.6% | +0.04% |
+| Leader and above EMA21 (a trend-hold position) | 206 | 49% / 51% | +12.9% | -12.6% | -0.11% |
+
+Two conclusions. First, holding a momentum leader through its report is a coin flip with a 15%
+standard deviation and no expected return, so the exit-before-earnings rule for sub-100-share
+positions costs nothing in expectation. Second, on the 206 trend-hold events a free -10% / +15%
+collar changes the distribution like this:
+
+| | Unhedged | Collared |
+|---|---|---|
+| Mean per event | -0.11% | **+0.85%** |
+| Standard deviation | 14.8% | 10.3% |
+| Worst event | -51% | -10% |
+| Events where the floor saved money | | 62, avg 6.8pp each |
+| Events where the cap gave money up | | 34, avg 6.7pp each |
+
+The floor is hit almost twice as often as the cap because the put sits 10% away and the call 15%
+away while the gap distribution is symmetric at about 12.7% either side. That asymmetry is what
+the volatility skew gives you for free on a 70%-vol name. So the collar is not just insurance: on
+this sample it raises expectancy by about 1 point per event, cuts the spread by a third and removes
+the tail. Caveats: the test assumes the -10% / +15% collar is free on every name (true for P at 70%
+IV; on lower-volatility names the call has to be closer, which narrows the asymmetry), ignores
+spreads and commissions, and uses close-to-close moves rather than option fills. The lot-size
+constraint from section 3 still decides whether it can be used at all.
+
 ## Files
+- `research/gap_asymmetry.py`, `research/out/gap_asymmetry.log`, `gap_events.csv`: the universe gap test
 - `earnings_collar.py`: pricing and paper placement tool
 - `research/options_live.py`, `research/out/options_live.log`, `research/out/P_chain_2026-11-20.csv`, `P_chain_2027-01-15.csv`
 - `research/options_hist.py`, `research/out/options_hist.log` (hedge 5 days early), `options_hist_dayminus1.log` (day before), `P_earnings_hedge_dayminus1.csv`
