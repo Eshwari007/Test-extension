@@ -1,10 +1,10 @@
 # rdt_mom: Momentum Swing + Trend Engine — Project Plan and System Logic
 
-Version 1.0 — Oct 13 2026. Author: Claude, for Sat (Esh).
+Version 1.1 — Oct 13 2026 (revised after the 2023-2024 out-of-sample test). Author: Claude, for Sat (Esh).
 Decisions taken: standalone engine in the style of `rdt_trading_engine.py`, own MySQL tables in `stocks_db`,
 paper-automated from day one (real book off), macOS LaunchAgent, scope = swing book + trend book.
-Earnings collar is Phase 4. Everything here traces back to the research in `REPORT.md`,
-`P_EVERPURE_DEEP_DIVE.md`, `EARNINGS_HEDGE_COLLAR.md` and `research/`.
+Earnings collar is Phase 6. Everything here traces back to the research in `REPORT.md`,
+`P_EVERPURE_DEEP_DIVE.md`, `EARNINGS_HEDGE_COLLAR.md`, `OOS_2023_2024.md` and `research/`.
 
 ## 1. What it does, in one paragraph
 
@@ -17,23 +17,26 @@ sessions, 5% stop. The **trend book** buys the next open after a daily close abo
 own capital, slots and sizing. Everything is written to MySQL so the existing dashboard, EOD reports
 and reconcilers can see it.
 
-Backtest, Jan 2 2025 to Oct 9 2026, $100k, 5 bps slippage (`research/out/combined_100k.log`):
+Backtests, $100k, 5 bps slippage, with the two implementation rules below (ranked slot filling and
+the SPY regime switch). 2025 was used to choose the rules; 2026, 2023 and 2024 are out-of-sample
+(`research/out/oos_checks_2324.log`, `oos_checks_2526.log`):
 
-| Configuration | Total | Annualised | Max DD | Stripped of best 2 months |
-|---|---|---|---|---|
-| 50/50, 5 slots x 20% per book, with collar | +111% | +52% | -9% | +25% annualised |
-| 50/50, 10 slots x 10% per book, with collar | +58% | +30% | -12% | |
-| SPY | +33% | +18% | -19% | |
+| Configuration | 2023-24 (SPY +54%) | 2025-26 (SPY +33%) | Max DD |
+|---|---|---|---|
+| Trend book only, 10 x 10%, ranked, regime switch | +87% | +57% | -11% / -19% |
+| Trend book only, 20 x 5%, ranked | +75% | +64% | -8% / -17% |
+| Swing book only, 10 x 10%, regime switch | +11% | +57% | -14% / -5% |
+| 50/50 swing + trend, 10 x 10% each, both rules | +41% | +53% | -8% / -10% |
+| 50/50 swing + trend, 5 x 20% each, both rules | +70% | +100% | -10% / -11% |
 
-Slot count and size are a config value. Default in this plan: **10 slots x 10% per book** (the
-conservative one). Switching to 5 x 20% is one line in `rdt_mom_config.py` once paper results justify it.
+Per-trade edge by year: trend profit factor 1.31 / 2.01 / 1.35 / 1.46 (2023 / 2024 / 2025 / 2026);
+swing 1.16 / 1.22 / 1.63 / 1.95. The trend edge is stable; the swing edge depends on the market
+having a leading theme. Hence the weighting below.
 
-### Validation update (Oct 13 2026): 2023-2024 out-of-sample
-
-See `OOS_2023_2024.md`. The trend book's per-trade edge held in both unseen years (PF 1.31 and 2.01);
-the swing book's did not (PF 1.2). Two plan items proved decisive: ranked slot filling (§4.4) and the
-SPY-below-EMA50 switch (§4.6). Revised defaults: trend book is the core at 10 to 20 slots, ranked,
-regime switch on; swing book weighted 30 to 40% rather than 50%; never 5 x 20% for the trend book.
+**Defaults in this plan (v1.1):** trend book 65% of capital, 20 slots x 5%, ranked by Stage 1
+relative strength, regime switch on; swing book 35% of capital, 10 slots x 10%, regime switch on.
+Never run the trend book at 5 x 20%: concentration was the worst trend configuration in both windows.
+All of these are config values in `rdt_mom_config.py`.
 
 ## 2. Components
 
@@ -161,8 +164,9 @@ next session 09:31 ET:
         qty = floor(book_equity * SIZE_FRAC / open_px); market buy; stop_px = fill * 0.92 (disaster stop, GTC)
 ```
 
-Ranking by Stage 1 rank is the fix for the first-come slot filling in the backtest
-(`P_EVERPURE_DEEP_DIVE.md` §6). Expect it to improve on the +60% result, not reduce it.
+Ranking by Stage 1 relative strength is the most important implementation detail in the system: on
+2023-24 it lifted the trend book from +35% to +54% before the regime switch (`OOS_2023_2024.md` §3).
+First-come filling leaves the best breakouts on the table.
 
 ### 4.5 Exits
 
@@ -183,11 +187,14 @@ trend (checked once per day at 15:58, and the disaster stop lives at the broker)
 
 ```
 book_equity   = cash + marked value of the book's open positions (never the other book's)
-SIZE_FRAC     = 0.10 (10 slots) default; 0.20 (5 slots) is the aggressive setting
+capital split = 65% trend / 35% swing (config; the 50/50 of v1.0 is one line away)
+SIZE_FRAC     = 0.05 for the trend book (20 slots), 0.10 for the swing book (10 slots)
 MAX_SLOTS     = 1 / SIZE_FRAC
+trend book never above 0.10 per slot (5 x 20% was the worst trend configuration in both windows)
 one position per symbol per book; a symbol may be in both books at once (they are different trades)
 daily loss halt: if book equity falls 3% below the day's starting equity, no new entries that day (exits still run)
-regime off-switch: if SPY close < SPY EMA50 at the prior close, no new entries in either book (open positions keep their exit rules)
+regime off-switch: if SPY close < SPY EMA50 at the prior close, no new entries in either book (open positions keep their exit rules).
+              Worth +33 points to the trend book in 2023-24 and -3 in 2025-26; it is the only bear-market protection in the system and stays on
 kill-switches: file MOM_OFF (both books), MOM_SWING_OFF, MOM_TREND_OFF; checked every loop, no restart needed
 ```
 
@@ -240,8 +247,11 @@ the DB plus the broker's open orders; there is no in-memory-only state.
    path on historical bars and must reproduce the research P&L within slippage.
 3. **Broker tests.** Mocked Alpaca: timeout → lookup → no duplicate order; partial fill; stop re-attach on restart.
 4. **Paper validation gates** (judge at the earlier of n ≥ 60 closed trades per book or 2026-12-31):
-   swing PF ≥ 1.3 and max DD ≤ 10%; trend PF ≥ 1.2; both books' trade list ≥ 90% identical to the replay
-   of the same dates (fill-quality check). Failing a gate = stay on paper, investigate.
+   trend PF ≥ 1.2 (its four-year floor was 1.31); swing PF ≥ 1.15 (its four-year floor was 1.16) and
+   max DD ≤ 10%; both books' trade lists ≥ 90% identical to the replay of the same dates (fill-quality
+   check). Failing a gate = stay on paper, investigate. The swing book is also judged on whether it
+   adds anything the trend book does not: if its paper Sharpe is below 0.5 after 60 trades, cut its
+   weight to 20% rather than switch it off (it still reduces drawdown).
 5. **Real money** only after the gates pass, at R-sized reduced capital, with the `MOM_*_OFF` switches tested.
 
 ## 7. Phases and effort
@@ -262,9 +272,10 @@ the formula and data code.
 
 ## 8. Open questions (answer when convenient; defaults in brackets)
 
-1. Capital per book on paper: [$50k swing / $50k trend, matching the backtest; the paper account shows
-   $35.8k basis, so either reset it or scale both to $17.5k each].
-2. Slot sizing: [10 x 10% per book]. 5 x 20% is the +111% configuration but puts a fifth of a book in one 70%-vol stock.
+1. Capital per book on paper: [65% trend / 35% swing of whatever the paper account holds; at the $35.8k
+   basis that is $23k / $12.5k, which makes the trend slots about $1,150 each (fine for a paper test;
+   the collar phase needs 100-share lots and so a larger real book)].
+2. Slot sizing: [trend 20 x 5%, swing 10 x 10%]. The 5 x 20% swing setting is the +111% / +70% configuration and remains available for the swing book only.
 3. Universe source on the Mac: [Wikipedia S&P 500 + Nasdaq 100 tables, cached weekly, as `rdt_sector_backfill.py` already does].
    Here I used a GitHub mirror because Wikipedia was blocked in the cloud container.
 4. Trend exits: sell at 15:58 on the day of the EMA21 break, or at the next open as backtested? [next open].
@@ -274,8 +285,47 @@ the formula and data code.
 7. Data feed: SIP on the paper keys works from this container; confirm the Mac's keys have the same entitlement.
 8. Name: `rdt_mom` (momentum) or `rdt_gajjala`? [rdt_mom].
 
-## 9. What exists already (reuse)
+## 9. Rebuilding the market data on the Mac
 
+The research cache is 1.8 GB of pickles (794 MB for 2025-26, 973 MB for 2023-24) and is not in git.
+Rebuild it with the same script; it needs only the Alpaca keys and about 30 to 45 minutes per window.
+
+```
+cd ~/Desktop && git clone --branch claude/exciting-fermi-rt9kny https://github.com/Eshwari007/Test-extension.git
+cd Test-extension/trading
+python3 -m pip install pandas numpy requests matplotlib openpyxl
+export APCA_API_KEY_ID=...  APCA_API_SECRET_KEY=...        # the paper keys from mysql_stocks_alpaca.py work
+
+# 2025-26 window (default settings in research/data.py)
+python3 research/data.py                                   # -> research/cache/ (daily.pkl, leaders.pkl, spy5.pkl, intra/<SYM>.pkl)
+
+# 2023-24 window
+MOM_CACHE=$PWD/research/cache_2324 MOM_DAILY_START=2022-01-01 MOM_BT_START=2023-01-03 MOM_BT_END=2024-12-31 \
+  python3 research/data.py
+
+# any other window, e.g. 2021-22 (bear market; survivorship bias grows the further back you go)
+MOM_CACHE=$PWD/research/cache_2122 MOM_DAILY_START=2020-01-01 MOM_BT_START=2021-01-04 MOM_BT_END=2022-12-30 \
+  python3 research/data.py
+```
+
+What `data.py` does, in order: (1) daily bars for the 516-name universe from `MOM_DAILY_START`,
+split-adjusted, SIP feed; (2) Stage 1 top-30 leaders for every session in the window → `leaders.pkl`;
+(3) 5-minute bars for every leader over the dates it was on the list, plus SPY → `intra/`. It is
+resumable: rerunning skips what is already cached. Rate limit is 200 requests a minute; the script
+backs off on 429s.
+
+Then the studies run against the cache: `python3 research/run.py` (baseline, sensitivity, grid),
+`round2.py` to `round5.py`, `combined_100k.py`, `replay_trades.py` (writes the blotter), and for the
+2023-24 cache `python3 research/oos_2324.py` and `python3 research/oos_checks.py 2324`. Every result
+quoted in the reports is reproducible from these.
+
+The universe file `data/sp500.csv` is a GitHub mirror of the Wikipedia S&P 500 table (Wikipedia was
+blocked from the cloud container). On the Mac, `rdt_sector_backfill.py` already pulls the live table;
+reuse that and add the 13 Nasdaq-100 names listed in `gajjala_scanner_us.py`.
+
+## 10. What exists already (reuse)
+
+- `research/data.py`: the data builder (section 9)
 - `gajjala_swing_scanner_us.py`: Stage 1 + swing entry check, tested against the research engine on two sessions → becomes `rdt_mom_scanner.py` + half of `rdt_mom_formulas.py`
 - `research/engine.py`: the vectorised backtester → the oracle for the formula regression tests and `rdt_mom_replay.py`
 - `research/capture_universe.py`: the trend entry/exit logic → `rdt_mom_formulas.py` trend functions
