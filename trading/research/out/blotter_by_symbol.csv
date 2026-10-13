@@ -1,0 +1,243 @@
+symbol,company,trades,swing,trend,wins,pnl,best,worst
+MRVL,Marvell Technology,4,3,1,3,8318.0,7931.0,-364.0
+DELL,Dell Technologies,10,8,2,4,5600.0,6125.0,-450.0
+ECHO,EchoStar,8,6,2,7,5320.0,1856.0,-138.0
+SNDK,Sandisk,16,16,0,10,4800.0,1444.0,-349.0
+MU,Micron Technology,19,19,0,12,4790.0,1734.0,-449.0
+ARM,,4,3,1,3,4133.0,2105.0,-208.0
+FLEX,Flex Ltd.,5,3,2,3,4065.0,4048.0,-419.0
+AMD,Advanced Micro Devices,15,14,1,9,3842.0,1996.0,-461.0
+BE,Bloom Energy,18,17,1,8,3705.0,1723.0,-316.0
+LITE,Lumentum,15,13,2,8,3390.0,3180.0,-458.0
+STX,Seagate Technology,12,12,0,9,3170.0,1405.0,-625.0
+INTC,Intel,7,7,0,5,2741.0,1355.0,-446.0
+MRNA,Moderna,4,4,0,4,2687.0,1233.0,347.0
+CRWD,CrowdStrike,9,8,1,7,2174.0,1295.0,-260.0
+HOOD,Robinhood Markets,12,12,0,8,2153.0,577.0,-313.0
+FCX,Freeport-McMoRan,5,4,1,3,1668.0,1987.0,-417.0
+PLTR,Palantir Technologies,5,4,1,5,1658.0,424.0,219.0
+DDOG,Datadog,3,1,2,2,1313.0,1406.0,-380.0
+CVNA,Carvana,7,7,0,5,1179.0,868.0,-260.0
+ON,ON Semiconductor,2,2,0,2,1106.0,948.0,158.0
+AMAT,Applied Materials,3,3,0,2,1056.0,954.0,-153.0
+ASML,,5,3,2,3,1054.0,580.0,-292.0
+GNRC,Generac,6,5,1,3,1037.0,1041.0,-265.0
+TEAM,,3,3,0,2,1002.0,1181.0,-256.0
+NFLX,Netflix,2,1,1,2,962.0,930.0,32.0
+TER,Teradyne,6,6,0,4,932.0,399.0,-331.0
+ILMN,"Illumina, Inc.",1,1,0,1,926.0,926.0,926.0
+MSFT,Microsoft,1,0,1,1,911.0,911.0,911.0
+HWM,Howmet Aerospace,1,0,1,1,825.0,825.0,825.0
+JCI,Johnson Controls,1,0,1,1,779.0,779.0,779.0
+DG,Dollar General,2,1,1,2,727.0,636.0,91.0
+CAT,Caterpillar Inc.,1,0,1,1,727.0,727.0,727.0
+FRT,Federal Realty Investment Trust,1,0,1,1,704.0,704.0,704.0
+GLW,Corning Inc.,6,6,0,3,665.0,1087.0,-404.0
+HUM,Humana,3,3,0,2,617.0,589.0,-20.0
+CEG,Constellation Energy,2,1,1,2,615.0,353.0,262.0
+P,Everpure,2,2,0,2,574.0,435.0,139.0
+MOS,Mosaic Company (The),2,1,1,2,564.0,378.0,186.0
+ADI,Analog Devices,3,1,2,2,562.0,575.0,-27.0
+CIEN,Ciena,8,8,0,4,545.0,582.0,-315.0
+RL,Ralph Lauren Corporation,1,0,1,1,537.0,537.0,537.0
+RDDT,Reddit,3,3,0,2,531.0,527.0,-262.0
+CF,CF Industries,3,1,2,1,525.0,1177.0,-391.0
+GPN,Global Payments,2,1,1,1,462.0,637.0,-175.0
+ED,Consolidated Edison,3,1,2,2,460.0,404.0,-197.0
+DLTR,Dollar Tree,3,2,1,2,448.0,400.0,-196.0
+TT,Trane Technologies,1,0,1,1,444.0,444.0,444.0
+TPR,"Tapestry, Inc.",6,6,0,5,444.0,207.0,-261.0
+ANET,Arista Networks,6,4,2,2,443.0,840.0,-267.0
+CASY,Casey's,4,1,3,2,416.0,494.0,-224.0
+EXPD,Expeditors International,2,0,2,1,408.0,593.0,-185.0
+MMM,3M,1,0,1,1,407.0,407.0,407.0
+TRV,Travelers Companies (The),1,1,0,1,396.0,396.0,396.0
+DOW,Dow Inc.,2,1,1,2,390.0,269.0,121.0
+IBKR,Interactive Brokers,4,2,2,2,373.0,325.0,-137.0
+NEM,Newmont,4,2,2,2,371.0,434.0,-138.0
+NTAP,NetApp,3,2,1,2,354.0,366.0,-25.0
+COST,Costco,1,0,1,1,339.0,339.0,339.0
+LUV,Southwest Airlines,5,3,2,3,337.0,416.0,-545.0
+CPRT,Copart,3,2,1,2,327.0,245.0,-71.0
+NDAQ,"Nasdaq, Inc.",1,0,1,1,322.0,322.0,322.0
+EXPE,Expedia Group,1,0,1,1,321.0,321.0,321.0
+ADM,Archer Daniels Midland,3,0,3,2,321.0,332.0,-231.0
+COIN,Coinbase,3,3,0,2,302.0,391.0,-246.0
+HII,Huntington Ingalls Industries,2,2,0,1,281.0,322.0,-41.0
+VRSN,Verisign,2,0,2,1,278.0,515.0,-237.0
+ORCL,Oracle Corporation,3,3,0,2,266.0,369.0,-151.0
+EW,Edwards Lifesciences,1,0,1,1,263.0,263.0,263.0
+MTD,Mettler Toledo,1,0,1,1,256.0,256.0,256.0
+BSX,Boston Scientific,1,0,1,1,253.0,253.0,253.0
+APP,AppLovin,4,4,0,3,246.0,366.0,-285.0
+GOOGL,Alphabet Inc. (Class A),3,3,0,2,246.0,354.0,-160.0
+VST,Vistra Corp.,1,1,0,1,242.0,242.0,242.0
+WYNN,Wynn Resorts,2,1,1,1,238.0,296.0,-58.0
+ALB,Albemarle Corporation,5,4,1,3,212.0,707.0,-675.0
+TPL,Texas Pacific Land Corporation,1,1,0,1,208.0,208.0,208.0
+SNPS,Synopsys,2,1,1,2,207.0,163.0,44.0
+GRMN,Garmin,2,1,1,1,190.0,313.0,-123.0
+GILD,Gilead Sciences,3,1,2,2,188.0,332.0,-246.0
+NRG,NRG Energy,3,3,0,2,185.0,202.0,-55.0
+TJX,TJX Companies,2,1,1,2,184.0,157.0,27.0
+GWW,W. W. Grainger,1,0,1,1,182.0,182.0,182.0
+LYB,LyondellBasell,1,0,1,1,174.0,174.0,174.0
+VLO,Valero Energy,1,1,0,1,164.0,164.0,164.0
+VRT,Vertiv,1,1,0,1,159.0,159.0,159.0
+COHR,Coherent Corp.,5,5,0,2,156.0,628.0,-414.0
+AMGN,Amgen,1,0,1,1,155.0,155.0,155.0
+AMZN,Amazon,2,0,2,1,152.0,613.0,-461.0
+GEV,GE Vernova,4,4,0,3,130.0,159.0,-181.0
+CSX,CSX Corporation,1,0,1,1,123.0,123.0,123.0
+INTU,Intuit,1,0,1,1,122.0,122.0,122.0
+PTC,PTC Inc.,2,1,1,2,122.0,76.0,46.0
+DE,Deere & Company,1,0,1,1,118.0,118.0,118.0
+GM,General Motors,2,1,1,2,113.0,58.0,55.0
+APH,Amphenol,2,2,0,2,107.0,88.0,19.0
+JBL,Jabil,1,1,0,1,96.0,96.0,96.0
+AAPL,Apple Inc.,2,0,2,2,95.0,76.0,19.0
+EQT,EQT Corporation,3,2,1,2,93.0,128.0,-133.0
+EXC,Exelon,2,1,1,1,91.0,286.0,-195.0
+SBUX,Starbucks,1,1,0,1,85.0,85.0,85.0
+BR,Broadridge Financial Solutions,1,0,1,1,83.0,83.0,83.0
+MNST,Monster Beverage,1,1,0,1,68.0,68.0,68.0
+FERG,Ferguson Enterprises,1,1,0,1,67.0,67.0,67.0
+CPT,Camden Property Trust,1,0,1,1,66.0,66.0,66.0
+COR,Cencora,1,1,0,1,55.0,55.0,55.0
+CNP,CenterPoint Energy,1,1,0,1,52.0,52.0,52.0
+AZO,AutoZone,1,0,1,1,48.0,48.0,48.0
+IVZ,Invesco,3,3,0,2,46.0,111.0,-114.0
+ETR,Entergy,1,0,1,1,40.0,40.0,40.0
+AEP,American Electric Power,3,0,3,2,39.0,36.0,-31.0
+JNJ,Johnson & Johnson,1,0,1,1,37.0,37.0,37.0
+TECH,Bio-Techne,2,2,0,2,33.0,24.0,9.0
+LH,Labcorp,1,0,1,1,23.0,23.0,23.0
+TEL,TE Connectivity,1,1,0,0,-17.0,-17.0,-17.0
+CRL,Charles River Laboratories,2,2,0,1,-18.0,198.0,-216.0
+GE,GE Aerospace,2,1,1,1,-19.0,69.0,-88.0
+BKNG,Booking Holdings,1,0,1,0,-20.0,-20.0,-20.0
+SNA,Snap-on,1,0,1,0,-25.0,-25.0,-25.0
+OXY,Occidental Petroleum,2,2,0,1,-27.0,302.0,-329.0
+CNC,Centene Corporation,1,1,0,0,-30.0,-30.0,-30.0
+KR,Kroger,1,1,0,0,-34.0,-34.0,-34.0
+SWKS,Skyworks Solutions,1,0,1,0,-38.0,-38.0,-38.0
+D,Dominion Energy,1,0,1,0,-40.0,-40.0,-40.0
+WELL,Welltower,1,0,1,0,-42.0,-42.0,-42.0
+CHD,Church & Dwight,1,0,1,0,-46.0,-46.0,-46.0
+FSLR,First Solar,2,2,0,1,-46.0,382.0,-428.0
+CAH,Cardinal Health,4,1,3,2,-55.0,305.0,-295.0
+DVA,DaVita,1,1,0,0,-60.0,-60.0,-60.0
+STLD,Steel Dynamics,1,1,0,0,-65.0,-65.0,-65.0
+COP,ConocoPhillips,2,1,1,1,-68.0,261.0,-329.0
+DLR,Digital Realty,2,0,2,1,-72.0,288.0,-360.0
+KVUE,Kenvue,1,0,1,0,-78.0,-78.0,-78.0
+MDT,Medtronic,1,0,1,0,-84.0,-84.0,-84.0
+TDG,TransDigm Group,1,0,1,0,-85.0,-85.0,-85.0
+RVTY,Revvity,2,2,0,0,-88.0,-37.0,-51.0
+MPWR,Monolithic Power Systems,2,2,0,1,-100.0,212.0,-312.0
+ACN,Accenture,1,0,1,0,-103.0,-103.0,-103.0
+LLY,Lilly (Eli),2,1,1,1,-104.0,123.0,-227.0
+FDX,FedEx,1,1,0,0,-105.0,-105.0,-105.0
+DAL,Delta Air Lines,1,1,0,0,-113.0,-113.0,-113.0
+PNW,Pinnacle West Capital,1,0,1,0,-115.0,-115.0,-115.0
+PODD,Insulet Corporation,1,1,0,0,-126.0,-126.0,-126.0
+AXP,American Express,1,0,1,0,-133.0,-133.0,-133.0
+FAST,Fastenal,3,1,2,1,-143.0,35.0,-123.0
+TMUS,T-Mobile US,1,1,0,0,-144.0,-144.0,-144.0
+MO,Altria,2,0,2,1,-149.0,18.0,-167.0
+MCK,McKesson Corporation,2,1,1,1,-149.0,20.0,-169.0
+CSCO,Cisco,1,0,1,0,-150.0,-150.0,-150.0
+EOG,EOG Resources,1,0,1,0,-152.0,-152.0,-152.0
+DUK,Duke Energy,1,0,1,0,-153.0,-153.0,-153.0
+CVS,CVS Health,3,2,1,1,-159.0,149.0,-283.0
+VTR,Ventas,2,2,0,1,-159.0,42.0,-201.0
+BEN,Franklin Resources,2,0,2,1,-164.0,175.0,-339.0
+ABBV,AbbVie,4,2,2,2,-169.0,130.0,-182.0
+WMT,Walmart,1,0,1,0,-175.0,-175.0,-175.0
+TXT,Textron,1,0,1,0,-191.0,-191.0,-191.0
+RCL,Royal Caribbean Group,2,2,0,1,-193.0,224.0,-417.0
+PNC,PNC Financial Services,1,0,1,0,-203.0,-203.0,-203.0
+IQV,IQVIA,1,0,1,0,-210.0,-210.0,-210.0
+MTB,M&T Bank,1,0,1,0,-220.0,-220.0,-220.0
+PSX,Phillips 66,2,1,1,0,-220.0,-3.0,-217.0
+REGN,Regeneron Pharmaceuticals,1,0,1,0,-221.0,-221.0,-221.0
+AFL,Aflac,1,0,1,0,-223.0,-223.0,-223.0
+DVN,Devon Energy,1,0,1,0,-223.0,-223.0,-223.0
+BRO,Brown & Brown,1,0,1,0,-224.0,-224.0,-224.0
+WM,Waste Management,1,0,1,0,-243.0,-243.0,-243.0
+AXON,Axon Enterprise,1,1,0,0,-244.0,-244.0,-244.0
+RSG,Republic Services,1,0,1,0,-244.0,-244.0,-244.0
+CTAS,Cintas,1,0,1,0,-248.0,-248.0,-248.0
+VEEV,Veeva Systems,2,0,2,0,-256.0,-8.0,-248.0
+CRH,CRH plc,2,0,2,0,-257.0,-122.0,-135.0
+YUM,Yum! Brands,1,1,0,0,-257.0,-257.0,-257.0
+VZ,Verizon,1,1,0,0,-260.0,-260.0,-260.0
+DASH,DoorDash,1,1,0,0,-260.0,-260.0,-260.0
+A,Agilent Technologies,3,0,3,1,-262.0,45.0,-230.0
+NTRS,Northern Trust,1,1,0,0,-264.0,-264.0,-264.0
+SHOP,,1,1,0,0,-267.0,-267.0,-267.0
+BA,Boeing,1,0,1,0,-268.0,-268.0,-268.0
+NOC,Northrop Grumman,2,2,0,0,-270.0,-33.0,-237.0
+PLD,Prologis,1,0,1,0,-271.0,-271.0,-271.0
+TSLA,"Tesla, Inc.",1,1,0,0,-276.0,-276.0,-276.0
+PFG,Principal Financial Group,1,0,1,0,-285.0,-285.0,-285.0
+BLK,BlackRock,1,0,1,0,-287.0,-287.0,-287.0
+WSM,"Williams-Sonoma, Inc.",1,1,0,0,-289.0,-289.0,-289.0
+AIG,American International Group,2,0,2,0,-295.0,-83.0,-212.0
+MAR,Marriott International,1,1,0,0,-298.0,-298.0,-298.0
+F,Ford Motor Company,1,0,1,0,-305.0,-305.0,-305.0
+SOLV,Solventum,1,1,0,0,-305.0,-305.0,-305.0
+AVGO,Broadcom,2,2,0,0,-311.0,-114.0,-197.0
+DXCM,Dexcom,2,1,1,1,-314.0,108.0,-422.0
+DHR,Danaher Corporation,1,0,1,0,-326.0,-326.0,-326.0
+AEE,Ameren,2,0,2,1,-328.0,5.0,-333.0
+OMC,Omnicom Group,1,1,0,0,-332.0,-332.0,-332.0
+FANG,Diamondback Energy,1,1,0,0,-338.0,-338.0,-338.0
+CFG,Citizens Financial Group,1,0,1,0,-352.0,-352.0,-352.0
+IDXX,Idexx Laboratories,2,1,1,0,-354.0,-18.0,-336.0
+EBAY,eBay Inc.,1,0,1,0,-362.0,-362.0,-362.0
+CCL,Carnival Corporation,2,1,1,0,-364.0,-97.0,-267.0
+AMT,American Tower,1,0,1,0,-366.0,-366.0,-366.0
+TGT,Target Corporation,1,0,1,0,-369.0,-369.0,-369.0
+CHTR,Charter Communications,1,0,1,0,-372.0,-372.0,-372.0
+ZS,,2,2,0,0,-376.0,-117.0,-259.0
+JBHT,J.B. Hunt,1,0,1,0,-389.0,-389.0,-389.0
+ABNB,Airbnb,2,2,0,1,-397.0,22.0,-419.0
+QCOM,Qualcomm,1,1,0,0,-400.0,-400.0,-400.0
+AZN,,2,2,0,0,-407.0,-186.0,-221.0
+KLAC,KLA Corporation,1,1,0,0,-413.0,-413.0,-413.0
+BNY,BNY Mellon,2,0,2,1,-418.0,8.0,-426.0
+BG,Bunge Global,4,2,2,1,-418.0,21.0,-384.0
+TWLO,Twilio,6,5,1,3,-419.0,457.0,-486.0
+BBY,Best Buy,1,1,0,0,-421.0,-421.0,-421.0
+PANW,Palo Alto Networks,1,1,0,0,-425.0,-425.0,-425.0
+BIIB,Biogen,2,1,1,0,-451.0,-223.0,-228.0
+GS,Goldman Sachs,1,0,1,0,-477.0,-477.0,-477.0
+WRB,W. R. Berkley Corporation,1,0,1,0,-488.0,-488.0,-488.0
+HUBB,Hubbell Incorporated,2,0,2,0,-496.0,-107.0,-389.0
+AWK,American Water Works,2,1,1,0,-498.0,-245.0,-253.0
+META,Meta Platforms,2,1,1,0,-512.0,-121.0,-391.0
+CRM,Salesforce,3,2,1,1,-528.0,247.0,-451.0
+UNH,UnitedHealth Group,1,0,1,0,-534.0,-534.0,-534.0
+MRK,Merck & Co.,1,0,1,0,-545.0,-545.0,-545.0
+MPC,Marathon Petroleum,2,1,1,0,-557.0,-127.0,-430.0
+CMI,Cummins,1,0,1,0,-568.0,-568.0,-568.0
+HPQ,HP Inc.,1,0,1,0,-580.0,-580.0,-580.0
+AME,Ametek,2,0,2,0,-581.0,-215.0,-366.0
+FE,FirstEnergy,2,0,2,0,-582.0,-128.0,-454.0
+LRCX,Lam Research,3,3,0,1,-593.0,192.0,-469.0
+CDNS,Cadence Design Systems,3,1,2,1,-663.0,37.0,-675.0
+ALGN,Align Technology,1,0,1,0,-673.0,-673.0,-673.0
+FIX,Comfort Systems USA,5,5,0,2,-697.0,174.0,-589.0
+UAL,United Airlines Holdings,3,3,0,0,-729.0,-131.0,-324.0
+CHRW,C.H. Robinson,2,1,1,0,-755.0,-36.0,-719.0
+EXE,Expand Energy,2,1,1,0,-761.0,-252.0,-509.0
+SJM,J.M. Smucker Company (The),2,0,2,0,-784.0,-343.0,-441.0
+HPE,Hewlett Packard Enterprise,3,1,2,1,-870.0,328.0,-867.0
+AKAM,Akamai Technologies,3,2,1,0,-876.0,-19.0,-452.0
+FFIV,"F5, Inc.",3,1,2,1,-890.0,14.0,-766.0
+WDC,Western Digital,14,14,0,5,-951.0,677.0,-405.0
+MGM,MGM Resorts,2,1,1,0,-1026.0,-355.0,-671.0
+ALL,Allstate,3,0,3,0,-1070.0,-274.0,-424.0
+APA,APA Corporation,5,4,1,1,-1140.0,523.0,-838.0
+GFS,,4,4,0,0,-1228.0,-107.0,-405.0

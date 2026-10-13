@@ -1,0 +1,94 @@
+swing: 415 trades, 150 symbols, P&L $34,374, win 54%
+trend: 208 trades, 160 symbols, P&L $23,702, win 42%
+
+TOTAL: 623 trades across 242 stocks; P&L $58,076; top 10 stocks = $47,963; 113 stocks net positive, 129 net negative
+
+Top 25 stocks by P&L:
+                       company  trades  swing  trend  wins     pnl    best  worst
+symbol                                                                           
+MRVL        Marvell Technology       4      3      1     3  8318.0  7931.0 -364.0
+DELL         Dell Technologies      10      8      2     4  5600.0  6125.0 -450.0
+ECHO                  EchoStar       8      6      2     7  5320.0  1856.0 -138.0
+SNDK                   Sandisk      16     16      0    10  4800.0  1444.0 -349.0
+MU           Micron Technology      19     19      0    12  4790.0  1734.0 -449.0
+ARM                                  4      3      1     3  4133.0  2105.0 -208.0
+FLEX                 Flex Ltd.       5      3      2     3  4065.0  4048.0 -419.0
+AMD     Advanced Micro Devices      15     14      1     9  3842.0  1996.0 -461.0
+BE                Bloom Energy      18     17      1     8  3705.0  1723.0 -316.0
+LITE                  Lumentum      15     13      2     8  3390.0  3180.0 -458.0
+STX         Seagate Technology      12     12      0     9  3170.0  1405.0 -625.0
+INTC                     Intel       7      7      0     5  2741.0  1355.0 -446.0
+MRNA                   Moderna       4      4      0     4  2687.0  1233.0  347.0
+CRWD               CrowdStrike       9      8      1     7  2174.0  1295.0 -260.0
+HOOD         Robinhood Markets      12     12      0     8  2153.0   577.0 -313.0
+FCX           Freeport-McMoRan       5      4      1     3  1668.0  1987.0 -417.0
+PLTR     Palantir Technologies       5      4      1     5  1658.0   424.0  219.0
+DDOG                   Datadog       3      1      2     2  1313.0  1406.0 -380.0
+CVNA                   Carvana       7      7      0     5  1179.0   868.0 -260.0
+ON            ON Semiconductor       2      2      0     2  1106.0   948.0  158.0
+AMAT         Applied Materials       3      3      0     2  1056.0   954.0 -153.0
+ASML                                 5      3      2     3  1054.0   580.0 -292.0
+GNRC                   Generac       6      5      1     3  1037.0  1041.0 -265.0
+TEAM                                 3      3      0     2  1002.0  1181.0 -256.0
+NFLX                   Netflix       2      1      1     2   962.0   930.0   32.0
+
+Bottom 10:
+                           company  trades  swing  trend  wins     pnl   best  worst
+symbol                                                                              
+EXE                  Expand Energy       2      1      1     0  -761.0 -252.0 -509.0
+SJM     J.M. Smucker Company (The)       2      0      2     0  -784.0 -343.0 -441.0
+HPE     Hewlett Packard Enterprise       3      1      2     1  -870.0  328.0 -867.0
+AKAM           Akamai Technologies       3      2      1     0  -876.0  -19.0 -452.0
+FFIV                      F5, Inc.       3      1      2     1  -890.0   14.0 -766.0
+WDC                Western Digital      14     14      0     5  -951.0  677.0 -405.0
+MGM                    MGM Resorts       2      1      1     0 -1026.0 -355.0 -671.0
+ALL                       Allstate       3      0      3     0 -1070.0 -274.0 -424.0
+APA                APA Corporation       5      4      1     1 -1140.0  523.0 -838.0
+GFS                                      4      4      0     0 -1228.0 -107.0 -405.0
+
+Trend-book trades (the big ones), top 15 by P&L:
+symbol entry_date  exit_date  entry   exit  shares    pnl    ret
+  MRVL 2026-04-02 2026-07-06 102.35 236.78      59 7931.0 1.3134
+  DELL 2026-03-25 2026-07-06 177.85 363.44      33 6125.0 1.0435
+  FLEX 2026-04-09 2026-06-11  73.36 123.34      81 4048.0 0.6813
+  LITE 2025-07-16 2025-10-08  98.15 159.30      52 3180.0 0.6230
+   FCX 2025-12-04 2026-02-06  44.05  60.33     122 1987.0 0.3697
+  ECHO 2025-12-08 2026-01-30  86.09 116.02      62 1856.0 0.3476
+    BE 2026-04-15 2026-06-02 219.10 280.25      27 1651.0 0.2791
+  ECHO 2025-08-27 2025-10-17  54.34  69.51      98 1487.0 0.2792
+  DDOG 2026-05-08 2026-06-22 185.59 221.65      39 1406.0 0.1943
+  CRWD 2026-09-15 2026-10-09 233.12 274.90      31 1295.0 0.1792
+    CF 2026-02-20 2026-04-10  99.45 118.74      61 1177.0 0.1940
+  DELL 2026-09-04 2026-10-09 514.04 585.77      14 1004.0 0.1395
+  NFLX 2025-04-23 2025-07-11 104.77 125.92      44  930.0 0.2018
+  MSFT 2025-05-02 2025-08-19 431.96 514.74      11  911.0 0.1917
+  ANET 2025-08-01 2025-10-15 117.89 137.42      43  840.0 0.1656
+
+Trades and P&L by entry month:
+         size            sum         
+book    swing trend    swing    trend
+m                                    
+2025-01    17    18    793.0    815.0
+2025-02    22     7    526.0   -418.0
+2025-03    10     9   -997.0  -2350.0
+2025-04    18    11    529.0   -594.0
+2025-05    10     9   1089.0   3278.0
+2025-06    16     3    747.0    177.0
+2025-07    17     8    -98.0   2511.0
+2025-08    28    10   1065.0   2465.0
+2025-09    20     4   3194.0    406.0
+2025-10    22    18   4651.0  -2871.0
+2025-11    18     9   -561.0   -172.0
+2025-12    23     8    535.0   4377.0
+2026-01    33    10   2715.0   2847.0
+2026-02    20     9   2878.0   -987.0
+2026-03    18    13  -2839.0   4593.0
+2026-04    29     9   9460.0  15231.0
+2026-05    34     3  11747.0    587.0
+2026-06    24     9  -2504.0  -2863.0
+2026-07     9    15     63.0  -2873.0
+2026-08     5     8    337.0  -2222.0
+2026-09    12    12    677.0    613.0
+2026-10    10     6    367.0   1152.0
+
+wrote out/trade_blotter.xlsx
