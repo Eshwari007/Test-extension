@@ -13,9 +13,10 @@ import numpy as np, pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import gajjala_scanner_us as g
 
-CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache")
-DAILY_START = "2024-01-01"
-BT_START, BT_END = dt.date(2025, 1, 2), dt.date(2026, 10, 9)
+CACHE = os.environ.get("MOM_CACHE", os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache"))
+DAILY_START = os.environ.get("MOM_DAILY_START", "2024-01-01")
+BT_START = dt.date.fromisoformat(os.environ.get("MOM_BT_START", "2025-01-02"))
+BT_END = dt.date.fromisoformat(os.environ.get("MOM_BT_END", "2026-10-09"))
 LEADER_N = 30
 
 

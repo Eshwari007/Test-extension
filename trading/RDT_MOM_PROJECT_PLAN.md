@@ -28,6 +28,13 @@ Backtest, Jan 2 2025 to Oct 9 2026, $100k, 5 bps slippage (`research/out/combine
 Slot count and size are a config value. Default in this plan: **10 slots x 10% per book** (the
 conservative one). Switching to 5 x 20% is one line in `rdt_mom_config.py` once paper results justify it.
 
+### Validation update (Oct 13 2026): 2023-2024 out-of-sample
+
+See `OOS_2023_2024.md`. The trend book's per-trade edge held in both unseen years (PF 1.31 and 2.01);
+the swing book's did not (PF 1.2). Two plan items proved decisive: ranked slot filling (§4.4) and the
+SPY-below-EMA50 switch (§4.6). Revised defaults: trend book is the core at 10 to 20 slots, ranked,
+regime switch on; swing book weighted 30 to 40% rather than 50%; never 5 x 20% for the trend book.
+
 ## 2. Components
 
 ```

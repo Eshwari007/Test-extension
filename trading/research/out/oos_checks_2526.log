@@ -1,0 +1,13 @@
+=== window 2025-01-02 -> 2026-10-09; SPY +33.2% ===
+SWING per-trade: base n=415 PF=1.8 avgR=0.288 | with SPY>EMA50 switch n=324 PF=1.86 avgR=0.312
+  swing 10x10% base                                          total +69.7%  CAGR +34.9%  maxDD  -5.6%  Sharpe 2.32
+  swing 10x10% with regime switch                            total +57.1%  CAGR +29.2%  maxDD  -4.7%  Sharpe 2.16
+TREND per-trade: n=1271 win=39% avg=+1.20% PF=1.40
+  trend 10x10% first-come (as before)                        total +60.1%  CAGR +30.5%  maxDD -17.2%  Sharpe 1.38
+  trend 10x10% ranked by RS                                  total +51.2%  CAGR +26.4%  maxDD -18.3%  Sharpe 1.16
+  trend 10x10% ranked + regime switch                        total +57.0%  CAGR +29.1%  maxDD -19.4%  Sharpe 1.43
+  trend 5x20% ranked by RS                                   total +24.5%  CAGR +13.2%  maxDD -20.9%  Sharpe 0.64
+  trend 20x5% ranked by RS                                   total +63.5%  CAGR +32.1%  maxDD -16.8%  Sharpe 1.42
+  50/50 swing(regime) + trend(ranked, regime), 10x10%        total +52.7%  CAGR +27.1%  maxDD  -9.7%  Sharpe 1.80
+  50/50 swing(regime) + trend(ranked, regime), 5x20%         total +100.4%  CAGR +48.2%  maxDD -11.4%  Sharpe 2.17
+  SPY                                                        total +33.2%  CAGR +17.6%  maxDD -19.0%  Sharpe 1.04

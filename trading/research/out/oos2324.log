@@ -1,0 +1,59 @@
+=== OUT-OF-SAMPLE 2023-01-03 -> 2024-12-31: 502 sessions; SPY +53.9% ===
+
+SWING BOOK (per-trade):
+  2023-2024                                      n= 522 win=0.504  avgR=0.059   PF=1.2    totR=   30.7 maxDD_R=-27.3
+  2023                                           n= 202 win=0.495  avgR=0.043   PF=1.16   totR=    8.7 maxDD_R=-13.3
+  2024                                           n= 320 win=0.509  avgR=0.069   PF=1.22   totR=   22.0 maxDD_R=-27.3
+         n   win    totR    pf
+q                             
+2023Q1  27  0.30  -5.709  0.34
+2023Q2  58  0.66  20.756  2.89
+2023Q3  53  0.36  -7.343  0.57
+2023Q4  64  0.55   1.037  1.06
+2024Q1  84  0.56  23.218  1.98
+2024Q2  74  0.43  -9.934  0.64
+2024Q3  76  0.42 -10.874  0.55
+2024Q4  86  0.60  19.542  1.78
+
+TREND BOOK (per-trade, B3 rules):
+  2023-2024                                      n=1727 win=44% avg=+1.62% PF=1.71 avg hold=31d
+  2023                                           n= 697 win=39% avg=+0.75% PF=1.31 avg hold=30d
+  2024                                           n=1030 win=47% avg=+2.21% PF=2.01 avg hold=31d
+earnings-sized gap days inside trend holds: 38, collar adds -64.5 pct-points in total
+
+PORTFOLIOS, $100,000, 5 bps slippage:
+SPY buy and hold                                     final $153,899 total +53.9% CAGR +24.1% maxDD -10.3% Sharpe 1.75  2023 +24.8%  2024 +23.3%
+Swing book only, 10 x 10%                            final $106,764 total +6.8% CAGR +3.3% maxDD -14.7% Sharpe 0.38  2023 +0.1%  2024 +6.6%
+Trend book only, 10 x 10%, no collar                 final $135,311 total +35.3% CAGR +16.4% maxDD -10.4% Sharpe 1.11  2023 +12.0%  2024 +20.8%
+Trend book only, 10 x 10%, with collar               final $132,083 total +32.1% CAGR +15.0% maxDD -12.6% Sharpe 1.02  2023 +12.0%  2024 +18.0%
+50/50: swing 5x20% + trend 5x20%, collar (the +111% config) final $138,624 total +38.6% CAGR +17.8% maxDD -14.2% Sharpe 1.16  2023 +2.9%  2024 +34.7%
+50/50: swing 10x10% + trend 10x10%, collar (recommended) final $117,636 total +17.6% CAGR +8.5% maxDD -10.5% Sharpe 0.80  2023 +4.4%  2024 +12.7%
+
+monthly P&L, 50/50 10x10% + collar:
+2023-01     1.2
+2023-02    -2.1
+2023-03    -2.3
+2023-04     1.1
+2023-05     3.8
+2023-06     3.1
+2023-07    -0.4
+2023-08    -0.7
+2023-09    -4.5
+2023-10    -0.8
+2023-11     2.0
+2023-12     0.1
+2024-01     1.4
+2024-02     4.1
+2024-03     0.4
+2024-04    -2.8
+2024-05    -0.8
+2024-06    -2.6
+2024-07    -0.6
+2024-08     1.2
+2024-09     0.5
+2024-10     2.5
+2024-11    17.4
+2024-12    -6.0
+Freq: M
+
+chart saved
