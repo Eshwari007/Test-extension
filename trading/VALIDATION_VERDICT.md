@@ -159,3 +159,21 @@ engine on the same capital. Given tests 2 to 4, I would not start test 5 for thi
   (`research/cache_pit/`), the 2023-24 and 2025-26 5-minute caches, and the membership history.
 
 Not financial advice.
+
+## Addendum (Oct 14): can a better exit fix it?
+
+Full exit grid on the point-in-time universe, 2021-01-04 to 2026-10-09, same entry, ranked fill, regime
+switch (`research/exit_grid_pit.py`, `exit_neighbourhood.py`, `exit_robust.py`; logs in `out/`).
+
+- **Tighter stops make it worse, not better.** EMA21 trail with no stop: +62%, PF 1.37. Add a -5% stop:
+  +2%, PF 1.04, win rate 35%. A -3% stop with a +6% target: -13%. Every loss-minimising exit turns one
+  large loss into several small ones and cuts the winners that needed room.
+- **A better exit exists: hold about 25 sessions with a wide (-8% to -12%) stop, no trail.** Across all
+  three sizings it beats the EMA21 trail (+92% to +148% vs +52% to +62%) with a smaller drawdown
+  (-12% to -16% vs -17% to -38%). Chosen on 2021-23 alone, every top-5 cell beats SPY on 2024-26.
+- **But it does not create an edge the entry lacks.** Per-signal 25-session excess over SPY is -0.18%
+  for all signals (t = -1.5) and +0.26% for the top-3 ranked signals of each day (t = 1.1): not
+  distinguishable from zero. The 10 x 10% result (+148%, 4 of 6 years over SPY, min PF 1.21) is partly
+  slot-path luck: the same rules at 5 x 20% or 20 x 5% give +92% to +98% and beat SPY in 2 of 6 years.
+- Verdict unchanged. If the engine is built anyway, the exit profile should be hold-25-sessions with a
+  -10% stop rather than the EMA21 trail, pre-registered, and judged on paper by the same gates.

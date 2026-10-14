@@ -1,0 +1,34 @@
+=== (1) sizing / path dependence: hold-N with stop, three sizings ===
+cell                            5x20%                 10x10%                  20x5%
+20d -8%          +77.4% dd-21.9% 2/6   +118.8% dd-17.4% 3/6    +86.7% dd-13.0% 2/6
+20d -10%          +49.4% dd-45.7% 3/6   +135.2% dd-15.8% 3/6   +110.3% dd-14.6% 2/6
+25d -8%          +97.8% dd-15.0% 2/6   +147.5% dd-14.5% 4/6    +91.8% dd-12.0% 2/6
+25d -10%          +75.7% dd-21.1% 1/6   +148.1% dd-16.2% 3/6    +88.0% dd-12.5% 2/6
+25d -12%          +94.8% dd-28.3% 2/6   +165.7% dd-17.2% 3/6    +99.2% dd-11.0% 2/6
+30d -8%          +18.2% dd-36.0% 3/6    +71.1% dd-17.3% 2/6    +53.9% dd-21.3% 2/6
+EMA21 trail       +52.4% dd-38.3% 3/6    +61.7% dd-25.4% 3/6    +58.6% dd-17.0% 2/6
+
+=== (2) the bar, per window, 10x10%: excess vs SPY and PF ===
+25d -8%: 2021: -8.3% PF 1.56  2022: +23.4% PF 1.24  2023: -19.9% PF 1.21  2024: +2.0% PF 1.93  2025: +3.4% PF 2.06  2026: +11.8% PF 1.66  | excess>0 in 4/6, min PF 1.21, maxDD -14.5%
+25d -10%: 2021: -10.8% PF 1.57  2022: +22.3% PF 1.28  2023: -16.8% PF 1.29  2024: -5.6% PF 1.66  2025: +6.5% PF 2.34  2026: +16.9% PF 1.95  | excess>0 in 3/6, min PF 1.28, maxDD -16.2%
+20d -10%: 2021: -24.3% PF 1.09  2022: +18.1% PF 0.97  2023: -18.2% PF 1.17  2024: -0.0% PF 1.95  2025: +0.2% PF 1.81  2026: +36.9% PF 2.62  | excess>0 in 3/6, min PF 0.97, maxDD -15.8%
+
+=== (3) selection split: choose (hold,stop) on 2021-23 only, report 2024-26 ===
+SPY: 2021-23 +28.6%, 2024-26 +64.8%
+  hold 25 stop 0%: IS +58.9% -> OOS +79.6% (beats SPY OOS: True)
+  hold 25 stop 12%: IS +37.1% -> OOS +96.7% (beats SPY OOS: True)
+  hold 25 stop 8%: IS +30.8% -> OOS +90.2% (beats SPY OOS: True)
+  hold 25 stop 10%: IS +30.5% -> OOS +90.8% (beats SPY OOS: True)
+  hold 20 stop 8%: IS +14.3% -> OOS +93.5% (beats SPY OOS: True)
+reverse: choose on 2024-26, report 2021-23
+  hold 20 stop 10%: OOS-chosen +118.6% -> 2021-23 +9.3% (beats SPY: False)
+  hold 20 stop 12%: OOS-chosen +106.6% -> 2021-23 +9.5% (beats SPY: False)
+  hold 25 stop 12%: OOS-chosen +96.7% -> 2021-23 +37.1% (beats SPY: True)
+  hold 20 stop 0%: OOS-chosen +95.9% -> 2021-23 -0.8% (beats SPY: False)
+  hold 20 stop 8%: OOS-chosen +93.5% -> 2021-23 +14.3% (beats SPY: False)
+
+=== (4) per-signal 25-session demeaned excess (next open -> open 25 sessions later), top-3 RS signals of each day vs all signals, by year ===
+all signals                        n= 6298 mean -0.18% t=-1.47 | 2021:-1.0%(1471.0) 2022:+2.4%(554.0) 2023:-1.2%(924.0) 2024:-0.5%(1546.0) 2025:+0.5%(985.0) 2026:+0.6%(818.0)
+regime on                          n= 5433 mean -0.13% t=-0.97 | 2021:-1.0%(1423.0) 2022:+3.6%(285.0) 2023:-1.2%(830.0) 2024:-0.3%(1378.0) 2025:+0.4%(839.0) 2026:+1.1%(678.0)
+regime on, top-3 RS of the day     n= 2295 mean +0.26% t=1.08 | 2021:-1.2%(552.0) 2022:+3.1%(141.0) 2023:-0.6%(366.0) 2024:-0.1%(532.0) 2025:+1.1%(405.0) 2026:+2.2%(299.0)
+regime on, top-1 RS of the day     n=  912 mean +0.30% t=0.72 | 2021:-2.5%(211.0) 2022:+1.7%(65.0) 2023:-0.5%(150.0) 2024:+0.6%(207.0) 2025:+0.4%(161.0) 2026:+4.9%(118.0)

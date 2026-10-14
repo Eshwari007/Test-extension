@@ -1,0 +1,30 @@
+6353 entry signals
+SPY 2021-01-04 -> 2026-10-09: +111.0%
+
+trail e21, no stop                               total  +61.7%  worst yr -10.2%  best yr +32.7%  maxDD -25.4%  n  527  win 43%  PF 1.37  avg win  +8.7%  avg loss  -4.9%
+trail e21, stop -5%                              total   +2.3%  worst yr  -8.4%  best yr +12.8%  maxDD -32.0%  n  633  win 35%  PF 1.04  avg win  +8.0%  avg loss  -4.1%
+trail e21, stop -8%                              total  +24.7%  worst yr  -9.0%  best yr +16.2%  maxDD -27.4%  n  558  win 41%  PF 1.17  avg win  +8.2%  avg loss  -4.8%
+trail e21, stop -12%                             total  +29.7%  worst yr  -8.8%  best yr +18.5%  maxDD -28.2%  n  545  win 42%  PF 1.19  avg win  +8.2%  avg loss  -5.0%
+trail e10, no stop                               total  +40.9%  worst yr  -2.8%  best yr +20.4%  maxDD -19.6%  n  882  win 41%  PF 1.21  avg win  +6.3%  avg loss  -3.6%
+trail e10, stop -5%                              total  +20.2%  worst yr  -7.5%  best yr +13.4%  maxDD -27.3%  n  954  win 38%  PF 1.11  avg win  +6.4%  avg loss  -3.6%
+trail e50, no stop                               total  +43.5%  worst yr  -7.0%  best yr +19.2%  maxDD -24.3%  n  296  win 41%  PF 1.42  avg win +11.7%  avg loss  -5.7%
+trail e50, stop -8%                              total  +36.3%  worst yr  -7.0%  best yr +13.0%  maxDD -23.6%  n  307  win 41%  PF 1.37  avg win +10.9%  avg loss  -5.5%
+trail lo10, no stop                              total  +22.3%  worst yr -15.6%  best yr +14.5%  maxDD -28.4%  n  424  win 40%  PF 1.19  avg win  +9.5%  avg loss  -5.3%
+trail lo20, no stop                              total  +62.7%  worst yr  -5.6%  best yr +30.8%  maxDD -21.1%  n  246  win 43%  PF 1.62  avg win +14.7%  avg loss  -7.0%
+trail lo20, stop -8%                             total  +31.4%  worst yr  -4.8%  best yr +19.9%  maxDD -18.3%  n  280  win 40%  PF 1.32  avg win +11.7%  avg loss  -5.9%
+chandelier 2.0xATR, no stop                      total   -8.7%  worst yr -13.6%  best yr +11.2%  maxDD -37.8%  n 1168  win 38%  PF 0.98  avg win  +5.3%  avg loss  -3.3%
+chandelier 3.0xATR, no stop                      total  +14.2%  worst yr -11.8%  best yr +22.0%  maxDD -37.0%  n  609  win 40%  PF 1.11  avg win  +7.6%  avg loss  -4.5%
+chandelier 4.0xATR, no stop                      total   +5.5%  worst yr -14.5%  best yr +22.3%  maxDD -32.0%  n  395  win 41%  PF 1.08  avg win  +8.9%  avg loss  -5.8%
+chandelier 3.0xATR, stop -8%                     total  +22.5%  worst yr  -8.1%  best yr +22.0%  maxDD -32.4%  n  616  win 40%  PF 1.15  avg win  +7.6%  avg loss  -4.3%
+trail e21, no stop, target +15%                  total  +37.8%  worst yr  -9.5%  best yr +19.3%  maxDD -22.8%  n  661  win 44%  PF 1.19  avg win  +8.1%  avg loss  -5.3%
+trail e21, no stop, target +25%                  total  +38.1%  worst yr -11.1%  best yr +16.6%  maxDD -22.3%  n  589  win 40%  PF 1.21  avg win  +9.0%  avg loss  -5.1%
+trail e21, stop -8%, target +15%                 total  +30.6%  worst yr -10.3%  best yr +19.8%  maxDD -24.8%  n  702  win 40%  PF 1.16  avg win  +8.2%  avg loss  -4.8%
+trail e50, no stop, target +25%                  total  +61.8%  worst yr -10.1%  best yr +27.1%  maxDD -21.1%  n  351  win 41%  PF 1.44  avg win +12.5%  avg loss  -6.0%
+no trail, stop -5%, time 3d                      total  +18.0%  worst yr  -6.0%  best yr +13.5%  maxDD -26.3%  n 2559  win 50%  PF 1.06  avg win  +3.0%  avg loss  -2.9%
+no trail, stop -5%, time 10d                     total  +22.7%  worst yr  -5.8%  best yr +20.3%  maxDD -29.4%  n 1235  win 46%  PF 1.09  avg win  +5.2%  avg loss  -4.1%
+no trail, stop -8%, time 20d                     total +118.8%  worst yr  +2.1%  best yr +42.8%  maxDD -17.4%  n  649  win 53%  PF 1.47  avg win  +7.8%  avg loss  -6.0%
+no trail, stop -10%, time 40d                    total  +74.7%  worst yr -14.9%  best yr +28.8%  maxDD -25.3%  n  355  win 49%  PF 1.47  avg win +11.6%  avg loss  -7.6%
+trail e21, stop -3%                              total  +28.8%  worst yr  -9.0%  best yr +17.6%  maxDD -26.3%  n  782  win 30%  PF 1.18  avg win  +8.6%  avg loss  -3.1%
+no trail, stop -3%, time 5d                      total  +19.5%  worst yr  -1.0%  best yr +14.2%  maxDD -19.4%  n 2177  win 42%  PF 1.06  avg win  +3.9%  avg loss  -2.7%
+no trail, stop -3%, target +6%                   total  -13.3%  worst yr  -8.4%  best yr +10.7%  maxDD -25.0%  n 1460  win 34%  PF 0.96  avg win  +6.0%  avg loss  -3.3%
+no trail, stop -5%, target +10%                  total  +12.3%  worst yr  -7.8%  best yr +23.5%  maxDD -24.5%  n  660  win 36%  PF 1.07  avg win +10.0%  avg loss  -5.2%
